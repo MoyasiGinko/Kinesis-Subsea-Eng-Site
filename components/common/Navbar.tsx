@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -22,7 +21,10 @@ const menuItems = [
       { title: "Our Services", href: "/what-we-deliver/our-services" },
       { title: "Our Innovations", href: "/what-we-deliver/our-innovations" },
       { title: "Our Markets", href: "/what-we-deliver/our-markets" },
-      { title: "Kent Academy for Operational Readiness", href: "/what-we-deliver/kent-academy-for-operational-readiness" },
+      {
+        title: "Kent Academy for Operational Readiness",
+        href: "/what-we-deliver/kent-academy-for-operational-readiness",
+      },
     ],
   },
   {
@@ -43,7 +45,7 @@ const menuItems = [
 export default function Navbar() {
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
 
   const toggleMenu = (index: number) => {
@@ -58,7 +60,7 @@ export default function Navbar() {
     e.preventDefault();
     if (searchTerm.trim()) {
       router.push(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
-      setSearchTerm('');
+      setSearchTerm("");
     }
   };
 
@@ -141,7 +143,10 @@ export default function Navbar() {
         </button>
 
         {/* Search Form */}
-        <form onSubmit={handleSearchSubmit} className="hidden md:flex items-center ml-6">
+        <form
+          onSubmit={handleSearchSubmit}
+          className="hidden md:flex items-center ml-6"
+        >
           <input
             type="text"
             placeholder="Search..."
@@ -150,7 +155,10 @@ export default function Navbar() {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="px-3 py-1 rounded-l bg-white text-black focus:outline-none"
           />
-          <button type="submit" className="bg-white text-black px-3 py-1 rounded-r hover:bg-gray-200">
+          <button
+            type="submit"
+            className="bg-white text-black px-3 py-1 rounded-r hover:bg-gray-200"
+          >
             Search
           </button>
         </form>
