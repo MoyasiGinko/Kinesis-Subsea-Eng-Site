@@ -68,11 +68,7 @@ export default function Navbar() {
     <header className="bg-black text-white sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
         <Link href="/" className="flex items-center">
-          <img
-            src="https://kentplc.com/dist/images/logo-white-alt.png"
-            alt="Kent Logo"
-            className="h-10 w-auto"
-          />
+          <img src="/logo.png" alt="Kent Logo" className="h-10 invert w-auto" />
         </Link>
 
         {/* Desktop Menu */}
