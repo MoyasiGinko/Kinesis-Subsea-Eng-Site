@@ -9,21 +9,21 @@ const menuItems = [
     title: "Who We Are",
     href: "/who-we-are",
     submenu: [
-      { title: "Purpose & Beliefs", href: "/who-we-are/purpose-beliefs" },
-      { title: "Our History", href: "/who-we-are/our-history" },
-      { title: "Meet Our Team", href: "/who-we-are/meet-our-team" },
+      { title: "Purpose", href: "/who-we-are/purpose-beliefs" },
+      { title: "History", href: "/who-we-are/our-history" },
+      { title: "Team", href: "/who-we-are/meet-our-team" },
     ],
   },
   {
-    title: "What We Deliver",
+    title: "What We Do",
     href: "/what-we-deliver",
     submenu: [
-      { title: "Our Services", href: "/what-we-deliver/our-services" },
-      { title: "Our Innovations", href: "/what-we-deliver/our-innovations" },
-      { title: "Our Markets", href: "/what-we-deliver/our-markets" },
+      { title: "Services", href: "/what-we-deliver/our-services" },
+      { title: "Innovations", href: "/what-we-deliver/our-innovations" },
+      { title: "Markets", href: "/what-we-deliver/our-markets" },
       {
-        title: "Kent Academy for Operational Readiness",
-        href: "/what-we-deliver/kent-academy-for-operational-readiness",
+        title: "Kinesis Subsea Engineering Academy",
+        href: "/what-we-deliver/Kinesis Subsea Engineering-academy-for-operational-readiness",
       },
     ],
   },
@@ -37,9 +37,9 @@ const menuItems = [
     ],
   },
   { title: "Careers", href: "/careers" },
-  { title: "News & Insights", href: "/news-insights" },
+  { title: "Insights", href: "/news-insights" },
   { title: "Events", href: "/events" },
-  { title: "Contact Us", href: "/contact-us" },
+  { title: "Contact", href: "/contact-us" },
 ];
 
 export default function Navbar() {
@@ -66,18 +66,22 @@ export default function Navbar() {
 
   return (
     <header className="bg-black text-white sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <div className="max-w-7xl mx-auto flex items-center justify-between p-3 md:p-4">
         <Link href="/" className="flex items-center">
-          <img src="/logo.png" alt="Kent Logo" className="h-10 invert w-auto" />
+          <img
+            src="/logo.png"
+            alt="Kinesis Subsea Engineering Logo"
+            className="h-8 md:h-10 invert w-auto"
+          />
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8 text-sm font-medium">
           {menuItems.map((item, index) => (
-            <div key={index} className="relative group">
+            <div key={index} className="relative group flex items-center">
               <Link
                 href={item.href}
-                className="hover:text-gray-300 transition"
+                className="hover:text-gray-300 transition px-1 py-2"
                 onClick={(e) => {
                   if (item.submenu) e.preventDefault();
                 }}
@@ -90,13 +94,13 @@ export default function Navbar() {
                 <div
                   onMouseEnter={() => setOpenMenuIndex(index)}
                   onMouseLeave={() => setOpenMenuIndex(null)}
-                  className="absolute top-full left-0 bg-black border border-gray-700 rounded shadow-lg py-2 min-w-[200px] z-50"
+                  className="absolute top-full left-0 bg-black border border-gray-700 rounded shadow-lg py-2 min-w-[160px] z-50"
                 >
                   {item.submenu.map((subitem, subindex) => (
                     <Link
                       key={subindex}
                       href={subitem.href}
-                      className="block px-4 py-2 hover:bg-gray-800"
+                      className="block px-4 py-2 hover:bg-gray-800 whitespace-nowrap"
                     >
                       {subitem.title}
                     </Link>
@@ -107,9 +111,30 @@ export default function Navbar() {
           ))}
         </nav>
 
+        {/* Search Form */}
+        <form
+          onSubmit={handleSearchSubmit}
+          className="hidden md:flex items-center ml-2"
+        >
+          <input
+            type="text"
+            placeholder="Search..."
+            aria-label="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="px-2 py-1 rounded-l bg-white text-black focus:outline-none text-sm"
+          />
+          <button
+            type="submit"
+            className="bg-white text-black px-2 py-1 rounded-r hover:bg-gray-200 text-sm"
+          >
+            Search
+          </button>
+        </form>
+
         {/* Mobile Hamburger */}
         <button
-          className="md:hidden focus:outline-none"
+          className="md:hidden focus:outline-none ml-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -137,27 +162,6 @@ export default function Navbar() {
             )}
           </svg>
         </button>
-
-        {/* Search Form */}
-        <form
-          onSubmit={handleSearchSubmit}
-          className="hidden md:flex items-center ml-6"
-        >
-          <input
-            type="text"
-            placeholder="Search..."
-            aria-label="Search"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="px-3 py-1 rounded-l bg-white text-black focus:outline-none"
-          />
-          <button
-            type="submit"
-            className="bg-white text-black px-3 py-1 rounded-r hover:bg-gray-200"
-          >
-            Search
-          </button>
-        </form>
       </div>
 
       {/* Mobile Menu */}

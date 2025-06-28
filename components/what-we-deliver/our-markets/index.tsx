@@ -4,10 +4,12 @@ export default function OurMarkets() {
       <h1 className="text-4xl font-bold mb-6">Our Markets</h1>
       <section className="space-y-6 text-lg leading-relaxed text-gray-800">
         <p>
-          Kent serves a diverse range of markets including oil and gas, renewables, power generation, and infrastructure.
+          Kinesis Subsea Engineering serves a diverse range of markets including
+          oil and gas, renewables, power generation, and infrastructure.
         </p>
         <p>
-          Our expertise spans upstream, midstream, and downstream sectors, delivering tailored solutions to meet market-specific challenges.
+          Our expertise spans upstream, midstream, and downstream sectors,
+          delivering tailored solutions to meet market-specific challenges.
         </p>
         <img
           src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg"
@@ -16,7 +18,8 @@ export default function OurMarkets() {
           loading="lazy"
         />
         <p>
-          We are committed to supporting the energy transition by enabling sustainable growth across all markets we serve.
+          We are committed to supporting the energy transition by enabling
+          sustainable growth across all markets we serve.
         </p>
       </section>
     </main>

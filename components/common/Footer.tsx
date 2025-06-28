@@ -9,14 +9,12 @@ export default function Footer() {
         <div>
           <Link href="/">
             <img
-              src="https://kentplc.com/dist/images/logo-footer.png"
-              alt="Kent Footer Logo"
+              src="https://Kinesis Subsea Engineeringplc.com/dist/images/logo-footer.png"
+              alt="Kinesis Subsea Engineering Footer Logo"
               className="h-12 w-auto mb-4"
             />
           </Link>
-          <p className="text-gray-400 text-sm">
-            The energy within.
-          </p>
+          <p className="text-gray-400 text-sm">The energy within.</p>
         </div>
 
         <div>
@@ -53,7 +51,11 @@ export default function Footer() {
         <div>
           <h3 className="text-white font-semibold mb-4">Contact</h3>
           <p className="text-gray-400 text-sm">
-            Office Locator Australia Austria Azerbaijan Bahrain Canada China Colombia Egypt Germany Guyana India Indonesia Iraq Ireland Kazakhstan Kingdom of Saudi Arabia Kuwait Malaysia Mozambique The Netherlands Oman Qatar Senegal Singapore South Korea Trinidad Turkey United Arab Emirates United Kingdom United States
+            Office Locator Australia Austria Azerbaijan Bahrain Canada China
+            Colombia Egypt Germany Guyana India Indonesia Iraq Ireland
+            Kazakhstan Kingdom of Saudi Arabia Kuwait Malaysia Mozambique The
+            Netherlands Oman Qatar Senegal Singapore South Korea Trinidad Turkey
+            United Arab Emirates United Kingdom United States
           </p>
         </div>
 
@@ -71,27 +73,44 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="https://code.apps.kentplc.com/#/" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+              <Link
+                href="https://code.apps.Kinesis Subsea Engineeringplc.com/#/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white"
+              >
                 Code of Conduct
               </Link>
             </li>
             <li>
-              <Link href="/safety-sustainability-policy" className="hover:text-white">
+              <Link
+                href="/safety-sustainability-policy"
+                className="hover:text-white"
+              >
                 Safety & Sustainability Policy
               </Link>
             </li>
             <li>
-              <Link href="/kent-quality-policy" className="hover:text-white">
+              <Link
+                href="/Kinesis Subsea Engineering-quality-policy"
+                className="hover:text-white"
+              >
                 Quality Policy
               </Link>
             </li>
             <li>
-              <Link href="/inclusion-belonging-policy" className="hover:text-white">
+              <Link
+                href="/inclusion-belonging-policy"
+                className="hover:text-white"
+              >
                 Inclusion & Belonging Policy
               </Link>
             </li>
             <li>
-              <Link href="/sustainability/principles/leading-by-example/modern-slavery-statement" className="hover:text-white">
+              <Link
+                href="/sustainability/principles/leading-by-example/modern-slavery-statement"
+                className="hover:text-white"
+              >
                 Modern Slavery Statement
               </Link>
             </li>
@@ -100,7 +119,10 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 mt-10 border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-gray-400 text-xs">
-        <p>© {new Date().getFullYear()} Kent. All rights reserved.</p>
+        <p>
+          © {new Date().getFullYear()} Kinesis Subsea Engineering. All rights
+          reserved.
+        </p>
         <p>
           Website{" "}
           <a

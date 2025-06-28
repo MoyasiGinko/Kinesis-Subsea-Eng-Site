@@ -4,8 +4,8 @@ export default function SustainabilityPlanet() {
       <h1 className="text-4xl font-bold mb-6">Sustainability - Planet</h1>
       <section className="space-y-6 text-lg leading-relaxed text-gray-800">
         <p>
-          Kent is dedicated to protecting the planet through sustainable
-          practices and environmental stewardship.
+          Kinesis Subsea Engineering is dedicated to protecting the planet
+          through sustainable practices and environmental stewardship.
         </p>
         <p>
           We implement innovative solutions to reduce emissions, conserve

@@ -15,8 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kent | Global leader in integrated energy services",
-  description: "Kent - Integrated energy services company",
+  title:
+    "Kinesis Subsea Engineering | Global leader in integrated energy services",
+  description:
+    "Kinesis Subsea Engineering - Integrated energy services company",
 };
 
 export default function RootLayout({

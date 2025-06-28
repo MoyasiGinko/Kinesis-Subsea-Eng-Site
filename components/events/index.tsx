@@ -9,8 +9,8 @@ export default function Events() {
           </h2>
           <p className="text-sm text-gray-600">April 20, 2024</p>
           <p>
-            Join Kent at the upcoming Energy Conference to explore the latest
-            trends and innovations in the energy sector.
+            Join Kinesis Subsea Engineering at the upcoming Energy Conference to
+            explore the latest trends and innovations in the energy sector.
           </p>
         </article>
         <article className="border-b border-gray-300 pb-4">
@@ -25,8 +25,8 @@ export default function Events() {
           <h2 className="text-2xl font-semibold">Annual Stakeholder Meeting</h2>
           <p className="text-sm text-gray-600">June 10, 2024</p>
           <p>
-            Kent's annual meeting to discuss company performance, strategy, and
-            future initiatives.
+            Kinesis Subsea Engineering's annual meeting to discuss company
+            performance, strategy, and future initiatives.
           </p>
         </article>
       </section>

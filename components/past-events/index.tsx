@@ -16,15 +16,15 @@ export default function PastEvents() {
           <p className="text-sm text-gray-600">September 8, 2023</p>
           <p>
             A recap of the Innovation Expo showcasing the latest technologies
-            and projects by Kent.
+            and projects by Kinesis Subsea Engineering.
           </p>
         </article>
         <article>
           <h2 className="text-2xl font-semibold">Community Engagement Day</h2>
           <p className="text-sm text-gray-600">July 20, 2023</p>
           <p>
-            Kent's community engagement initiatives and events held throughout
-            2023.
+            Kinesis Subsea Engineering's community engagement initiatives and
+            events held throughout 2023.
           </p>
         </article>
       </section>

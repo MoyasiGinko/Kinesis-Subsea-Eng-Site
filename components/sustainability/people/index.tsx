@@ -4,9 +4,9 @@ export default function SustainabilityPeople() {
       <h1 className="text-4xl font-bold mb-6">Sustainability - People</h1>
       <section className="space-y-6 text-lg leading-relaxed text-gray-800">
         <p>
-          At Kent, we believe that our people are our greatest asset. We are
-          committed to fostering a diverse, inclusive, and safe workplace where
-          everyone can thrive.
+          At Kinesis Subsea Engineering, we believe that our people are our
+          greatest asset. We are committed to fostering a diverse, inclusive,
+          and safe workplace where everyone can thrive.
         </p>
         <p>
           Our sustainability initiatives focus on employee well-being, community

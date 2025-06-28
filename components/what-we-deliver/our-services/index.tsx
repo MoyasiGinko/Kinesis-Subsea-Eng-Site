@@ -4,7 +4,10 @@ export default function OurServices() {
       <h1 className="text-4xl font-bold mb-6">Our Services</h1>
       <section className="space-y-6 text-lg leading-relaxed text-gray-800">
         <p>
-          Kent offers a comprehensive range of integrated energy services designed to meet the evolving needs of the energy sector. Our services span consulting, engineering, project management, and operational excellence.
+          Kinesis Subsea Engineering offers a comprehensive range of integrated
+          energy services designed to meet the evolving needs of the energy
+          sector. Our services span consulting, engineering, project management,
+          and operational excellence.
         </p>
         <ul className="list-disc list-inside space-y-2">
           <li>Strategic advisory and technical consulting</li>
@@ -19,7 +22,9 @@ export default function OurServices() {
           loading="lazy"
         />
         <p>
-          Our team works closely with clients to deliver tailored solutions that drive efficiency, safety, and sustainability across all phases of energy projects.
+          Our team works closely with clients to deliver tailored solutions that
+          drive efficiency, safety, and sustainability across all phases of
+          energy projects.
         </p>
       </section>
     </main>
