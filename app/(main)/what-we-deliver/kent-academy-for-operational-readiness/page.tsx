@@ -1,5 +1,5 @@
-import KentAcademy from "@/components/what-we-deliver/kent-academy-for-operational-readiness";
+import KinesisAcademy from "@/components/what-we-deliver/Kinesis-academy-for-operational-readiness";
 
 export default function Page() {
-  return <KentAcademy />;
+  return <KinesisAcademy />;
 }

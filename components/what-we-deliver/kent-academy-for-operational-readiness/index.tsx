@@ -1,12 +1,12 @@
-export default function KentAcademy() {
+export default function KinesisAcademy() {
   return (
     <main className="max-w-7xl mx-auto p-6">
       <h1 className="text-4xl font-bold mb-6">
-        Kent Academy for Operational Readiness
+        Kinesis Academy for Operational Readiness
       </h1>
       <section className="space-y-6 text-lg leading-relaxed text-gray-800">
         <p>
-          The Kent Academy for Operational Readiness is dedicated to training
+          The Kinesis Academy for Operational Readiness is dedicated to training
           and developing the next generation of energy professionals.
         </p>
         <p>
