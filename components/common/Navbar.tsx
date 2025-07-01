@@ -69,9 +69,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex items-center justify-between p-3 md:p-4">
         <Link href="/" className="flex items-center">
           <img
-            src="/logo.png"
+            src="/logo-white.svg"
             alt="Kinesis Subsea Engineering Logo"
-            className="h-8 md:h-10 invert w-auto"
+            className="h-10 md:h-12  w-auto"
           />
         </Link>
 

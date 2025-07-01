@@ -9,9 +9,9 @@ export default function Footer() {
         <div>
           <Link href="/">
             <img
-              src="/logo.png"
+              src="/logo-white.svg"
               alt="Kinesis Subsea Engineering Footer Logo"
-              className="h-12 invert w-auto mb-4"
+              className="h-16 w-auto mb-4"
             />
           </Link>
           <p className="text-gray-400 text-sm">The energy within.</p>
