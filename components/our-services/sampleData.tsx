@@ -81,44 +81,233 @@ export const serviceData: Service[] = [
     },
     images: ["/services/service-1-1.jpg", "/services/service-1-2.jpg"],
   },
-  // Additional services can be added here, e.g.:
-  /*
+
   {
     id: 2,
-    name: 'Offshore Installation',
-    slug: 'offshore-installation',
-    tagline: 'Expert offshore installation services for renewable energy systems.',
-    servicesTitle: 'Our Installation Services',
+    name: "Products",
+    slug: "products",
+    tagline:
+      "Expert offshore installation services for renewable energy systems.",
+    servicesTitle: "Our Installation Services",
     services: [
       {
         id: 4,
-        title: 'Subsea Equipment Setup',
-        description: 'Precision setup of subsea equipment for maximum efficiency.',
+        title: "Subsea Equipment Setup",
+        description:
+          "Precision setup of subsea equipment for maximum efficiency.",
       },
       {
         id: 5,
-        title: 'System Integration',
-        description: 'Seamless integration of offshore systems for optimal performance.',
+        title: "System Integration",
+        description:
+          "Seamless integration of offshore systems for optimal performance.",
       },
     ],
-    certificationsTitle: 'Installation Certifications',
+    certificationsTitle: "Installation Certifications",
     certifications: [
       {
         id: 3,
-        title: 'ISO 14001',
-        description: 'Certified for environmental management in offshore operations.',
+        title: "ISO 14001",
+        description:
+          "Certified for environmental management in offshore operations.",
       },
     ],
     contact: {
-      title: 'Contact Our Installation Team',
-      description: 'Reach out to discuss your offshore installation needs.',
-      email: 'install@risertec.com',
-      buttonText: 'Connect Now',
+      title: "Contact Our Installation Team",
+      description: "Reach out to discuss your offshore installation needs.",
+      email: "install@risertec.com",
+      buttonText: "Connect Now",
     },
-    images: [
-      'https://via.placeholder.com/600x400?text=Subsea+Setup',
-      'https://via.placeholder.com/600x400?text=System+Integration',
-    ],
+    images: ["/services/service-1-1.jpg", "/services/service-1-2.jpg"],
   },
-  */
+  {
+    id: 3,
+    name: "Software",
+    slug: "software",
+    tagline: "Innovative software solutions for energy sector challenges.",
+    servicesTitle: "Our Software Solutions",
+    services: [
+      {
+        id: 6,
+        title: "Energy Management Systems",
+        description:
+          "Advanced software for efficient energy management and optimization.",
+      },
+      {
+        id: 7,
+        title: "Data Analytics Tools",
+        description:
+          "Powerful analytics tools for data-driven decision making in energy projects.",
+      },
+    ],
+    certificationsTitle: "Software Certifications",
+    certifications: [
+      {
+        id: 4,
+        title: "ISO/IEC 27001",
+        description:
+          "Certified for information security management in software development.",
+      },
+    ],
+    contact: {
+      title: "Explore Our Software Solutions",
+      description:
+        "Contact us to learn how our software can enhance your energy projects.",
+      email: "software@risertec.com",
+      buttonText: "Get in Touch",
+    },
+    images: ["/services/service-1-1.jpg", "/services/service-1-2.jpg"],
+  },
+  {
+    id: 4,
+    name: "Renewables",
+    slug: "renewables",
+    tagline: "Sustainable solutions for a greener future.",
+    servicesTitle: "Our Renewable Services",
+    services: [
+      {
+        id: 8,
+        title: "Wind Energy Solutions",
+        description:
+          "Innovative solutions for wind energy projects, from design to implementation.",
+      },
+      {
+        id: 9,
+        title: "Solar Energy Systems",
+        description:
+          "Comprehensive solar energy systems for efficient power generation.",
+      },
+    ],
+    certificationsTitle: "Renewable Certifications",
+    certifications: [
+      {
+        id: 5,
+        title: "LEED Certification",
+        description:
+          "Certified for sustainable building practices in renewable energy projects.",
+      },
+    ],
+    contact: {
+      title: "Join the Renewable Revolution",
+      description:
+        "Contact us to discuss how we can support your renewable energy initiatives.",
+      email: "renewables@risertec.com",
+      buttonText: "Get in Touch",
+    },
+    images: ["/services/service-1-1.jpg", "/services/service-1-2.jpg"],
+  },
+  {
+    id: 5,
+    name: "Testing",
+    slug: "testing",
+    tagline: "Rigorous testing for reliable energy solutions.",
+    servicesTitle: "Our Testing Services",
+    services: [
+      {
+        id: 10,
+        title: "Component Testing",
+        description:
+          "Thorough testing of energy components to ensure reliability and performance.",
+      },
+      {
+        id: 11,
+        title: "System Validation",
+        description:
+          "Comprehensive validation of energy systems for optimal functionality.",
+      },
+    ],
+    certificationsTitle: "Testing Certifications",
+    certifications: [
+      {
+        id: 6,
+        title: "ISO/IEC 17025",
+        description:
+          "Certified for testing and calibration laboratories in the energy sector.",
+      },
+    ],
+    contact: {
+      title: "Ensure Reliability with Our Testing Services",
+      description:
+        "Contact us to learn more about our rigorous testing processes.",
+      email: "testing@risertec.com",
+      buttonText: "Get in Touch",
+    },
+    images: ["/services/service-1-1.jpg", "/services/service-1-2.jpg"],
+  },
+  {
+    id: 6,
+    name: "Past Projects",
+    slug: "past-projects",
+    tagline: "Showcasing our successful energy projects.",
+    servicesTitle: "Our Project Portfolio",
+    services: [
+      {
+        id: 12,
+        title: "Offshore Wind Farms",
+        description:
+          "Successful implementation of offshore wind farms with advanced technology.",
+      },
+      {
+        id: 13,
+        title: "Solar Power Plants",
+        description:
+          "Efficient solar power plants delivering sustainable energy solutions.",
+      },
+    ],
+    certificationsTitle: "Project Certifications",
+    certifications: [
+      {
+        id: 7,
+        title: "Project Management Professional (PMP)",
+        description:
+          "Certified project management expertise in delivering complex energy projects.",
+      },
+    ],
+    contact: {
+      title: "Explore Our Project Successes",
+      description:
+        "Contact us to learn more about our past projects and success stories.",
+      email: "projects@risertec.com",
+      buttonText: "Get in Touch",
+    },
+    images: ["/services/service-1-1.jpg", "/services/service-1-2.jpg"],
+  },
+  {
+    id: 7,
+    name: "Training",
+    slug: "training",
+    tagline: "Empowering teams with expert training programs.",
+    servicesTitle: "Our Training Programs",
+    services: [
+      {
+        id: 14,
+        title: "Technical Training",
+        description:
+          "In-depth technical training programs for energy sector professionals.",
+      },
+      {
+        id: 15,
+        title: "Safety Training",
+        description:
+          "Comprehensive safety training to ensure a secure working environment.",
+      },
+    ],
+    certificationsTitle: "Training Certifications",
+    certifications: [
+      {
+        id: 8,
+        title: "Certified Energy Manager (CEM)",
+        description:
+          "Certified training programs for energy management professionals.",
+      },
+    ],
+    contact: {
+      title: "Enhance Your Skills with Our Training",
+      description:
+        "Contact us to learn more about our training programs and how they can benefit your team.",
+      email: "training@risertec.com",
+      buttonText: "Get in Touch",
+    },
+    images: ["/services/service-1-1.jpg", "/services/service-1-2.jpg"],
+  },
 ];
