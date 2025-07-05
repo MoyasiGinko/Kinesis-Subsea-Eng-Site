@@ -18,12 +18,13 @@ const menuItems = [
     title: "What We Do",
     href: "/what-we-deliver",
     submenu: [
-      { title: "Services", href: "/what-we-deliver/our-services" },
+      { title: "Insights", href: "/what-we-deliver/news-insights" },
       { title: "Innovations", href: "/what-we-deliver/our-innovations" },
       { title: "Markets", href: "/what-we-deliver/our-markets" },
+      { title: "Events", href: "/what-we-deliver/events" },
       {
-        title: "Kinesis Subsea Engineering Academy",
-        href: "/what-we-deliver/Kinesis Subsea Engineering-academy-for-operational-readiness",
+        title: "Academy",
+        href: "/what-we-deliver/kinesis-academy-for-operational-readiness",
       },
     ],
   },
@@ -36,10 +37,24 @@ const menuItems = [
       { title: "Principles", href: "/sustainability/principles" },
     ],
   },
-  { title: "Careers", href: "/careers" },
-  { title: "Insights", href: "/news-insights" },
-  { title: "Events", href: "/events" },
+  {
+    title: "Services",
+    href: "/our-services",
+    submenu: [
+      {
+        title: "Engineering & Analysis",
+        href: "/our-services/engineering-analysis",
+      },
+      { title: "Products", href: "/our-services/products" },
+      { title: "Software", href: "/our-services/software" },
+      { title: "Renewables", href: "/our-services/renewables" },
+      { title: "Testing", href: "/our-services/testing" },
+      { title: "Past Projects", href: "/our-services/past-projects" },
+      { title: "Training", href: "/our-services/training" },
+    ],
+  },
   { title: "Contact", href: "/contact-us" },
+  { title: "Careers", href: "/careers" },
 ];
 
 export default function Navbar() {
