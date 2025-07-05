@@ -20,6 +20,7 @@ export interface ContactItem {
 export interface Service {
   id: number;
   name: string;
+  slug: string;
   tagline: string;
   servicesTitle: string;
   services: ServiceItem[];
@@ -33,6 +34,7 @@ export const serviceData: Service[] = [
   {
     id: 1,
     name: "Engineering Analysis",
+    slug: "engineering-analysis",
     tagline: "Precision engineering solutions for renewable energy projects.",
     servicesTitle: "Our Engineering Services",
     services: [
@@ -84,6 +86,7 @@ export const serviceData: Service[] = [
   {
     id: 2,
     name: 'Offshore Installation',
+    slug: 'offshore-installation',
     tagline: 'Expert offshore installation services for renewable energy systems.',
     servicesTitle: 'Our Installation Services',
     services: [

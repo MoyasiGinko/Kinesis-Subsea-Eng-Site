@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
 import { serviceData } from "./sampleData";
 
 interface ServiceItem {
@@ -24,6 +25,7 @@ interface ContactItem {
 interface Service {
   id: number;
   name: string;
+  slug: string;
   tagline: string;
   servicesTitle: string;
   services: ServiceItem[];
@@ -37,7 +39,30 @@ const OurServices: React.FC = () => {
   const [activeService, setActiveService] = useState<number | null>(null);
   const [activeCert, setActiveCert] = useState<number | null>(null);
 
-  const service: Service = serviceData[0]; // Using the first service (Engineering Analysis) for this page
+  // Get the current pathname
+  const pathname = usePathname();
+
+  // Extract slug from pathname (e.g., "/our-services/engineering-analysis" -> "engineering-analysis")
+  const slug = pathname.split("/").pop() || "";
+
+  // Find the service that matches the slug
+  const service = serviceData.find((s) => s.slug === slug);
+
+  // If no service is found, render a fallback
+  if (!service) {
+    return (
+      <div className="min-h-screen bg-gray-50 text-gray-900 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-800">
+            Service Not Found
+          </h1>
+          <p className="mt-4 text-lg md:text-xl text-gray-600">
+            The service you are looking for does not exist.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 py-16 px-4 sm:px-6 lg:px-8">
