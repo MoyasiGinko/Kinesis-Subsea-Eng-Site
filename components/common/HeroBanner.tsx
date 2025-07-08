@@ -1,87 +1,476 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  ArrowRight,
+  Zap,
+  Building,
+  Power,
+  Sparkles,
+  ChevronDown,
+  Play,
+  Star,
+  CheckCircle,
+  Users,
+  Award,
+  Hammer,
+  Cable,
+  Factory,
+} from "lucide-react";
 
 const HeroBanner = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
+  const [isVisible, setIsVisible] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [scrollY, setScrollY] = useState(0);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [energyFlow, setEnergyFlow] = useState(0);
+  const heroRef = useRef<HTMLElement | null>(null);
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6 },
+  const testimonials = [
+    {
+      text: "Transformed our power grid infrastructure with cutting-edge solutions.",
+      author: "Robert Chen",
+      role: "Chief Engineer, PowerGrid Corp",
+      rating: 5,
     },
+    {
+      text: "Outstanding structural engineering. Project completed ahead of schedule.",
+      author: "Maria Rodriguez",
+      role: "Project Manager, BuildTech",
+      rating: 5,
+    },
+    {
+      text: "Reliable electrical systems that power our entire facility efficiently.",
+      author: "James Wilson",
+      role: "Facility Director, Manufacturing Inc",
+      rating: 5,
+    },
+  ];
+
+  const stats = [
+    {
+      number: "250+",
+      label: "Projects Completed",
+      icon: <Building className="w-5 h-5" />,
+    },
+    {
+      number: "99.8%",
+      label: "System Reliability",
+      icon: <Power className="w-5 h-5" />,
+    },
+    {
+      number: "30+",
+      label: "Licensed Engineers",
+      icon: <Users className="w-5 h-5" />,
+    },
+    {
+      number: "15+",
+      label: "Years Excellence",
+      icon: <Award className="w-5 h-5" />,
+    },
+  ];
+
+  useEffect(() => {
+    setIsVisible(true);
+
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (heroRef.current) {
+        const rect = heroRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: ((e.clientX - rect.left) / rect.width) * 100,
+          y: ((e.clientY - rect.top) / rect.height) * 100,
+        });
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMouseMove);
+
+    // Testimonial rotation
+    const testimonialInterval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
+
+    // Energy flow animation
+    const energyInterval = setInterval(() => {
+      setEnergyFlow((prev) => (prev + 1) % 100);
+    }, 50);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
+      clearInterval(testimonialInterval);
+      clearInterval(energyInterval);
+    };
+  }, []);
+
+  const scrollToNext = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
   };
 
   return (
     <section
-      id="hero"
-      className="w-full min-h-[80vh] sm:min-h-[90vh] md:min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0A1B39] via-[#1D1D1D] to-[#2A2A2A] text-white relative overflow-hidden"
+      ref={heroRef}
+      className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden py-10 px-4 min-h-[70vh] sm:min-h-[80vh] md:min-h-screen lg:max-h-[800px] xl:max-h-[1080px] flex items-center"
     >
-      {/* Background Image/Overlay */}
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        {/* Circuit Board Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div
+            className="absolute inset-0 bg-repeat transition-all duration-1000"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(34, 197, 94, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(34, 197, 94, 0.4) 1px, transparent 1px),
+                linear-gradient(rgba(59, 130, 246, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.2) 1px, transparent 1px)
+              `,
+              backgroundSize: "40px 40px, 40px 40px, 120px 120px, 120px 120px",
+              transform: `translateX(${mousePosition.x * 0.02}px) translateY(${
+                mousePosition.y * 0.02
+              }px) translateY(${scrollY * 0.3}px)`,
+            }}
+          />
+        </div>
+
+        {/* Power Lines */}
+        <div className="absolute inset-0 opacity-20">
+          <svg className="w-full h-full" viewBox="0 0 1200 800">
+            <defs>
+              <linearGradient
+                id="powerGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#22c55e" stopOpacity="0.8" />
+                <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.4" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M0,400 Q300,200 600,400 T1200,400"
+              stroke="url(#powerGradient)"
+              strokeWidth="2"
+              fill="none"
+              className="animate-pulse"
+            />
+            <path
+              d="M0,500 Q400,300 800,500 T1200,500"
+              stroke="url(#powerGradient)"
+              strokeWidth="1.5"
+              fill="none"
+              className="animate-pulse"
+              style={{ animationDelay: "1s" }}
+            />
+          </svg>
+        </div>
+
+        {/* Energy Particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-2 h-2 bg-green-400/40 rounded-full animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${1.5 + Math.random() * 2}s`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Industrial Gradient Orbs */}
+        <div
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-900/20 rounded-full blur-3xl transition-all duration-1000"
+          style={{
+            transform: `translateY(${mousePosition.y * 0.1}px) translateX(${
+              mousePosition.x * 0.1
+            }px) scale(${1 + mousePosition.x * 0.002})`,
+            opacity: 0.4 + mousePosition.x * 0.003,
+          }}
+        />
+        <div
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-900/20 rounded-full blur-3xl transition-all duration-1000"
+          style={{
+            transform: `translateY(${mousePosition.y * -0.1}px) translateX(${
+              mousePosition.x * -0.1
+            }px) scale(${1 + mousePosition.y * 0.002})`,
+            opacity: 0.4 + mousePosition.y * 0.003,
+          }}
+        />
+        <div
+          className="absolute top-1/2 right-1/3 w-64 h-64 bg-yellow-900/15 rounded-full blur-3xl transition-all duration-1000"
+          style={{
+            transform: `translateY(${mousePosition.y * 0.05}px) translateX(${
+              mousePosition.x * 0.05
+            }px)`,
+            opacity: 0.3 + mousePosition.x * 0.002,
+          }}
+        />
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="flex flex-col lg:flex-row items-center gap-16">
+          {/* Left Content */}
+          <div className="lg:w-1/2 w-full text-center lg:text-left">
+            <div
+              className={`transition-all duration-1000 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
+              }`}
+            >
+              <div className="flex items-center gap-2 mb-6 justify-center lg:justify-start">
+                <Zap className="w-5 h-5 text-green-400" />
+                <span className="text-sm font-medium text-green-400 uppercase tracking-wider">
+                  Power & Infrastructure Engineering
+                </span>
+              </div>
+
+              <h1 className="text-5xl lg:text-7xl font-light mb-6 leading-tight">
+                <span className="block text-slate-200">Powering</span>
+                <span className="block bg-gradient-to-r from-green-400 via-blue-400 to-yellow-400 bg-clip-text text-transparent font-medium">
+                  Tomorrow's
+                </span>
+                <span className="block text-slate-200">Infrastructure</span>
+              </h1>
+
+              <p className="text-xl lg:text-2xl text-slate-300 mb-8 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                From electrical systems to structural foundations, we engineer
+                the critical infrastructure that powers communities and drives
+                industrial progress.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start">
+                <button className="group relative inline-flex px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg font-semibold text-white transition-all duration-500 hover:from-green-500 hover:to-blue-500 hover:shadow-lg hover:shadow-green-500/25 hover:scale-105">
+                  <span className="flex items-center gap-2">
+                    Get Project Quote
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
+                </button>
+
+                <button className="group relative inline-flex px-8 py-4 bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 rounded-lg font-semibold text-slate-200 transition-all duration-500 hover:bg-slate-800/80 hover:border-slate-500/80 hover:text-white hover:scale-105">
+                  <span className="flex items-center gap-2">
+                    <Play className="w-5 h-5" />
+                    View Portfolio
+                  </span>
+                </button>
+              </div>
+
+              {/* Stats */}
+              {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                {stats.map((stat, index) => (
+                  <div
+                    key={index}
+                    className={`transition-all duration-1000 transform ${
+                      isVisible
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-12"
+                    }`}
+                    style={{ transitionDelay: `${500 + index * 100}ms` }}
+                  >
+                    <div className="text-center lg:text-left">
+                      <div className="flex items-center justify-center lg:justify-start gap-2 mb-1">
+                        <div className="text-green-400">{stat.icon}</div>
+                        <div className="text-2xl lg:text-3xl font-bold text-white">
+                          {stat.number}
+                        </div>
+                      </div>
+                      <div className="text-slate-400 text-sm">{stat.label}</div>
+                    </div>
+                  </div>
+                ))}
+              </div> */}
+
+              {/* Testimonial */}
+              {/* <div
+                className={`transition-all duration-1000 transform ${
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-12"
+                }`}
+                style={{ transitionDelay: "900ms" }}
+              >
+                <div className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-6 border border-slate-700/40">
+                  <div className="flex items-center mb-3">
+                    {[...Array(testimonials[currentTestimonial].rating)].map(
+                      (_, i) => (
+                        <Star
+                          key={i}
+                          className="w-4 h-4 text-yellow-400 fill-current"
+                        />
+                      )
+                    )}
+                  </div>
+                  <p className="text-slate-300 mb-4 italic">
+                    "{testimonials[currentTestimonial].text}"
+                  </p>
+                  <div className="flex items-center">
+                    <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center text-white font-semibold text-sm mr-3">
+                      {testimonials[currentTestimonial].author.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="text-white font-medium">
+                        {testimonials[currentTestimonial].author}
+                      </div>
+                      <div className="text-slate-400 text-sm">
+                        {testimonials[currentTestimonial].role}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> */}
+            </div>
+          </div>
+
+          {/* Right Content - Engineering Schematic */}
+          <div className="lg:w-1/2 w-full">
+            <div
+              className={`transition-all duration-1200 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
+              }`}
+              style={{ transitionDelay: "300ms" }}
+            >
+              <div className="relative bg-slate-900/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/40 shadow-2xl">
+                {/* Engineering Blueprint Header */}
+                {/* <div className="flex items-center mb-6">
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  </div>
+                  <div className="flex-1 text-center">
+                    <span className="text-slate-400 text-sm">
+                      POWER_GRID_SCHEMATIC.dwg
+                    </span>
+                  </div>
+                </div> */}
+
+                {/* Engineering Schematic Display */}
+                <div className="bg-slate-800/80 rounded-lg p-6 font-mono text-sm">
+                  <div className="grid grid-cols-3 gap-4 mb-6">
+                    <div className="col-span-3 text-center">
+                      <div className="text-green-400 font-bold text-lg mb-2">
+                        POWER DISTRIBUTION
+                      </div>
+                      <div className="h-1 bg-gradient-to-r from-green-400 via-blue-400 to-yellow-400 rounded-full mb-4"></div>
+                    </div>
+
+                    {/* Power Flow Visualization */}
+                    <div className="text-center">
+                      <div className="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
+                        <Power className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="text-green-400 text-xs">GENERATOR</div>
+                      <div className="text-slate-400 text-xs">480V - 3Φ</div>
+                    </div>
+
+                    <div className="text-center">
+                      <div className="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center">
+                        <Factory className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="text-blue-400 text-xs">TRANSFORMER</div>
+                      <div className="text-slate-400 text-xs">13.8kV</div>
+                    </div>
+
+                    <div className="text-center">
+                      <div className="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center">
+                        <Building className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="text-yellow-400 text-xs">LOAD CENTER</div>
+                      <div className="text-slate-400 text-xs">208V - 3Φ</div>
+                    </div>
+                  </div>
+
+                  {/* Power Flow Animation */}
+                  <div className="mb-4">
+                    <div className="text-slate-300 text-xs mb-2">
+                      POWER FLOW ANALYSIS:
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
+                      <div className="flex-1 h-1 bg-gradient-to-r from-green-400 to-blue-400 rounded-full relative overflow-hidden">
+                        <div
+                          className="absolute top-0 left-0 h-full w-4 bg-white/60 rounded-full"
+                          style={{
+                            transform: `translateX(${energyFlow * 4}px)`,
+                            transition: "transform 0.05s linear",
+                          }}
+                        />
+                      </div>
+                      <div
+                        className="w-4 h-4 bg-blue-500 rounded-full animate-pulse"
+                        style={{ animationDelay: "0.5s" }}
+                      ></div>
+                    </div>
+                  </div>
+
+                  {/* System Status */}
+                  <div className="grid grid-cols-2 gap-4 text-xs">
+                    <div>
+                      <div className="text-green-400 mb-1">
+                        ✓ VOLTAGE: NOMINAL
+                      </div>
+                      <div className="text-green-400 mb-1">
+                        ✓ FREQUENCY: 60.0Hz
+                      </div>
+                      <div className="text-green-400">✓ LOAD: 85% CAPACITY</div>
+                    </div>
+                    <div>
+                      <div className="text-blue-400 mb-1">⚡ POWER: 2.5 MW</div>
+                      <div className="text-blue-400 mb-1">
+                        ⚡ CURRENT: 3.2 kA
+                      </div>
+                      <div className="text-blue-400">⚡ EFFICIENCY: 96.8%</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating Engineering Icons */}
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-xl flex items-center justify-center animate-pulse">
+                  <Zap className="w-8 h-8 text-white" />
+                </div>
+                <div
+                  className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center animate-pulse"
+                  style={{ animationDelay: "1s" }}
+                >
+                  <Hammer className="w-6 h-6 text-white" />
+                </div>
+                <div
+                  className="absolute top-1/2 -right-2 w-10 h-10 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center animate-pulse"
+                  style={{ animationDelay: "2s" }}
+                >
+                  <Cable className="w-5 h-5 text-white" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mouse Follower */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-20"
+        className="absolute w-60 h-60 bg-green-400/5 rounded-full blur-3xl pointer-events-none transition-all duration-700"
         style={{
-          backgroundImage: "url('/images/hero-engineering-bg.jpg')", // Replace with a relevant engineering/tech-themed image
+          left: `${mousePosition.x}%`,
+          top: `${mousePosition.y}%`,
+          transform: "translate(-50%, -50%)",
         }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-      </div>
-
-      <div className="max-w-[90%] sm:max-w-[85%] md:max-w-6xl mx-auto px-4 relative z-10">
-        <motion.div
-          className="flex flex-col items-center text-center"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Headline */}
-          <motion.h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight text-white"
-            variants={itemVariants}
-          >
-            Engineering the Future with Sustainable Solutions
-          </motion.h1>
-
-          {/* Subheadline */}
-          <motion.p
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 max-w-[90%] sm:max-w-3xl md:max-w-4xl mb-6 sm:mb-8 md:mb-10"
-            variants={itemVariants}
-          >
-            Delivering innovative, reliable, and comprehensive technical
-            consulting to build a thriving society through cutting-edge
-            infrastructure and technology.
-          </motion.p>
-
-          {/* CTA Button */}
-          <motion.div variants={itemVariants}>
-            <Link href="/contact">
-              <button className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium text-white bg-gradient-to-r from-[#BB6FFB] via-[#FC5F67] to-[#FFB054] rounded-full shadow-[0px_0px_20px_rgba(255,255,255,0.2)] hover:scale-105 transition-transform duration-300">
-                Get Started
-              </button>
-            </Link>
-          </motion.div>
-
-          {/* Decorative Element (Gradient Circle) */}
-          <motion.div
-            className="absolute -bottom-20 -right-20 w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] bg-gradient-to-br from-[#BB6FFB]/30 to-[#FFB054]/30 rounded-full blur-[100px] z-0"
-            variants={itemVariants}
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1 }}
-          ></motion.div>
-        </motion.div>
-      </div>
+      />
     </section>
   );
 };
