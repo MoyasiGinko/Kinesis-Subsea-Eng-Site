@@ -269,11 +269,11 @@ const StatsSection = () => {
               </span>
             </h2>
 
-            <p className="text-slate-300 text-lg leading-relaxed max-w-3xl mx-auto font-light mb-8">
+            {/* <p className="text-slate-300 text-lg leading-relaxed max-w-3xl mx-auto font-light mb-8">
               Our track record demonstrates our commitment to excellence and
               innovation. These metrics reflect the trust our clients place in
               our expertise.
-            </p>
+            </p> */}
           </div>
         </div>
 
