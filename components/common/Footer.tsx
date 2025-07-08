@@ -126,12 +126,12 @@ export default function Footer() {
         <p>
           Website{" "}
           <a
-            href="https://madebyshape.co.uk/"
+            href="https://github.com/MoyasiGinko"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white underline"
           >
-            MadeByShape
+            MoyasiGinko
           </a>
         </p>
       </div>
