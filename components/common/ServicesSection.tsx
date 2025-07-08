@@ -94,7 +94,7 @@ export default function ServicesSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-32 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden"
+      className="relative py-32 px-4 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 overflow-hidden"
     >
       {/* Background Effects */}
       <div className="absolute inset-0">
