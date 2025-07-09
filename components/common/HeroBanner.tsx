@@ -117,7 +117,7 @@ const HeroBanner = () => {
   return (
     <section
       ref={heroRef}
-      className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white overflow-hidden py-10 px-4 min-h-[70vh] sm:min-h-[80vh] md:min-h-screen lg:max-h-[800px] xl:max-h-[1080px] flex items-center"
+      className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white overflow-hidden pb-10 pt-28 px-4 h-full sm:max-h-full md:max-h-full lg:max-h-[900px] xl:h-[1080px] flex items-center"
     >
       {/* Background Effects */}
       <div className="absolute inset-0">

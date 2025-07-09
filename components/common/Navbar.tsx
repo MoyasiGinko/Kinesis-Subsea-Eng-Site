@@ -1,30 +1,69 @@
 "use client";
-
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
+import {
+  Search,
+  Menu,
+  X,
+  ChevronDown,
+  ArrowRight,
+  Globe,
+  Phone,
+  Mail,
+  MapPin,
+} from "lucide-react";
 
 const menuItems = [
   {
     title: "Who We Are",
     href: "/who-we-are",
     submenu: [
-      { title: "Purpose", href: "/who-we-are/purpose-beliefs" },
-      { title: "History", href: "/who-we-are/our-history" },
-      { title: "Team", href: "/who-we-are/meet-our-team" },
+      {
+        title: "Purpose",
+        href: "/who-we-are/purpose-beliefs",
+        description: "Our mission and core values",
+      },
+      {
+        title: "History",
+        href: "/who-we-are/our-history",
+        description: "Journey through the years",
+      },
+      {
+        title: "Team",
+        href: "/who-we-are/meet-our-team",
+        description: "Meet our experts",
+      },
     ],
   },
   {
     title: "What We Do",
     href: "/what-we-deliver",
     submenu: [
-      { title: "Insights", href: "/what-we-deliver/news-insights" },
-      { title: "Innovations", href: "/what-we-deliver/our-innovations" },
-      { title: "Markets", href: "/what-we-deliver/our-markets" },
-      { title: "Events", href: "/what-we-deliver/events" },
+      {
+        title: "Insights",
+        href: "/what-we-deliver/news-insights",
+        description: "Latest industry insights",
+      },
+      {
+        title: "Innovations",
+        href: "/what-we-deliver/our-innovations",
+        description: "Cutting-edge solutions",
+      },
+      {
+        title: "Markets",
+        href: "/what-we-deliver/our-markets",
+        description: "Global market presence",
+      },
+      {
+        title: "Events",
+        href: "/what-we-deliver/events",
+        description: "Industry events & conferences",
+      },
       {
         title: "Academy",
         href: "/what-we-deliver/kinesis-academy-for-operational-readiness",
+        description: "Training & development programs",
       },
     ],
   },
@@ -32,9 +71,21 @@ const menuItems = [
     title: "Sustainability",
     href: "/sustainability",
     submenu: [
-      { title: "People", href: "/sustainability/people" },
-      { title: "Planet", href: "/sustainability/planet" },
-      { title: "Principles", href: "/sustainability/principles" },
+      {
+        title: "People",
+        href: "/sustainability/people",
+        description: "Our commitment to our team",
+      },
+      {
+        title: "Planet",
+        href: "/sustainability/planet",
+        description: "Environmental responsibility",
+      },
+      {
+        title: "Principles",
+        href: "/sustainability/principles",
+        description: "Sustainable business practices",
+      },
     ],
   },
   {
@@ -44,13 +95,38 @@ const menuItems = [
       {
         title: "Engineering & Analysis",
         href: "/our-services/engineering-analysis",
+        description: "Technical engineering solutions",
       },
-      { title: "Products", href: "/our-services/products" },
-      { title: "Software", href: "/our-services/software" },
-      { title: "Renewables", href: "/our-services/renewables" },
-      { title: "Testing", href: "/our-services/testing" },
-      { title: "Past Projects", href: "/our-services/past-projects" },
-      { title: "Training", href: "/our-services/training" },
+      {
+        title: "Products",
+        href: "/our-services/products",
+        description: "Innovative product portfolio",
+      },
+      {
+        title: "Software",
+        href: "/our-services/software",
+        description: "Digital solutions & platforms",
+      },
+      {
+        title: "Renewables",
+        href: "/our-services/renewables",
+        description: "Clean energy solutions",
+      },
+      {
+        title: "Testing",
+        href: "/our-services/testing",
+        description: "Quality assurance services",
+      },
+      {
+        title: "Past Projects",
+        href: "/our-services/past-projects",
+        description: "Success stories & case studies",
+      },
+      {
+        title: "Training",
+        href: "/our-services/training",
+        description: "Professional development",
+      },
     ],
   },
   { title: "Contact", href: "/contact-us" },
@@ -58,10 +134,34 @@ const menuItems = [
 ];
 
 export default function Navbar() {
+  const router = useRouter();
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const router = useRouter();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [searchFocused, setSearchFocused] = useState(false);
+  const navRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setOpenMenuIndex(null);
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const toggleMenu = (index: number) => {
     if (openMenuIndex === index) {
@@ -71,160 +171,249 @@ export default function Navbar() {
     }
   };
 
-  const handleSearchSubmit = (e: React.FormEvent) => {
+  const handleSearchSubmit = (
+    e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLInputElement>
+  ) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
+      router.push(`/search?q=${encodeURIComponent(searchTerm)}`);
       setSearchTerm("");
+      setSearchFocused(false);
     }
   };
 
   return (
-    <header className="bg-black text-white sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between p-3 md:p-4">
-        <Link href="/" className="flex items-center">
-          <img
-            src="/logo-white.svg"
-            alt="Kinesis Subsea Engineering Logo"
-            className="h-10 md:h-12  w-auto"
-          />
-        </Link>
+    <header
+      ref={navRef}
+      className={`fixed top-0 left-0 right-0 z-50 mx-auto max-w-7xl rounded-xl mt-1 transition-all duration-500 ${
+        isScrolled
+          ? "bg-slate-950/95 backdrop-blur-xl  shadow-xl  shadow-slate-900/20"
+          : "bg-slate-900/5 backdrop-blur-sm "
+      }`}
+    >
+      {/* Top Info Bar */}
+      {/* <div
+        className={`border-b border-slate-700/50 transition-all duration-300 ${
+          isScrolled ? "h-0 overflow-hidden opacity-0" : "h-auto opacity-100"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-2 text-xs">
+          <div className="flex items-center space-x-6 text-slate-300">
+            <div className="flex items-center gap-2">
+              <Phone className="w-3 h-3" />
+              <span>+1 (555) 123-4567</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Mail className="w-3 h-3" />
+              <span>info@kinesis.com</span>
+            </div>
+          </div>
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center gap-2 text-slate-300">
+              <MapPin className="w-3 h-3" />
+              <span>Global Operations</span>
+            </div>
+            <div className="flex items-center gap-2 text-slate-300">
+              <Globe className="w-3 h-3" />
+              <span>EN</span>
+            </div>
+          </div>
+        </div>
+      </div> */}
 
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8 text-sm font-medium">
+      {/* Main Navigation */}
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
+        {/* Logo */}
+        <div className="flex items-center">
+          <Link href="/" className="flex items-center space-x-2">
+            <img
+              src="/logo-white.svg"
+              alt="Kinesis Subsea Engineering Logo"
+              className="h-10 w-auto"
+            />
+          </Link>
+        </div>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center space-x-1">
           {menuItems.map((item, index) => (
-            <div key={index} className="relative group flex items-center">
-              <Link
-                href={item.href}
-                className="hover:text-gray-300 transition px-1 py-2"
-                onClick={(e) => {
-                  if (item.submenu) e.preventDefault();
-                }}
-                onMouseEnter={() => setOpenMenuIndex(index)}
-                onMouseLeave={() => setOpenMenuIndex(null)}
-              >
-                {item.title}
-              </Link>
-              {item.submenu && openMenuIndex === index && (
-                <div
-                  onMouseEnter={() => setOpenMenuIndex(index)}
-                  onMouseLeave={() => setOpenMenuIndex(null)}
-                  className="absolute top-full left-0 bg-black border border-gray-700 rounded shadow-lg py-2 min-w-[160px] z-50"
-                >
-                  {item.submenu.map((subitem, subindex) => (
-                    <Link
-                      key={subindex}
-                      href={subitem.href}
-                      className="block px-4 py-2 hover:bg-gray-800 whitespace-nowrap"
+            <div key={index} className="relative group">
+              {item.submenu ? (
+                <>
+                  <button
+                    className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-slate-800/50 hover:text-cyan-400 ${
+                      openMenuIndex === index
+                        ? "bg-slate-800/50 text-cyan-400"
+                        : "text-slate-300"
+                    }`}
+                    onClick={() => toggleMenu(index)}
+                    onMouseEnter={() => setOpenMenuIndex(index)}
+                    onMouseLeave={() => setOpenMenuIndex(null)}
+                  >
+                    {item.title}
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-300 ${
+                        openMenuIndex === index ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  {/* Dropdown Menu */}
+                  {openMenuIndex === index && (
+                    <div
+                      className="absolute top-full left-0 mt-2 w-80 bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-xl shadow-2xl py-2 z-50"
+                      onMouseEnter={() => setOpenMenuIndex(index)}
+                      onMouseLeave={() => setOpenMenuIndex(null)}
                     >
-                      {subitem.title}
-                    </Link>
-                  ))}
-                </div>
+                      {item.submenu.map((subitem, subindex) => (
+                        <Link
+                          key={subindex}
+                          href={subitem.href}
+                          className="group/item px-4 py-3 hover:bg-slate-800/50 transition-colors duration-200 cursor-pointer block"
+                        >
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <div className="text-white font-medium text-sm group-hover/item:text-cyan-400 transition-colors duration-200">
+                                {subitem.title}
+                              </div>
+                              {subitem.description && (
+                                <div className="text-slate-400 text-xs mt-1">
+                                  {subitem.description}
+                                </div>
+                              )}
+                            </div>
+                            <ArrowRight className="w-4 h-4 text-slate-500 group-hover/item:text-cyan-400 group-hover/item:translate-x-1 transition-all duration-200" />
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <Link
+                  href={item.href}
+                  className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-slate-800/50 hover:text-cyan-400 ${
+                    openMenuIndex === index
+                      ? "bg-slate-800/50 text-cyan-400"
+                      : "text-slate-300"
+                  }`}
+                >
+                  {item.title}
+                </Link>
               )}
             </div>
           ))}
         </nav>
 
-        {/* Search Form */}
-        <form
-          onSubmit={handleSearchSubmit}
-          className="hidden md:flex items-center ml-2"
-        >
-          <input
-            type="text"
-            placeholder="Search..."
-            aria-label="Search"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="px-2 py-1 rounded-l bg-white text-black focus:outline-none text-sm"
-          />
-          <button
-            type="submit"
-            className="bg-white text-black px-2 py-1 rounded-r hover:bg-gray-200 text-sm"
-          >
-            Search
-          </button>
-        </form>
+        {/* Search and Mobile Menu */}
+        <div className="flex items-center space-x-4">
+          {/* Search */}
+          <div className="relative">
+            <div
+              className={`flex items-center transition-all duration-300 ${
+                searchFocused ? "w-64" : "w-48"
+              }`}
+            >
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onFocus={() => setSearchFocused(true)}
+                onBlur={() => setSearchFocused(false)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSearchSubmit(e);
+                  }
+                }}
+                className="w-full px-4 py-2 pr-10 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400/50 transition-all duration-300"
+              />
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleSearchSubmit(e as any);
+                }}
+                className="absolute right-2 p-1 text-slate-400 hover:text-cyan-400 transition-colors duration-200"
+              >
+                <Search className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
 
-        {/* Mobile Hamburger */}
-        <button
-          className="md:hidden focus:outline-none ml-2"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <svg
-            className="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden p-2 rounded-lg bg-slate-800/50 text-white hover:bg-slate-700/50 transition-all duration-300"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
+              <X className="w-6 h-6" />
             ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <Menu className="w-6 h-6" />
             )}
-          </svg>
-        </button>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <nav className="md:hidden bg-black border-t border-gray-700">
+      <div
+        className={`lg:hidden transition-all duration-300 overflow-hidden ${
+          mobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <nav className="bg-slate-900/95 backdrop-blur-xl border-t border-slate-700/50">
           {menuItems.map((item, index) => (
-            <div key={index} className="border-b border-gray-700">
-              <button
-                className="w-full text-left px-4 py-3 flex justify-between items-center text-white"
-                onClick={() => toggleMenu(index)}
-              >
-                <span>{item.title}</span>
-                {item.submenu && (
-                  <svg
-                    className={`w-4 h-4 transform transition-transform ${
-                      openMenuIndex === index ? "rotate-180" : "rotate-0"
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
+            <div key={index} className="border-b border-slate-700/30">
+              {item.submenu ? (
+                <>
+                  <button
+                    className="w-full flex items-center justify-between px-4 py-4 text-white hover:bg-slate-800/50 transition-colors duration-200"
+                    onClick={() => toggleMenu(index)}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
+                    <span className="font-medium">{item.title}</span>
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-300 ${
+                        openMenuIndex === index ? "rotate-180" : ""
+                      }`}
                     />
-                  </svg>
-                )}
-              </button>
-              {item.submenu && openMenuIndex === index && (
-                <div className="bg-gray-900">
-                  {item.submenu.map((subitem, subindex) => (
-                    <Link
-                      key={subindex}
-                      href={subitem.href}
-                      className="block px-6 py-2 text-gray-300 hover:bg-gray-800"
-                    >
-                      {subitem.title}
-                    </Link>
-                  ))}
-                </div>
+                  </button>
+                  <div
+                    className={`transition-all duration-300 overflow-hidden ${
+                      openMenuIndex === index
+                        ? "max-h-screen opacity-100"
+                        : "max-h-0 opacity-0"
+                    }`}
+                  >
+                    <div className="bg-slate-800/30">
+                      {item.submenu.map((subitem, subindex) => (
+                        <Link
+                          key={subindex}
+                          href={subitem.href}
+                          className="px-6 py-3 text-slate-300 hover:bg-slate-700/30 hover:text-white transition-colors duration-200 cursor-pointer block"
+                        >
+                          <div className="font-medium text-sm">
+                            {subitem.title}
+                          </div>
+                          {subitem.description && (
+                            <div className="text-xs text-slate-400 mt-1">
+                              {subitem.description}
+                            </div>
+                          )}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="w-full flex items-center justify-between px-4 py-4 text-white hover:bg-slate-800/50 transition-colors duration-200"
+                >
+                  <span className="font-medium">{item.title}</span>
+                </Link>
               )}
             </div>
           ))}
         </nav>
-      )}
+      </div>
     </header>
   );
 }
