@@ -17,10 +17,10 @@ import {
 
 export default function ServicesSection() {
   const [isVisible, setIsVisible] = useState(false);
-  const [hoveredService, setHoveredService] = useState(null);
+  const [hoveredService, setHoveredService] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [electricFlow, setElectricFlow] = useState(0);
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   const services = [
     {
@@ -100,7 +100,7 @@ export default function ServicesSection() {
       observer.observe(sectionRef.current);
     }
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       if (sectionRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
         setMousePosition({
