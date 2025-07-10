@@ -114,8 +114,8 @@ export default function ServicesSection() {
 
     // Animate electric flow
     const flowInterval = setInterval(() => {
-      setElectricFlow((prev) => (prev + 1) % 100);
-    }, 50);
+      setElectricFlow((prev) => (prev + 2) % 100);
+    }, 60);
 
     return () => {
       observer.disconnect();
@@ -125,52 +125,178 @@ export default function ServicesSection() {
   }, []);
 
   const ElectricZigzagPath = () => (
-    <div className="absolute left-1/2 top-0 bottom-0 w-2 -translate-x-1/2 z-0">
+    <div className="absolute left-1/2 top-0 bottom-0 w-80 -translate-x-1/2 z-0">
       <svg
         className="w-full h-full"
-        viewBox="0 0 200 100"
+        viewBox="0 0 400 100"
         preserveAspectRatio="none"
       >
-        {/* Main Zigzag Path */}
+        {/* Snake-like Zigzag Path */}
         <path
-          d="M100 2 L100 8 L160 15 L40 22 L160 29 L40 36 L160 43 L40 50 L160 57 L40 64 L160 71 L40 78 L160 85 L40 92 L100 98"
-          stroke="rgba(59, 130, 246, 0.3)"
-          strokeWidth="2"
-          fill="none"
-          strokeDasharray="3,3"
-        />
-
-        {/* Electric Flow Animation */}
-        <path
-          d="M100 2 L100 8 L160 15 L40 22 L160 29 L40 36 L160 43 L40 50 L160 57 L40 64 L160 71 L40 78 L160 85 L40 92 L100 98"
-          stroke="url(#electricGradient)"
+          d="M200 3
+             L200 8
+             L350 12
+             L50 16
+             L350 20
+             L50 24
+             L350 28
+             L50 32
+             L350 36
+             L50 40
+             L350 44
+             L50 48
+             L350 52
+             L50 56
+             L350 60
+             L50 64
+             L350 68
+             L50 72
+             L350 76
+             L50 80
+             L350 84
+             L50 88
+             L350 92
+             L200 97"
+          stroke="rgba(59, 130, 246, 0.2)"
           strokeWidth="4"
           fill="none"
-          strokeDasharray="15,10"
-          strokeDashoffset={`${-electricFlow * 2}`}
+          strokeDasharray="5,5"
+        />
+
+        {/* Main Electric Flow - Primary Current */}
+        <path
+          d="M200 3
+             L200 8
+             L350 12
+             L50 16
+             L350 20
+             L50 24
+             L350 28
+             L50 32
+             L350 36
+             L50 40
+             L350 44
+             L50 48
+             L350 52
+             L50 56
+             L350 60
+             L50 64
+             L350 68
+             L50 72
+             L350 76
+             L50 80
+             L350 84
+             L50 88
+             L350 92
+             L200 97"
+          stroke="url(#electricGradient)"
+          strokeWidth="6"
+          fill="none"
+          strokeDasharray="20,8"
+          strokeDashoffset={`${-electricFlow * 3}`}
           className="drop-shadow-lg"
         />
 
-        {/* Electric Bolts */}
+        {/* Electric Bolts - Fast Current */}
         <path
-          d="M100 2 L100 8 L160 15 L40 22 L160 29 L40 36 L160 43 L40 50 L160 57 L40 64 L160 71 L40 78 L160 85 L40 92 L100 98"
+          d="M200 3
+             L200 8
+             L350 12
+             L50 16
+             L350 20
+             L50 24
+             L350 28
+             L50 32
+             L350 36
+             L50 40
+             L350 44
+             L50 48
+             L350 52
+             L50 56
+             L350 60
+             L50 64
+             L350 68
+             L50 72
+             L350 76
+             L50 80
+             L350 84
+             L50 88
+             L350 92
+             L200 97"
           stroke="rgba(255, 255, 0, 0.9)"
-          strokeWidth="2"
+          strokeWidth="3"
           fill="none"
-          strokeDasharray="5,15"
-          strokeDashoffset={`${-electricFlow * 3}`}
+          strokeDasharray="8,20"
+          strokeDashoffset={`${-electricFlow * 5}`}
           className="animate-pulse"
         />
 
-        {/* Glowing Effect */}
+        {/* Electric Glow Effect */}
         <path
-          d="M100 2 L100 8 L160 15 L40 22 L160 29 L40 36 L160 43 L40 50 L160 57 L40 64 L160 71 L40 78 L160 85 L40 92 L100 98"
-          stroke="rgba(59, 130, 246, 0.6)"
-          strokeWidth="8"
+          d="M200 3
+             L200 8
+             L350 12
+             L50 16
+             L350 20
+             L50 24
+             L350 28
+             L50 32
+             L350 36
+             L50 40
+             L350 44
+             L50 48
+             L350 52
+             L50 56
+             L350 60
+             L50 64
+             L350 68
+             L50 72
+             L350 76
+             L50 80
+             L350 84
+             L50 88
+             L350 92
+             L200 97"
+          stroke="rgba(59, 130, 246, 0.4)"
+          strokeWidth="12"
           fill="none"
-          strokeDasharray="8,12"
-          strokeDashoffset={`${-electricFlow * 1.5}`}
-          className="blur-sm opacity-70"
+          strokeDasharray="15,10"
+          strokeDashoffset={`${-electricFlow * 2}`}
+          className="blur-sm opacity-60"
+        />
+
+        {/* Secondary Electric Flow - Reverse Direction */}
+        <path
+          d="M200 3
+             L200 8
+             L350 12
+             L50 16
+             L350 20
+             L50 24
+             L350 28
+             L50 32
+             L350 36
+             L50 40
+             L350 44
+             L50 48
+             L350 52
+             L50 56
+             L350 60
+             L50 64
+             L350 68
+             L50 72
+             L350 76
+             L50 80
+             L350 84
+             L50 88
+             L350 92
+             L200 97"
+          stroke="rgba(16, 185, 129, 0.8)"
+          strokeWidth="4"
+          fill="none"
+          strokeDasharray="12,15"
+          strokeDashoffset={`${electricFlow * 4}`}
+          className="opacity-80"
         />
 
         <defs>
@@ -182,74 +308,112 @@ export default function ServicesSection() {
             y2="100%"
           >
             <stop offset="0%" stopColor="rgba(59, 130, 246, 1)" />
-            <stop offset="25%" stopColor="rgba(255, 255, 0, 1)" />
-            <stop offset="50%" stopColor="rgba(16, 185, 129, 1)" />
-            <stop offset="75%" stopColor="rgba(249, 115, 22, 1)" />
-            <stop offset="100%" stopColor="rgba(147, 51, 234, 1)" />
+            <stop offset="20%" stopColor="rgba(255, 255, 0, 1)" />
+            <stop offset="40%" stopColor="rgba(16, 185, 129, 1)" />
+            <stop offset="60%" stopColor="rgba(249, 115, 22, 1)" />
+            <stop offset="80%" stopColor="rgba(147, 51, 234, 1)" />
+            <stop offset="100%" stopColor="rgba(59, 130, 246, 1)" />
           </linearGradient>
         </defs>
       </svg>
 
-      {/* Electric Sparks */}
-      {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((spark) => (
+      {/* Enhanced Electric Sparks along the path */}
+      {[
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23,
+      ].map((spark) => (
         <div
           key={spark}
-          className="absolute w-1 h-1 bg-yellow-400 rounded-full animate-ping"
+          className="absolute w-2 h-2 bg-yellow-400 rounded-full animate-ping shadow-lg"
           style={{
-            top: `${5 + spark * 7.5}%`,
-            left: spark % 2 === 0 ? "50%" : spark % 4 === 1 ? "80%" : "20%",
-            animationDelay: `${spark * 0.2}s`,
-            animationDuration: "0.6s",
+            top: `${3 + spark * 3.8}%`,
+            left: spark % 2 === 0 ? "50%" : spark % 4 === 1 ? "87.5%" : "12.5%",
+            animationDelay: `${spark * 0.1}s`,
+            animationDuration: "0.8s",
           }}
         />
       ))}
 
-      {/* Path Nodes */}
+      {/* Path Connection Nodes */}
       {services.map((service, index) => (
         <div
           key={index}
-          className={`absolute w-10 h-10 rounded-full bg-gradient-to-r ${
+          className={`absolute w-12 h-12 rounded-full bg-gradient-to-r ${
             service.color
-          } border-2 border-white shadow-lg transition-all duration-500 ${
-            hoveredService === index ? "scale-125 shadow-xl" : ""
+          } border-4 border-white shadow-xl transition-all duration-500 ${
+            hoveredService === index ? "scale-125 shadow-2xl" : ""
           }`}
           style={{
-            top: `${20 + index * 30}%`,
+            top: `${8 + index * 30}%`,
             left: "50%",
             transform: "translate(-50%, -50%)",
           }}
         >
           <div className="absolute inset-0 rounded-full bg-white/20 animate-ping" />
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400/40 to-blue-400/40 animate-pulse" />
-          <div className="relative z-10 w-full h-full rounded-full bg-gradient-to-r from-white/20 to-white/40 flex items-center justify-center">
+          <div className="relative z-10 w-full h-full rounded-full bg-gradient-to-r from-white/30 to-white/50 flex items-center justify-center">
             {service.pathIcon}
           </div>
 
-          {/* Electric Ring */}
+          {/* Electric Ring Animation */}
           <div
-            className="absolute -inset-2 rounded-full border-2 border-yellow-400/60 animate-spin"
+            className="absolute -inset-3 rounded-full border-2 border-yellow-400/70 animate-spin"
             style={{ animationDuration: "3s" }}
           />
 
-          {/* Power Indicator */}
-          <div className="absolute -top-2 -right-2 w-4 h-4 bg-yellow-400 rounded-full animate-pulse shadow-lg" />
+          {/* Power Flow Indicator */}
+          <div className="absolute -top-3 -right-3 w-6 h-6 bg-yellow-400 rounded-full animate-pulse shadow-lg border-2 border-white">
+            <div className="absolute inset-0 rounded-full bg-yellow-400 animate-ping" />
+          </div>
         </div>
       ))}
 
-      {/* Flowing Electric Particles */}
-      {[0, 1, 2, 3, 4, 5, 6].map((particle) => (
+      {/* Enhanced Flowing Electric Particles */}
+      {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((particle) => (
         <div
           key={particle}
-          className="absolute w-3 h-3 bg-gradient-to-r from-blue-400 to-yellow-400 rounded-full animate-pulse shadow-lg"
+          className="absolute w-4 h-4 bg-gradient-to-r from-blue-400 to-yellow-400 rounded-full animate-pulse shadow-xl"
           style={{
-            top: `${(electricFlow + particle * 15) % 100}%`,
+            top: `${(electricFlow + particle * 10) % 100}%`,
             left: `${
-              50 + Math.sin((electricFlow + particle * 15) * 0.12) * 30
+              50 + Math.sin((electricFlow + particle * 10) * 0.15) * 37.5
             }%`,
-            animationDelay: `${particle * 0.15}s`,
+            animationDelay: `${particle * 0.12}s`,
             transform: "translate(-50%, -50%)",
           }}
         />
+      ))}
+
+      {/* Electric Current Indicators */}
+      {[0, 1, 2, 3, 4, 5].map((current) => (
+        <div
+          key={current}
+          className="absolute w-3 h-3 bg-emerald-400 rounded-full animate-pulse shadow-lg"
+          style={{
+            top: `${(electricFlow * 0.8 + current * 16) % 100}%`,
+            left: `${
+              50 - Math.sin((electricFlow * 0.8 + current * 16) * 0.15) * 37.5
+            }%`,
+            animationDelay: `${current * 0.08}s`,
+            animationDuration: "1.2s",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+      ))}
+
+      {/* Lightning Bolts at Connection Points */}
+      {services.map((service, index) => (
+        <div
+          key={`bolt-${index}`}
+          className="absolute w-8 h-8 animate-pulse"
+          style={{
+            top: `${8 + index * 30}%`,
+            left: index % 2 === 0 ? "25%" : "75%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <Zap className="w-full h-full text-yellow-400 drop-shadow-lg" />
+        </div>
       ))}
     </div>
   );
@@ -360,7 +524,7 @@ export default function ServicesSection() {
           </h2>
 
           {/* Roadmap Navigation */}
-          {/* <div
+          <div
             className={`flex justify-center items-center gap-8 mt-12 mb-16 transition-all duration-1000 delay-400 ${
               isVisible
                 ? "opacity-100 translate-y-0"
@@ -389,7 +553,7 @@ export default function ServicesSection() {
                 )}
               </div>
             ))}
-          </div> */}
+          </div>
         </div>
 
         {/* Services with Electric Zigzag Path */}
@@ -409,6 +573,19 @@ export default function ServicesSection() {
                 onMouseEnter={() => setHoveredService(index)}
                 onMouseLeave={() => setHoveredService(null)}
               >
+                {/* Phase Indicator */}
+                <div
+                  className={`absolute -top-8 ${
+                    index % 2 === 0 ? "left-8" : "right-8"
+                  } z-20`}
+                >
+                  <div
+                    className={`px-4 py-2 bg-gradient-to-r ${service.color} rounded-full text-white text-sm font-semibold shadow-lg`}
+                  >
+                    Phase {index + 1}: {service.phase}
+                  </div>
+                </div>
+
                 {/* Enhanced Main Card Container */}
                 <div
                   className={`relative bg-slate-900/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl border border-slate-800/50 transition-all duration-500 hover:shadow-3xl ${
@@ -462,6 +639,12 @@ export default function ServicesSection() {
                         className={`absolute top-8 left-8 p-4 rounded-xl bg-gradient-to-r ${service.color} text-white shadow-2xl transition-all duration-300 hover:scale-105 border border-white/20 group-hover:animate-pulse`}
                       >
                         {service.icon}
+                      </div>
+
+                      {/* Enhanced Professional Badge */}
+                      <div className="absolute top-8 right-8 px-4 py-2 bg-slate-900/80 backdrop-blur-sm rounded-lg border border-slate-700/50 text-slate-200 text-sm font-medium group-hover:bg-slate-800/90 transition-colors duration-300">
+                        Professional Services
+                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full animate-ping" />
                       </div>
 
                       {/* Enhanced Image Overlay Content */}
@@ -527,7 +710,7 @@ export default function ServicesSection() {
                       </p>
 
                       {/* Enhanced Professional Feature List */}
-                      {/* <div className="mb-8 relative z-10">
+                      <div className="mb-8 relative z-10">
                         <h4 className="text-slate-200 text-lg font-semibold mb-4 flex items-center gap-2">
                           Core Services
                           <Star className="w-4 h-4 text-yellow-400 animate-pulse" />
@@ -547,7 +730,7 @@ export default function ServicesSection() {
                             </li>
                           ))}
                         </ul>
-                      </div> */}
+                      </div>
 
                       {/* Enhanced Industry Standards Badge */}
                       <div className="mb-8 p-4 bg-slate-800/60 rounded-xl border border-slate-700/50 group-hover:bg-slate-700/60 transition-colors duration-300 relative z-10">
@@ -592,6 +775,14 @@ export default function ServicesSection() {
         style={{
           left: `${mousePosition.x}%`,
           top: `${mousePosition.y}%`,
+          transform: "translate(-50%, -50%)",
+        }}
+      />
+      <div
+        className="absolute w-20 h-20 bg-emerald-400/15 rounded-full blur-xl pointer-events-none transition-all duration-500"
+        style={{
+          left: `${mousePosition.x + 5}%`,
+          top: `${mousePosition.y + 5}%`,
           transform: "translate(-50%, -50%)",
         }}
       />
