@@ -458,14 +458,14 @@ export default function ServicesSection() {
                       </div>
 
                       {/* Enhanced Floating Icon */}
-                      <div
+                      {/* <div
                         className={`absolute top-8 left-8 p-4 rounded-xl bg-gradient-to-r ${service.color} text-white shadow-2xl transition-all duration-300 hover:scale-105 border border-white/20 group-hover:animate-pulse`}
                       >
                         {service.icon}
-                      </div>
+                      </div> */}
 
                       {/* Enhanced Image Overlay Content */}
-                      <div className="absolute bottom-8 left-8 right-8">
+                      {/* <div className="absolute bottom-8 left-8 right-8">
                         <div className="mb-4">
                           <h4 className="text-white text-lg font-semibold mb-3 flex items-center gap-2">
                             Key Capabilities
@@ -482,7 +482,7 @@ export default function ServicesSection() {
                             ))}
                           </div>
                         </div>
-                      </div>
+                      </div> */}
 
                       {/* Enhanced Technical Corner Accent */}
                       <div className="absolute top-0 left-0 w-16 h-16">
@@ -527,7 +527,7 @@ export default function ServicesSection() {
                       </p>
 
                       {/* Enhanced Professional Feature List */}
-                      {/* <div className="mb-8 relative z-10">
+                      <div className="mb-8 relative z-10">
                         <h4 className="text-slate-200 text-lg font-semibold mb-4 flex items-center gap-2">
                           Core Services
                           <Star className="w-4 h-4 text-yellow-400 animate-pulse" />
@@ -547,7 +547,7 @@ export default function ServicesSection() {
                             </li>
                           ))}
                         </ul>
-                      </div> */}
+                      </div>
 
                       {/* Enhanced Industry Standards Badge */}
                       <div className="mb-8 p-4 bg-slate-800/60 rounded-xl border border-slate-700/50 group-hover:bg-slate-700/60 transition-colors duration-300 relative z-10">

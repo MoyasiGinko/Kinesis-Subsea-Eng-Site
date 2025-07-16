@@ -296,7 +296,7 @@ const HeroBanner = () => {
                 <button className="group relative inline-flex px-8 py-4 bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 rounded-lg font-semibold text-slate-200 transition-all duration-500 hover:bg-slate-800/80 hover:border-slate-500/80 hover:text-white hover:scale-105">
                   <span className="flex items-center gap-2">
                     <Play className="w-5 h-5" />
-                    View Portfolio
+                    View Services
                   </span>
                 </button>
               </div>
