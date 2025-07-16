@@ -18,76 +18,56 @@ const menuItems = [
   {
     title: "Who We Are",
     href: "/who-we-are",
-    submenu: [
-      {
-        title: "Purpose",
-        href: "/who-we-are/purpose-beliefs",
-        description: "Our mission and core values",
-      },
-      {
-        title: "History",
-        href: "/who-we-are/our-history",
-        description: "Journey through the years",
-      },
-      {
-        title: "Team",
-        href: "/who-we-are/meet-our-team",
-        description: "Meet our experts",
-      },
-    ],
+    // submenu: [
+    //   {
+    //     title: "Purpose",
+    //     href: "/who-we-are/purpose-beliefs",
+    //     description: "Our mission and core values",
+    //   },
+    //   {
+    //     title: "History",
+    //     href: "/who-we-are/our-history",
+    //     description: "Journey through the years",
+    //   },
+    //   {
+    //     title: "Team",
+    //     href: "/who-we-are/meet-our-team",
+    //     description: "Meet our experts",
+    //   },
+    // ],
   },
   {
     title: "What We Do",
     href: "/what-we-deliver",
-    submenu: [
-      {
-        title: "Insights",
-        href: "/what-we-deliver/news-insights",
-        description: "Latest industry insights",
-      },
-      {
-        title: "Innovations",
-        href: "/what-we-deliver/our-innovations",
-        description: "Cutting-edge solutions",
-      },
-      {
-        title: "Markets",
-        href: "/what-we-deliver/our-markets",
-        description: "Global market presence",
-      },
-      {
-        title: "Events",
-        href: "/what-we-deliver/events",
-        description: "Industry events & conferences",
-      },
-      {
-        title: "Academy",
-        href: "/what-we-deliver/kinesis-academy-for-operational-readiness",
-        description: "Training & development programs",
-      },
-    ],
+    // submenu: [
+    //   {
+    //     title: "Insights",
+    //     href: "/what-we-deliver/news-insights",
+    //     description: "Latest industry insights",
+    //   },
+    //   {
+    //     title: "Innovations",
+    //     href: "/what-we-deliver/our-innovations",
+    //     description: "Cutting-edge solutions",
+    //   },
+    //   {
+    //     title: "Markets",
+    //     href: "/what-we-deliver/our-markets",
+    //     description: "Global market presence",
+    //   },
+    //   {
+    //     title: "Events",
+    //     href: "/what-we-deliver/events",
+    //     description: "Industry events & conferences",
+    //   },
+    //   {
+    //     title: "Academy",
+    //     href: "/what-we-deliver/kinesis-academy-for-operational-readiness",
+    //     description: "Training & development programs",
+    //   },
+    // ],
   },
-  {
-    title: "Sustainability",
-    href: "/sustainability",
-    submenu: [
-      {
-        title: "People",
-        href: "/sustainability/people",
-        description: "Our commitment to our team",
-      },
-      {
-        title: "Planet",
-        href: "/sustainability/planet",
-        description: "Environmental responsibility",
-      },
-      {
-        title: "Principles",
-        href: "/sustainability/principles",
-        description: "Sustainable business practices",
-      },
-    ],
-  },
+
   {
     title: "Services",
     href: "/our-services",
@@ -129,6 +109,27 @@ const menuItems = [
       },
     ],
   },
+  {
+    title: "News",
+    href: "/sustainability",
+    // submenu: [
+    //   {
+    //     title: "People",
+    //     href: "/sustainability/people",
+    //     description: "Our commitment to our team",
+    //   },
+    //   {
+    //     title: "Planet",
+    //     href: "/sustainability/planet",
+    //     description: "Environmental responsibility",
+    //   },
+    //   {
+    //     title: "Principles",
+    //     href: "/sustainability/principles",
+    //     description: "Sustainable business practices",
+    //   },
+    // ],
+  },
   { title: "Contact", href: "/contact-us" },
   { title: "Careers", href: "/careers" },
 ];
@@ -136,11 +137,13 @@ const menuItems = [
 export default function Navbar() {
   const router = useRouter();
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
+  const [clickedMenuIndex, setClickedMenuIndex] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -150,6 +153,7 @@ export default function Navbar() {
     const handleClickOutside = (event: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
         setOpenMenuIndex(null);
+        setClickedMenuIndex(null);
         setMobileMenuOpen(false);
       }
     };
@@ -160,14 +164,42 @@ export default function Navbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("mousedown", handleClickOutside);
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
     };
   }, []);
 
+  const handleMouseEnter = (index: number) => {
+    // Clear any existing timeout
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+
+    // Only set open if not already clicked
+    if (clickedMenuIndex !== index) {
+      setOpenMenuIndex(index);
+    }
+  };
+
+  const handleMouseLeave = (index: number) => {
+    // Only handle closing if the menu wasn't clicked
+    if (clickedMenuIndex !== index) {
+      // Set a timeout to close the menu after a delay
+      closeTimeoutRef.current = setTimeout(() => {
+        setOpenMenuIndex(null);
+      }, 500); // 500ms delay before closing
+    }
+  };
+
   const toggleMenu = (index: number) => {
-    if (openMenuIndex === index) {
+    if (openMenuIndex === index && clickedMenuIndex === index) {
       setOpenMenuIndex(null);
+      setClickedMenuIndex(null);
     } else {
       setOpenMenuIndex(index);
+      setClickedMenuIndex(index);
     }
   };
 
@@ -247,8 +279,9 @@ export default function Navbar() {
                         : "text-slate-300"
                     }`}
                     onClick={() => toggleMenu(index)}
-                    onMouseEnter={() => setOpenMenuIndex(index)}
-                    onMouseLeave={() => setOpenMenuIndex(null)}
+                    onMouseEnter={() => handleMouseEnter(index)}
+                    onMouseLeave={() => handleMouseLeave(index)}
+                    aria-label={`${item.title} menu`}
                   >
                     {item.title}
                     <ChevronDown
@@ -261,8 +294,8 @@ export default function Navbar() {
                   {openMenuIndex === index && (
                     <div
                       className="absolute top-full left-0 mt-2 w-80 bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-xl shadow-2xl py-2 z-50"
-                      onMouseEnter={() => setOpenMenuIndex(index)}
-                      onMouseLeave={() => setOpenMenuIndex(null)}
+                      onMouseEnter={() => handleMouseEnter(index)}
+                      onMouseLeave={() => handleMouseLeave(index)}
                     >
                       {item.submenu.map((subitem, subindex) => (
                         <Link
@@ -333,6 +366,7 @@ export default function Navbar() {
                   handleSearchSubmit(e as any);
                 }}
                 className="absolute right-2 p-1 text-slate-400 hover:text-cyan-400 transition-colors duration-200"
+                aria-label="Search"
               >
                 <Search className="w-4 h-4" />
               </button>
@@ -343,6 +377,7 @@ export default function Navbar() {
           <button
             className="lg:hidden p-2 rounded-lg bg-slate-800/50 text-white hover:bg-slate-700/50 transition-all duration-300"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {mobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -367,6 +402,7 @@ export default function Navbar() {
                   <button
                     className="w-full flex items-center justify-between px-4 py-4 text-white hover:bg-slate-800/50 transition-colors duration-200"
                     onClick={() => toggleMenu(index)}
+                    aria-label={`${item.title} submenu`}
                   >
                     <span className="font-medium">{item.title}</span>
                     <ChevronDown

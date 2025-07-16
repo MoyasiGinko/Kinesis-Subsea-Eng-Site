@@ -15,6 +15,25 @@ import {
   Hammer,
   Cable,
   Factory,
+  // Wind turbine and renewable energy icons
+  Wind, // Wind icon (perfect for wind power)
+  Fan, // Fan icon (can represent turbine blades)
+  Leaf, // Eco-friendly/green energy
+  Recycle, // Sustainability
+  Sun, // Solar/renewable energy
+  Battery, // Energy storage
+  BatteryCharging, // Charging/power generation
+  Globe, // Global/environmental
+  TreePine, // Environmental/green
+  Lightbulb, // Energy/power concept
+  Gauge, // Performance monitoring
+  Settings, // Control systems
+  MapPin, // Location markers for plants
+  BarChart3, // Energy output charts
+  TrendingUp, // Performance/growth
+  Shield, // Safety/reliability
+  Wrench, // Maintenance
+  Cog, // Operations/machinery
 } from "lucide-react";
 
 const HeroBanner = () => {
@@ -117,8 +136,21 @@ const HeroBanner = () => {
   return (
     <section
       ref={heroRef}
-      className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white overflow-hidden pb-10 pt-28 px-4 h-full sm:max-h-full md:max-h-full lg:max-h-[900px] xl:h-[1080px] flex items-center"
+      className="relative  text-white overflow-hidden pb-10 pt-28 px-4 h-full sm:max-h-full md:max-h-full lg:max-h-[900px] xl:h-[1080px] flex items-center"
     >
+      {/* Background Video */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
+        <video
+          className="w-full h-full object-cover"
+          src="/hero.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        {/* Optional: Overlay for better contrast */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-slate-950/60 to-slate-900/80 pointer-events-none" />
+      </div>
       {/* Background Effects */}
       <div className="absolute inset-0">
         {/* Circuit Board Pattern */}
@@ -175,7 +207,7 @@ const HeroBanner = () => {
         </div>
 
         {/* Energy Particles */}
-        <div className="absolute inset-0">
+        {/* <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => (
             <div
               key={i}
@@ -188,7 +220,7 @@ const HeroBanner = () => {
               }}
             />
           ))}
-        </div>
+        </div> */}
 
         {/* Industrial Gradient Orbs */}
         <div
@@ -264,7 +296,7 @@ const HeroBanner = () => {
                 <button className="group relative inline-flex px-8 py-4 bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 rounded-lg font-semibold text-slate-200 transition-all duration-500 hover:bg-slate-800/80 hover:border-slate-500/80 hover:text-white hover:scale-105">
                   <span className="flex items-center gap-2">
                     <Play className="w-5 h-5" />
-                    View Portfolio
+                    View Services
                   </span>
                 </button>
               </div>
@@ -346,64 +378,66 @@ const HeroBanner = () => {
               style={{ transitionDelay: "300ms" }}
             >
               <div className="relative bg-slate-900/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/40 shadow-2xl">
-                {/* Engineering Blueprint Header */}
-                {/* <div className="flex items-center mb-6">
+                {/* Wind Turbine Plant & Subsea Engineering Header */}
+                <div className="flex items-center mb-6">
                   <div className="flex gap-2">
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
                   </div>
                   <div className="flex-1 text-center">
                     <span className="text-slate-400 text-sm">
-                      POWER_GRID_SCHEMATIC.dwg
+                      WIND_SUBSEA_OVERVIEW.dwg
                     </span>
                   </div>
-                </div> */}
+                </div>
 
-                {/* Engineering Schematic Display */}
+                {/* Wind Turbine & Subsea Schematic */}
                 <div className="bg-slate-800/80 rounded-lg p-6 font-mono text-sm">
                   <div className="grid grid-cols-3 gap-4 mb-6">
                     <div className="col-span-3 text-center">
-                      <div className="text-green-400 font-bold text-lg mb-2">
-                        POWER DISTRIBUTION
+                      <div className="text-blue-400 font-bold text-lg mb-2">
+                        WIND TURBINE & SUBSEA PLANT
                       </div>
-                      <div className="h-1 bg-gradient-to-r from-green-400 via-blue-400 to-yellow-400 rounded-full mb-4"></div>
+                      <div className="h-1 bg-gradient-to-r from-blue-400 via-green-400 to-yellow-400 rounded-full mb-4"></div>
                     </div>
 
-                    {/* Power Flow Visualization */}
+                    {/* Wind Turbine */}
                     <div className="text-center">
-                      <div className="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
-                        <Power className="w-8 h-8 text-white" />
+                      <div className="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
+                        <Wind className="w-8 h-8 text-white" />
                       </div>
-                      <div className="text-green-400 text-xs">GENERATOR</div>
-                      <div className="text-slate-400 text-xs">480V - 3Φ</div>
+                      <div className="text-blue-400 text-xs">TURBINE</div>
+                      <div className="text-slate-400 text-xs">5 MW</div>
                     </div>
 
+                    {/* Subsea Cable */}
                     <div className="text-center">
-                      <div className="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center">
+                      <div className="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
+                        <Cable className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="text-cyan-400 text-xs">SUBSEA CABLE</div>
+                      <div className="text-slate-400 text-xs">66 kV</div>
+                    </div>
+
+                    {/* Offshore Substation */}
+                    <div className="text-center">
+                      <div className="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-yellow-400 to-blue-400 rounded-lg flex items-center justify-center">
                         <Factory className="w-8 h-8 text-white" />
                       </div>
-                      <div className="text-blue-400 text-xs">TRANSFORMER</div>
-                      <div className="text-slate-400 text-xs">13.8kV</div>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center">
-                        <Building className="w-8 h-8 text-white" />
-                      </div>
-                      <div className="text-yellow-400 text-xs">LOAD CENTER</div>
-                      <div className="text-slate-400 text-xs">208V - 3Φ</div>
+                      <div className="text-yellow-400 text-xs">SUBSTATION</div>
+                      <div className="text-slate-400 text-xs">220 kV</div>
                     </div>
                   </div>
 
                   {/* Power Flow Animation */}
                   <div className="mb-4">
                     <div className="text-slate-300 text-xs mb-2">
-                      POWER FLOW ANALYSIS:
+                      ENERGY TRANSMISSION STATUS:
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
-                      <div className="flex-1 h-1 bg-gradient-to-r from-green-400 to-blue-400 rounded-full relative overflow-hidden">
+                      <div className="w-4 h-4 bg-blue-400 rounded-full animate-pulse"></div>
+                      <div className="flex-1 h-1 bg-gradient-to-r from-blue-400 via-green-400 to-yellow-400 rounded-full relative overflow-hidden">
                         <div
                           className="absolute top-0 left-0 h-full w-4 bg-white/60 rounded-full"
                           style={{
@@ -413,7 +447,7 @@ const HeroBanner = () => {
                         />
                       </div>
                       <div
-                        className="w-4 h-4 bg-blue-500 rounded-full animate-pulse"
+                        className="w-4 h-4 bg-yellow-400 rounded-full animate-pulse"
                         style={{ animationDelay: "0.5s" }}
                       ></div>
                     </div>
@@ -422,39 +456,39 @@ const HeroBanner = () => {
                   {/* System Status */}
                   <div className="grid grid-cols-2 gap-4 text-xs">
                     <div>
-                      <div className="text-green-400 mb-1">
-                        ✓ VOLTAGE: NOMINAL
+                      <div className="text-blue-400 mb-1">
+                        ✓ TURBINE: ACTIVE
                       </div>
                       <div className="text-green-400 mb-1">
-                        ✓ FREQUENCY: 60.0Hz
+                        ✓ SUBSEA LINK: STABLE
                       </div>
-                      <div className="text-green-400">✓ LOAD: 85% CAPACITY</div>
+                      <div className="text-yellow-400">✓ OUTPUT: 4.8 MW</div>
                     </div>
                     <div>
-                      <div className="text-blue-400 mb-1">⚡ POWER: 2.5 MW</div>
-                      <div className="text-blue-400 mb-1">
-                        ⚡ CURRENT: 3.2 kA
+                      <div className="text-cyan-400 mb-1">
+                        ⚡ VOLTAGE: 66 kV
                       </div>
-                      <div className="text-blue-400">⚡ EFFICIENCY: 96.8%</div>
+                      <div className="text-cyan-400 mb-1">⚡ CURRENT: 72 A</div>
+                      <div className="text-cyan-400">⚡ EFFICIENCY: 97.2%</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Floating Engineering Icons */}
-                <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-xl flex items-center justify-center animate-pulse">
-                  <Zap className="w-8 h-8 text-white" />
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-blue-400 to-green-400 rounded-xl flex items-center justify-center animate-pulse">
+                  <Fan className="w-8 h-8 text-white" />
                 </div>
                 <div
-                  className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center animate-pulse"
+                  className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center animate-pulse"
                   style={{ animationDelay: "1s" }}
                 >
-                  <Hammer className="w-6 h-6 text-white" />
+                  <Fan className="w-6 h-6 text-white" />
                 </div>
                 <div
-                  className="absolute top-1/2 -right-2 w-10 h-10 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center animate-pulse"
+                  className="absolute top-1/2 -right-2 w-10 h-10 bg-gradient-to-r from-yellow-400 to-blue-400 rounded-full flex items-center justify-center animate-pulse"
                   style={{ animationDelay: "2s" }}
                 >
-                  <Cable className="w-5 h-5 text-white" />
+                  <Recycle className="w-5 h-5 text-white" />
                 </div>
               </div>
             </div>

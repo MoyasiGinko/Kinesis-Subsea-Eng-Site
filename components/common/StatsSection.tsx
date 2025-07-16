@@ -103,7 +103,7 @@ export default function StatsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 bg-gradient-to-br from-slate-900 via-black to-slate-900 text-white overflow-hidden"
+      className="relative py-24 text-white overflow-hidden"
     >
       {/* Background Effects */}
       <div className="absolute inset-0">

@@ -255,10 +255,7 @@ export default function ServicesSection() {
   );
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-32 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden"
-    >
+    <section ref={sectionRef} className="relative py-32 px-4 overflow-hidden">
       {/* Enhanced Background Effects */}
       <div className="absolute inset-0">
         {/* Animated Grid */}
@@ -458,14 +455,14 @@ export default function ServicesSection() {
                       </div>
 
                       {/* Enhanced Floating Icon */}
-                      <div
+                      {/* <div
                         className={`absolute top-8 left-8 p-4 rounded-xl bg-gradient-to-r ${service.color} text-white shadow-2xl transition-all duration-300 hover:scale-105 border border-white/20 group-hover:animate-pulse`}
                       >
                         {service.icon}
-                      </div>
+                      </div> */}
 
                       {/* Enhanced Image Overlay Content */}
-                      <div className="absolute bottom-8 left-8 right-8">
+                      {/* <div className="absolute bottom-8 left-8 right-8">
                         <div className="mb-4">
                           <h4 className="text-white text-lg font-semibold mb-3 flex items-center gap-2">
                             Key Capabilities
@@ -482,7 +479,7 @@ export default function ServicesSection() {
                             ))}
                           </div>
                         </div>
-                      </div>
+                      </div> */}
 
                       {/* Enhanced Technical Corner Accent */}
                       <div className="absolute top-0 left-0 w-16 h-16">
@@ -492,7 +489,7 @@ export default function ServicesSection() {
                     </div>
 
                     {/* Enhanced Content Side */}
-                    <div className="flex flex-col justify-center lg:w-1/2 p-12 lg:p-16 bg-gradient-to-br from-slate-900/95 to-slate-800/95 relative overflow-hidden">
+                    <div className="flex flex-col justify-center lg:w-1/2 p-12 lg:p-16 bg-slate-900/40 relative overflow-hidden">
                       {/* Background Pattern */}
                       <div className="absolute inset-0 opacity-5">
                         <div
@@ -527,7 +524,7 @@ export default function ServicesSection() {
                       </p>
 
                       {/* Enhanced Professional Feature List */}
-                      {/* <div className="mb-8 relative z-10">
+                      <div className="mb-8 relative z-10">
                         <h4 className="text-slate-200 text-lg font-semibold mb-4 flex items-center gap-2">
                           Core Services
                           <Star className="w-4 h-4 text-yellow-400 animate-pulse" />
@@ -547,7 +544,7 @@ export default function ServicesSection() {
                             </li>
                           ))}
                         </ul>
-                      </div> */}
+                      </div>
 
                       {/* Enhanced Industry Standards Badge */}
                       <div className="mb-8 p-4 bg-slate-800/60 rounded-xl border border-slate-700/50 group-hover:bg-slate-700/60 transition-colors duration-300 relative z-10">
