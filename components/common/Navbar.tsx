@@ -18,76 +18,56 @@ const menuItems = [
   {
     title: "Who We Are",
     href: "/who-we-are",
-    submenu: [
-      {
-        title: "Purpose",
-        href: "/who-we-are/purpose-beliefs",
-        description: "Our mission and core values",
-      },
-      {
-        title: "History",
-        href: "/who-we-are/our-history",
-        description: "Journey through the years",
-      },
-      {
-        title: "Team",
-        href: "/who-we-are/meet-our-team",
-        description: "Meet our experts",
-      },
-    ],
+    // submenu: [
+    //   {
+    //     title: "Purpose",
+    //     href: "/who-we-are/purpose-beliefs",
+    //     description: "Our mission and core values",
+    //   },
+    //   {
+    //     title: "History",
+    //     href: "/who-we-are/our-history",
+    //     description: "Journey through the years",
+    //   },
+    //   {
+    //     title: "Team",
+    //     href: "/who-we-are/meet-our-team",
+    //     description: "Meet our experts",
+    //   },
+    // ],
   },
   {
     title: "What We Do",
     href: "/what-we-deliver",
-    submenu: [
-      {
-        title: "Insights",
-        href: "/what-we-deliver/news-insights",
-        description: "Latest industry insights",
-      },
-      {
-        title: "Innovations",
-        href: "/what-we-deliver/our-innovations",
-        description: "Cutting-edge solutions",
-      },
-      {
-        title: "Markets",
-        href: "/what-we-deliver/our-markets",
-        description: "Global market presence",
-      },
-      {
-        title: "Events",
-        href: "/what-we-deliver/events",
-        description: "Industry events & conferences",
-      },
-      {
-        title: "Academy",
-        href: "/what-we-deliver/kinesis-academy-for-operational-readiness",
-        description: "Training & development programs",
-      },
-    ],
+    // submenu: [
+    //   {
+    //     title: "Insights",
+    //     href: "/what-we-deliver/news-insights",
+    //     description: "Latest industry insights",
+    //   },
+    //   {
+    //     title: "Innovations",
+    //     href: "/what-we-deliver/our-innovations",
+    //     description: "Cutting-edge solutions",
+    //   },
+    //   {
+    //     title: "Markets",
+    //     href: "/what-we-deliver/our-markets",
+    //     description: "Global market presence",
+    //   },
+    //   {
+    //     title: "Events",
+    //     href: "/what-we-deliver/events",
+    //     description: "Industry events & conferences",
+    //   },
+    //   {
+    //     title: "Academy",
+    //     href: "/what-we-deliver/kinesis-academy-for-operational-readiness",
+    //     description: "Training & development programs",
+    //   },
+    // ],
   },
-  {
-    title: "Sustainability",
-    href: "/sustainability",
-    submenu: [
-      {
-        title: "People",
-        href: "/sustainability/people",
-        description: "Our commitment to our team",
-      },
-      {
-        title: "Planet",
-        href: "/sustainability/planet",
-        description: "Environmental responsibility",
-      },
-      {
-        title: "Principles",
-        href: "/sustainability/principles",
-        description: "Sustainable business practices",
-      },
-    ],
-  },
+
   {
     title: "Services",
     href: "/our-services",
@@ -128,6 +108,27 @@ const menuItems = [
         description: "Professional development",
       },
     ],
+  },
+  {
+    title: "News",
+    href: "/sustainability",
+    // submenu: [
+    //   {
+    //     title: "People",
+    //     href: "/sustainability/people",
+    //     description: "Our commitment to our team",
+    //   },
+    //   {
+    //     title: "Planet",
+    //     href: "/sustainability/planet",
+    //     description: "Environmental responsibility",
+    //   },
+    //   {
+    //     title: "Principles",
+    //     href: "/sustainability/principles",
+    //     description: "Sustainable business practices",
+    //   },
+    // ],
   },
   { title: "Contact", href: "/contact-us" },
   { title: "Careers", href: "/careers" },
