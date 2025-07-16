@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255;
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 2, 6, 23;
 }
 
 body {
@@ -17,7 +17,8 @@ body {
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
-  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out, visibility 200ms;
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out,
+    visibility 200ms;
 }
 
 .group:hover .dropdown-menu {

@@ -79,10 +79,7 @@ export default function NewsSection() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-24 bg-gradient-to-br from-slate-950 via-black to-slate-900 overflow-hidden"
-    >
+    <section ref={sectionRef} className="relative py-24 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         {/* Animated Grid */}

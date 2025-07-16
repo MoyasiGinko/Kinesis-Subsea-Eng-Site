@@ -255,10 +255,7 @@ export default function ServicesSection() {
   );
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-32 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden"
-    >
+    <section ref={sectionRef} className="relative py-32 px-4 overflow-hidden">
       {/* Enhanced Background Effects */}
       <div className="absolute inset-0">
         {/* Animated Grid */}
@@ -492,7 +489,7 @@ export default function ServicesSection() {
                     </div>
 
                     {/* Enhanced Content Side */}
-                    <div className="flex flex-col justify-center lg:w-1/2 p-12 lg:p-16 bg-gradient-to-br from-slate-900/95 to-slate-800/95 relative overflow-hidden">
+                    <div className="flex flex-col justify-center lg:w-1/2 p-12 lg:p-16 bg-slate-900/40 relative overflow-hidden">
                       {/* Background Pattern */}
                       <div className="absolute inset-0 opacity-5">
                         <div

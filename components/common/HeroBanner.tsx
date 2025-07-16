@@ -136,7 +136,7 @@ const HeroBanner = () => {
   return (
     <section
       ref={heroRef}
-      className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white overflow-hidden pb-10 pt-28 px-4 h-full sm:max-h-full md:max-h-full lg:max-h-[900px] xl:h-[1080px] flex items-center"
+      className="relative  text-white overflow-hidden pb-10 pt-28 px-4 h-full sm:max-h-full md:max-h-full lg:max-h-[900px] xl:h-[1080px] flex items-center"
     >
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">

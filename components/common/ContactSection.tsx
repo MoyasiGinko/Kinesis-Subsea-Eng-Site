@@ -1,58 +1,227 @@
+"use client";
+import React, { useState, useEffect, useRef } from "react";
+import { Mail, Phone, ArrowRight, MapPin, Send } from "lucide-react";
+
 export default function ContactSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: ((e.clientX - rect.left) / rect.width) * 100,
+          y: ((e.clientY - rect.top) / rect.height) * 100,
+        });
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormState((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    console.log("Form submitted:", formState);
+    // Reset form
+    setFormState({ name: "", email: "", message: "" });
+  };
+
   return (
-    <section className="py-20 bg-black text-white">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text Content */}
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Transform Your Energy Future?
-            </h2>
-            <p className="text-gray-300 text-lg mb-8">
-              Connect with our experts to discuss how we can help you achieve
-              your sustainability goals and drive innovation in the energy
-              sector.
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4">
-                  <svg
-                    className="w-6 h-6"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                  </svg>
+    <section
+      ref={sectionRef}
+      className="relative py-24 text-white overflow-hidden"
+    >
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div
+            className="absolute inset-0 transition-all duration-1000"
+            style={{
+              backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+              backgroundSize: "40px 40px",
+              transform: `translateX(${mousePosition.x * 0.02}px) translateY(${
+                mousePosition.y * 0.02
+              }px)`,
+            }}
+          />
+        </div>
+
+        {/* Floating Particles */}
+        <div className="absolute inset-0">
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-blue-400/30 rounded-full animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${2 + Math.random() * 3}s`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Dynamic Gradient Orbs */}
+        <div
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl transition-all duration-1000"
+          style={{
+            transform: `translateX(${mousePosition.x * 0.15}px) translateY(${
+              mousePosition.y * 0.1
+            }px)`,
+          }}
+        />
+        <div
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-600/5 rounded-full blur-3xl transition-all duration-1000"
+          style={{
+            transform: `translateX(${mousePosition.x * -0.1}px) translateY(${
+              mousePosition.y * 0.15
+            }px)`,
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4">
+        {/* Section Header */}
+        <div
+          className={`text-center mb-16 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-6">
+            <Send className="w-4 h-4 text-blue-400" />
+            <span className="text-sm font-medium text-blue-400 uppercase tracking-wider">
+              Get in Touch
+            </span>
+          </div>
+
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light mb-4">
+            <span className="block text-slate-200">Ready to Transform</span>
+            <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent font-medium">
+              Your Energy Future?
+            </span>
+          </h2>
+
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            Connect with our experts to discuss how we can help you achieve your
+            sustainability goals and drive innovation in the energy sector.
+          </p>
+        </div>
+
+        <div
+          className={`grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 transition-all duration-1000 delay-300 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          {/* Left Column - Contact Info */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Contact Cards */}
+            <div className="group relative bg-slate-800/30 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 hover:bg-slate-800/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="flex items-start gap-5">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
+                  <Mail className="w-5 h-5 text-blue-400" />
                 </div>
-                <div>
-                  <p className="font-semibold">Email Us</p>
+                <div className="flex-grow">
+                  <h3 className="text-lg font-medium text-white mb-2">
+                    Email Us
+                  </h3>
+                  <p className="text-slate-400 mb-3">
+                    Our team is here to help with any questions
+                  </p>
                   <a
-                    href="mailto:contact@Kinesis Subsea Engineeringplc.com"
-                    className="text-gray-300 hover:text-white"
+                    href="mailto:contact@kinesissubsea.com"
+                    className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
                   >
-                    contact@Kinesis Subsea Engineeringplc.com
+                    contact@kinesissubsea.com
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </a>
                 </div>
               </div>
+            </div>
 
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4">
-                  <svg
-                    className="w-6 h-6"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                  </svg>
+            <div className="group relative bg-slate-800/30 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 hover:bg-slate-800/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/5">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="flex items-start gap-5">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center">
+                  <Phone className="w-5 h-5 text-cyan-400" />
                 </div>
-                <div>
-                  <p className="font-semibold">Call Us</p>
+                <div className="flex-grow">
+                  <h3 className="text-lg font-medium text-white mb-2">
+                    Call Us
+                  </h3>
+                  <p className="text-slate-400 mb-3">
+                    Available Monday to Friday, 9am-5pm
+                  </p>
                   <a
                     href="tel:+442012345678"
-                    className="text-gray-300 hover:text-white"
+                    className="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors"
                   >
                     +44 (0) 20 1234 5678
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="group relative bg-slate-800/30 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 hover:bg-slate-800/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/5">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="flex items-start gap-5">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-emerald-400" />
+                </div>
+                <div className="flex-grow">
+                  <h3 className="text-lg font-medium text-white mb-2">
+                    Visit Us
+                  </h3>
+                  <p className="text-slate-400 mb-3">
+                    Our headquarters are located at
+                  </p>
+                  <a
+                    href="https://maps.google.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-emerald-400 hover:text-emerald-300 transition-colors"
+                  >
+                    123 Ocean Drive, Aberdeen, UK
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </a>
                 </div>
               </div>
@@ -60,63 +229,114 @@ export default function ContactSection() {
           </div>
 
           {/* Right Column - Contact Form */}
-          <div className="bg-white/5 p-8 rounded-lg backdrop-blur-sm">
-            <form className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-white/40"
-                  placeholder="Enter your name"
-                />
-              </div>
+          <div className="lg:col-span-3 relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-emerald-500/10 rounded-2xl opacity-20 blur-xl" />
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-white/40"
-                  placeholder="Enter your email"
-                />
-              </div>
+            <div className="relative bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 overflow-hidden">
+              {/* Decorative Elements */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl" />
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-white/40"
-                  placeholder="How can we help you?"
-                />
-              </div>
+              <div className="absolute top-4 left-4 w-8 h-0.5 bg-gradient-to-r from-blue-400 to-transparent" />
+              <div className="absolute top-4 left-4 w-0.5 h-8 bg-gradient-to-b from-blue-400 to-transparent" />
 
-              <button
-                type="submit"
-                className="w-full bg-white text-black py-3 px-6 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-              >
-                Send Message
-              </button>
-            </form>
+              <div className="absolute bottom-4 right-4 w-8 h-0.5 bg-gradient-to-l from-emerald-400 to-transparent" />
+              <div className="absolute bottom-4 right-4 w-0.5 h-8 bg-gradient-to-t from-emerald-400 to-transparent" />
+
+              <h3 className="text-2xl font-medium text-white mb-6">
+                Send Us a Message
+              </h3>
+
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-slate-300 mb-2"
+                  >
+                    Full Name
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formState.name}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700/50 rounded-lg focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 transition-all duration-300"
+                      placeholder="Enter your name"
+                      required
+                    />
+                    <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-blue-400 to-emerald-400 group-focus-within:w-full transition-all duration-300" />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-slate-300 mb-2"
+                  >
+                    Email Address
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formState.email}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700/50 rounded-lg focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 transition-all duration-300"
+                      placeholder="Enter your email"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-slate-300 mb-2"
+                  >
+                    Message
+                  </label>
+                  <div className="relative">
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formState.message}
+                      onChange={handleChange}
+                      rows={4}
+                      className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700/50 rounded-lg focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 transition-all duration-300"
+                      placeholder="How can we help you?"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="group relative w-full px-6 py-3 rounded-lg overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-500 transition-all duration-300 group-hover:scale-105" />
+                  <div className="relative flex items-center justify-center gap-2 text-white font-medium">
+                    <span>Send Message</span>
+                    <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </div>
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Mouse Follower */}
+      <div
+        className="absolute w-40 h-40 bg-blue-400/5 rounded-full blur-2xl pointer-events-none transition-all duration-700"
+        style={{
+          left: `${mousePosition.x}%`,
+          top: `${mousePosition.y}%`,
+          transform: "translate(-50%, -50%)",
+        }}
+      />
     </section>
   );
 }

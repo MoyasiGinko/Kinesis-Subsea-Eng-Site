@@ -6,7 +6,7 @@ import ContactSection from "@/components/common/ContactSection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-950 to-slate-900">
       <HeroBanner />
       <ServicesSection />
       <StatsSection />
