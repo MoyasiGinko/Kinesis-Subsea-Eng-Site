@@ -24,51 +24,50 @@ export default function ServicesSection() {
 
   const services = [
     {
-      title: "Consulting",
+      title: "Turbine Wind Plant Solutions",
       description:
-        "Strategic advisory and technical consulting services across the energy sector.",
-      image:
-        "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "Comprehensive services for wind turbine plant development, operation, and optimization.",
+      image: "/service1.gif",
       icon: <Zap className="w-6 h-6" />,
       features: [
-        "Market Analysis",
-        "Technology Strategy",
-        "Regulatory Compliance",
-        "Risk Assessment",
+        "Site Assessment & Feasibility",
+        "Turbine Selection & Sizing",
+        "Grid Integration",
+        "Performance Monitoring",
       ],
       color: "from-blue-600 to-cyan-500",
       pathIcon: <Target className="w-5 h-5" />,
-      phase: "Discovery",
+      phase: "Development",
       accentColor: "blue",
     },
     {
-      title: "Engineering & Projects",
-      description: "End-to-end project delivery from concept to commissioning.",
-      image:
-        "https://images.pexels.com/photos/159358/construction-site-build-construction-work-159358.jpeg?auto=compress&cs=tinysrgb&w=800",
+      title: "Subsea Engineering",
+      description:
+        "Specialized engineering for subsea systems, including design, installation, and maintenance.",
+      image: "/service2.gif",
       icon: <Wrench className="w-6 h-6" />,
       features: [
-        "Design & Planning",
-        "Project Management",
-        "Quality Assurance",
-        "Commissioning",
+        "Subsea System Design",
+        "Installation & Commissioning",
+        "Integrity Management",
+        "Remote Operations",
       ],
       color: "from-orange-600 to-red-500",
       pathIcon: <Award className="w-5 h-5" />,
-      phase: "Implementation",
+      phase: "Engineering",
       accentColor: "orange",
     },
     {
-      title: "Operations",
-      description: "Asset optimization and operational excellence solutions.",
-      image:
-        "https://images.pexels.com/photos/2760243/pexels-photo-2760243.jpeg?auto=compress&cs=tinysrgb&w=800",
+      title: "Operations & Asset Management",
+      description:
+        "Maximizing uptime and efficiency for wind and subsea assets through advanced operations.",
+      image: "/service3.gif",
       icon: <Settings className="w-6 h-6" />,
       features: [
-        "Performance Optimization",
-        "Maintenance Planning",
-        "Digital Solutions",
-        "Training",
+        "Predictive Maintenance",
+        "Digital Twin Solutions",
+        "Condition Monitoring",
+        "Training & Support",
       ],
       color: "from-emerald-600 to-teal-500",
       pathIcon: <TrendingUp className="w-5 h-5" />,
@@ -422,9 +421,9 @@ export default function ServicesSection() {
                   </div>
 
                   {/* Pulse Effect */}
-                  <div
+                  {/* <div
                     className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-r ${service.color} animate-pulse rounded-3xl`}
-                  />
+                  /> */}
 
                   {/* Content Layout */}
                   <div
