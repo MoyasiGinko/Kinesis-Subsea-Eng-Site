@@ -36,8 +36,25 @@ const menuItems = [
     //   },
     // ],
   },
+
   {
-    title: "What We Do",
+    title: "Services",
+    href: "/our-services",
+    submenu: [
+      {
+        title: "Oil & Gas",
+        href: "/our-services/engineering-analysis",
+        description: "Technical engineering solutions",
+      },
+      {
+        title: "Renewables",
+        href: "/our-services/products",
+        description: "Innovative product portfolio",
+      },
+    ],
+  },
+  {
+    title: "Projects",
     href: "/what-we-deliver",
     // submenu: [
     //   {
@@ -66,48 +83,6 @@ const menuItems = [
     //     description: "Training & development programs",
     //   },
     // ],
-  },
-
-  {
-    title: "Services",
-    href: "/our-services",
-    submenu: [
-      {
-        title: "Engineering & Analysis",
-        href: "/our-services/engineering-analysis",
-        description: "Technical engineering solutions",
-      },
-      {
-        title: "Products",
-        href: "/our-services/products",
-        description: "Innovative product portfolio",
-      },
-      {
-        title: "Software",
-        href: "/our-services/software",
-        description: "Digital solutions & platforms",
-      },
-      {
-        title: "Renewables",
-        href: "/our-services/renewables",
-        description: "Clean energy solutions",
-      },
-      {
-        title: "Testing",
-        href: "/our-services/testing",
-        description: "Quality assurance services",
-      },
-      {
-        title: "Past Projects",
-        href: "/our-services/past-projects",
-        description: "Success stories & case studies",
-      },
-      {
-        title: "Training",
-        href: "/our-services/training",
-        description: "Professional development",
-      },
-    ],
   },
   {
     title: "News",
