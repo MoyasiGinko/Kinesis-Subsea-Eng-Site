@@ -262,10 +262,12 @@ const HeroBanner = () => {
 
               {/* Content Indicator Dots */}
               <div className="flex items-center gap-2 justify-center lg:justify-start mb-4">
-                {contentVariations.map((_, index) => (
+                {contentVariations.map((variation, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
+                    title={variation.tagline}
+                    aria-label={variation.tagline}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       index === currentIndex
                         ? "bg-green-400 w-8"

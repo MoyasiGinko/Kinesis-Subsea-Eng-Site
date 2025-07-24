@@ -36,7 +36,9 @@ export default function ContactSection() {
       }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    if (typeof window !== "undefined") {
+      window.addEventListener("mousemove", handleMouseMove);
+    }
 
     return () => {
       observer.disconnect();
