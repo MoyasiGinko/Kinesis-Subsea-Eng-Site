@@ -154,7 +154,7 @@ export default function HoverCardsSection() {
   };
 
   return (
-    <section className="relative h-screen max-h-none  lg:max-h-[900px] overflow-hidden bg-transparent">
+    <section className="relative h-screen max-h-none  lg:max-h-[900px] overflow-hidden bg-white">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 opacity-[0.03]">
         <svg className="w-full h-full">
@@ -200,7 +200,7 @@ export default function HoverCardsSection() {
                   }}
                 />
                 <motion.div
-                  className="absolute inset-0 bg-slate-900/75"
+                  className="absolute inset-0 bg-white/75"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
@@ -224,22 +224,12 @@ export default function HoverCardsSection() {
             <div className="h-full flex flex-col justify-center items-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8 md:py-12 lg:py-16 relative">
               {/* Backdrop with subtle border */}
               <motion.div
-                className="absolute inset-2 sm:inset-3 lg:inset-4 rounded-xl lg:rounded-2xl hover:backdrop-blur-sm "
-                // style={{
-                //   background:
-                //     hoveredCard === index
-                //       ? `linear-gradient(135deg, ${
-                //           service.color.includes("amber")
-                //             ? "rgba(245, 158, 11, 0.08)"
-                //             : "rgba(16, 185, 129, 0.08)"
-                //         } 0%, transparent 60%)`
-                //       : "rgba(255, 255, 255, 0.03)",
-                // }}
+                className="absolute inset-2 sm:inset-3 lg:inset-4 rounded-xl lg:rounded-2xl hover:backdrop-blur-sm border border-gray-300"
                 animate={{
                   borderColor:
                     hoveredCard === index
-                      ? "rgba(255, 255, 255, 0.2)"
-                      : "rgba(255, 255, 255, 0.1)",
+                      ? "rgba(0, 0, 0, 0.2)"
+                      : "rgba(0, 0, 0, 0.1)",
                 }}
                 transition={{ duration: 0.3 }}
               />
@@ -264,7 +254,7 @@ export default function HoverCardsSection() {
 
                 {/* Title */}
                 <motion.h3
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-2 md:mb-3 lg:mb-4 leading-tight tracking-tight"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-2 md:mb-3 lg:mb-4 leading-tight tracking-tight"
                   whileHover={{ scale: isDesktop ? 1.05 : 1 }}
                   transition={{ duration: 0.2 }}
                   variants={titleVariants}
@@ -288,7 +278,7 @@ export default function HoverCardsSection() {
                   animate="visible"
                 >
                   <span
-                    className={`inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r ${service.color} bg-opacity-20 text-xs sm:text-sm md:text-base font-medium text-white/90 tracking-wide uppercase`}
+                    className={`inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r ${service.color} bg-opacity-20 text-xs sm:text-sm md:text-base font-medium text-gray-900/90 tracking-wide uppercase`}
                   >
                     {service.subtitle}
                   </span>
@@ -296,7 +286,7 @@ export default function HoverCardsSection() {
 
                 {/* Description */}
                 <motion.p
-                  className="text-slate-300 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed font-light max-w-xs sm:max-w-sm lg:max-w-lg mx-auto mb-6 md:mb-8 lg:mb-10"
+                  className="text-gray-700 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed font-light max-w-xs sm:max-w-sm lg:max-w-lg mx-auto mb-6 md:mb-8 lg:mb-10"
                   style={{
                     fontFamily:
                       "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
@@ -311,8 +301,8 @@ export default function HoverCardsSection() {
                     style={{
                       color:
                         hoveredCard === index
-                          ? "rgb(226, 232, 240)"
-                          : "rgb(148, 163, 184)",
+                          ? "rgb(30, 41, 59)"
+                          : "rgb(75, 85, 99)",
                     }}
                   >
                     {service.description}
@@ -329,9 +319,9 @@ export default function HoverCardsSection() {
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
-                      <div className="bg-white/5 backdrop-blur-md rounded-lg lg:rounded-xl p-4 sm:p-6 lg:p-8 border border-white/10 shadow-2xl">
+                      <div className="bg-white/90 backdrop-blur-md rounded-lg lg:rounded-xl p-4 sm:p-6 lg:p-8 border border-gray-300 shadow-2xl">
                         <motion.h4
-                          className="text-white text-base sm:text-lg lg:text-xl font-semibold mb-3 sm:mb-4 lg:mb-6 text-left"
+                          className="text-gray-900 text-base sm:text-lg lg:text-xl font-semibold mb-3 sm:mb-4 lg:mb-6 text-left"
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.2, duration: 0.4 }}
@@ -347,7 +337,7 @@ export default function HoverCardsSection() {
                           {service.features.map((feature, featureIndex) => (
                             <motion.div
                               key={featureIndex}
-                              className="flex items-start gap-2 sm:gap-3 text-slate-300"
+                              className="flex items-start gap-2 sm:gap-3 text-gray-700"
                               custom={featureIndex}
                               variants={featureItemVariants}
                               initial="hidden"
@@ -378,7 +368,7 @@ export default function HoverCardsSection() {
 
                 {/* Read More Button */}
                 <motion.button
-                  className={`inline-flex items-center gap-2 sm:gap-3 lg:gap-4 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 bg-gradient-to-r ${service.color} text-white rounded-lg lg:rounded-xl font-semibold text-sm sm:text-base lg:text-lg shadow-2xl border border-white/20 relative overflow-hidden group`}
+                  className={`inline-flex items-center gap-2 sm:gap-3 lg:gap-4 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 bg-gradient-to-r ${service.color} text-white rounded-lg lg:rounded-xl font-semibold text-sm sm:text-base lg:text-lg shadow-2xl border border-black/20 relative overflow-hidden group`}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ duration: 0.2 }}
@@ -418,8 +408,8 @@ export default function HoverCardsSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
               >
-                <div className="w-8 sm:w-12 lg:w-16 h-0.5 bg-gradient-to-r from-white/40 to-transparent"></div>
-                <div className="w-0.5 h-8 sm:h-12 lg:h-16 bg-gradient-to-b from-white/40 to-transparent"></div>
+                <div className="w-8 sm:w-12 lg:w-16 h-0.5 bg-gradient-to-r from-black/40 to-transparent"></div>
+                <div className="w-0.5 h-8 sm:h-12 lg:h-16 bg-gradient-to-b from-black/40 to-transparent"></div>
               </motion.div>
 
               <motion.div
@@ -428,14 +418,14 @@ export default function HoverCardsSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.7, duration: 0.5 }}
               >
-                <div className="w-0.5 h-8 sm:h-12 lg:h-16 bg-gradient-to-t from-white/40 to-transparent ml-auto"></div>
-                <div className="w-8 sm:w-12 lg:w-16 h-0.5 bg-gradient-to-l from-white/40 to-transparent"></div>
+                <div className="w-0.5 h-8 sm:h-12 lg:h-16 bg-gradient-to-t from-black/40 to-transparent ml-auto"></div>
+                <div className="w-8 sm:w-12 lg:w-16 h-0.5 bg-gradient-to-l from-black/40 to-transparent"></div>
               </motion.div> */}
 
               {/* Separator Line - Only on desktop horizontal layout */}
               {index === 0 && (
                 <motion.div
-                  className="absolute right-0 top-1/2 transform -translate-y-1/2 w-px h-3/4 bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"
+                  className="absolute right-0 top-1/2 transform -translate-y-1/2 w-px h-3/4 bg-gradient-to-b from-transparent via-black/20 to-transparent hidden lg:block"
                   initial={{ scaleY: 0 }}
                   animate={{ scaleY: 1 }}
                   transition={{ delay: 0.8, duration: 0.8 }}

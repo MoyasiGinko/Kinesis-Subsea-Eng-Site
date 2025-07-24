@@ -107,7 +107,7 @@ export default function StatsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 text-white overflow-hidden"
+      className="relative py-24 text-gray-900 overflow-hidden"
     >
       {/* Background Effects */}
       <div className="absolute inset-0">
@@ -142,7 +142,7 @@ export default function StatsSection() {
 
         {/* Dynamic Gradient Orbs */}
         <div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl transition-all duration-1000"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-200/10 rounded-full blur-3xl transition-all duration-1000"
           style={{
             transform: `translateX(${mousePosition.x * 0.15}px) translateY(${
               mousePosition.y * 0.1
@@ -151,7 +151,7 @@ export default function StatsSection() {
           }}
         />
         <div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-emerald-600/10 rounded-full blur-3xl transition-all duration-1000"
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-emerald-200/10 rounded-full blur-3xl transition-all duration-1000"
           style={{
             transform: `translateX(${mousePosition.x * -0.1}px) translateY(${
               mousePosition.y * 0.15
@@ -184,7 +184,7 @@ export default function StatsSection() {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <span className="block text-slate-200">Delivering Excellence</span>
+            <span className="block text-gray-900">Delivering Excellence</span>
             <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent font-medium">
               Across the Globe
             </span>
@@ -206,12 +206,12 @@ export default function StatsSection() {
               }}
             >
               {/* Card Background */}
-              <div className="relative bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/40 hover:border-slate-600/60 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-900/20 hover:scale-105 cursor-pointer">
+              <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-8 border border-gray-300 hover:border-gray-400 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-200/50 hover:scale-105 cursor-pointer">
                 {/* Gradient Border Effect */}
                 <div
                   className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r ${stat.color} p-px`}
                 >
-                  <div className="w-full h-full bg-slate-800/90 rounded-2xl" />
+                  <div className="w-full h-full bg-white rounded-2xl" />
                 </div>
 
                 {/* Content */}
@@ -226,7 +226,7 @@ export default function StatsSection() {
                   </div>
 
                   {/* Number */}
-                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent">
                     {index < 2 ? (
                       <>
                         {counters[index].toLocaleString()}
@@ -241,12 +241,12 @@ export default function StatsSection() {
                   </div>
 
                   {/* Label */}
-                  <div className="text-sm md:text-base text-slate-400 group-hover:text-slate-300 transition-colors duration-300 font-medium">
+                  <div className="text-sm md:text-base text-gray-600 group-hover:text-gray-700 transition-colors duration-300 font-medium">
                     {stat.label}
                   </div>
 
                   {/* Progress Bar */}
-                  <div className="mt-4 w-full bg-slate-700/50 rounded-full h-1 overflow-hidden">
+                  <div className="mt-4 w-full bg-gray-300 rounded-full h-1 overflow-hidden">
                     <div
                       className={`h-full bg-gradient-to-r ${
                         stat.color
@@ -268,21 +268,6 @@ export default function StatsSection() {
             </div>
           ))}
         </div>
-
-        {/* Bottom CTA */}
-        {/* <div
-          className={`text-center mt-16 transition-all duration-1000 delay-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <p className="text-slate-400 text-lg mb-6">
-            Join thousands of companies worldwide who trust our expertise
-          </p>
-          <button className="group relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-lg font-medium text-white transition-all duration-500 hover:from-blue-500 hover:to-emerald-500 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105">
-            <span>Learn More About Our Impact</span>
-            <TrendingUp className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-          </button>
-        </div> */}
       </div>
 
       {/* Mouse Follower */}
