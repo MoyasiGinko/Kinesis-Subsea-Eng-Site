@@ -236,7 +236,7 @@ export default function Navbar() {
             <img
               src="/logo-white.svg"
               alt="Kinesis Subsea Engineering Logo"
-              className="h-10 w-auto"
+              className={` w-auto ${isScrolled ? "h-10" : "h-12 md:h-16"}`}
             />
           </Link>
         </div>
@@ -248,11 +248,11 @@ export default function Navbar() {
               {item.submenu ? (
                 <>
                   <button
-                    className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-slate-800/50 hover:text-cyan-400 ${
+                    className={`flex items-center gap-1 px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-slate-800/50 hover:text-cyan-400 ${
                       openMenuIndex === index
                         ? "bg-slate-800/50 text-cyan-400"
                         : "text-slate-300"
-                    }`}
+                    } ${isScrolled ? "text-sm" : "text-md "}`}
                     onClick={() => toggleMenu(index)}
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={() => handleMouseLeave(index)}
@@ -299,11 +299,11 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-slate-800/50 hover:text-cyan-400 ${
+                  className={`flex items-center gap-1 px-4 py-2 rounded-lg  font-medium transition-all duration-300 hover:bg-slate-800/50 hover:text-cyan-400 ${
                     openMenuIndex === index
                       ? "bg-slate-800/50 text-cyan-400"
                       : "text-slate-300"
-                  }`}
+                  }  ${isScrolled ? "text-sm" : "text-md "}`}
                 >
                   {item.title}
                 </Link>
