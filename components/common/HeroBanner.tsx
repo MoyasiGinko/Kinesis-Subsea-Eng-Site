@@ -107,7 +107,7 @@ const HeroBanner = () => {
   return (
     <section
       ref={heroRef}
-      className="relative text-white overflow-hidden pb-10 pt-28 px-4 h-full sm:max-h-full md:max-h-full lg:max-h-[900px] xl:h-[1080px] flex items-center"
+      className="relative text-gray-900 overflow-hidden pb-10 pt-28 px-4 h-full sm:max-h-full md:max-h-full lg:max-h-[900px] xl:h-[1080px] flex items-center"
     >
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
@@ -120,7 +120,7 @@ const HeroBanner = () => {
           playsInline
         />
         {/* Optional: Overlay for better contrast */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-slate-950/60 to-slate-900/80 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-white/70 via-white/60 to-white/80 pointer-events-none" />
       </div>
 
       {/* Background Effects */}
@@ -180,7 +180,7 @@ const HeroBanner = () => {
 
         {/* Industrial Gradient Orbs */}
         <div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-900/20 rounded-full blur-3xl transition-all duration-1000"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-200/20 rounded-full blur-3xl transition-all duration-1000"
           style={{
             transform: `translateY(${mousePosition.y * 0.1}px) translateX(${
               mousePosition.x * 0.1
@@ -189,7 +189,7 @@ const HeroBanner = () => {
           }}
         />
         <div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-900/20 rounded-full blur-3xl transition-all duration-1000"
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-200/20 rounded-full blur-3xl transition-all duration-1000"
           style={{
             transform: `translateY(${mousePosition.y * -0.1}px) translateX(${
               mousePosition.x * -0.1
@@ -198,7 +198,7 @@ const HeroBanner = () => {
           }}
         />
         <div
-          className="absolute top-1/2 right-1/3 w-64 h-64 bg-yellow-900/15 rounded-full blur-3xl transition-all duration-1000"
+          className="absolute top-1/2 right-1/3 w-64 h-64 bg-yellow-200/15 rounded-full blur-3xl transition-all duration-1000"
           style={{
             transform: `translateY(${mousePosition.y * 0.05}px) translateX(${
               mousePosition.x * 0.05
@@ -224,8 +224,8 @@ const HeroBanner = () => {
                 key={`tagline-${currentIndex}`}
                 className="flex items-center gap-2 mb-6 justify-center lg:justify-start animate-fade-in"
               >
-                <IconComponent className="w-5 h-5 text-green-400" />
-                <span className="text-sm font-medium text-green-400 uppercase tracking-wider">
+                <IconComponent className="w-5 h-5 text-green-600" />
+                <span className="text-sm font-medium text-green-600 uppercase tracking-wider">
                   {currentContent.tagline}
                 </span>
               </div>
@@ -234,33 +234,33 @@ const HeroBanner = () => {
                 key={`title-${currentIndex}`}
                 className="text-5xl lg:text-7xl font-light mb-6 leading-tight animate-fade-in"
               >
-                <span className="block text-slate-200">
+                <span className="block text-gray-900">
                   {currentContent.title.first}
                 </span>
-                <span className="block bg-gradient-to-r from-green-400 via-blue-400 to-yellow-400 bg-clip-text text-transparent font-medium">
+                <span className="block bg-gradient-to-r from-green-600 via-blue-600 to-yellow-600 bg-clip-text text-transparent font-medium">
                   {currentContent.title.highlight}
                 </span>
-                <span className="block text-slate-200">
+                <span className="block text-gray-900">
                   {currentContent.title.last}
                 </span>
               </h1>
 
               <p
                 key={`description-${currentIndex}`}
-                className="text-xl lg:text-2xl text-slate-300 mb-8 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0 animate-fade-in"
+                className="text-xl lg:text-2xl text-gray-700 mb-8 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0 animate-fade-in"
               >
                 {currentContent.description}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start">
-                <button className="group relative inline-flex px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg font-semibold text-white transition-all duration-500 hover:from-green-500 hover:to-blue-500 hover:shadow-lg hover:shadow-green-500/25 hover:scale-105">
+                <button className="group relative inline-flex px-8 py-4 bg-gradient-to-r from-green-700 to-blue-700 rounded-lg font-semibold text-white transition-all duration-500 hover:from-green-600 hover:to-blue-600 hover:shadow-lg hover:shadow-green-600/25 hover:scale-105">
                   <span className="flex items-center gap-2">
                     Get Project Quote
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
                 </button>
 
-                <button className="group relative inline-flex px-8 py-4 bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 rounded-lg font-semibold text-slate-200 transition-all duration-500 hover:bg-slate-800/80 hover:border-slate-500/80 hover:text-white hover:scale-105">
+                <button className="group relative inline-flex px-8 py-4 bg-gray-200 border border-gray-300 rounded-lg font-semibold text-gray-900 transition-all duration-500 hover:bg-gray-300 hover:border-gray-400 hover:scale-105">
                   <span className="flex items-center gap-2">
                     <Play className="w-5 h-5" />
                     View Services
@@ -278,8 +278,8 @@ const HeroBanner = () => {
                     aria-label={variation.tagline}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       index === currentIndex
-                        ? "bg-green-400 w-8"
-                        : "bg-slate-600 hover:bg-slate-500"
+                        ? "bg-green-600 w-8"
+                        : "bg-gray-400 hover:bg-gray-500"
                     }`}
                   />
                 ))}
@@ -297,9 +297,9 @@ const HeroBanner = () => {
               }`}
               style={{ transitionDelay: "300ms" }}
             >
-              <div className="relative bg-slate-900/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/40 shadow-2xl">
+              <div className="relative bg-transparent  rounded-2xl p-8 ">
                 {/* GIF Container */}
-                <div className="bg-slate-800/80 rounded-lg p-4">
+                <div className=" rounded-lg p-4">
                   <img
                     key={`gif-${currentIndex}`}
                     src={currentContent.gif}
@@ -315,7 +315,7 @@ const HeroBanner = () => {
 
       {/* Mouse Follower */}
       <div
-        className="absolute w-60 h-60 bg-green-400/5 rounded-full blur-3xl pointer-events-none transition-all duration-700"
+        className="absolute w-60 h-60 bg-green-600/10 rounded-full blur-3xl pointer-events-none transition-all duration-700"
         style={{
           left: `${mousePosition.x}%`,
           top: `${mousePosition.y}%`,

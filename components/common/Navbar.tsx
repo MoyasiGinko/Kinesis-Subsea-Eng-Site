@@ -194,7 +194,7 @@ export default function Navbar() {
       ref={navRef}
       className={`fixed top-0 left-0 right-0 z-50 mx-auto max-w-7xl rounded-xl mt-1 transition-all duration-500 ${
         isScrolled
-          ? "bg-slate-950/95 backdrop-blur-xl  shadow-xl  shadow-slate-900/20"
+          ? "bg-white/95 backdrop-blur-xl  shadow-xl  shadow-gray-300/20"
           : "bg-transparent backdrop-blur-none "
       }`}
     >
@@ -234,7 +234,7 @@ export default function Navbar() {
         <div className="flex items-center">
           <Link href="/" className="flex items-center space-x-2">
             <img
-              src="/logo-white.svg"
+              src="/logo-dark.svg"
               alt="Kinesis Subsea Engineering Logo"
               className={` w-auto ${isScrolled ? "h-10" : "h-12 md:h-16"}`}
             />
@@ -248,10 +248,10 @@ export default function Navbar() {
               {item.submenu ? (
                 <>
                   <button
-                    className={`flex items-center gap-1 px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-slate-800/50 hover:text-cyan-400 ${
+                    className={`flex items-center gap-1 px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-gray-200 hover:text-cyan-600 ${
                       openMenuIndex === index
-                        ? "bg-slate-800/50 text-cyan-400"
-                        : "text-slate-300"
+                        ? "bg-gray-200 text-cyan-600"
+                        : "text-gray-700"
                     } ${isScrolled ? "text-sm" : "text-md "}`}
                     onClick={() => toggleMenu(index)}
                     onMouseEnter={() => handleMouseEnter(index)}
@@ -268,7 +268,7 @@ export default function Navbar() {
                   {/* Dropdown Menu */}
                   {openMenuIndex === index && (
                     <div
-                      className="absolute top-full left-0 mt-2 w-80 bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-xl shadow-2xl py-2 z-50"
+                      className="absolute top-full left-0 mt-2 w-80 bg-white/95 backdrop-blur-xl border border-gray-300 rounded-xl shadow-2xl py-2 z-50"
                       onMouseEnter={() => handleMouseEnter(index)}
                       onMouseLeave={() => handleMouseLeave(index)}
                     >
@@ -276,20 +276,20 @@ export default function Navbar() {
                         <Link
                           key={subindex}
                           href={subitem.href}
-                          className="group/item px-4 py-3 hover:bg-slate-800/50 transition-colors duration-200 cursor-pointer block"
+                          className="group/item px-4 py-3 hover:bg-gray-200 transition-colors duration-200 cursor-pointer block"
                         >
                           <div className="flex items-center justify-between">
                             <div>
-                              <div className="text-white font-medium text-sm group-hover/item:text-cyan-400 transition-colors duration-200">
+                              <div className="text-gray-900 font-medium text-sm group-hover/item:text-cyan-600 transition-colors duration-200">
                                 {subitem.title}
                               </div>
                               {subitem.description && (
-                                <div className="text-slate-400 text-xs mt-1">
+                                <div className="text-gray-500 text-xs mt-1">
                                   {subitem.description}
                                 </div>
                               )}
                             </div>
-                            <ArrowRight className="w-4 h-4 text-slate-500 group-hover/item:text-cyan-400 group-hover/item:translate-x-1 transition-all duration-200" />
+                            <ArrowRight className="w-4 h-4 text-gray-400 group-hover/item:text-cyan-600 group-hover/item:translate-x-1 transition-all duration-200" />
                           </div>
                         </Link>
                       ))}
@@ -299,10 +299,10 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-1 px-4 py-2 rounded-lg  font-medium transition-all duration-300 hover:bg-slate-800/50 hover:text-cyan-400 ${
+                  className={`flex items-center gap-1 px-4 py-2 rounded-lg  font-medium transition-all duration-300 hover:bg-gray-200 hover:text-cyan-600 ${
                     openMenuIndex === index
-                      ? "bg-slate-800/50 text-cyan-400"
-                      : "text-slate-300"
+                      ? "bg-gray-200 text-cyan-600"
+                      : "text-gray-700"
                   }  ${isScrolled ? "text-sm" : "text-md "}`}
                 >
                   {item.title}
@@ -350,7 +350,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-lg bg-slate-800/50 text-white hover:bg-slate-700/50 transition-all duration-300"
+            className="lg:hidden p-2 rounded-lg bg-gray-200 text-gray-900 hover:bg-gray-300 transition-all duration-300"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -369,7 +369,7 @@ export default function Navbar() {
           mobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="bg-slate-900/95 backdrop-blur-xl border-t border-slate-700/50">
+        <nav className="bg-white/95 backdrop-blur-xl border-t border-gray-300">
           {menuItems.map((item, index) => (
             <div key={index} className="border-b border-slate-700/30">
               {item.submenu ? (
@@ -398,7 +398,7 @@ export default function Navbar() {
                         <Link
                           key={subindex}
                           href={subitem.href}
-                          className="px-6 py-3 text-slate-300 hover:bg-slate-700/30 hover:text-white transition-colors duration-200 cursor-pointer block"
+                          className="px-6 py-3 text-gray-700 hover:bg-gray-200 hover:text-gray-900 transition-colors duration-200 cursor-pointer block"
                         >
                           <div className="font-medium text-sm">
                             {subitem.title}
@@ -416,7 +416,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={item.href}
-                  className="w-full flex items-center justify-between px-4 py-4 text-white hover:bg-slate-800/50 transition-colors duration-200"
+                  className="w-full flex items-center justify-between px-4 py-4 text-gray-900 hover:bg-gray-200 transition-colors duration-200"
                 >
                   <span className="font-medium">{item.title}</span>
                 </Link>
