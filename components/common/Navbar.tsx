@@ -195,7 +195,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 mx-auto max-w-7xl rounded-xl mt-1 transition-all duration-500 ${
         isScrolled
           ? "bg-slate-950/95 backdrop-blur-xl  shadow-xl  shadow-slate-900/20"
-          : "bg-slate-900/5 backdrop-blur-sm "
+          : "bg-transparent backdrop-blur-none "
       }`}
     >
       {/* Top Info Bar */}
