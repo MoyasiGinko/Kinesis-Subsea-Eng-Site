@@ -154,7 +154,7 @@ export default function HoverCardsSection() {
   };
 
   return (
-    <section className="relative h-screen max-h-none lg:h-screen lg:max-h-[1200px] overflow-hidden bg-transparent">
+    <section className="relative h-screen max-h-none  lg:max-h-[900px] overflow-hidden bg-transparent">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 opacity-[0.03]">
         <svg className="w-full h-full">
