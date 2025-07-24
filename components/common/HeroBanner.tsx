@@ -297,9 +297,9 @@ const HeroBanner = () => {
               }`}
               style={{ transitionDelay: "300ms" }}
             >
-              <div className="relative bg-white rounded-2xl p-8 border border-gray-300 shadow-2xl">
+              <div className="relative bg-transparent  rounded-2xl p-8 ">
                 {/* GIF Container */}
-                <div className="bg-gray-100 rounded-lg p-4">
+                <div className=" rounded-lg p-4">
                   <img
                     key={`gif-${currentIndex}`}
                     src={currentContent.gif}
