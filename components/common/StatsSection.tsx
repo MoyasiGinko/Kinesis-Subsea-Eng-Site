@@ -107,7 +107,7 @@ export default function StatsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 text-gray-900 overflow-hidden"
+      className="relative py-24 text-gray-900 overflow-hidden bg-white"
     >
       {/* Background Effects */}
       <div className="absolute inset-0">
@@ -115,7 +115,7 @@ export default function StatsSection() {
           <div
             className="absolute inset-0 bg-grid-pattern bg-repeat transition-all duration-1000"
             style={{
-              backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)`,
+              backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.15) 1px, transparent 1px)`,
               backgroundSize: "50px 50px",
               transform: `translateX(${mousePosition.x * 0.01}px) translateY(${
                 mousePosition.y * 0.01
@@ -129,7 +129,7 @@ export default function StatsSection() {
           {[...Array(20)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-1 h-1 bg-blue-400/30 rounded-full animate-pulse"
+              className="absolute w-1 h-1 bg-blue-400/20 rounded-full animate-pulse"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -142,7 +142,7 @@ export default function StatsSection() {
 
         {/* Dynamic Gradient Orbs */}
         <div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-200/10 rounded-full blur-3xl transition-all duration-1000"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl transition-all duration-1000"
           style={{
             transform: `translateX(${mousePosition.x * 0.15}px) translateY(${
               mousePosition.y * 0.1
@@ -151,7 +151,7 @@ export default function StatsSection() {
           }}
         />
         <div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-emerald-200/10 rounded-full blur-3xl transition-all duration-1000"
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-emerald-200/20 rounded-full blur-3xl transition-all duration-1000"
           style={{
             transform: `translateX(${mousePosition.x * -0.1}px) translateY(${
               mousePosition.y * 0.15
@@ -165,14 +165,14 @@ export default function StatsSection() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <div
-            className={`inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-6 transition-all duration-1000 ${
+            className={`inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full mb-6 transition-all duration-1000 ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <TrendingUp className="w-4 h-4 text-blue-400" />
-            <span className="text-sm font-medium text-blue-400 uppercase tracking-wider">
+            <TrendingUp className="w-4 h-4 text-blue-500" />
+            <span className="text-sm font-medium text-blue-500 uppercase tracking-wider">
               Our Impact
             </span>
           </div>
@@ -185,7 +185,7 @@ export default function StatsSection() {
             }`}
           >
             <span className="block text-gray-900">Delivering Excellence</span>
-            <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent font-medium">
+            <span className="block bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-500 bg-clip-text text-transparent font-medium">
               Across the Globe
             </span>
           </h2>
@@ -206,7 +206,7 @@ export default function StatsSection() {
               }}
             >
               {/* Card Background */}
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-8 border border-gray-300 hover:border-gray-400 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-200/50 hover:scale-105 cursor-pointer">
+              <div className="relative bg-white backdrop-blur-sm rounded-2xl p-8 border border-gray-300 hover:border-gray-400 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-105 cursor-pointer">
                 {/* Gradient Border Effect */}
                 <div
                   className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r ${stat.color} p-px`}
@@ -217,12 +217,10 @@ export default function StatsSection() {
                 {/* Content */}
                 <div className="relative z-10 text-center">
                   {/* Icon */}
-                  <div className="flex justify-center mb-4">
-                    <div
-                      className={`p-3 rounded-xl bg-gradient-to-r ${stat.color} text-white group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      {stat.icon}
-                    </div>
+                  <div
+                    className={`p-3 rounded-xl bg-gradient-to-r ${stat.color} text-white group-hover:scale-110 transition-transform duration-300`}
+                  >
+                    {stat.icon}
                   </div>
 
                   {/* Number */}
@@ -241,7 +239,7 @@ export default function StatsSection() {
                   </div>
 
                   {/* Label */}
-                  <div className="text-sm md:text-base text-gray-600 group-hover:text-gray-700 transition-colors duration-300 font-medium">
+                  <div className="text-sm md:text-base text-gray-700 group-hover:text-gray-800 transition-colors duration-300 font-medium">
                     {stat.label}
                   </div>
 
@@ -272,7 +270,7 @@ export default function StatsSection() {
 
       {/* Mouse Follower */}
       <div
-        className="absolute w-40 h-40 bg-blue-400/5 rounded-full blur-2xl pointer-events-none transition-all duration-700"
+        className="absolute w-40 h-40 bg-blue-400/10 rounded-full blur-2xl pointer-events-none transition-all duration-700"
         style={{
           left: `${mousePosition.x}%`,
           top: `${mousePosition.y}%`,

@@ -79,7 +79,10 @@ export default function NewsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-24 overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative py-24 overflow-hidden bg-white"
+    >
       {/* Background Effects */}
       <div className="absolute inset-0">
         {/* Animated Grid */}
@@ -114,7 +117,7 @@ export default function NewsSection() {
 
         {/* Dynamic Gradient Backgrounds */}
         <div
-          className="absolute top-1/3 left-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl transition-all duration-1000"
+          className="absolute top-1/3 left-1/4 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl transition-all duration-1000"
           style={{
             transform: `translateX(${mousePosition.x * 0.1}px) translateY(${
               mousePosition.y * 0.05
@@ -122,7 +125,7 @@ export default function NewsSection() {
           }}
         />
         <div
-          className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-emerald-400/10 rounded-full blur-3xl transition-all duration-1000"
+          className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-emerald-400/20 rounded-full blur-3xl transition-all duration-1000"
           style={{
             transform: `translateX(${mousePosition.x * -0.05}px) translateY(${
               mousePosition.y * 0.1
@@ -135,14 +138,14 @@ export default function NewsSection() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <div
-            className={`inline-flex items-center gap-2 px-4 py-2 bg-slate-900/80 backdrop-blur-sm border border-slate-800 rounded-full mb-6 transition-all duration-1000 ${
+            className={`inline-flex items-center gap-2 px-4 py-2 bg-gray-100 backdrop-blur-sm border border-gray-200 rounded-full mb-6 transition-all duration-1000 ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <Calendar className="w-4 h-4 text-slate-300" />
-            <span className="text-sm font-medium text-slate-300 uppercase tracking-wider">
+            <Calendar className="w-4 h-4 text-gray-500" />
+            <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">
               Latest Updates
             </span>
           </div>
@@ -154,14 +157,14 @@ export default function NewsSection() {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <span className="block text-slate-100">News &</span>
-            <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent font-medium">
+            <span className="block text-gray-900">News &</span>
+            <span className="block bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-500 bg-clip-text text-transparent font-medium">
               Industry Insights
             </span>
           </h2>
 
           <p
-            className={`text-slate-400 text-lg max-w-2xl mx-auto transition-all duration-1000 delay-400 ${
+            className={`text-gray-500 text-lg max-w-2xl mx-auto transition-all duration-1000 delay-400 ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
@@ -189,7 +192,7 @@ export default function NewsSection() {
               onMouseLeave={() => setHoveredCard(null)}
             >
               {/* Card Container */}
-              <div className="relative flex flex-col h-full bg-slate-900/80 backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all duration-500 hover:shadow-2xl hover:shadow-slate-900/40 hover:scale-[1.02] cursor-pointer">
+              <div className="relative flex flex-col h-full bg-white backdrop-blur-sm rounded-3xl overflow-hidden border border-gray-200 hover:border-gray-300 transition-all duration-500 hover:shadow-2xl hover:shadow-gray-300/40 hover:scale-[1.02] cursor-pointer">
                 {/* Image Section */}
                 <div className="relative h-56 overflow-hidden flex-shrink-0">
                   <div
@@ -198,7 +201,7 @@ export default function NewsSection() {
                   />
 
                   {/* Image Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
@@ -211,7 +214,7 @@ export default function NewsSection() {
 
                   {/* Read Time Badge */}
                   <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="flex items-center gap-1 px-2 py-1 bg-slate-900/90 backdrop-blur-sm rounded-full text-xs font-medium text-slate-200">
+                    <div className="flex items-center gap-1 px-2 py-1 bg-gray-900/70 backdrop-blur-sm rounded-full text-xs font-medium text-gray-200">
                       <Clock className="w-3 h-3" />
                       {item.readTime}
                     </div>
@@ -222,11 +225,11 @@ export default function NewsSection() {
                 <div className="flex flex-col flex-1 p-6">
                   {/* Meta Information */}
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="flex items-center gap-1 text-slate-400 text-sm">
+                    <div className="flex items-center gap-1 text-gray-500 text-sm">
                       <Calendar className="w-4 h-4" />
                       {item.date}
                     </div>
-                    <div className="flex items-center gap-1 text-slate-400 text-sm">
+                    <div className="flex items-center gap-1 text-gray-500 text-sm">
                       <Eye className="w-4 h-4" />
                       <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                         {Math.floor(Math.random() * 500) + 100} views
@@ -235,12 +238,12 @@ export default function NewsSection() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold mb-3 text-slate-100 group-hover:text-blue-400 transition-colors duration-300 leading-tight">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-blue-500 transition-colors duration-300 leading-tight">
                     {item.title}
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-slate-400 text-sm mb-4 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <p className="text-gray-500 text-sm mb-4 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     {item.excerpt}
                   </p>
 
@@ -249,13 +252,13 @@ export default function NewsSection() {
 
                   {/* Read More Button */}
                   <div className="flex items-center justify-between mt-2">
-                    <button className="group/btn flex items-center gap-2 text-blue-400 font-semibold hover:text-blue-300 transition-colors duration-300">
+                    <button className="group/btn flex items-center gap-2 text-blue-500 font-semibold hover:text-blue-400 transition-colors duration-300">
                       <span>Read More</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
                     </button>
 
                     {/* Hover Indicator */}
-                    <div className="w-12 h-1 bg-slate-800 rounded-full overflow-hidden">
+                    <div className="w-12 h-1 bg-gray-300 rounded-full overflow-hidden">
                       <div
                         className={`h-full bg-gradient-to-r ${
                           item.categoryColor
@@ -282,7 +285,7 @@ export default function NewsSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-slate-800 to-slate-900 rounded-full text-white font-semibold text-lg transition-all duration-500 hover:from-slate-700 hover:to-slate-800 hover:shadow-xl hover:shadow-slate-900/25 hover:scale-105 overflow-hidden">
+          <button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full text-white font-semibold text-lg transition-all duration-500 hover:from-blue-400 hover:to-emerald-400 hover:shadow-xl hover:shadow-blue-300/25 hover:scale-105 overflow-hidden">
             <span className="relative z-10">View All News</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
 
