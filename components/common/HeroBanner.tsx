@@ -1,95 +1,66 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import {
-  ArrowRight,
-  Zap,
-  Building,
-  Power,
-  Sparkles,
-  ChevronDown,
-  Play,
-  Star,
-  CheckCircle,
-  Users,
-  Award,
-  Hammer,
-  Cable,
-  Factory,
-  // Wind turbine and renewable energy icons
-  Wind, // Wind icon (perfect for wind power)
-  Fan, // Fan icon (can represent turbine blades)
-  Leaf, // Eco-friendly/green energy
-  Recycle, // Sustainability
-  Sun, // Solar/renewable energy
-  Battery, // Energy storage
-  BatteryCharging, // Charging/power generation
-  Globe, // Global/environmental
-  TreePine, // Environmental/green
-  Lightbulb, // Energy/power concept
-  Gauge, // Performance monitoring
-  Settings, // Control systems
-  MapPin, // Location markers for plants
-  BarChart3, // Energy output charts
-  TrendingUp, // Performance/growth
-  Shield, // Safety/reliability
-  Wrench, // Maintenance
-  Cog, // Operations/machinery
-} from "lucide-react";
+import { ArrowRight, Zap, Play, Power, Cpu, Wrench } from "lucide-react";
 
 const HeroBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [energyFlow, setEnergyFlow] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const heroRef = useRef<HTMLElement | null>(null);
 
-  const testimonials = [
+  // Content variations
+  const contentVariations = [
     {
-      text: "Transformed our power grid infrastructure with cutting-edge solutions.",
-      author: "Robert Chen",
-      role: "Chief Engineer, PowerGrid Corp",
-      rating: 5,
+      icon: Zap,
+      tagline: "Power & Infrastructure Engineering",
+      title: {
+        first: "Powering",
+        highlight: "Tomorrow's",
+        last: "Infrastructure",
+      },
+      description:
+        "From electrical systems to structural foundations, we engineer the critical infrastructure that powers communities and drives industrial progress.",
+      gif: "/service1.gif",
+      altText: "Wind Turbine & Subsea Plant Engineering Schematic",
     },
     {
-      text: "Outstanding structural engineering. Project completed ahead of schedule.",
-      author: "Maria Rodriguez",
-      role: "Project Manager, BuildTech",
-      rating: 5,
+      icon: Power,
+      tagline: "Industrial Automation & Control",
+      title: {
+        first: "Building",
+        highlight: "Smart",
+        last: "Solutions",
+      },
+      description:
+        "Advanced automation systems and intelligent control networks that optimize industrial processes and enhance operational efficiency across all sectors.",
+      gif: "/service2.gif",
+      altText: "Industrial Automation Control Systems",
     },
     {
-      text: "Reliable electrical systems that power our entire facility efficiently.",
-      author: "James Wilson",
-      role: "Facility Director, Manufacturing Inc",
-      rating: 5,
-    },
-  ];
-
-  const stats = [
-    {
-      number: "250+",
-      label: "Projects Completed",
-      icon: <Building className="w-5 h-5" />,
-    },
-    {
-      number: "99.8%",
-      label: "System Reliability",
-      icon: <Power className="w-5 h-5" />,
-    },
-    {
-      number: "30+",
-      label: "Licensed Engineers",
-      icon: <Users className="w-5 h-5" />,
-    },
-    {
-      number: "15+",
-      label: "Years Excellence",
-      icon: <Award className="w-5 h-5" />,
+      icon: Cpu,
+      tagline: "Digital Infrastructure & IoT",
+      title: {
+        first: "Connecting",
+        highlight: "Digital",
+        last: "Ecosystems",
+      },
+      description:
+        "Cutting-edge IoT networks and digital infrastructure solutions that transform traditional systems into intelligent, connected environments.",
+      gif: "/service3.gif",
+      altText: "Digital Infrastructure & IoT Networks",
     },
   ];
 
   useEffect(() => {
     setIsVisible(true);
+
+    // Shuffle content every 5 seconds
+    const shuffleInterval = setInterval(() => {
+      setCurrentIndex(
+        (prevIndex) => (prevIndex + 1) % contentVariations.length
+      );
+    }, 5000);
 
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -108,21 +79,10 @@ const HeroBanner = () => {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("mousemove", handleMouseMove);
 
-    // Testimonial rotation
-    const testimonialInterval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 4000);
-
-    // Energy flow animation
-    const energyInterval = setInterval(() => {
-      setEnergyFlow((prev) => (prev + 1) % 100);
-    }, 50);
-
     return () => {
+      clearInterval(shuffleInterval);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
-      clearInterval(testimonialInterval);
-      clearInterval(energyInterval);
     };
   }, []);
 
@@ -133,10 +93,13 @@ const HeroBanner = () => {
     });
   };
 
+  const currentContent = contentVariations[currentIndex];
+  const IconComponent = currentContent.icon;
+
   return (
     <section
       ref={heroRef}
-      className="relative  text-white overflow-hidden pb-10 pt-28 px-4 h-full sm:max-h-full md:max-h-full lg:max-h-[900px] xl:h-[1080px] flex items-center"
+      className="relative text-white overflow-hidden pb-10 pt-28 px-4 h-full sm:max-h-full md:max-h-full lg:max-h-[900px] xl:h-[1080px] flex items-center"
     >
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
@@ -151,6 +114,7 @@ const HeroBanner = () => {
         {/* Optional: Overlay for better contrast */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-slate-950/60 to-slate-900/80 pointer-events-none" />
       </div>
+
       {/* Background Effects */}
       <div className="absolute inset-0">
         {/* Circuit Board Pattern */}
@@ -206,22 +170,6 @@ const HeroBanner = () => {
           </svg>
         </div>
 
-        {/* Energy Particles */}
-        {/* <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-green-400/40 rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${1.5 + Math.random() * 2}s`,
-              }}
-            />
-          ))}
-        </div> */}
-
         {/* Industrial Gradient Orbs */}
         <div
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-900/20 rounded-full blur-3xl transition-all duration-1000"
@@ -264,25 +212,36 @@ const HeroBanner = () => {
                   : "opacity-0 translate-y-12"
               }`}
             >
-              <div className="flex items-center gap-2 mb-6 justify-center lg:justify-start">
-                <Zap className="w-5 h-5 text-green-400" />
+              <div
+                key={`tagline-${currentIndex}`}
+                className="flex items-center gap-2 mb-6 justify-center lg:justify-start animate-fade-in"
+              >
+                <IconComponent className="w-5 h-5 text-green-400" />
                 <span className="text-sm font-medium text-green-400 uppercase tracking-wider">
-                  Power & Infrastructure Engineering
+                  {currentContent.tagline}
                 </span>
               </div>
 
-              <h1 className="text-5xl lg:text-7xl font-light mb-6 leading-tight">
-                <span className="block text-slate-200">Powering</span>
-                <span className="block bg-gradient-to-r from-green-400 via-blue-400 to-yellow-400 bg-clip-text text-transparent font-medium">
-                  Tomorrow's
+              <h1
+                key={`title-${currentIndex}`}
+                className="text-5xl lg:text-7xl font-light mb-6 leading-tight animate-fade-in"
+              >
+                <span className="block text-slate-200">
+                  {currentContent.title.first}
                 </span>
-                <span className="block text-slate-200">Infrastructure</span>
+                <span className="block bg-gradient-to-r from-green-400 via-blue-400 to-yellow-400 bg-clip-text text-transparent font-medium">
+                  {currentContent.title.highlight}
+                </span>
+                <span className="block text-slate-200">
+                  {currentContent.title.last}
+                </span>
               </h1>
 
-              <p className="text-xl lg:text-2xl text-slate-300 mb-8 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                From electrical systems to structural foundations, we engineer
-                the critical infrastructure that powers communities and drives
-                industrial progress.
+              <p
+                key={`description-${currentIndex}`}
+                className="text-xl lg:text-2xl text-slate-300 mb-8 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0 animate-fade-in"
+              >
+                {currentContent.description}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start">
@@ -301,69 +260,20 @@ const HeroBanner = () => {
                 </button>
               </div>
 
-              {/* Stats */}
-              {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                {stats.map((stat, index) => (
-                  <div
+              {/* Content Indicator Dots */}
+              <div className="flex items-center gap-2 justify-center lg:justify-start mb-4">
+                {contentVariations.map((_, index) => (
+                  <button
                     key={index}
-                    className={`transition-all duration-1000 transform ${
-                      isVisible
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-12"
+                    onClick={() => setCurrentIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentIndex
+                        ? "bg-green-400 w-8"
+                        : "bg-slate-600 hover:bg-slate-500"
                     }`}
-                    style={{ transitionDelay: `${500 + index * 100}ms` }}
-                  >
-                    <div className="text-center lg:text-left">
-                      <div className="flex items-center justify-center lg:justify-start gap-2 mb-1">
-                        <div className="text-green-400">{stat.icon}</div>
-                        <div className="text-2xl lg:text-3xl font-bold text-white">
-                          {stat.number}
-                        </div>
-                      </div>
-                      <div className="text-slate-400 text-sm">{stat.label}</div>
-                    </div>
-                  </div>
+                  />
                 ))}
-              </div> */}
-
-              {/* Testimonial */}
-              {/* <div
-                className={`transition-all duration-1000 transform ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-12"
-                }`}
-                style={{ transitionDelay: "900ms" }}
-              >
-                <div className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-6 border border-slate-700/40">
-                  <div className="flex items-center mb-3">
-                    {[...Array(testimonials[currentTestimonial].rating)].map(
-                      (_, i) => (
-                        <Star
-                          key={i}
-                          className="w-4 h-4 text-yellow-400 fill-current"
-                        />
-                      )
-                    )}
-                  </div>
-                  <p className="text-slate-300 mb-4 italic">
-                    "{testimonials[currentTestimonial].text}"
-                  </p>
-                  <div className="flex items-center">
-                    <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center text-white font-semibold text-sm mr-3">
-                      {testimonials[currentTestimonial].author.charAt(0)}
-                    </div>
-                    <div>
-                      <div className="text-white font-medium">
-                        {testimonials[currentTestimonial].author}
-                      </div>
-                      <div className="text-slate-400 text-sm">
-                        {testimonials[currentTestimonial].role}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
+              </div>
             </div>
           </div>
 
@@ -378,117 +288,14 @@ const HeroBanner = () => {
               style={{ transitionDelay: "300ms" }}
             >
               <div className="relative bg-slate-900/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/40 shadow-2xl">
-                {/* Wind Turbine Plant & Subsea Engineering Header */}
-                <div className="flex items-center mb-6">
-                  <div className="flex gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                  </div>
-                  <div className="flex-1 text-center">
-                    <span className="text-slate-400 text-sm">
-                      WIND_SUBSEA_OVERVIEW.dwg
-                    </span>
-                  </div>
-                </div>
-
-                {/* Wind Turbine & Subsea Schematic */}
-                <div className="bg-slate-800/80 rounded-lg p-6 font-mono text-sm">
-                  <div className="grid grid-cols-3 gap-4 mb-6">
-                    <div className="col-span-3 text-center">
-                      <div className="text-blue-400 font-bold text-lg mb-2">
-                        WIND TURBINE & SUBSEA PLANT
-                      </div>
-                      <div className="h-1 bg-gradient-to-r from-blue-400 via-green-400 to-yellow-400 rounded-full mb-4"></div>
-                    </div>
-
-                    {/* Wind Turbine */}
-                    <div className="text-center">
-                      <div className="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
-                        <Wind className="w-8 h-8 text-white" />
-                      </div>
-                      <div className="text-blue-400 text-xs">TURBINE</div>
-                      <div className="text-slate-400 text-xs">5 MW</div>
-                    </div>
-
-                    {/* Subsea Cable */}
-                    <div className="text-center">
-                      <div className="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
-                        <Cable className="w-8 h-8 text-white" />
-                      </div>
-                      <div className="text-cyan-400 text-xs">SUBSEA CABLE</div>
-                      <div className="text-slate-400 text-xs">66 kV</div>
-                    </div>
-
-                    {/* Offshore Substation */}
-                    <div className="text-center">
-                      <div className="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-yellow-400 to-blue-400 rounded-lg flex items-center justify-center">
-                        <Factory className="w-8 h-8 text-white" />
-                      </div>
-                      <div className="text-yellow-400 text-xs">SUBSTATION</div>
-                      <div className="text-slate-400 text-xs">220 kV</div>
-                    </div>
-                  </div>
-
-                  {/* Power Flow Animation */}
-                  <div className="mb-4">
-                    <div className="text-slate-300 text-xs mb-2">
-                      ENERGY TRANSMISSION STATUS:
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 bg-blue-400 rounded-full animate-pulse"></div>
-                      <div className="flex-1 h-1 bg-gradient-to-r from-blue-400 via-green-400 to-yellow-400 rounded-full relative overflow-hidden">
-                        <div
-                          className="absolute top-0 left-0 h-full w-4 bg-white/60 rounded-full"
-                          style={{
-                            transform: `translateX(${energyFlow * 4}px)`,
-                            transition: "transform 0.05s linear",
-                          }}
-                        />
-                      </div>
-                      <div
-                        className="w-4 h-4 bg-yellow-400 rounded-full animate-pulse"
-                        style={{ animationDelay: "0.5s" }}
-                      ></div>
-                    </div>
-                  </div>
-
-                  {/* System Status */}
-                  <div className="grid grid-cols-2 gap-4 text-xs">
-                    <div>
-                      <div className="text-blue-400 mb-1">
-                        ✓ TURBINE: ACTIVE
-                      </div>
-                      <div className="text-green-400 mb-1">
-                        ✓ SUBSEA LINK: STABLE
-                      </div>
-                      <div className="text-yellow-400">✓ OUTPUT: 4.8 MW</div>
-                    </div>
-                    <div>
-                      <div className="text-cyan-400 mb-1">
-                        ⚡ VOLTAGE: 66 kV
-                      </div>
-                      <div className="text-cyan-400 mb-1">⚡ CURRENT: 72 A</div>
-                      <div className="text-cyan-400">⚡ EFFICIENCY: 97.2%</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating Engineering Icons */}
-                <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-blue-400 to-green-400 rounded-xl flex items-center justify-center animate-pulse">
-                  <Fan className="w-8 h-8 text-white" />
-                </div>
-                <div
-                  className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center animate-pulse"
-                  style={{ animationDelay: "1s" }}
-                >
-                  <Fan className="w-6 h-6 text-white" />
-                </div>
-                <div
-                  className="absolute top-1/2 -right-2 w-10 h-10 bg-gradient-to-r from-yellow-400 to-blue-400 rounded-full flex items-center justify-center animate-pulse"
-                  style={{ animationDelay: "2s" }}
-                >
-                  <Recycle className="w-5 h-5 text-white" />
+                {/* GIF Container */}
+                <div className="bg-slate-800/80 rounded-lg p-4">
+                  <img
+                    key={`gif-${currentIndex}`}
+                    src={currentContent.gif}
+                    alt={currentContent.altText}
+                    className="w-full h-auto rounded-lg animate-fade-in"
+                  />
                 </div>
               </div>
             </div>
@@ -505,6 +312,23 @@ const HeroBanner = () => {
           transform: "translate(-50%, -50%)",
         }}
       />
+
+      <style jsx>{`
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fade-in {
+          animation: fade-in 0.6s ease-out forwards;
+        }
+      `}</style>
     </section>
   );
 };
