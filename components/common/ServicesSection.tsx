@@ -5,6 +5,16 @@ import { motion, AnimatePresence, easeInOut } from "framer-motion";
 
 export default function HoverCardsSection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsDesktop(window.innerWidth >= 1024);
+      const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
 
   const services = [
     {
@@ -207,7 +217,7 @@ export default function HoverCardsSection() {
             className="w-full lg:w-1/2 min-h-[50vh] lg:h-full cursor-pointer"
             onMouseEnter={() => setHoveredCard(index)}
             onMouseLeave={() => setHoveredCard(null)}
-            whileHover={{ scale: window.innerWidth >= 1024 ? 1.02 : 1 }}
+            whileHover={{ scale: isDesktop ? 1.02 : 1 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
             {/* Card Content */}
@@ -255,7 +265,7 @@ export default function HoverCardsSection() {
                 {/* Title */}
                 <motion.h3
                   className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-2 md:mb-3 lg:mb-4 leading-tight tracking-tight"
-                  whileHover={{ scale: window.innerWidth >= 1024 ? 1.05 : 1 }}
+                  whileHover={{ scale: isDesktop ? 1.05 : 1 }}
                   transition={{ duration: 0.2 }}
                   variants={titleVariants}
                   initial="hidden"

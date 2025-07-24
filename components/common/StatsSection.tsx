@@ -67,11 +67,15 @@ export default function StatsSection() {
       }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    if (typeof window !== "undefined") {
+      window.addEventListener("mousemove", handleMouseMove);
+    }
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("mousemove", handleMouseMove);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("mousemove", handleMouseMove);
+      }
     };
   }, []);
 
