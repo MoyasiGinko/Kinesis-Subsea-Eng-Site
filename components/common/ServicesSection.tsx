@@ -1,10 +1,20 @@
 "use client";
 import React, { useState } from "react";
 import { ArrowRight, Zap, Droplets } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, easeInOut } from "framer-motion";
 
 export default function HoverCardsSection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsDesktop(window.innerWidth >= 1024);
+      const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
 
   const services = [
     {
@@ -52,7 +62,7 @@ export default function HoverCardsSection() {
       pathLength: 1,
       opacity: 1,
       transition: {
-        pathLength: { duration: 2, ease: "easeInOut" },
+        pathLength: { duration: 2, ease: easeInOut },
         opacity: { duration: 0.5 },
       },
     },
@@ -61,23 +71,19 @@ export default function HoverCardsSection() {
   const imageRevealVariants = {
     hidden: (cardIndex: number) => ({
       clipPath:
-        cardIndex === 0
-          ? "circle(0% at 25% 50%)" // Reveal from left card center
-          : "circle(0% at 75% 50%)", // Reveal from right card center
+        cardIndex === 0 ? "circle(0% at 25% 50%)" : "circle(0% at 75% 50%)",
       scale: 1.1,
       opacity: 0.8,
     }),
     visible: (cardIndex: number) => ({
       clipPath:
-        cardIndex === 0
-          ? "circle(150% at 25% 50%)" // Expand from left card
-          : "circle(150% at 75% 50%)", // Expand from right card
+        cardIndex === 0 ? "circle(150% at 25% 50%)" : "circle(150% at 75% 50%)",
       scale: 1,
       opacity: 1,
       transition: {
-        clipPath: { duration: 1.4, ease: [0.25, 0.46, 0.45, 0.94] },
-        scale: { duration: 1.4, ease: "easeOut" },
-        opacity: { duration: 0.8, ease: "easeOut" },
+        clipPath: { duration: 1.4, ease: easeInOut },
+        scale: { duration: 1.4, ease: easeInOut },
+        opacity: { duration: 0.8, ease: easeInOut },
       },
     }),
   };
@@ -89,7 +95,7 @@ export default function HoverCardsSection() {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: easeInOut,
         delay: 0.1,
       },
     },
@@ -102,7 +108,7 @@ export default function HoverCardsSection() {
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut",
+        ease: easeInOut,
         delay: 0.2,
       },
     },
@@ -115,7 +121,7 @@ export default function HoverCardsSection() {
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut",
+        ease: easeInOut,
         delay: 0.3,
       },
     },
@@ -129,7 +135,7 @@ export default function HoverCardsSection() {
       transition: {
         delay: 0.4 + i * 0.08,
         duration: 0.4,
-        ease: "easeOut",
+        ease: easeInOut,
       },
     }),
   };
@@ -141,7 +147,7 @@ export default function HoverCardsSection() {
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut",
+        ease: easeInOut,
         delay: 0.4,
       },
     },
@@ -173,7 +179,6 @@ export default function HoverCardsSection() {
           <rect width="100%" height="100%" fill="url(#grid)" />
         </svg>
       </div>
-
       {/* Dynamic Background Images */}
       <AnimatePresence>
         {services.map(
@@ -204,7 +209,6 @@ export default function HoverCardsSection() {
             )
         )}
       </AnimatePresence>
-
       {/* Layout Container */}
       <div className="relative z-10 h-full flex flex-col lg:flex-row">
         {services.map((service, index) => (
@@ -213,7 +217,7 @@ export default function HoverCardsSection() {
             className="w-full lg:w-1/2 min-h-[50vh] lg:h-full cursor-pointer"
             onMouseEnter={() => setHoveredCard(index)}
             onMouseLeave={() => setHoveredCard(null)}
-            whileHover={{ scale: window.innerWidth >= 1024 ? 1.02 : 1 }}
+            whileHover={{ scale: isDesktop ? 1.02 : 1 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
             {/* Card Content */}
@@ -261,7 +265,7 @@ export default function HoverCardsSection() {
                 {/* Title */}
                 <motion.h3
                   className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-2 md:mb-3 lg:mb-4 leading-tight tracking-tight"
-                  whileHover={{ scale: window.innerWidth >= 1024 ? 1.05 : 1 }}
+                  whileHover={{ scale: isDesktop ? 1.05 : 1 }}
                   transition={{ duration: 0.2 }}
                   variants={titleVariants}
                   initial="hidden"
@@ -293,23 +297,26 @@ export default function HoverCardsSection() {
                 {/* Description */}
                 <motion.p
                   className="text-slate-300 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed font-light max-w-xs sm:max-w-sm lg:max-w-lg mx-auto mb-6 md:mb-8 lg:mb-10"
-                  animate={{
-                    color:
-                      hoveredCard === index
-                        ? "rgb(226, 232, 240)"
-                        : "rgb(148, 163, 184)",
-                  }}
-                  transition={{ duration: 0.3 }}
-                  variants={descriptionVariants}
-                  initial="hidden"
-                  animate="visible"
                   style={{
                     fontFamily:
                       "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
                     lineHeight: "1.6",
                   }}
+                  transition={{ duration: 0.3 }}
+                  variants={descriptionVariants}
+                  initial="hidden"
+                  animate="visible"
                 >
-                  {service.description}
+                  <span
+                    style={{
+                      color:
+                        hoveredCard === index
+                          ? "rgb(226, 232, 240)"
+                          : "rgb(148, 163, 184)",
+                    }}
+                  >
+                    {service.description}
+                  </span>
                 </motion.p>
 
                 {/* Features List - Shows on Hover */}

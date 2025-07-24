@@ -63,7 +63,9 @@ const HeroBanner = () => {
     }, 5000);
 
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      if (typeof window !== "undefined") {
+        setScrollY(window.scrollY);
+      }
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -76,21 +78,27 @@ const HeroBanner = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("mousemove", handleMouseMove);
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("mousemove", handleMouseMove);
+    }
 
     return () => {
       clearInterval(shuffleInterval);
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("mousemove", handleMouseMove);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("mousemove", handleMouseMove);
+      }
     };
   }, []);
 
   const scrollToNext = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: "smooth",
-    });
+    if (typeof window !== "undefined") {
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth",
+      });
+    }
   };
 
   const currentContent = contentVariations[currentIndex];
@@ -262,10 +270,12 @@ const HeroBanner = () => {
 
               {/* Content Indicator Dots */}
               <div className="flex items-center gap-2 justify-center lg:justify-start mb-4">
-                {contentVariations.map((_, index) => (
+                {contentVariations.map((variation, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
+                    title={variation.tagline}
+                    aria-label={variation.tagline}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       index === currentIndex
                         ? "bg-green-400 w-8"
