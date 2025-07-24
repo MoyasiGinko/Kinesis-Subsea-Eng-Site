@@ -154,7 +154,7 @@ export default function HoverCardsSection() {
   };
 
   return (
-    <section className="relative h-screen max-h-none lg:h-screen lg:max-h-[900px] overflow-hidden bg-transparent">
+    <section className="relative h-screen max-h-none lg:h-screen lg:max-h-[1200px] overflow-hidden bg-transparent">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 opacity-[0.03]">
         <svg className="w-full h-full">
@@ -224,17 +224,17 @@ export default function HoverCardsSection() {
             <div className="h-full flex flex-col justify-center items-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8 md:py-12 lg:py-16 relative">
               {/* Backdrop with subtle border */}
               <motion.div
-                className="absolute inset-2 sm:inset-3 lg:inset-4 rounded-xl lg:rounded-2xl backdrop-blur-sm border border-white/10"
-                style={{
-                  background:
-                    hoveredCard === index
-                      ? `linear-gradient(135deg, ${
-                          service.color.includes("amber")
-                            ? "rgba(245, 158, 11, 0.08)"
-                            : "rgba(16, 185, 129, 0.08)"
-                        } 0%, transparent 60%)`
-                      : "rgba(255, 255, 255, 0.03)",
-                }}
+                className="absolute inset-2 sm:inset-3 lg:inset-4 rounded-xl lg:rounded-2xl hover:backdrop-blur-sm "
+                // style={{
+                //   background:
+                //     hoveredCard === index
+                //       ? `linear-gradient(135deg, ${
+                //           service.color.includes("amber")
+                //             ? "rgba(245, 158, 11, 0.08)"
+                //             : "rgba(16, 185, 129, 0.08)"
+                //         } 0%, transparent 60%)`
+                //       : "rgba(255, 255, 255, 0.03)",
+                // }}
                 animate={{
                   borderColor:
                     hoveredCard === index
@@ -412,7 +412,7 @@ export default function HoverCardsSection() {
               </div>
 
               {/* Professional Corner Accents - Hidden on mobile */}
-              <motion.div
+              {/* <motion.div
                 className="absolute top-4 sm:top-6 lg:top-8 left-4 sm:left-6 lg:left-8 hidden sm:block"
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -430,7 +430,7 @@ export default function HoverCardsSection() {
               >
                 <div className="w-0.5 h-8 sm:h-12 lg:h-16 bg-gradient-to-t from-white/40 to-transparent ml-auto"></div>
                 <div className="w-8 sm:w-12 lg:w-16 h-0.5 bg-gradient-to-l from-white/40 to-transparent"></div>
-              </motion.div>
+              </motion.div> */}
 
               {/* Separator Line - Only on desktop horizontal layout */}
               {index === 0 && (
