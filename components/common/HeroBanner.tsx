@@ -120,93 +120,9 @@ const HeroBanner = () => {
           playsInline
         />
         {/* Optional: Overlay for better contrast */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/70 via-white/60 to-white/80 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-500/50 via-slate-600/40 to-slate-600/60 pointer-events-none" />
       </div>
 
-      {/* Background Effects */}
-      <div className="absolute inset-0">
-        {/* Circuit Board Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0 bg-repeat transition-all duration-1000"
-            style={{
-              backgroundImage: `
-                linear-gradient(rgba(34, 197, 94, 0.4) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(34, 197, 94, 0.4) 1px, transparent 1px),
-                linear-gradient(rgba(59, 130, 246, 0.2) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.2) 1px, transparent 1px)
-              `,
-              backgroundSize: "40px 40px, 40px 40px, 120px 120px, 120px 120px",
-              transform: `translateX(${mousePosition.x * 0.02}px) translateY(${
-                mousePosition.y * 0.02
-              }px) translateY(${scrollY * 0.3}px)`,
-            }}
-          />
-        </div>
-
-        {/* Power Lines */}
-        <div className="absolute inset-0 opacity-20">
-          <svg className="w-full h-full" viewBox="0 0 1200 800">
-            <defs>
-              <linearGradient
-                id="powerGradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%"
-              >
-                <stop offset="0%" stopColor="#22c55e" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.4" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M0,400 Q300,200 600,400 T1200,400"
-              stroke="url(#powerGradient)"
-              strokeWidth="2"
-              fill="none"
-              className="animate-pulse"
-            />
-            <path
-              d="M0,500 Q400,300 800,500 T1200,500"
-              stroke="url(#powerGradient)"
-              strokeWidth="1.5"
-              fill="none"
-              className="animate-pulse"
-              style={{ animationDelay: "1s" }}
-            />
-          </svg>
-        </div>
-
-        {/* Industrial Gradient Orbs */}
-        <div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-200/20 rounded-full blur-3xl transition-all duration-1000"
-          style={{
-            transform: `translateY(${mousePosition.y * 0.1}px) translateX(${
-              mousePosition.x * 0.1
-            }px) scale(${1 + mousePosition.x * 0.002})`,
-            opacity: 0.4 + mousePosition.x * 0.003,
-          }}
-        />
-        <div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-200/20 rounded-full blur-3xl transition-all duration-1000"
-          style={{
-            transform: `translateY(${mousePosition.y * -0.1}px) translateX(${
-              mousePosition.x * -0.1
-            }px) scale(${1 + mousePosition.y * 0.002})`,
-            opacity: 0.4 + mousePosition.y * 0.003,
-          }}
-        />
-        <div
-          className="absolute top-1/2 right-1/3 w-64 h-64 bg-yellow-200/15 rounded-full blur-3xl transition-all duration-1000"
-          style={{
-            transform: `translateY(${mousePosition.y * 0.05}px) translateX(${
-              mousePosition.x * 0.05
-            }px)`,
-            opacity: 0.3 + mousePosition.x * 0.002,
-          }}
-        />
-      </div>
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -224,8 +140,8 @@ const HeroBanner = () => {
                 key={`tagline-${currentIndex}`}
                 className="flex items-center gap-2 mb-6 justify-center lg:justify-start animate-fade-in"
               >
-                <IconComponent className="w-5 h-5 text-green-600" />
-                <span className="text-sm font-medium text-green-600 uppercase tracking-wider">
+                <IconComponent className="w-5 h-5 text-blue-600" />
+                <span className="text-sm font-medium text-white uppercase tracking-wider">
                   {currentContent.tagline}
                 </span>
               </div>
@@ -234,33 +150,33 @@ const HeroBanner = () => {
                 key={`title-${currentIndex}`}
                 className="text-5xl lg:text-7xl font-light mb-6 leading-tight animate-fade-in"
               >
-                <span className="block text-gray-900">
+                <span className="block text-white">
                   {currentContent.title.first}
                 </span>
-                <span className="block bg-gradient-to-r from-green-600 via-blue-600 to-yellow-600 bg-clip-text text-transparent font-medium">
+                <span className="block bg-gradient-to-r from-blue-600 via-blue-600 to-blue-700 bg-clip-text text-transparent font-medium">
                   {currentContent.title.highlight}
                 </span>
-                <span className="block text-gray-900">
+                <span className="block text-white">
                   {currentContent.title.last}
                 </span>
               </h1>
 
               <p
                 key={`description-${currentIndex}`}
-                className="text-xl lg:text-2xl text-gray-700 mb-8 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0 animate-fade-in"
+                className="text-xl lg:text-2xl text-gray-200 mb-8 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0 animate-fade-in"
               >
                 {currentContent.description}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start">
-                <button className="group relative inline-flex px-8 py-4 bg-gradient-to-r from-green-700 to-blue-700 rounded-lg font-semibold text-white transition-all duration-500 hover:from-green-600 hover:to-blue-600 hover:shadow-lg hover:shadow-green-600/25 hover:scale-105">
+                <button className="group relative inline-flex px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-700  font-semibold text-white transition-all duration-500 hover:from-blue-600 hover:to-blue-600 hover:shadow-lg hover:shadow-blue-600/25 hover:scale-105">
                   <span className="flex items-center gap-2">
                     Get Project Quote
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
                 </button>
 
-                <button className="group relative inline-flex px-8 py-4 bg-gray-200 border border-gray-300 rounded-lg font-semibold text-gray-900 transition-all duration-500 hover:bg-gray-300 hover:border-gray-400 hover:scale-105">
+                <button className="group relative inline-flex px-8 py-4 bg-gray-200 border border-gray-300  font-semibold text-gray-900 transition-all duration-500 hover:bg-gray-300 hover:border-gray-400 hover:scale-105">
                   <span className="flex items-center gap-2">
                     <Play className="w-5 h-5" />
                     View Services
@@ -278,7 +194,7 @@ const HeroBanner = () => {
                     aria-label={variation.tagline}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       index === currentIndex
-                        ? "bg-green-600 w-8"
+                        ? "bg-blue-600 w-8"
                         : "bg-gray-400 hover:bg-gray-500"
                     }`}
                   />
@@ -315,7 +231,7 @@ const HeroBanner = () => {
 
       {/* Mouse Follower */}
       <div
-        className="absolute w-60 h-60 bg-green-600/10 rounded-full blur-3xl pointer-events-none transition-all duration-700"
+        className="absolute w-60 h-60 bg-blue-600/10 rounded-full blur-3xl pointer-events-none transition-all duration-700"
         style={{
           left: `${mousePosition.x}%`,
           top: `${mousePosition.y}%`,
