@@ -235,7 +235,7 @@ export default function Navbar() {
             <img
               src="/logo-dark.svg"
               alt="Kinesis Subsea Engineering Logo"
-              className={`w-auto transition-all duration-500 ${isScrolled ? "h-[70px]" : "h-[76px]"}`}
+              className={`w-auto transition-all duration-500 ${isScrolled ? "h-[70px]" : "h-[76px] "}`}
             />
           </Link>
         </div>
