@@ -13,7 +13,7 @@ export default function Home() {
     <main className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-950 to-slate-900">
       <HeroBanner />
       <ThreeSectorLayout />
-      <AboutSection />
+      {/* <AboutSection /> */}
       <ServicesSection />
       {/* <StatsSection /> */}
       <RecentProjectsSection />

@@ -141,7 +141,7 @@ export default function AboutSection() {
               {services.map((service, index) => (
                 <button
                   key={service.id}
-                  className={`w-full text-left p-4 sm:p-6 rounded-xl transition-all duration-300 group relative overflow-hidden ${
+                  className={`w-full text-left p-4 sm:p-6 transition-all duration-300 group relative overflow-hidden ${
                     activeService === index
                       ? 'bg-white shadow-lg border border-gray-200/50'
                       : 'hover:bg-gray-50/50 border border-transparent'
@@ -161,7 +161,7 @@ export default function AboutSection() {
                     <div 
                       className="absolute inset-0 opacity-5"
                       style={{
-                        background: `linear-gradient(135deg, ${service.primaryColor}, ${service.secondaryColor})`,
+                        background: `linear-gradient(135deg, ${service.primaryColor}, ${currentService.secondaryColor})`,
                       }}
                     />
                   )}
@@ -172,7 +172,7 @@ export default function AboutSection() {
                       activeService === index ? 'transform scale-110' : ''
                     }`}>
                       <div 
-                        className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                        className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center transition-all duration-300 ${
                           activeService === index ? 'shadow-md' : ''
                         }`}
                         style={{
@@ -215,7 +215,7 @@ export default function AboutSection() {
               <div className="mb-8">
                 <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
                   <div 
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg"
+                    className="w-16 h-16 flex items-center justify-center shadow-lg"
                     style={{
                       background: `linear-gradient(135deg, ${currentService.primaryColor}, ${currentService.secondaryColor})`,
                     }}
@@ -229,7 +229,7 @@ export default function AboutSection() {
                       {currentService.title}
                     </h1>
                     <div 
-                      className="inline-block px-4 py-2 rounded-full text-sm font-semibold"
+                      className="inline-block px-4 py-2 text-sm font-semibold"
                       style={{
                         backgroundColor: `${currentService.primaryColor}15`,
                         color: currentService.primaryColor,
@@ -252,14 +252,14 @@ export default function AboutSection() {
                   {currentService.features.map((feature, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 p-4 bg-white/60 backdrop-blur-sm rounded-lg border border-gray-200/30 transition-all duration-300 hover:shadow-md hover:bg-white/80"
+                      className="flex items-center gap-3 p-4 bg-white/60 backdrop-blur-sm border border-gray-200/30 transition-all duration-300 hover:shadow-md hover:bg-white/80"
                       style={{
                         animationDelay: `${index * 0.1}s`,
                         animation: 'slideInUp 0.6s ease-out forwards',
                       }}
                     >
                       <div 
-                        className="w-2 h-2 rounded-full flex-shrink-0"
+                        className="w-2 h-2 flex-shrink-0"
                         style={{ backgroundColor: currentService.primaryColor }}
                       />
                       <span className="font-medium text-gray-700 text-sm">
@@ -273,7 +273,7 @@ export default function AboutSection() {
               {/* CTA Section */}
               <div className="flex flex-col sm:flex-row items-center gap-4">
                 <button 
-                  className="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-white transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center justify-center gap-3"
+                  className="w-full sm:w-auto px-8 py-4 font-semibold text-white transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center justify-center gap-3"
                   style={{
                     background: `linear-gradient(135deg, ${currentService.primaryColor}, ${currentService.secondaryColor})`,
                   }}
@@ -282,7 +282,7 @@ export default function AboutSection() {
                   <ArrowRight className="w-5 h-5" />
                 </button>
                 
-                <button className="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-gray-700 bg-white/60 backdrop-blur-sm border border-gray-200/50 transition-all duration-300 hover:bg-white/80 hover:shadow-md">
+                <button className="w-full sm:w-auto px-8 py-4 font-semibold text-gray-700 bg-white/60 backdrop-blur-sm border border-gray-200/50 transition-all duration-300 hover:bg-white/80 hover:shadow-md">
                   Contact Us
                 </button>
               </div>
