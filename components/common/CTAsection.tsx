@@ -22,7 +22,7 @@ const CTASection: React.FC = () => {
           {/* Buttons - Right Side */}
           <div className="lg:w-1/2 flex flex-col sm:flex-row gap-4 justify-end">
             <button 
-              className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 whitespace-nowrap"
+              className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white font-semibold transition-all duration-300 transform hover:scale-105 whitespace-nowrap"
             >
               <div className="flex items-center space-x-3">
                 <span>Get Started Today</span>
@@ -31,7 +31,7 @@ const CTASection: React.FC = () => {
             </button>
 
             <button 
-              className="px-8 py-4 border-2 border-white/30 hover:border-white text-white font-semibold rounded-lg transition-all duration-300 hover:bg-white/10 whitespace-nowrap"
+              className="px-8 py-4 border-2 border-white/30 hover:border-white text-white font-semibold transition-all duration-300 hover:bg-white/10 whitespace-nowrap"
             >
               <div className="flex items-center space-x-3">
                 <span>View Our Portfolio</span>
