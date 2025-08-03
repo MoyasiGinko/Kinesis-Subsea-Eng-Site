@@ -192,10 +192,10 @@ export default function Navbar() {
   return (
     <header
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 mx-auto max-w-7xl rounded-xl mt-1 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-xl  shadow-xl  shadow-gray-300/20"
-          : "bg-transparent backdrop-blur-none "
+          ? "bg-white/95 backdrop-blur-xl shadow-lg shadow-gray-300/20"
+          : "bg-transparent backdrop-blur-none"
       }`}
     >
       {/* Top Info Bar */}
@@ -229,30 +229,30 @@ export default function Navbar() {
       </div> */}
 
       {/* Main Navigation */}
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
+      <div className="flex items-center justify-between px-4 lg:px-10 py-4">
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center space-x-2">
             <img
               src="/logo-dark.svg"
               alt="Kinesis Subsea Engineering Logo"
-              className={` w-auto ${isScrolled ? "h-10" : "h-12 md:h-16"}`}
+              className={`w-auto transition-all duration-500 ${isScrolled ? "h-12" : "h-16"}`}
             />
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-1">
+        <nav className="hidden lg:flex items-center space-x-2">
           {menuItems.map((item, index) => (
             <div key={index} className="relative group">
               {item.submenu ? (
                 <>
                   <button
-                    className={`flex items-center gap-1 px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-gray-200 hover:text-cyan-600 ${
+                    className={`flex items-center gap-1 px-5 py-3 rounded-lg font-medium transition-all duration-300 ${
                       openMenuIndex === index
-                        ? "bg-gray-200 text-cyan-600"
-                        : "text-gray-700"
-                    } ${isScrolled ? "text-sm" : "text-md "}`}
+                        ? "bg-cyan-50 text-cyan-700"
+                        : "text-gray-800 hover:bg-cyan-50 hover:text-cyan-700"
+                    }`}
                     onClick={() => toggleMenu(index)}
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={() => handleMouseLeave(index)}
@@ -268,7 +268,7 @@ export default function Navbar() {
                   {/* Dropdown Menu */}
                   {openMenuIndex === index && (
                     <div
-                      className="absolute top-full left-0 mt-2 w-80 bg-white/95 backdrop-blur-xl border border-gray-300 rounded-xl shadow-2xl py-2 z-50"
+                      className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 rounded-xl shadow-xl py-3 z-50"
                       onMouseEnter={() => handleMouseEnter(index)}
                       onMouseLeave={() => handleMouseLeave(index)}
                     >
@@ -276,20 +276,20 @@ export default function Navbar() {
                         <Link
                           key={subindex}
                           href={subitem.href}
-                          className="group/item px-4 py-3 hover:bg-gray-200 transition-colors duration-200 cursor-pointer block"
+                          className="group/item px-5 py-3.5 hover:bg-cyan-50 transition-colors duration-200 cursor-pointer block"
                         >
                           <div className="flex items-center justify-between">
                             <div>
-                              <div className="text-gray-900 font-medium text-sm group-hover/item:text-cyan-600 transition-colors duration-200">
+                              <div className="text-gray-900 font-medium group-hover/item:text-cyan-700 transition-colors duration-200">
                                 {subitem.title}
                               </div>
                               {subitem.description && (
-                                <div className="text-gray-500 text-xs mt-1">
+                                <div className="text-gray-500 text-sm mt-1">
                                   {subitem.description}
                                 </div>
                               )}
                             </div>
-                            <ArrowRight className="w-4 h-4 text-gray-400 group-hover/item:text-cyan-600 group-hover/item:translate-x-1 transition-all duration-200" />
+                            <ArrowRight className="w-4 h-4 text-gray-400 group-hover/item:text-cyan-700 group-hover/item:translate-x-1 transition-all duration-200" />
                           </div>
                         </Link>
                       ))}
@@ -299,11 +299,11 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-1 px-4 py-2 rounded-lg  font-medium transition-all duration-300 hover:bg-gray-200 hover:text-cyan-600 ${
+                  className={`flex items-center gap-1 px-5 py-3 rounded-lg font-medium transition-all duration-300 ${
                     openMenuIndex === index
-                      ? "bg-gray-200 text-cyan-600"
-                      : "text-gray-700"
-                  }  ${isScrolled ? "text-sm" : "text-md "}`}
+                      ? "bg-cyan-50 text-cyan-700"
+                      : "text-gray-800 hover:bg-cyan-50 hover:text-cyan-700"
+                  }`}
                 >
                   {item.title}
                 </Link>
@@ -315,10 +315,10 @@ export default function Navbar() {
         {/* Search and Mobile Menu */}
         <div className="flex items-center space-x-4">
           {/* Search */}
-          <div className="relative">
+          <div className="relative hidden md:block">
             <div
               className={`flex items-center transition-all duration-300 ${
-                searchFocused ? "w-64" : "w-48"
+                searchFocused ? "w-64" : "w-60"
               }`}
             >
               <input
@@ -333,14 +333,14 @@ export default function Navbar() {
                     handleSearchSubmit(e);
                   }
                 }}
-                className="w-full px-4 py-2 pr-10 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400/50 transition-all duration-300"
+                className="w-full px-4 py-2.5 pr-10 bg-gray-100 border border-gray-200 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all duration-300"
               />
               <button
                 onClick={(e) => {
                   e.preventDefault();
                   handleSearchSubmit(e as any);
                 }}
-                className="absolute right-2 p-1 text-slate-400 hover:text-cyan-400 transition-colors duration-200"
+                className="absolute right-2 p-1 text-gray-500 hover:text-cyan-700 transition-colors duration-200"
                 aria-label="Search"
               >
                 <Search className="w-4 h-4" />
@@ -350,7 +350,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-lg bg-gray-200 text-gray-900 hover:bg-gray-300 transition-all duration-300"
+            className="lg:hidden p-2 rounded-lg bg-cyan-50 text-gray-900 hover:bg-cyan-100 transition-all duration-300"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -369,17 +369,17 @@ export default function Navbar() {
           mobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="bg-white/95 backdrop-blur-xl border-t border-gray-300">
+        <nav className="bg-white border-t border-gray-200">
           {menuItems.map((item, index) => (
-            <div key={index} className="border-b border-slate-700/30">
+            <div key={index} className="border-b border-gray-100">
               {item.submenu ? (
                 <>
                   <button
-                    className="w-full flex items-center justify-between px-4 py-4 text-white hover:bg-slate-800/50 transition-colors duration-200"
+                    className="w-full flex items-center justify-between px-4 py-4 text-gray-900 hover:bg-cyan-50 transition-colors duration-200"
                     onClick={() => toggleMenu(index)}
                     aria-label={`${item.title} submenu`}
                   >
-                    <span className="font-medium">{item.title}</span>
+                    <span className="font-medium text-lg">{item.title}</span>
                     <ChevronDown
                       className={`w-4 h-4 transition-transform duration-300 ${
                         openMenuIndex === index ? "rotate-180" : ""
@@ -393,18 +393,18 @@ export default function Navbar() {
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <div className="bg-slate-800/30">
+                    <div className="bg-gray-50">
                       {item.submenu.map((subitem, subindex) => (
                         <Link
                           key={subindex}
                           href={subitem.href}
-                          className="px-6 py-3 text-gray-700 hover:bg-gray-200 hover:text-gray-900 transition-colors duration-200 cursor-pointer block"
+                          className="px-6 py-3.5 text-gray-700 hover:bg-cyan-50 transition-colors duration-200 cursor-pointer block"
                         >
-                          <div className="font-medium text-sm">
+                          <div className="font-medium">
                             {subitem.title}
                           </div>
                           {subitem.description && (
-                            <div className="text-xs text-slate-400 mt-1">
+                            <div className="text-gray-500 text-sm mt-1">
                               {subitem.description}
                             </div>
                           )}
@@ -416,9 +416,9 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={item.href}
-                  className="w-full flex items-center justify-between px-4 py-4 text-gray-900 hover:bg-gray-200 transition-colors duration-200"
+                  className="w-full flex items-center justify-between px-4 py-4 text-gray-900 hover:bg-cyan-50 transition-colors duration-200"
                 >
-                  <span className="font-medium">{item.title}</span>
+                  <span className="font-medium text-lg">{item.title}</span>
                 </Link>
               )}
             </div>
