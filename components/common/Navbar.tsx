@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
-  Search,
   Menu,
   X,
   ChevronDown,
@@ -192,7 +191,7 @@ export default function Navbar() {
   return (
     <header
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 mx-auto ${
         isScrolled
           ? "bg-white/95 backdrop-blur-xl shadow-lg shadow-gray-300/20"
           : "bg-transparent backdrop-blur-none"
@@ -229,7 +228,7 @@ export default function Navbar() {
       </div> */}
 
       {/* Main Navigation */}
-      <div className="flex items-center justify-between px-4 lg:px-10 py-4">
+      <div className="flex items-center justify-between px-6 lg:px-12 py-4">
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center space-x-2">
@@ -312,41 +311,16 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Search and Mobile Menu */}
+        {/* Get in Touch Button and Grid Icon */}
         <div className="flex items-center space-x-4">
-          {/* Search */}
-          <div className="relative hidden md:block">
-            <div
-              className={`flex items-center transition-all duration-300 ${
-                searchFocused ? "w-64" : "w-60"
-              }`}
-            >
-              <input
-                type="text"
-                placeholder="Search..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                onFocus={() => setSearchFocused(true)}
-                onBlur={() => setSearchFocused(false)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    handleSearchSubmit(e);
-                  }
-                }}
-                className="w-full px-4 py-2.5 pr-10 bg-gray-100 border border-gray-200 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all duration-300"
-              />
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleSearchSubmit(e as any);
-                }}
-                className="absolute right-2 p-1 text-gray-500 hover:text-cyan-700 transition-colors duration-200"
-                aria-label="Search"
-              >
-                <Search className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
+          <button className="hidden md:block bg-cyan-600 hover:bg-cyan-700 text-white font-medium py-2.5 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5">
+            Get in Touch
+          </button>
+          <button className="p-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
+          </button>
 
           {/* Mobile Menu Button */}
           <button
