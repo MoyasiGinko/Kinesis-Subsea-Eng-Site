@@ -1,440 +1,403 @@
-"use client";
-import React, { useState } from "react";
-import { ArrowRight, Zap, Droplets } from "lucide-react";
-import { motion, AnimatePresence, easeInOut } from "framer-motion";
+"use client"
+import React, { useState, useRef, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, ArrowRight, Wrench, Package, Search, Building2, Cog, Shield } from 'lucide-react';
 
-export default function HoverCardsSection() {
+interface ServiceCard {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  features: string[];
+  image: string;
+  icon: React.ReactNode;
+  buttonText: string;
+  theme: 'primary' | 'secondary' | 'accent';
+  stats: {
+    projects: string;
+    experience: string;
+  };
+}
+
+const HorizontalServiceCards: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsDesktop(window.innerWidth >= 1024);
-      const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
+  const services: ServiceCard[] = [
+    {
+      id: 'mechanical',
+      title: 'MECHANICAL',
+      subtitle: 'ENGINEERING',
+      description: 'Advanced mechanical engineering solutions for complex industrial applications with precision manufacturing and system optimization.',
+      features: ['Structural Design', 'System Integration', 'Performance Analysis', 'Quality Assurance'],
+      image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&h=400&fit=crop',
+      icon: <Wrench className="w-6 h-6" />,
+      buttonText: 'EXPLORE SERVICES',
+      theme: 'primary',
+      stats: {
+        projects: '250+',
+        experience: '15 Years'
+      }
+    },
+    {
+      id: 'product-design',
+      title: 'PRODUCT DESIGN',
+      subtitle: '& MANUFACTURING',
+      description: 'End-to-end product development from conceptual design through manufacturing with cutting-edge technology.',
+      features: ['Product Development', 'Prototype Testing', 'Manufacturing Setup', 'Quality Control'],
+      image: 'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=600&h=400&fit=crop',
+      icon: <Package className="w-6 h-6" />,
+      buttonText: 'VIEW PORTFOLIO',
+      theme: 'secondary',
+      stats: {
+        projects: '180+',
+        experience: '12 Years'
+      }
+    },
+    {
+      id: 'research',
+      title: 'RESEARCH &',
+      subtitle: 'DEVELOPMENT',
+      description: 'Innovative R&D solutions driving technological advancement and breakthrough discoveries for next-generation applications.',
+      features: ['Technology Innovation', 'Process Optimization', 'Material Science', 'Testing & Validation'],
+      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop',
+      icon: <Search className="w-6 h-6" />,
+      buttonText: 'DISCOVER MORE',
+      theme: 'accent',
+      stats: {
+        projects: '95+',
+        experience: '10 Years'
+      }
+    },
+    {
+      id: 'consulting',
+      title: 'ENGINEERING',
+      subtitle: 'CONSULTING',
+      description: 'Strategic engineering consultancy providing expert guidance for complex projects and operational excellence.',
+      features: ['Strategic Planning', 'Technical Analysis', 'Risk Assessment', 'Project Management'],
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop',
+      icon: <Building2 className="w-6 h-6" />,
+      buttonText: 'GET CONSULTATION',
+      theme: 'primary',
+      stats: {
+        projects: '320+',
+        experience: '18 Years'
+      }
+    },
+    {
+      id: 'automation',
+      title: 'INDUSTRIAL',
+      subtitle: 'AUTOMATION',
+      description: 'Smart automation solutions for industrial processes with AI-driven control systems and IoT integration.',
+      features: ['Process Automation', 'Control Systems', 'IoT Integration', 'Predictive Maintenance'],
+      image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=400&fit=crop',
+      icon: <Cog className="w-6 h-6" />,
+      buttonText: 'LEARN MORE',
+      theme: 'secondary',
+      stats: {
+        projects: '140+',
+        experience: '8 Years'
+      }
     }
-  }, []);
-
-  const services = [
-    {
-      title: "Oil & Gas",
-      subtitle: "Upstream • Midstream • Downstream",
-      description:
-        "Comprehensive engineering solutions for oil & gas operations with proven expertise and cutting-edge technology.",
-      icon: <Droplets className="w-8 h-8 md:w-10 lg:w-12 xl:w-14" />,
-      features: [
-        "Offshore Platform Design",
-        "Pipeline Engineering",
-        "Refinery Optimization",
-        "Safety & Environmental",
-        "Asset Integrity Management",
-        "Process Engineering",
-      ],
-      color: "from-amber-600 to-orange-500",
-      backgroundImage: "/service2.gif",
-    },
-    {
-      title: "Renewables",
-      subtitle: "Wind • Solar • Green Hydrogen",
-      description:
-        "Leading the transition to sustainable energy with innovative solutions for a cleaner, greener future.",
-      icon: <Zap className="w-8 h-8 md:w-10 lg:w-12 xl:w-14" />,
-      features: [
-        "Wind Turbine Engineering",
-        "Solar Farm Development",
-        "Energy Storage Systems",
-        "Grid Integration Solutions",
-        "Green Hydrogen Production",
-        "Sustainability Consulting",
-      ],
-      color: "from-emerald-600 to-teal-500",
-      backgroundImage: "/service1.gif",
-    },
   ];
 
-  const drawVariants = {
-    hidden: {
-      pathLength: 0,
-      opacity: 0,
-    },
-    visible: {
-      pathLength: 1,
-      opacity: 1,
-      transition: {
-        pathLength: { duration: 2, ease: easeInOut },
-        opacity: { duration: 0.5 },
-      },
-    },
+  const nextSlide = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => (prev + 1) % services.length);
+    setTimeout(() => setIsTransitioning(false), 800);
   };
 
-  const imageRevealVariants = {
-    hidden: (cardIndex: number) => ({
-      clipPath:
-        cardIndex === 0 ? "circle(0% at 25% 50%)" : "circle(0% at 75% 50%)",
-      scale: 1.1,
-      opacity: 0.8,
-    }),
-    visible: (cardIndex: number) => ({
-      clipPath:
-        cardIndex === 0 ? "circle(150% at 25% 50%)" : "circle(150% at 75% 50%)",
-      scale: 1,
-      opacity: 1,
-      transition: {
-        clipPath: { duration: 1.4, ease: easeInOut },
-        scale: { duration: 1.4, ease: easeInOut },
-        opacity: { duration: 0.8, ease: easeInOut },
-      },
-    }),
+  const prevSlide = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => (prev - 1 + services.length) % services.length);
+    setTimeout(() => setIsTransitioning(false), 800);
   };
 
-  const titleVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: easeInOut,
-        delay: 0.1,
-      },
-    },
+  const goToSlide = (index: number) => {
+    if (isTransitioning || index === currentIndex) return;
+    setIsTransitioning(true);
+    setCurrentIndex(index);
+    setTimeout(() => setIsTransitioning(false), 800);
   };
 
-  const subtitleVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: easeInOut,
-        delay: 0.2,
-      },
-    },
-  };
+  // Auto-slide functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (hoveredCard === null) {
+        nextSlide();
+      }
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [hoveredCard]);
 
-  const descriptionVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: easeInOut,
-        delay: 0.3,
-      },
-    },
-  };
-
-  const featureItemVariants = {
-    hidden: { x: -20, opacity: 0 },
-    visible: (i: number) => ({
-      x: 0,
-      opacity: 1,
-      transition: {
-        delay: 0.4 + i * 0.08,
-        duration: 0.4,
-        ease: easeInOut,
-      },
-    }),
-  };
-
-  const buttonVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: easeInOut,
-        delay: 0.4,
-      },
-    },
+  const getThemeStyles = (theme: string, isActive: boolean = false) => {
+    switch (theme) {
+      case 'primary':
+        return {
+          bg: 'bg-slate-900',
+          text: 'text-white',
+          accent: 'bg-blue-500',
+          button: 'bg-blue-600 hover:bg-blue-700 text-white',
+          border: 'border-slate-700'
+        };
+      case 'secondary':
+        return {
+          bg: 'bg-white',
+          text: 'text-slate-900',
+          accent: 'bg-slate-900',
+          button: 'bg-slate-900 hover:bg-slate-700 text-white',
+          border: 'border-slate-200'
+        };
+      case 'accent':
+        return {
+          bg: 'bg-slate-800',
+          text: 'text-white',
+          accent: 'bg-emerald-500',
+          button: 'bg-emerald-600 hover:bg-emerald-700 text-white',
+          border: 'border-slate-600'
+        };
+      default:
+        return {
+          bg: 'bg-slate-900',
+          text: 'text-white',
+          accent: 'bg-blue-500',
+          button: 'bg-blue-600 hover:bg-blue-700 text-white',
+          border: 'border-slate-700'
+        };
+    }
   };
 
   return (
-    <section className="relative h-screen max-h-none  lg:max-h-[900px] overflow-hidden bg-white">
-      {/* Animated Background Grid */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <svg className="w-full h-full">
-          <defs>
-            <pattern
-              id="grid"
-              width="60"
-              height="60"
-              patternUnits="userSpaceOnUse"
-            >
-              <motion.path
-                d="M 60 0 L 0 0 0 60"
-                fill="none"
-                stroke="rgb(59, 130, 246)"
-                strokeWidth="1"
-                variants={drawVariants}
-                initial="hidden"
-                animate="visible"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      </div>
-      {/* Dynamic Background Images */}
-      <AnimatePresence>
-        {services.map(
-          (service, index) =>
-            hoveredCard === index && (
-              <motion.div
-                key={index}
-                className="absolute inset-0"
-                custom={index}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                variants={imageRevealVariants}
+    <div className="bg-gradient-to-b from-slate-100 to-white py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Header Section */}
+        <div className="mb-16">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-1 bg-gradient-to-r from-slate-600 to-slate-800 mr-4"></div>
+                <span className="text-slate-600 font-bold tracking-widest uppercase text-sm flex items-center gap-2">
+                  <Shield className="w-4 h-4" />
+                  Our Services
+                </span>
+              </div>
+              
+              <h2 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+                ENGINEERING
+                <span className="block text-slate-600">
+                  SOLUTIONS
+                </span>
+              </h2>
+              
+              <p className="text-slate-600 text-xl leading-relaxed max-w-2xl">
+                Comprehensive engineering services delivering innovation, 
+                precision, and reliability across diverse industrial sectors.
+              </p>
+            </div>
+
+            {/* Navigation Controls */}
+            <div className="hidden lg:flex items-center space-x-4">
+              <button
+                onClick={prevSlide}
+                disabled={isTransitioning}
+                className="p-4 bg-white border-2 border-slate-300 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 disabled:opacity-50"
               >
-                <div
-                  className="absolute inset-0 bg-contain bg-center bg-no-repeat"
-                  style={{
-                    backgroundImage: `url('${service.backgroundImage}')`,
-                  }}
-                />
-                <motion.div
-                  className="absolute inset-0 bg-white/75"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3, duration: 0.5 }}
-                />
-              </motion.div>
-            )
-        )}
-      </AnimatePresence>
-      {/* Layout Container */}
-      <div className="relative z-10 h-full flex flex-col lg:flex-row">
-        {services.map((service, index) => (
-          <motion.div
-            key={index}
-            className="w-full lg:w-1/2 min-h-[50vh] lg:h-full cursor-pointer"
-            onMouseEnter={() => setHoveredCard(index)}
-            onMouseLeave={() => setHoveredCard(null)}
-            whileHover={{ scale: isDesktop ? 1.02 : 1 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              
+              <button
+                onClick={nextSlide}
+                disabled={isTransitioning}
+                className="p-4 bg-white border-2 border-slate-300 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 disabled:opacity-50"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+
+              <div className="ml-6 text-center">
+                <div className="text-2xl font-bold text-slate-900">
+                  {String(currentIndex + 1).padStart(2, '0')}
+                </div>
+                <div className="text-slate-500 text-xs uppercase tracking-wide">
+                  of {String(services.length).padStart(2, '0')}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Services Carousel */}
+        <div className="relative overflow-hidden">
+          <div 
+            ref={containerRef}
+            className="flex transition-transform duration-800 ease-out gap-8"
+            style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
           >
-            {/* Card Content */}
-            <div className="h-full flex flex-col justify-center items-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8 md:py-12 lg:py-16 relative">
-              {/* Backdrop with subtle border */}
-              <motion.div
-                className="absolute inset-2 sm:inset-3 lg:inset-4 rounded-xl lg:rounded-2xl hover:backdrop-blur-sm border border-gray-300"
-                animate={{
-                  borderColor:
-                    hoveredCard === index
-                      ? "rgba(0, 0, 0, 0.2)"
-                      : "rgba(0, 0, 0, 0.1)",
-                }}
-                transition={{ duration: 0.3 }}
-              />
-
-              {/* Content Container */}
-              <div className="relative z-10 w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl text-center">
-                {/* Icon */}
-                <motion.div
-                  className="mb-4 md:mb-6 lg:mb-8"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                  variants={titleVariants}
-                  initial="hidden"
-                  animate="visible"
+            {services.map((service, index) => {
+              const styles = getThemeStyles(service.theme);
+              const isActive = index === currentIndex;
+              const isVisible = index >= currentIndex && index < currentIndex + 3;
+              
+              return (
+                <div 
+                  key={service.id} 
+                  className={`flex-shrink-0 w-full md:w-1/2 lg:w-1/3 transition-all duration-800 ${
+                    isActive ? 'scale-105 z-10' : 'scale-100'
+                  }`}
+                  onMouseEnter={() => setHoveredCard(index)}
+                  onMouseLeave={() => setHoveredCard(null)}
                 >
-                  <div
-                    className={`inline-flex p-3 sm:p-4 lg:p-5 xl:p-6 rounded-xl lg:rounded-2xl bg-gradient-to-r ${service.color} text-white shadow-2xl`}
-                  >
-                    {service.icon}
-                  </div>
-                </motion.div>
-
-                {/* Title */}
-                <motion.h3
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-2 md:mb-3 lg:mb-4 leading-tight tracking-tight"
-                  whileHover={{ scale: isDesktop ? 1.05 : 1 }}
-                  transition={{ duration: 0.2 }}
-                  variants={titleVariants}
-                  initial="hidden"
-                  animate="visible"
-                  style={{
-                    fontFamily:
-                      "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
-                    fontWeight: 700,
-                    letterSpacing: "-0.025em",
-                  }}
-                >
-                  {service.title}
-                </motion.h3>
-
-                {/* Subtitle */}
-                <motion.div
-                  className="mb-4 md:mb-5 lg:mb-6"
-                  variants={subtitleVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  <span
-                    className={`inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r ${service.color} bg-opacity-20 text-xs sm:text-sm md:text-base font-medium text-gray-900/90 tracking-wide uppercase`}
-                  >
-                    {service.subtitle}
-                  </span>
-                </motion.div>
-
-                {/* Description */}
-                <motion.p
-                  className="text-gray-700 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed font-light max-w-xs sm:max-w-sm lg:max-w-lg mx-auto mb-6 md:mb-8 lg:mb-10"
-                  style={{
-                    fontFamily:
-                      "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
-                    lineHeight: "1.6",
-                  }}
-                  transition={{ duration: 0.3 }}
-                  variants={descriptionVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  <span
-                    style={{
-                      color:
-                        hoveredCard === index
-                          ? "rgb(30, 41, 59)"
-                          : "rgb(75, 85, 99)",
-                    }}
-                  >
-                    {service.description}
-                  </span>
-                </motion.p>
-
-                {/* Features List - Shows on Hover */}
-                <AnimatePresence>
-                  {hoveredCard === index && (
-                    <motion.div
-                      className="mb-6 md:mb-8 lg:mb-10"
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.5, ease: "easeInOut" }}
-                    >
-                      <div className="bg-white/90 backdrop-blur-md rounded-lg lg:rounded-xl p-4 sm:p-6 lg:p-8 border border-gray-300 shadow-2xl">
-                        <motion.h4
-                          className="text-gray-900 text-base sm:text-lg lg:text-xl font-semibold mb-3 sm:mb-4 lg:mb-6 text-left"
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.2, duration: 0.4 }}
-                          style={{
-                            fontFamily:
-                              "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
-                            fontWeight: 600,
-                          }}
-                        >
-                          Our Expertise
-                        </motion.h4>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
-                          {service.features.map((feature, featureIndex) => (
-                            <motion.div
-                              key={featureIndex}
-                              className="flex items-start gap-2 sm:gap-3 text-gray-700"
-                              custom={featureIndex}
-                              variants={featureItemVariants}
-                              initial="hidden"
-                              animate="visible"
-                            >
-                              <motion.div
-                                className={`flex-shrink-0 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gradient-to-r ${service.color} mt-2 sm:mt-2.5`}
-                                whileHover={{ scale: 1.5 }}
-                                transition={{ duration: 0.2 }}
-                              />
-                              <span
-                                className="font-medium leading-relaxed text-xs sm:text-sm lg:text-base"
-                                style={{
-                                  fontFamily:
-                                    "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
-                                  fontWeight: 500,
-                                }}
-                              >
-                                {feature}
-                              </span>
-                            </motion.div>
-                          ))}
+                  <div className={`h-full ${styles.bg} ${styles.border} border-2 overflow-hidden group cursor-pointer transform transition-all duration-500 hover:scale-102`}>
+                    {/* Image Section */}
+                    <div className="relative h-56 overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                      
+                      {/* Icon Badge */}
+                      <div className="absolute top-4 left-4">
+                        <div className={`w-12 h-12 ${styles.accent} flex items-center justify-center text-white`}>
+                          {service.icon}
                         </div>
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
 
-                {/* Read More Button */}
-                <motion.button
-                  className={`inline-flex items-center gap-2 sm:gap-3 lg:gap-4 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 bg-gradient-to-r ${service.color} text-white rounded-lg lg:rounded-xl font-semibold text-sm sm:text-base lg:text-lg shadow-2xl border border-black/20 relative overflow-hidden group`}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.2 }}
-                  variants={buttonVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-white/10"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.6 }}
-                  />
-                  <span
-                    className="relative z-10"
-                    style={{
-                      fontFamily:
-                        "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
-                      fontWeight: 600,
-                    }}
-                  >
-                    Learn More
-                  </span>
-                  <motion.div
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 relative z-10" />
-                  </motion.div>
-                </motion.button>
-              </div>
+                      {/* Service Number */}
+                      <div className="absolute top-4 right-4">
+                        <div className="bg-white/90 backdrop-blur-sm px-3 py-1 text-slate-900 font-bold text-sm">
+                          {String(index + 1).padStart(2, '0')}
+                        </div>
+                      </div>
+                    </div>
 
-              {/* Professional Corner Accents - Hidden on mobile */}
-              {/* <motion.div
-                className="absolute top-4 sm:top-6 lg:top-8 left-4 sm:left-6 lg:left-8 hidden sm:block"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-              >
-                <div className="w-8 sm:w-12 lg:w-16 h-0.5 bg-gradient-to-r from-black/40 to-transparent"></div>
-                <div className="w-0.5 h-8 sm:h-12 lg:h-16 bg-gradient-to-b from-black/40 to-transparent"></div>
-              </motion.div>
+                    {/* Content Section */}
+                    <div className="p-6 space-y-6">
+                      {/* Title */}
+                      <div>
+                        <div className={`w-8 h-0.5 ${styles.accent} mb-3`}></div>
+                        <h3 className={`text-xl font-bold ${styles.text} leading-tight`}>
+                          {service.title}
+                        </h3>
+                        <h4 className={`text-lg font-light ${styles.text} opacity-80`}>
+                          {service.subtitle}
+                        </h4>
+                      </div>
 
-              <motion.div
-                className="absolute bottom-4 sm:bottom-6 lg:bottom-8 right-4 sm:right-6 lg:right-8 hidden sm:block"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-              >
-                <div className="w-0.5 h-8 sm:h-12 lg:h-16 bg-gradient-to-t from-black/40 to-transparent ml-auto"></div>
-                <div className="w-8 sm:w-12 lg:w-16 h-0.5 bg-gradient-to-l from-black/40 to-transparent"></div>
-              </motion.div> */}
+                      {/* Description */}
+                      <p className={`${styles.text} opacity-80 text-sm leading-relaxed`}>
+                        {service.description}
+                      </p>
 
-              {/* Separator Line - Only on desktop horizontal layout */}
-              {index === 0 && (
-                <motion.div
-                  className="absolute right-0 top-1/2 transform -translate-y-1/2 w-px h-3/4 bg-gradient-to-b from-transparent via-black/20 to-transparent hidden lg:block"
-                  initial={{ scaleY: 0 }}
-                  animate={{ scaleY: 1 }}
-                  transition={{ delay: 0.8, duration: 0.8 }}
-                />
-              )}
+                      {/* Features */}
+                      <div className="space-y-2">
+                        {service.features.slice(0, 3).map((feature, idx) => (
+                          <div key={idx} className="flex items-center gap-2">
+                            <div className={`w-1 h-1 ${styles.accent}`}></div>
+                            <span className={`${styles.text} text-xs opacity-70`}>
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Stats */}
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="text-center">
+                          <div className={`text-lg font-bold ${styles.text}`}>
+                            {service.stats.projects}
+                          </div>
+                          <div className={`text-xs ${styles.text} opacity-60 uppercase tracking-wide`}>
+                            Projects
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <div className={`text-lg font-bold ${styles.text}`}>
+                            {service.stats.experience}
+                          </div>
+                          <div className={`text-xs ${styles.text} opacity-60 uppercase tracking-wide`}>
+                            Experience
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Button */}
+                      <button className={`w-full px-4 py-3 ${styles.button} font-semibold text-sm tracking-wide transition-all duration-300 flex items-center justify-center gap-2 group/btn`}>
+                        <span>{service.buttonText}</span>
+                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                      </button>
+                    </div>
+
+                    {/* Hover Progress Bar */}
+                    <div className="h-1 bg-black/20">
+                      <div 
+                        className={`h-full ${styles.accent} transition-all duration-500 ${
+                          hoveredCard === index ? 'w-full' : 'w-0'
+                        }`}
+                      />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="flex lg:hidden items-center justify-center space-x-4 mt-8">
+          <button
+            onClick={prevSlide}
+            disabled={isTransitioning}
+            className="p-3 bg-white border-2 border-slate-300 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 disabled:opacity-50"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          
+          <div className="text-center">
+            <div className="text-xl font-bold text-slate-900">
+              {String(currentIndex + 1).padStart(2, '0')} / {String(services.length).padStart(2, '0')}
             </div>
-          </motion.div>
-        ))}
+          </div>
+          
+          <button
+            onClick={nextSlide}
+            disabled={isTransitioning}
+            className="p-3 bg-white border-2 border-slate-300 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 disabled:opacity-50"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Slide Indicators */}
+        <div className="flex justify-center space-x-2 mt-8">
+          {services.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`transition-all duration-300 ${
+                index === currentIndex 
+                  ? 'w-8 h-1 bg-slate-900' 
+                  : 'w-3 h-1 bg-slate-300 hover:bg-slate-500'
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center mt-16">
+          <p className="text-slate-600 mb-6 text-lg">
+            Ready to discuss your project requirements?
+          </p>
+          <button className="px-8 py-4 border-2 border-slate-900 text-slate-900 font-semibold hover:bg-slate-900 hover:text-white transition-all duration-300 transform hover:scale-105">
+            SCHEDULE CONSULTATION
+          </button>
+        </div>
       </div>
-    </section>
+    </div>
   );
-}
+};
+
+export default HorizontalServiceCards;

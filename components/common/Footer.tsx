@@ -72,7 +72,7 @@ export default function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="relative bg-gradient-to-b from-white via-gray-100 to-white text-gray-900 py-16 overflow-hidden"
+      className="relative min-h-[60vh] bg-gradient-to-b from-white via-gray-100 to-white text-gray-900 py-16 overflow-hidden"
     >
       {/* Background Effects */}
       <div className="absolute inset-0">
