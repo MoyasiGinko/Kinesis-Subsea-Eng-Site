@@ -228,14 +228,14 @@ export default function Navbar() {
       </div> */}
 
       {/* Main Navigation */}
-      <div className="flex items-center justify-between px-6 lg:px-12 py-4">
+      <div className="flex items-center justify-between px-6 lg:px-12 py-2">
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center space-x-2">
             <img
               src="/logo-dark.svg"
               alt="Kinesis Subsea Engineering Logo"
-              className={`w-auto transition-all duration-500 ${isScrolled ? "h-12" : "h-16"}`}
+              className={`w-auto transition-all duration-500 ${isScrolled ? "h-[70px]" : "h-[76px]"}`}
             />
           </Link>
         </div>
@@ -249,8 +249,8 @@ export default function Navbar() {
                   <button
                     className={`flex items-center gap-1 px-5 py-3 rounded-lg font-medium transition-all duration-300 ${
                       openMenuIndex === index
-                        ? "bg-cyan-50 text-cyan-700"
-                        : "text-gray-800 hover:bg-cyan-50 hover:text-cyan-700"
+                        ? "bg-blue-50 text-blue-700"
+                        : "text-gray-800 hover:bg-blue-50 hover:text-blue-700"
                     }`}
                     onClick={() => toggleMenu(index)}
                     onMouseEnter={() => handleMouseEnter(index)}
@@ -275,11 +275,11 @@ export default function Navbar() {
                         <Link
                           key={subindex}
                           href={subitem.href}
-                          className="group/item px-5 py-3.5 hover:bg-cyan-50 transition-colors duration-200 cursor-pointer block"
+                          className="group/item px-5 py-3.5 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
                         >
                           <div className="flex items-center justify-between">
                             <div>
-                              <div className="text-gray-900 font-medium group-hover/item:text-cyan-700 transition-colors duration-200">
+                              <div className="text-gray-900 font-medium group-hover/item:text-blue-700 transition-colors duration-200">
                                 {subitem.title}
                               </div>
                               {subitem.description && (
@@ -288,7 +288,7 @@ export default function Navbar() {
                                 </div>
                               )}
                             </div>
-                            <ArrowRight className="w-4 h-4 text-gray-400 group-hover/item:text-cyan-700 group-hover/item:translate-x-1 transition-all duration-200" />
+                            <ArrowRight className="w-4 h-4 text-gray-400 group-hover/item:text-blue-700 group-hover/item:translate-x-1 transition-all duration-200" />
                           </div>
                         </Link>
                       ))}
@@ -300,8 +300,8 @@ export default function Navbar() {
                   href={item.href}
                   className={`flex items-center gap-1 px-5 py-3 rounded-lg font-medium transition-all duration-300 ${
                     openMenuIndex === index
-                      ? "bg-cyan-50 text-cyan-700"
-                      : "text-gray-800 hover:bg-cyan-50 hover:text-cyan-700"
+                      ? "bg-blue-50 text-blue-700"
+                      : "text-gray-800 hover:bg-blue-50 hover:text-blue-700"
                   }`}
                 >
                   {item.title}
@@ -313,8 +313,11 @@ export default function Navbar() {
 
         {/* Get in Touch Button and Grid Icon */}
         <div className="flex items-center space-x-4">
-          <button className="hidden md:block bg-cyan-600 hover:bg-cyan-700 text-white font-medium py-2.5 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5">
-            Get in Touch
+          <button className="hidden md:block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3.5 px-6 transition-all duration-300 transform hover:-translate-y-0.5">
+             <span className="flex items-center gap-1">
+                Get in Touch
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
           </button>
           <button className="p-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -324,7 +327,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-lg bg-cyan-50 text-gray-900 hover:bg-cyan-100 transition-all duration-300"
+            className="lg:hidden p-2 rounded-lg bg-blue-50 text-gray-900 hover:bg-blue-100 transition-all duration-300"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -349,7 +352,7 @@ export default function Navbar() {
               {item.submenu ? (
                 <>
                   <button
-                    className="w-full flex items-center justify-between px-4 py-4 text-gray-900 hover:bg-cyan-50 transition-colors duration-200"
+                    className="w-full flex items-center justify-between px-4 py-4 text-gray-900 hover:bg-blue-50 transition-colors duration-200"
                     onClick={() => toggleMenu(index)}
                     aria-label={`${item.title} submenu`}
                   >
@@ -372,7 +375,7 @@ export default function Navbar() {
                         <Link
                           key={subindex}
                           href={subitem.href}
-                          className="px-6 py-3.5 text-gray-700 hover:bg-cyan-50 transition-colors duration-200 cursor-pointer block"
+                          className="px-6 py-3.5 text-gray-700 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
                         >
                           <div className="font-medium">
                             {subitem.title}
@@ -390,7 +393,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={item.href}
-                  className="w-full flex items-center justify-between px-4 py-4 text-gray-900 hover:bg-cyan-50 transition-colors duration-200"
+                  className="w-full flex items-center justify-between px-4 py-4 text-gray-900 hover:bg-blue-50 transition-colors duration-200"
                 >
                   <span className="font-medium text-lg">{item.title}</span>
                 </Link>

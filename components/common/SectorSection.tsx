@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from 'react';
 import { ChevronRight, Zap, Settings, Brain } from 'lucide-react';
 
@@ -50,23 +52,6 @@ const ThreeSectorLayout: React.FC = () => {
       bgImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop',
       hoverImage: 'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=800&h=600&fit=crop'
     },
-    {
-      id: 'digital-intelligence',
-      title: 'INTEGRATION OF DIGITAL INTELLIGENCE',
-      subtitle: 'Smart Technology Solutions',
-      description: 'Provides full lifecycle services for equipment digitalization and intelligence',
-      icon: <Brain className="w-8 h-8" />,
-      keyPoints: [
-        'AI-Powered Analytics',
-        'IoT Device Integration',
-        'Digital Twin Technology',
-        'Predictive Maintenance',
-        'Cloud-Based Solutions',
-        'Machine Learning Algorithms'
-      ],
-      bgImage: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=600&fit=crop',
-      hoverImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop'
-    }
   ];
 
   return (
