@@ -222,7 +222,7 @@ const HeroBanner = () => {
               </div>
 
               {/* Content Indicators */}
-              <div className="flex items-center gap-4 animate-slide-in" style={{ animationDelay: '800ms' }}>
+              {/* <div className="flex items-center gap-4 animate-slide-in" style={{ animationDelay: '800ms' }}>
                 <div className="flex gap-2">
                   {contentVariations.map((_, index) => (
                     <button
@@ -239,7 +239,7 @@ const HeroBanner = () => {
                 <div className="text-sm text-gray-400 font-mono">
                   {String(currentIndex + 1).padStart(2, '0')} / {String(contentVariations.length).padStart(2, '0')}
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
