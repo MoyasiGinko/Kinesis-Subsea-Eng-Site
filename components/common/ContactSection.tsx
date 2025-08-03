@@ -31,114 +31,78 @@ export default function ContactSection() {
       </div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-12 h-0.5 bg-gradient-to-r from-blue-500 to-teal-500"></div>
-            <span className="text-sm font-semibold text-gray-600 uppercase tracking-widest">CONTACT US</span>
-            <div className="w-12 h-0.5 bg-gradient-to-l from-blue-500 to-teal-500"></div>
-          </div>
-
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Let's Start a <span className="text-blue-600">Conversation</span>
-          </h2>
-
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Reach out to us for inquiries, partnerships, or to discuss how we can help transform your business with our innovative solutions.
-          </p>
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left Column - Contact Info */}
+          {/* Left Column - Header and Contact Info */}
           <div>
-            <div className="mb-12">
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">Get In Touch</h3>
-              
-              <div className="space-y-10">
-                {/* Email Card */}
-                <div className="group relative">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                  <div className="relative flex items-start gap-6">
-                    <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                      <Mail className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-grow">
-                      <h4 className="text-xl font-semibold text-gray-900 mb-2">Email</h4>
-                      <p className="text-gray-600 mb-3">We'll respond within 24 hours</p>
-                      <a href="mailto:contact@kinesissubsea.com" className="inline-flex items-center text-blue-600 font-medium group-hover:translate-x-1 transition-transform duration-300">
-                        contact@kinesissubsea.com
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Phone Card */}
-                <div className="group relative">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                  <div className="relative flex items-start gap-6">
-                    <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-grow">
-                      <h4 className="text-xl font-semibold text-gray-900 mb-2">Phone</h4>
-                      <p className="text-gray-600 mb-3">Mon-Fri from 8am to 5pm</p>
-                      <a href="tel:+442012345678" className="inline-flex items-center text-blue-600 font-medium group-hover:translate-x-1 transition-transform duration-300">
-                        +44 (0) 20 1234 5678
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Address Card */}
-                <div className="group relative">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                  <div className="relative flex items-start gap-6">
-                    <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center">
-                      <MapPin className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-grow">
-                      <h4 className="text-xl font-semibold text-gray-900 mb-2">Office</h4>
-                      <p className="text-gray-600 mb-3">Visit our headquarters</p>
-                      <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-600 font-medium group-hover:translate-x-1 transition-transform duration-300">
-                        123 Ocean Drive, Aberdeen, UK
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
+            {/* Section Header */}
+            <div className="mb-16">
+              <div className="inline-flex items-center gap-3 mb-6">
+                <div className="w-12 h-0.5 bg-gradient-to-r from-blue-500 to-teal-500"></div>
+                <span className="text-sm font-semibold text-gray-600 uppercase tracking-widest">CONTACT US</span>
+                <div className="w-12 h-0.5 bg-gradient-to-l from-blue-500 to-teal-500"></div>
               </div>
+
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Let's Start a <span className="text-blue-600">Conversation</span>
+              </h2>
+
+              <p className="text-xl text-gray-600 max-w-2xl">
+                Reach out to us for inquiries, partnerships, or to discuss how we can help transform your business with our innovative solutions.
+              </p>
             </div>
 
-            {/* Motto Section */}
-            <div className="pt-8 border-t border-gray-200">
-              <div className="relative">
-                <div className="absolute top-0 left-0 w-16 h-0.5 bg-gradient-to-r from-blue-500 to-transparent"></div>
-                <div className="absolute bottom-0 right-0 w-16 h-0.5 bg-gradient-to-l from-teal-500 to-transparent"></div>
-                <blockquote className="text-2xl font-bold text-gray-900 italic text-center py-6">
-                  "Engineering solutions for a sustainable tomorrow"
-                </blockquote>
-                <cite className="block text-center text-gray-600 mt-4">
-                  — Our Commitment to Innovation
-                </cite>
+            {/* Contact Info */}
+            <div className="space-y-12">
+              {/* Email */}
+              <div className="flex items-start gap-8">
+                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-grow">
+                  <h4 className="text-2xl font-semibold text-gray-900 mb-3">Email</h4>
+                  <p className="text-gray-600 mb-4 text-lg">We'll respond within 24 hours</p>
+                  <a href="mailto:contact@kinesissubsea.com" className="inline-flex items-center text-blue-600 font-medium text-lg hover:translate-x-1 transition-transform duration-300">
+                    contact@kinesissubsea.com
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </a>
+                </div>
               </div>
-              
-              {/* Unique Visual Element */}
-              <div className="mt-10 grid grid-cols-4 gap-3">
-                {[...Array(12)].map((_, i) => (
-                  <div 
-                    key={i} 
-                    className="h-2 bg-gradient-to-r from-blue-500 to-teal-500 opacity-20"
-                    style={{ animationDelay: `${i * 0.1}s` }}
-                  ></div>
-                ))}
+
+              {/* Phone */}
+              <div className="flex items-start gap-8">
+                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center">
+                  <Phone className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-grow">
+                  <h4 className="text-2xl font-semibold text-gray-900 mb-3">Phone</h4>
+                  <p className="text-gray-600 mb-4 text-lg">Mon-Fri from 8am to 5pm</p>
+                  <a href="tel:+442012345678" className="inline-flex items-center text-blue-600 font-medium text-lg hover:translate-x-1 transition-transform duration-300">
+                    +44 (0) 20 1234 5678
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Address */}
+              <div className="flex items-start gap-8">
+                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-grow">
+                  <h4 className="text-2xl font-semibold text-gray-900 mb-3">Office</h4>
+                  <p className="text-gray-600 mb-4 text-lg">Visit our headquarters</p>
+                  <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-600 font-medium text-lg hover:translate-x-1 transition-transform duration-300">
+                    123 Ocean Drive, Aberdeen, UK
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column - Contact Form */}
-          <div className="relative">
+          {/* Right Column - Contact Form and Motto */}
+          <div className="space-y-10">
+            {/* Contact Form */}
             <div className="relative bg-white border border-gray-300 p-10">
               {/* Decorative Elements */}
               <div className="absolute top-0 left-0 w-24 h-24">
@@ -214,6 +178,17 @@ export default function ContactSection() {
                   </div>
                 </button>
               </form>
+            </div>
+
+            {/* Motto Section */}
+            <div className="relative bg-gradient-to-br from-blue-50 to-teal-50 border border-gray-300 p-8">
+              <div className="absolute top-0 left-0 w-16 h-0.5 bg-gradient-to-r from-blue-500 to-transparent"></div>
+              <blockquote className="text-xl font-bold text-gray-900 italic">
+                "Engineering solutions for a sustainable tomorrow"
+              </blockquote>
+              <cite className="block text-gray-600 mt-4">
+                — Our Commitment to Innovation
+              </cite>
             </div>
           </div>
         </div>

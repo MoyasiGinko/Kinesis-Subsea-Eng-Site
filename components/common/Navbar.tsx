@@ -85,7 +85,7 @@ const menuItems = [
   },
   {
     title: "News",
-    href: "/sustainability",
+    href: "/news",
     // submenu: [
     //   {
     //     title: "People",
