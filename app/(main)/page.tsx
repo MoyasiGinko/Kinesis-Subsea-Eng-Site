@@ -5,6 +5,7 @@ import NewsSection from "@/components/common/NewsSection";
 import ContactSection from "@/components/common/ContactSection";
 import ThreeSectorLayout from "@/components/common/SectorSection";
 import ServicesSection from "@/components/common/ServicesSection";
+import RecentProjectsSection from "@/components/common/RecentProjects";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <AboutSection />
       <ServicesSection />
       {/* <StatsSection /> */}
+      <RecentProjectsSection />
       <NewsSection />
       <ContactSection />
     </main>
