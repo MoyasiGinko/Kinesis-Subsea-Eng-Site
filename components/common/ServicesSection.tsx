@@ -1,67 +1,99 @@
 "use client"
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, ArrowRight, Building2, Hammer, FileText } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, ArrowRight, Wrench, Package, Search } from 'lucide-react';
 
-interface ServiceData {
+interface ServiceCard {
   id: string;
   title: string;
+  subtitle: string;
   description: string;
   image: string;
-  number: string;
   icon: React.ReactNode;
+  buttonText: string;
+  theme: 'dark' | 'light';
 }
 
-const ServicesSection: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+const HorizontalServiceCards: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const services: ServiceData[] = [
+  const services: ServiceCard[] = [
     {
-      id: 'architecture',
-      title: 'Architecture Services',
-      description: 'Consectetur project contracting involves various elements, including comprehensive design solutions and planning.',
-      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400&h=300&fit=crop',
-      number: '01',
-      icon: <Building2 className="w-6 h-6" />
+      id: 'mechanical',
+      title: 'MECHANICAL',
+      subtitle: 'CONSTRUCTIONS',
+      description: 'We serve our clients top level of trusted advisor for their business & marketing progress.',
+      image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=250&fit=crop',
+      icon: <Wrench className="w-8 h-8" />,
+      buttonText: 'VIEW MORE',
+      theme: 'dark'
     },
     {
-      id: 'civil-engineering',
-      title: 'Civil Engineering',
-      description: 'Project contracting involves various elements, including the selection of materials, structural analysis, and implementation.',
-      image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&h=300&fit=crop',
-      number: '02',
-      icon: <Hammer className="w-6 h-6" />
+      id: 'product-design',
+      title: 'PRODUCT DESIGN &',
+      subtitle: 'MANUFACTURE',
+      description: 'We serve our clients top level of trusted advisor for their business & marketing progress.',
+      image: 'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=400&h=250&fit=crop',
+      icon: <Package className="w-8 h-8" />,
+      buttonText: 'VIEW MORE',
+      theme: 'light'
     },
     {
-      id: 'pre-construction',
-      title: 'Pre-construction',
-      description: 'Consectetur project contracting involves various elements, including feasibility studies and detailed planning phases.',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop',
-      number: '03',
-      icon: <FileText className="w-6 h-6" />
+      id: 'research',
+      title: 'RESEARCH AND',
+      subtitle: 'MANUFACTURE',
+      description: 'We serve our clients top level of trusted advisor for their business & marketing progress.',
+      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop',
+      icon: <Search className="w-8 h-8" />,
+      buttonText: 'VIEW MORE',
+      theme: 'light'
     },
     {
-      id: 'project-management',
-      title: 'Project Management',
-      description: 'Comprehensive project oversight involving coordination, timeline management, and quality assurance throughout the process.',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop',
-      number: '04',
-      icon: <Building2 className="w-6 h-6" />
+      id: 'consulting',
+      title: 'BUSINESS',
+      subtitle: 'CONSULTING',
+      description: 'We serve our clients top level of trusted advisor for their business & marketing progress.',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop',
+      icon: <Wrench className="w-8 h-8" />,
+      buttonText: 'VIEW MORE',
+      theme: 'dark'
     }
   ];
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % Math.max(1, services.length - 2));
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => (prev + 1) % services.length);
+    setTimeout(() => setIsTransitioning(false), 500);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + Math.max(1, services.length - 2)) % Math.max(1, services.length - 2));
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => (prev - 1 + services.length) % services.length);
+    setTimeout(() => setIsTransitioning(false), 500);
   };
 
-  const visibleServices = services.slice(currentSlide, currentSlide + 3);
+  const goToSlide = (index: number) => {
+    if (isTransitioning || index === currentIndex) return;
+    setIsTransitioning(true);
+    setCurrentIndex(index);
+    setTimeout(() => setIsTransitioning(false), 500);
+  };
+
+  // Auto-slide functionality (optional)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+    <div className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
+        {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Content */}
           <div className="space-y-8">
@@ -75,106 +107,125 @@ const ServicesSection: React.FC = () => {
             </div>
             
             <p className="text-gray-600 text-lg leading-relaxed">
-              Engines prime movers and exhaust gas turbochargers.
+              We serve our clients with top level trusted advisory services for their business and operational excellence.
             </p>
 
             {/* Navigation Controls */}
             <div className="flex items-center space-x-4">
               <button
                 onClick={prevSlide}
-                className="p-3 rounded-full border border-gray-300 hover:border-blue-600 hover:bg-blue-50 transition-all duration-300 group"
-                disabled={currentSlide === 0}
+                disabled={isTransitioning}
+                className="p-3 rounded-full border border-gray-300 hover:border-blue-600 hover:bg-blue-50 transition-all duration-300 group disabled:opacity-50"
               >
-                <ChevronLeft className={`w-5 h-5 transition-colors duration-300 ${
-                  currentSlide === 0 ? 'text-gray-400' : 'text-gray-600 group-hover:text-blue-600'
-                }`} />
+                <ChevronLeft className="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors duration-300" />
               </button>
               
               <button
                 onClick={nextSlide}
-                className="p-3 rounded-full border border-gray-300 hover:border-blue-600 hover:bg-blue-50 transition-all duration-300 group"
-                disabled={currentSlide >= services.length - 3}
+                disabled={isTransitioning}
+                className="p-3 rounded-full border border-gray-300 hover:border-blue-600 hover:bg-blue-50 transition-all duration-300 group disabled:opacity-50"
               >
-                <ChevronRight className={`w-5 h-5 transition-colors duration-300 ${
-                  currentSlide >= services.length - 3 ? 'text-gray-400' : 'text-gray-600 group-hover:text-blue-600'
-                }`} />
+                <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors duration-300" />
               </button>
             </div>
 
             {/* Slide Indicators */}
             <div className="flex space-x-2">
-              {Array.from({ length: Math.max(1, services.length - 2) }, (_, index) => (
+              {services.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentSlide ? 'bg-blue-600 w-8' : 'bg-gray-300'
+                  onClick={() => goToSlide(index)}
+                  className={`transition-all duration-300 rounded-full ${
+                    index === currentIndex 
+                      ? 'w-8 h-2 bg-blue-600' 
+                      : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
                   }`}
                 />
               ))}
             </div>
+
+            {/* Service Counter */}
+            <div className="text-gray-500 text-sm">
+              {String(currentIndex + 1).padStart(2, '0')} / {String(services.length).padStart(2, '0')}
+            </div>
           </div>
 
-          {/* Right Content - Service Cards */}
-          <div className="space-y-6">
-            {visibleServices.map((service, index) => (
-              <div
-                key={service.id}
-                className={`group bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-500 overflow-hidden ${
-                  index === 0 ? 'ring-2 ring-blue-100' : ''
-                }`}
-              >
-                <div className="flex flex-col sm:flex-row">
-                  {/* Image */}
-                  <div className="relative w-full sm:w-48 h-48 sm:h-32 overflow-hidden">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-transparent" />
-                    
-                    {/* Icon Overlay */}
-                    <div className="absolute top-4 left-4 p-2 bg-white/90 backdrop-blur-sm rounded-lg">
-                      {service.icon}
+          {/* Right Content - Cards Container */}
+          <div className="relative overflow-hidden">
+            <div 
+              ref={containerRef}
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {services.map((service, index) => (
+                <div key={service.id} className="w-full flex-shrink-0">
+                  <div className={`relative rounded-t-3xl overflow-hidden shadow-2xl transform transition-all duration-500 ${
+                    index === currentIndex ? 'scale-100 opacity-100' : 'scale-95 opacity-90'
+                  }`}>
+                    {/* Image Section */}
+                    <div className="relative h-48 sm:h-56 overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="flex-1 p-6 flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-start justify-between mb-3">
-                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
-                          {service.title}
-                        </h3>
-                        <div className={`text-2xl font-bold transition-colors duration-300 ${
-                          index === 0 ? 'text-blue-600' : 'text-gray-300'
-                        }`}>
-                          {service.number}
+                    {/* Content Section */}
+                    <div className={`relative ${
+                      service.theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
+                    }`}>
+                      {/* Curved Top Border */}
+                      <div className={`absolute top-0 left-0 right-0 h-6 ${
+                        service.theme === 'dark' ? 'bg-gray-900' : 'bg-white'
+                      }`} style={{
+                        clipPath: 'ellipse(70% 100% at 50% 0%)'
+                      }} />
+                      
+                      <div className="relative pt-10 pb-6 px-6 sm:px-8">
+                        <div className="flex items-start justify-between">
+                          <div className="flex-1">
+                            {/* Red accent line */}
+                            <div className="w-8 h-0.5 bg-red-600 mb-3" />
+                            
+                            <h3 className="text-lg sm:text-xl font-bold mb-1 leading-tight">
+                              {service.title}
+                            </h3>
+                            <h4 className="text-lg sm:text-xl font-bold mb-4 leading-tight">
+                              {service.subtitle}
+                            </h4>
+                            
+                            <p className={`text-sm leading-relaxed mb-6 ${
+                              service.theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                            }`}>
+                              {service.description}
+                            </p>
+
+                            {/* Button */}
+                            <button className={`group flex items-center space-x-2 px-6 py-3 rounded-none font-bold text-xs tracking-wider transition-all duration-300 ${
+                              service.theme === 'dark' 
+                                ? 'bg-red-600 hover:bg-red-700 text-white' 
+                                : 'bg-gray-200 hover:bg-gray-300 text-gray-900 border border-gray-300 hover:border-gray-400'
+                            }`}>
+                              <span>{service.buttonText}</span>
+                              <ArrowRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" />
+                            </button>
+                          </div>
+
+                          {/* Icon */}
+                          <div className={`p-3 rounded-lg ml-4 ${
+                            service.theme === 'dark' ? 'text-red-400' : 'text-gray-600'
+                          }`}>
+                            {service.icon}
+                          </div>
                         </div>
                       </div>
-                      
-                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                        {service.description}
-                      </p>
                     </div>
-
-                    {/* View Details Button */}
-                    <button className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium text-sm transition-all duration-300 group/btn">
-                      <span>View Details</span>
-                      <div className="p-1 bg-blue-600 text-white rounded transition-all duration-300 group-hover/btn:bg-blue-700">
-                        <ArrowRight className="w-3 h-3" />
-                      </div>
-                    </button>
                   </div>
                 </div>
-
-                {/* Number Line Indicator */}
-                {index === 0 && (
-                  <div className="h-1 bg-gradient-to-r from-blue-600 to-blue-400" />
-                )}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -182,4 +233,4 @@ const ServicesSection: React.FC = () => {
   );
 };
 
-export default ServicesSection;
+export default HorizontalServiceCards;
