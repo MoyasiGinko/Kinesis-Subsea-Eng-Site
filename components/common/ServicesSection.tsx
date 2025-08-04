@@ -480,26 +480,31 @@ const HorizontalServiceCards: React.FC = () => {
                         }}
                       >
                         {/* Title */}
-                        <div>
-                          <div
-                            className={`w-8 h-0.5 ${
-                              isActive ? "bg-orange-500" : styles.accent
-                            } mb-3 transition-colors duration-300`}
-                          ></div>
-                          <h3
-                            className={`text-xl font-bold leading-tight transition-colors duration-300 ${
-                              isActive ? "text-white" : styles.text
-                            }`}
-                          >
-                            {service.title}
-                          </h3>
-                          <h4
-                            className={`text-lg font-light opacity-80 transition-colors duration-300 ${
-                              isActive ? "text-orange-400" : styles.text
-                            }`}
-                          >
-                            {service.subtitle}
-                          </h4>
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <div
+                              className={`w-8 h-0.5 ${
+                                isActive ? "bg-orange-500" : styles.accent
+                              } mb-3 transition-colors duration-300`}
+                            ></div>
+                            <h3
+                              className={`text-xl font-bold leading-tight transition-colors duration-300 ${
+                                isActive ? "text-white" : styles.text
+                              }`}
+                            >
+                              {service.title}
+                            </h3>
+                            <h4
+                              className={`text-lg font-light opacity-80 transition-colors duration-300 ${
+                                isActive ? "text-orange-400" : styles.text
+                              }`}
+                            >
+                              {service.subtitle}
+                            </h4>
+                          </div>
+                          <div className="ml-4 flex-shrink-0">
+                            {service.icon}
+                          </div>
                         </div>
 
                         {/* Description */}
