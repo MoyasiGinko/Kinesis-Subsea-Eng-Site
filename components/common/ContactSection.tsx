@@ -218,10 +218,10 @@ export default function ContactSection() {
             {/* Motto Section */}
             <div className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 border border-[#FC5220] p-8">
               <div className="absolute top-0 left-0 w-16 h-0.5 bg-gradient-to-r from-[#FC5220] to-transparent"></div>
-              <blockquote className="text-xl font-bold text-[#FC5220] italic">
+              <blockquote className="text-xl font-bold text-white italic">
                 "Engineering solutions for a sustainable tomorrow"
               </blockquote>
-              <cite className="block text-[#fff] mt-4">
+              <cite className="block text-white/70 mt-4">
                 — Our Commitment to Innovation
               </cite>
             </div>

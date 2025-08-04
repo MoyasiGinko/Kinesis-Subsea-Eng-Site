@@ -63,10 +63,10 @@ export default function NewsSection() {
         <div className="mb-16">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">
+              <h2 className="text-4xl lg:text-5xl font-bold text-[#FC5220] mb-4">
                 Latest News
               </h2>
-              <p className="text-[#FC5220] text-lg font-medium">
+              <p className="text-black text-lg font-medium">
                 Stay updated with our recent developments
               </p>
             </div>
@@ -83,7 +83,15 @@ export default function NewsSection() {
           {newsItems.map((item, index) => (
             <article
               key={item.id}
-              className={`group cursor-pointer transition-all duration-700  border-2 shadow-lg "border-blue-600/10 bg-[#FC5220] hover:border-[#000000] hover:bg-white`}
+              className={`group cursor-pointer transition-all duration-700  border-2 shadow-lg ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              } ${
+                hoveredCard === index
+                  ? "border-[#FC5220] bg-white"
+                  : "border-blue-600/10 bg-white"
+              } hover:border-[#FC5220] hover:bg-white`}
               style={{
                 transitionDelay: `${index * 200}ms`,
               }}
@@ -121,7 +129,7 @@ export default function NewsSection() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-white leading-tight group-hover:text-[#FC5220] transition-colors duration-300">
+                <h3 className="text-xl font-bold text-black leading-tight group-hover:text-[#FC5220] transition-colors duration-300">
                   {item.title}
                 </h3>
 

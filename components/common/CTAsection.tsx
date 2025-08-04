@@ -9,11 +9,11 @@ const CTASection: React.FC = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           {/* Text Content - Left Side */}
           <div className="lg:w-1/2 text-left">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#ff6e2a] mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Ready to Start Your Next Project?
             </h2>
 
-            <p className="text-xl text-blue-100 max-w-2xl">
+            <p className="text-xl text-white/70 max-w-2xl">
               Transform your vision into reality with our expert team. We
               deliver innovative solutions that drive success and exceed
               expectations.

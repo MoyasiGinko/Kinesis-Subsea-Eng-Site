@@ -289,7 +289,7 @@ const HorizontalServiceCards: React.FC = () => {
           bg: "bg-slate-900",
           text: "text-black",
           accent: "bg-blue-500",
-          button: "bg-blue-600 hover:bg-slate-950 text-white",
+          button: "bg-yellow-500 hover:bg-slate-950 text-white",
           border: "border-slate-700",
         };
       case "secondary":
@@ -297,7 +297,7 @@ const HorizontalServiceCards: React.FC = () => {
           bg: "bg-slate-900",
           text: "text-black",
           accent: "bg-blue-500",
-          button: "bg-blue-600 hover:bg-slate-950 text-white",
+          button: "bg-yellow-500 hover:bg-slate-950 text-white",
           border: "border-slate-700",
         };
       case "accent":
@@ -305,7 +305,7 @@ const HorizontalServiceCards: React.FC = () => {
           bg: "bg-slate-900",
           text: "text-black",
           accent: "bg-blue-500",
-          button: "bg-blue-600 hover:bg-slate-950 text-white",
+          button: "bg-yellow-500  hover:bg-slate-950 text-white",
           border: "border-slate-700",
         };
       default:
@@ -313,7 +313,7 @@ const HorizontalServiceCards: React.FC = () => {
           bg: "bg-slate-900",
           text: "text-black",
           accent: "bg-blue-500",
-          button: "bg-blue-600 hover:bg-slate-950 text-white",
+          button: "bg-yellow-500  hover:bg-slate-950 text-white",
           border: "border-slate-700",
         };
     }
@@ -527,14 +527,14 @@ const HorizontalServiceCards: React.FC = () => {
                             border-2
                             ${styles.border}
                             bg-transparent
-                            hover:bg-orange-600 hover:text-white hover:border-orange-600
+                            hover:bg-yellow-500 hover:text-black hover:border-yellow-500
                             rounded-none
                             group/btn
                             hover:shadow-[4px_4px_0_0_rgba(30,41,59,1)]
                             focus:outline-none
                             ${
                               isActive
-                                ? "text-orange-400 border-orange-500"
+                                ? "text-black border-yellow-500 bg-yellow-500"
                                 : styles.text
                             }
                           `}
@@ -544,7 +544,7 @@ const HorizontalServiceCards: React.FC = () => {
                           <span>{service.buttonText}</span>
                           <ArrowRight
                             className={`w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 ${
-                              isActive ? "text-orange-400" : ""
+                              isActive ? "text-black" : ""
                             }`}
                           />
                         </button>
