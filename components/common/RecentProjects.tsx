@@ -210,6 +210,7 @@ const RecentProjectsSection: React.FC = () => {
               <div className="flex space-x-2">
                 {projects.map((_, index) => (
                   <button
+                    title="Go to slide"
                     key={index}
                     onClick={() => goToSlide(index)}
                     className={`transition-all duration-300 ${
@@ -223,6 +224,7 @@ const RecentProjectsSection: React.FC = () => {
 
               <div className="flex space-x-2">
                 <button
+                  title="Previous slide"
                   onClick={prevSlide}
                   disabled={isTransitioning}
                   className="p-3 bg-slate-700 hover:bg-slate-600 text-[#fc5320f8] transition-all duration-300 disabled:opacity-50 border border-slate-600"
@@ -230,6 +232,7 @@ const RecentProjectsSection: React.FC = () => {
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
+                  title="Next slide"
                   onClick={nextSlide}
                   disabled={isTransitioning}
                   className="p-3 bg-slate-700 hover:bg-slate-600 text-[#fc5320f8] transition-all duration-300 disabled:opacity-50 border border-slate-600"
