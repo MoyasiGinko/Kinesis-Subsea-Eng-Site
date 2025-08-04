@@ -17,67 +17,43 @@ const HeroBanner = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const heroRef = useRef<HTMLElement | null>(null);
 
-  // Content variations
-  const contentVariations = [
-    {
-      icon: Zap,
-      tagline: "Power & Infrastructure Engineering",
-      title: {
-        first: "Powering",
-        highlight: "Tomorrow's",
-        last: "Infrastructure",
-      },
-      description:
-        "From electrical systems to structural foundations, we engineer the critical infrastructure that powers communities and drives industrial progress.",
+  // Static content (single variation)
+  const heroContent = {
+    icon: Zap,
+    tagline: "Power & Infrastructure Engineering",
+    title: {
+      first: "Powering",
+      highlight: "Tomorrow's",
+      last: "Infrastructure",
     },
-    {
-      icon: Power,
-      tagline: "Industrial Automation & Control",
-      title: {
-        first: "Building",
-        highlight: "Smart",
-        last: "Solutions",
-      },
-      description:
-        "Advanced automation systems and intelligent control networks that optimize industrial processes and enhance operational efficiency across all sectors.",
-    },
-    {
-      icon: Cpu,
-      tagline: "Digital Infrastructure & IoT",
-      title: {
-        first: "Connecting",
-        highlight: "Digital",
-        last: "Ecosystems",
-      },
-      description:
-        "Cutting-edge IoT networks and digital infrastructure solutions that transform traditional systems into intelligent, connected environments.",
-    },
-  ];
+    description:
+      "From electrical systems to structural foundations, we engineer the critical infrastructure that powers communities and drives industrial progress.",
+  };
 
   // Image slider data
   const sliderImages = [
     {
-      src: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop&crop=center",
+      src: "/services/1.webp",
       alt: "Modern Infrastructure Engineering",
       title: "Power Infrastructure",
     },
     {
-      src: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop&crop=center",
+      src: "/services/2.avif",
       alt: "Industrial Automation Systems",
       title: "Smart Automation",
     },
     {
-      src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop&crop=center",
+      src: "/services/3.jpg",
       alt: "Digital Infrastructure Network",
       title: "Digital Ecosystem",
     },
     {
-      src: "https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=800&h=600&fit=crop&crop=center",
+      src: "/services/4.jpg",
       alt: "Engineering Excellence",
       title: "Engineering Excellence",
     },
     {
-      src: "https://images.unsplash.com/photo-1562408590-e32931084e23?w=800&h=600&fit=crop&crop=center",
+      src: "/services/5.jpg",
       alt: "Advanced Technology Solutions",
       title: "Tech Solutions",
     },
@@ -85,13 +61,6 @@ const HeroBanner = () => {
 
   useEffect(() => {
     setIsVisible(true);
-
-    // Content rotation every 8 seconds
-    const contentInterval = setInterval(() => {
-      setCurrentIndex(
-        (prevIndex) => (prevIndex + 1) % contentVariations.length
-      );
-    }, 8000);
 
     // Image slider auto-advance every 4 seconds
     const imageInterval = setInterval(() => {
@@ -115,7 +84,6 @@ const HeroBanner = () => {
     }
 
     return () => {
-      clearInterval(contentInterval);
       clearInterval(imageInterval);
       if (typeof window !== "undefined") {
         window.removeEventListener("mousemove", handleMouseMove);
@@ -133,7 +101,7 @@ const HeroBanner = () => {
     );
   };
 
-  const currentContent = contentVariations[currentIndex];
+  const currentContent = heroContent;
   const IconComponent = currentContent.icon;
 
   return (
@@ -195,7 +163,6 @@ const HeroBanner = () => {
 
               {/* Main Title */}
               <h1
-                key={`title-${currentIndex}`}
                 className="mb-6 animate-slide-in font-black leading-tight"
                 style={{
                   fontSize: "clamp(2.2rem, 6vw, 5rem)",
@@ -216,7 +183,6 @@ const HeroBanner = () => {
 
               {/* Description */}
               <p
-                key={`description-${currentIndex}`}
                 className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 md:mb-10 font-light leading-relaxed animate-slide-in"
                 style={{ animationDelay: "400ms" }}
               >

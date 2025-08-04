@@ -60,7 +60,7 @@ export default function NewsSection() {
         <div className="mb-16">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-[#FC5220] mb-4">
+              <h2 className="text-4xl lg:text-5xl font-bold text-blue-600 mb-4">
                 Latest News
               </h2>
               <p className="text-black text-lg font-medium">
@@ -68,7 +68,7 @@ export default function NewsSection() {
               </p>
             </div>
 
-            <button className="hidden lg:flex items-center gap-2 px-6 py-3 border border-[#FC5220] text-[#FC5220] hover:bg-[#FC5220] hover:text-white hover:border-[#FC5220] transition-all duration-300 group">
+            <button className="hidden lg:flex items-center gap-2 px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white  transition-all duration-300 group">
               <span className="font-semibold">View All</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
@@ -86,9 +86,9 @@ export default function NewsSection() {
                   : "opacity-0 translate-y-8"
               } ${
                 hoveredCard === index
-                  ? "border-[#FC5220] bg-white"
+                  ? "border-blue-600/10 bg-white"
                   : "border-blue-600/10 bg-white"
-              } hover:border-[#FC5220] hover:bg-white`}
+              } `}
               style={{
                 transitionDelay: `${index * 200}ms`,
               }}
@@ -126,7 +126,7 @@ export default function NewsSection() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-blue-500 leading-tight group-hover:text-[#FC5220] transition-colors duration-300">
+                <h3 className="text-xl font-bold text-blue-500 leading-tight group-hover:text-blue-600 transition-colors duration-300">
                   {item.title}
                 </h3>
 
@@ -153,7 +153,7 @@ export default function NewsSection() {
 
         {/* Mobile View All Button */}
         <div className="flex justify-center mt-12 lg:hidden">
-          <button className="flex items-center gap-2 px-6 py-3 border border-[#FC5220] text-[#FC5220] hover:bg-[#FC5220] hover:text-white hover:border-[#FC5220] transition-all duration-300 group rounded-lg">
+          <button className="flex items-center gap-2 px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 group ">
             <span className="font-semibold">View All News</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
           </button>

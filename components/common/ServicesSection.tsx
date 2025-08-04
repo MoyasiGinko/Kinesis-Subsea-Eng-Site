@@ -586,9 +586,6 @@ const HorizontalServiceCards: React.FC = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <p className="text-slate-600 mb-6 text-lg">
-            Ready to discuss your project requirements?
-          </p>
           <button className="px-8 py-4 border-2 border-slate-900 text-slate-900 font-semibold hover:bg-slate-900 hover:text-white transition-all duration-300 transform hover:scale-105">
             VIEW ALL SERVICES
           </button>

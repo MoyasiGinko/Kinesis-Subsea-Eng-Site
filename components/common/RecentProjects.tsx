@@ -31,8 +31,7 @@ const RecentProjectsSection: React.FC = () => {
       id: "chemical-refinery",
       title: "Chemical Refinery Complex",
       location: "Michigan, United States",
-      image:
-        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
+      image: "/services/1.webp",
       category: "Industrial Engineering",
       year: "2024",
       status: "Completed",
@@ -43,8 +42,7 @@ const RecentProjectsSection: React.FC = () => {
       id: "manufacturing-plant",
       title: "Automotive Manufacturing Plant",
       location: "Texas, United States",
-      image:
-        "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=800&h=600&fit=crop",
+      image: "/services/2.avif",
       category: "Manufacturing",
       year: "2024",
       status: "In Progress",
@@ -55,8 +53,7 @@ const RecentProjectsSection: React.FC = () => {
       id: "power-station",
       title: "Renewable Energy Station",
       location: "California, United States",
-      image:
-        "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&h=600&fit=crop",
+      image: "/services/3.jpg",
       category: "Energy Infrastructure",
       year: "2023",
       status: "Completed",
@@ -67,8 +64,7 @@ const RecentProjectsSection: React.FC = () => {
       id: "offshore-platform",
       title: "Offshore Drilling Platform",
       location: "Gulf of Mexico",
-      image:
-        "https://images.unsplash.com/photo-1570208277776-4faec03db7c3?w=800&h=600&fit=crop",
+      image: "/services/4.jpg",
       category: "Oil & Gas",
       year: "2023",
       status: "Completed",
@@ -79,8 +75,7 @@ const RecentProjectsSection: React.FC = () => {
       id: "steel-mill",
       title: "Steel Mill Modernization",
       location: "Pennsylvania, United States",
-      image:
-        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
+      image: "/services/5.jpg",
       category: "Heavy Industry",
       year: "2024",
       status: "In Progress",
@@ -146,7 +141,7 @@ const RecentProjectsSection: React.FC = () => {
 
           <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             RECENT
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-600">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#fc5320f8] to-[#FC5220]">
               PROJECTS
             </span>
           </h2>
@@ -186,7 +181,7 @@ const RecentProjectsSection: React.FC = () => {
                       <div className="absolute bottom-0 left-0 right-0 p-8">
                         <div className="flex items-center gap-3 mb-3">
                           <span
-                            className={`px-3 py-1 text-xs font-bold tracking-wide uppercase bg-yellow-500 text-slate-900}`}
+                            className={`px-3 py-1 text-xs font-bold tracking-wide uppercase bg-[#FC5220] text-slate-900}`}
                           >
                             {project.status}
                           </span>
@@ -195,7 +190,7 @@ const RecentProjectsSection: React.FC = () => {
                           </span>
                         </div>
 
-                        <h3 className="text-2xl lg:text-3xl font-bold text-[#fcc920] mb-2">
+                        <h3 className="text-2xl lg:text-3xl font-bold text-[#FC5220] mb-2">
                           {project.title}
                         </h3>
 
@@ -299,7 +294,7 @@ const RecentProjectsSection: React.FC = () => {
 
             {/* All Projects List */}
             <div className="bg-slate-800 border border-slate-700 p-6">
-              <h4 className="text-lg font-bold text-yellow-500 mb-4">
+              <h4 className="text-lg font-bold text-[#FC5220] mb-4">
                 All Projects
               </h4>
               <div className="space-y-2">
@@ -328,7 +323,7 @@ const RecentProjectsSection: React.FC = () => {
 
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
-          <button className="px-8 py-4 bg-transparent border-2 border-[#fc5320f8] text-white hover:bg-black hover:text-[#fc5320f8] hover:border-white font-semibold transition-all duration-300 transform hover:scale-105">
+          <button className="px-8 py-4 bg-transparent border-2 border-[#fc5320f8] text-white hover:bg-[#FC5220] font-semibold transition-all duration-300 transform hover:scale-105">
             VIEW ALL PROJECTS
           </button>
         </div>
