@@ -26,10 +26,6 @@ export default function ContactSection() {
 
   return (
     <section className="relative py-20 text-gray-900 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#005EB8] to-[#024690]"></div>
-      </div>
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Left Column - Header and Contact Info */}
