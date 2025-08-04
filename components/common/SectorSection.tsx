@@ -74,7 +74,7 @@ const SectorLayout: React.FC = () => {
       {sectors.map((sector, index) => (
         <div
           key={`image-${sector.id}`}
-          className={`absolute inset-0 transition-all duration-[1800ms] delay-150 ease-out ${
+          className={`absolute inset-0 transition-all duration-1000 ease-out ${
             hoveredSector === sector.id
               ? "opacity-90 transform translate-x-0"
               : index === 0
@@ -97,7 +97,7 @@ const SectorLayout: React.FC = () => {
         {sectors.map((sector, index) => (
           <div
             key={sector.id}
-            className={`flex-1 flex flex-col justify-center items-center text-white transition-all duration-[1500ms] delay-150 ease-in-out cursor-pointer group relative ${
+            className={`flex-1 flex flex-col justify-center items-center text-white transition-all duration-700 ease-in-out cursor-pointer group relative ${
               hoveredSector === sector.id ? "flex-[1.2]" : "flex-1"
             }`}
             onMouseEnter={() => setHoveredSector(sector.id)}
