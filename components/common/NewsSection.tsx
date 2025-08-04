@@ -13,8 +13,7 @@ export default function NewsSection() {
       title: "Major Carbon Capture Project Contract Awarded",
       date: "March 15, 2024",
       category: "Press Release",
-      image:
-        "https://images.pexels.com/photos/2990650/pexels-photo-2990650.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/services/1.webp",
       readTime: "5 min",
     },
     {
@@ -22,8 +21,7 @@ export default function NewsSection() {
       title: "Sustainability Report 2023: Net Zero Progress",
       date: "March 10, 2024",
       category: "Sustainability",
-      image:
-        "https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/services/2.avif",
       readTime: "8 min",
     },
     {
@@ -31,8 +29,7 @@ export default function NewsSection() {
       title: "New Innovation Center Opens in Singapore",
       date: "March 5, 2024",
       category: "Company News",
-      image:
-        "https://images.pexels.com/photos/1537008/pexels-photo-1537008.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/services/3.jpg",
       readTime: "4 min",
     },
   ];

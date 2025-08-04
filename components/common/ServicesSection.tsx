@@ -51,10 +51,9 @@ const HorizontalServiceCards: React.FC = () => {
         "Performance Analysis",
         "Quality Assurance",
       ],
-      image:
-        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&h=400&fit=crop",
+      image: "/services/1.webp",
       icon: <Wrench className="w-6 h-6" />,
-      buttonText: "EXPLORE SERVICES",
+      buttonText: "LEARN MORE",
       theme: "primary",
       stats: {
         projects: "250+",
@@ -73,10 +72,9 @@ const HorizontalServiceCards: React.FC = () => {
         "Manufacturing Setup",
         "Quality Control",
       ],
-      image:
-        "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=600&h=400&fit=crop",
+      image: "/services/2.avif",
       icon: <Package className="w-6 h-6" />,
-      buttonText: "VIEW PORTFOLIO",
+      buttonText: "LEARN MORE",
       theme: "secondary",
       stats: {
         projects: "180+",
@@ -95,10 +93,9 @@ const HorizontalServiceCards: React.FC = () => {
         "Material Science",
         "Testing & Validation",
       ],
-      image:
-        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop",
+      image: "/services/3.jpg",
       icon: <Search className="w-6 h-6" />,
-      buttonText: "DISCOVER MORE",
+      buttonText: "LEARN MORE",
       theme: "accent",
       stats: {
         projects: "95+",
@@ -117,10 +114,9 @@ const HorizontalServiceCards: React.FC = () => {
         "Risk Assessment",
         "Project Management",
       ],
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop",
+      image: "/services/4.jpg",
       icon: <Building2 className="w-6 h-6" />,
-      buttonText: "GET CONSULTATION",
+      buttonText: "LEARN MORE",
       theme: "primary",
       stats: {
         projects: "320+",
@@ -139,8 +135,7 @@ const HorizontalServiceCards: React.FC = () => {
         "IoT Integration",
         "Predictive Maintenance",
       ],
-      image:
-        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop",
+      image: "/services/5.jpg",
       icon: <Cog className="w-6 h-6" />,
       buttonText: "LEARN MORE",
       theme: "secondary",
@@ -484,7 +479,7 @@ const HorizontalServiceCards: React.FC = () => {
                           <div>
                             <div
                               className={`w-8 h-0.5 ${
-                                isActive ? "bg-orange-500" : styles.accent
+                                isActive ? "bg-yellow-500" : styles.accent
                               } mb-3 transition-colors duration-300`}
                             ></div>
                             <h3
@@ -496,13 +491,17 @@ const HorizontalServiceCards: React.FC = () => {
                             </h3>
                             <h4
                               className={`text-lg font-light opacity-80 transition-colors duration-300 ${
-                                isActive ? "text-orange-400" : styles.text
+                                isActive ? "text-yellow-500" : styles.text
                               }`}
                             >
                               {service.subtitle}
                             </h4>
                           </div>
-                          <div className="ml-4 flex-shrink-0">
+                          <div
+                            className={`ml-4 text-black flex-shrink-0 ${
+                              isActive ? "text-yellow-500" : "text-black"
+                            }`}
+                          >
                             {service.icon}
                           </div>
                         </div>
