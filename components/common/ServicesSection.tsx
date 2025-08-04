@@ -453,15 +453,15 @@ const HorizontalServiceCards: React.FC = () => {
                     >
                       <div
                         className={`
-                          p-6 space-y-6 mb-2 h-full flex flex-col justify-between
-                          rounded-br-[80px] shadow-md hover:shadow-xl
-                          transition-all duration-500
-                          ${
-                            isActive
-                              ? "bg-black bg-opacity-95 text-white"
-                              : "bg-opacity-90"
-                          }
-                        `}
+                      p-6 space-y-6 mb-2 h-full flex flex-col justify-between
+                      rounded-br-[80px] shadow-md hover:shadow-xl
+                      transition-all duration-500
+                      ${
+                        isActive
+                          ? "bg-black bg-opacity-95 text-white"
+                          : "bg-opacity-90"
+                      }
+                      `}
                         style={{
                           background: isActive
                             ? "rgba(0,0,0,0.95)"
@@ -475,7 +475,19 @@ const HorizontalServiceCards: React.FC = () => {
                         }}
                       >
                         {/* Title */}
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center justify-between relative">
+                          {/* Decorative line to the left of the title container */}
+                          <div
+                            style={{
+                              position: "absolute",
+                              top: "110px", // moved further below
+                              left: "-68px",
+                              width: "68px",
+                              height: "6px",
+                              background: isActive ? "#facc15" : "#335dd1", // yellow-500 or slate-500
+                              zIndex: 10,
+                            }}
+                          />
                           <div>
                             <div
                               className={`w-8 h-0.5 ${
@@ -504,6 +516,7 @@ const HorizontalServiceCards: React.FC = () => {
                           >
                             {service.icon}
                           </div>
+                          {/* Removed right side decorative line */}
                         </div>
 
                         {/* Description */}
@@ -519,24 +532,24 @@ const HorizontalServiceCards: React.FC = () => {
                         <button
                           title={service.buttonText}
                           className={`
-                            px-5 py-2
-                            font-semibold text-sm tracking-wide
-                            flex items-center gap-2
-                            transition-all duration-300
-                            border-2
-                            ${styles.border}
-                            bg-transparent
-                            hover:bg-yellow-500 hover:text-black hover:border-yellow-500
-                            rounded-none
-                            group/btn
-                            hover:shadow-[4px_4px_0_0_rgba(30,41,59,1)]
-                            focus:outline-none
-                            ${
-                              isActive
-                                ? "text-black border-yellow-500 bg-yellow-500"
-                                : styles.text
-                            }
-                          `}
+                      px-5 py-2
+                      font-semibold text-sm tracking-wide
+                      flex items-center gap-2
+                      transition-all duration-300
+                      border-2
+                      ${styles.border}
+                      bg-transparent
+                      hover:bg-yellow-500 hover:text-black hover:border-yellow-500
+                      rounded-none
+                      group/btn
+                      hover:shadow-[4px_4px_0_0_rgba(30,41,59,1)]
+                      focus:outline-none
+                      ${
+                        isActive
+                          ? "text-black border-yellow-500 bg-yellow-500"
+                          : styles.text
+                      }
+                      `}
                           style={{ width: "fit-content" }}
                           onClick={(e) => e.stopPropagation()}
                         >
