@@ -31,7 +31,7 @@ const SectorLayout: React.FC = () => {
         'Real-time Energy Monitoring',
         'Carbon Footprint Reduction'
       ],
-      sectorImage: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&h=800&fit=crop&q=80'
+      sectorImage: '/images/sector-left.webp'
     },
     {
       id: 'intelligent-manufacturing',
@@ -47,17 +47,17 @@ const SectorLayout: React.FC = () => {
         'Precision Industrial Components',
         'High-Performance Motor Systems'
       ],
-      sectorImage: 'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=1200&h=800&fit=crop&q=80'
+      sectorImage: '/images/sector-right.webp'
     }
   ];
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full min-h-screen h-auto sm:h-screen overflow-hidden">
       {/* Full Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-fixed"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop&q=80')`
+          backgroundImage: `url('/services/service-bg.jpg')`
         }}
       />
       
@@ -87,7 +87,7 @@ const SectorLayout: React.FC = () => {
       ))}
       
       {/* Main Content Grid */}
-      <div className="relative z-10 h-full flex">
+      <div className="relative z-10 h-full flex flex-col md:flex-row">
         {sectors.map((sector, index) => (
           <div
             key={sector.id}
