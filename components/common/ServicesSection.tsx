@@ -532,8 +532,9 @@ const HorizontalServiceCards: React.FC = () => {
                         <button
                           title={service.buttonText}
                           className={`
-                      px-5 py-2
-                      font-semibold text-sm tracking-wide
+                      px-8 py-4
+                      rounded-tr-[30px]
+                      font-semibold text-md tracking-wide
                       flex items-center gap-2
                       transition-all duration-300
                       border-2
