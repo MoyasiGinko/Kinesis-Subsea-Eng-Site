@@ -136,7 +136,7 @@ const HorizontalServiceCards: React.FC = () => {
         "Predictive Maintenance",
       ],
       image:
-        "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop",
       icon: <Cog className="w-6 h-6" />,
       buttonText: "LEARN MORE",
       theme: "secondary",
@@ -183,7 +183,7 @@ const HorizontalServiceCards: React.FC = () => {
       case "primary":
         return {
           bg: "bg-slate-900",
-          text: "text-white",
+          text: "text-black",
           accent: "bg-blue-500",
           button: "bg-blue-600 hover:bg-blue-700 text-white",
           border: "border-slate-700",
@@ -199,7 +199,7 @@ const HorizontalServiceCards: React.FC = () => {
       case "accent":
         return {
           bg: "bg-slate-800",
-          text: "text-white",
+          text: "text-black",
           accent: "bg-emerald-500",
           button: "bg-emerald-600 hover:bg-emerald-700 text-white",
           border: "border-slate-600",
@@ -207,7 +207,7 @@ const HorizontalServiceCards: React.FC = () => {
       default:
         return {
           bg: "bg-slate-900",
-          text: "text-white",
+          text: "text-black",
           accent: "bg-blue-500",
           button: "bg-blue-600 hover:bg-blue-700 text-white",
           border: "border-slate-700",
