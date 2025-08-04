@@ -161,7 +161,7 @@ export default function Footer() {
           <div className="md:col-span-2 lg:col-span-2">
             <h3 className="text-gray-900 font-medium text-lg mb-5 relative inline-block">
               Explore
-              <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400"></div>
+              <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600"></div>
             </h3>
 
             <ul className="space-y-3">
@@ -189,7 +189,7 @@ export default function Footer() {
           <div className="md:col-span-3 lg:col-span-3">
             <h3 className="text-gray-900 font-medium text-lg mb-5 relative inline-block">
               Global Locations
-              <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-emerald-400"></div>
+              <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600"></div>
             </h3>
 
             <div className="space-y-4">
@@ -208,7 +208,7 @@ export default function Footer() {
           <div className="md:col-span-3 lg:col-span-3">
             <h3 className="text-gray-900 font-medium text-lg mb-5 relative inline-block">
               Legal
-              <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-emerald-400 to-blue-400"></div>
+              <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600"></div>
             </h3>
 
             <div className="grid grid-cols-1 gap-3">
@@ -254,7 +254,7 @@ export default function Footer() {
         {/* Decorative Divider */}
         <div className="relative mt-16 mb-8">
           <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400/50 to-transparent"></div>
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-px bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400"></div>
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-px bg-gradient-to-r from-blue-500 to-blue-600"></div>
         </div>
 
         {/* Bottom Bar */}
