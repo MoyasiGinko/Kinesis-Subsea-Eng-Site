@@ -37,7 +37,7 @@ const menuItems = [
   },
 
   {
-    title: "Services",
+    title: "Sectors",
     href: "/our-services",
     submenu: [
       {
@@ -52,6 +52,7 @@ const menuItems = [
       },
     ],
   },
+  { title: "Services", href: "/careers" },
   {
     title: "Projects",
     href: "/what-we-deliver",
@@ -105,7 +106,6 @@ const menuItems = [
     // ],
   },
   { title: "Contact", href: "/contact-us" },
-  { title: "Careers", href: "/careers" },
 ];
 
 export default function Navbar() {
@@ -228,26 +228,28 @@ export default function Navbar() {
       </div> */}
 
       {/* Main Navigation */}
-      <div className="flex items-center justify-between px-6 lg:px-12 py-2">
+      <div className="flex items-center justify-between px-6 lg:px-12 py-4">
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center space-x-2">
             <img
               src={isScrolled ? "/logo-dark.svg" : "/logo-white.svg"}
               alt="Kinesis Subsea Engineering Logo"
-              className={`w-auto transition-all duration-500 ${isScrolled ? "h-[76px]" : "h-[80px] "}`}
+              className={`w-auto transition-all duration-500 ${
+                isScrolled ? "h-[86px]" : "h-[90px] "
+              }`}
             />
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-2">
+        <nav className="hidden lg:flex items-center space-x-2">
           {menuItems.map((item, index) => (
             <div key={index} className="relative group">
               {item.submenu ? (
                 <>
                   <button
-                    className={`flex items-center gap-1 px-5 py-3 rounded-lg font-medium text-lg transition-all duration-300 ${
+                    className={`flex items-center gap-1 px-5 py-3 rounded-lg font-medium text-[20px] transition-all duration-300 ${
                       isScrolled
                         ? openMenuIndex === index
                           ? "bg-blue-50 text-blue-700"
@@ -319,17 +321,35 @@ export default function Navbar() {
 
         {/* Get in Touch Button and Grid Icon */}
         <div className="flex items-center space-x-4">
-          <button className={`hidden md:block font-medium py-3.5 px-6 transition-all duration-300 transform hover:-translate-y-0.5 ${
-            isScrolled ? "bg-blue-600 hover:bg-blue-700 text-white" : "bg-white hover:bg-gray-100 text-gray-900"
-          }`}>
-             <span className="flex items-center gap-1">
-                Get in Touch
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </span>
+          <button
+            className={`hidden md:block font-medium py-5 px-14 transition-all duration-300 transform hover:-translate-y-0.5 ${
+              isScrolled
+                ? "bg-blue-600 hover:bg-blue-700 text-white"
+                : "bg-white hover:bg-gray-100 text-gray-900"
+            }`}
+          >
+            <span className="flex text-[20px] items-center gap-1">
+              Contact Us
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            </span>
           </button>
-          <button className="p-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+          <button
+            title="Grid View"
+            className="p-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+              />
             </svg>
           </button>
 
@@ -383,11 +403,9 @@ export default function Navbar() {
                         <Link
                           key={subindex}
                           href={subitem.href}
-                  className="px-6 py-3.5 text-gray-700 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
+                          className="px-6 py-3.5 text-gray-700 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
                         >
-                          <div className="font-medium">
-                            {subitem.title}
-                          </div>
+                          <div className="font-medium">{subitem.title}</div>
                           {subitem.description && (
                             <div className="text-gray-500 text-sm mt-1">
                               {subitem.description}
