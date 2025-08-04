@@ -285,96 +285,106 @@ const HorizontalServiceCards: React.FC = () => {
             {services.map((service, index) => {
               const styles = getThemeStyles(service.theme);
               const isActive = index === currentIndex;
-              const isVisible =
-                index >= currentIndex && index < currentIndex + 3;
 
               return (
                 <div
                   key={service.id}
-                  className={`flex-shrink-0 w-full md:w-1/2 lg:w-1/3 transition-all rounded-tl-[80px] rounded-br-[80px] duration-800 ${
-                    isActive ? "scale-105 z-10" : "scale-100"
+                  className={`flex-shrink-0 w-full md:w-1/2 lg:w-1/3 transition-all  duration-800 ${
+                    isActive ? "  z-10" : "scale-100"
                   }`}
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
                   <div
-                    className={`h-full ${styles.bg} ${styles.border} rounded-tl-[80px] rounded-br-[80px] border-2 overflow-hidden group cursor-pointer transform transition-all duration-500 hover:scale-102`}
+                    className={`h-[520px] md:h-[600px] lg:h-[640px] flex flex-col relative overflow-hidden group cursor-pointer transform transition-all duration-500`}
                   >
-                    {/* Image Section */}
-                    <div className="relative h-56 rounded-tl-[80px] overflow-hidden">
+                    {/* Image Section (70% height) */}
+                    <div
+                      className="relative flex-shrink-0"
+                      style={{ height: "50%" }}
+                    >
                       <img
                         src={service.image}
                         alt={service.title}
-                        className="w-full h-full  object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="w-full h-full rounded-tl-[80px] object-cover transition-transform duration-700"
+                        style={{ height: "100%" }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                      {/* <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div> */}
                     </div>
 
-                    {/* Content Section */}
-                    <div className="p-6 space-y-6">
-                      {/* Title */}
-                      <div>
-                        <div
-                          className={`w-8 h-0.5 ${styles.accent} mb-3`}
-                        ></div>
-                        <h3
-                          className={`text-xl font-bold ${styles.text} leading-tight`}
+                    {/* Content Section (aligned to far right) */}
+                    <div
+                      className="absolute right-0 bottom-0"
+                      style={{
+                        height: "60%",
+                        width: "90%",
+                        zIndex: 2,
+                      }}
+                    >
+                      <div
+                        className="p-6 space-y-6 mb-2 h-full flex flex-col justify-between bg-opacity-90 backdrop-blur-md  rounded-br-[80px] shadow-lg"
+                        style={{
+                          background: "rgba(255,255,255,0.92)",
+                          position: "absolute",
+                          bottom: 0,
+                          right: 0,
+                          left: "auto",
+                          height: "100%",
+                          width: "100%",
+                        }}
+                      >
+                        {/* Title */}
+                        <div>
+                          <div
+                            className={`w-8 h-0.5 ${styles.accent} mb-3`}
+                          ></div>
+                          <h3
+                            className={`text-xl font-bold ${styles.text} leading-tight`}
+                          >
+                            {service.title}
+                          </h3>
+                          <h4
+                            className={`text-lg font-light ${styles.text} opacity-80`}
+                          >
+                            {service.subtitle}
+                          </h4>
+                        </div>
+
+                        {/* Description */}
+                        <p
+                          className={`${styles.text} opacity-80 text-sm leading-relaxed`}
                         >
-                          {service.title}
-                        </h3>
-                        <h4
-                          className={`text-lg font-light ${styles.text} opacity-80`}
+                          {service.description}
+                        </p>
+
+                        {/* Button */}
+                        <button
+                          title={service.buttonText}
+                          className={`
+                          px-5 py-2
+                          font-semibold text-sm tracking-wide
+                          flex items-center gap-2
+                          transition-all duration-300
+                          border-2
+                          ${styles.border}
+                          ${styles.text}
+                          bg-transparent
+                          rounded-none
+                          group/btn
+                          hover:shadow-[4px_4px_0_0_rgba(30,41,59,1)]
+                          focus:outline-none
+                          `}
+                          style={{ width: "fit-content" }}
                         >
-                          {service.subtitle}
-                        </h4>
+                          <span>{service.buttonText}</span>
+                          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                        </button>
                       </div>
-
-                      {/* Description */}
-                      <p
-                        className={`${styles.text} opacity-80 text-sm leading-relaxed`}
-                      >
-                        {service.description}
-                      </p>
-
-                      {/* Button */}
-                      <button
-                        title="Explore Services"
-                        className={`w-full px-4 py-3 ${styles.button} font-semibold text-sm tracking-wide transition-all duration-300 flex items-center justify-center gap-2 group/btn`}
-                      >
-                        <span>{service.buttonText}</span>
-                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                      </button>
                     </div>
                   </div>
                 </div>
               );
             })}
-          </div>
-        </div>
-
-        <button
-          aria-label="Previous Slide"
-          title="Previous Slide"
-          onClick={prevSlide}
-          disabled={isTransitioning}
-          className="p-3 bg-white border-2 border-slate-300 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 disabled:opacity-50"
-        >
-          <ChevronLeft className="w-4 h-4" />
-        </button>
-
-        <div className="text-center">
-          <div className="text-xl font-bold text-slate-900">
-            {String(currentIndex + 1).padStart(2, "0")} /{" "}
-            {String(services.length).padStart(2, "0")}
-            <button
-              aria-label="Next Slide"
-              title="Next Slide"
-              onClick={nextSlide}
-              disabled={isTransitioning}
-              className="p-3 bg-white border-2 border-slate-300 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 disabled:opacity-50"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
           </div>
         </div>
 
