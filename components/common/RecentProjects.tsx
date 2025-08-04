@@ -1,6 +1,13 @@
-"use client"
-import React, { useState, useRef, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, MapPin, Building2, Calendar, ArrowRight } from 'lucide-react';
+"use client";
+import React, { useState, useRef, useEffect } from "react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  MapPin,
+  Building2,
+  Calendar,
+  ArrowRight,
+} from "lucide-react";
 
 interface Project {
   id: string;
@@ -21,55 +28,65 @@ const RecentProjectsSection: React.FC = () => {
 
   const projects: Project[] = [
     {
-      id: 'chemical-refinery',
-      title: 'Chemical Refinery Complex',
-      location: 'Michigan, United States',
-      image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop',
-      category: 'Industrial Engineering',
-      year: '2024',
-      status: 'Completed',
-      description: 'Advanced petrochemical processing facility with state-of-the-art safety systems and environmental controls.'
+      id: "chemical-refinery",
+      title: "Chemical Refinery Complex",
+      location: "Michigan, United States",
+      image:
+        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
+      category: "Industrial Engineering",
+      year: "2024",
+      status: "Completed",
+      description:
+        "Advanced petrochemical processing facility with state-of-the-art safety systems and environmental controls.",
     },
     {
-      id: 'manufacturing-plant',
-      title: 'Automotive Manufacturing Plant',
-      location: 'Texas, United States',
-      image: 'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=800&h=600&fit=crop',
-      category: 'Manufacturing',
-      year: '2024',
-      status: 'In Progress',
-      description: 'Next-generation electric vehicle production facility featuring automated assembly lines and smart manufacturing systems.'
+      id: "manufacturing-plant",
+      title: "Automotive Manufacturing Plant",
+      location: "Texas, United States",
+      image:
+        "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=800&h=600&fit=crop",
+      category: "Manufacturing",
+      year: "2024",
+      status: "In Progress",
+      description:
+        "Next-generation electric vehicle production facility featuring automated assembly lines and smart manufacturing systems.",
     },
     {
-      id: 'power-station',
-      title: 'Renewable Energy Station',
-      location: 'California, United States',
-      image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&h=600&fit=crop',
-      category: 'Energy Infrastructure',
-      year: '2023',
-      status: 'Completed',
-      description: 'Hybrid solar and wind power generation facility with advanced grid integration and energy storage capabilities.'
+      id: "power-station",
+      title: "Renewable Energy Station",
+      location: "California, United States",
+      image:
+        "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&h=600&fit=crop",
+      category: "Energy Infrastructure",
+      year: "2023",
+      status: "Completed",
+      description:
+        "Hybrid solar and wind power generation facility with advanced grid integration and energy storage capabilities.",
     },
     {
-      id: 'offshore-platform',
-      title: 'Offshore Drilling Platform',
-      location: 'Gulf of Mexico',
-      image: 'https://images.unsplash.com/photo-1570208277776-4faec03db7c3?w=800&h=600&fit=crop',
-      category: 'Oil & Gas',
-      year: '2023',
-      status: 'Completed',
-      description: 'Deep-water extraction platform with enhanced safety protocols and environmental protection systems.'
+      id: "offshore-platform",
+      title: "Offshore Drilling Platform",
+      location: "Gulf of Mexico",
+      image:
+        "https://images.unsplash.com/photo-1570208277776-4faec03db7c3?w=800&h=600&fit=crop",
+      category: "Oil & Gas",
+      year: "2023",
+      status: "Completed",
+      description:
+        "Deep-water extraction platform with enhanced safety protocols and environmental protection systems.",
     },
     {
-      id: 'steel-mill',
-      title: 'Steel Mill Modernization',
-      location: 'Pennsylvania, United States',
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
-      category: 'Heavy Industry',
-      year: '2024',
-      status: 'In Progress',
-      description: 'Complete modernization of steel production facility with AI-driven quality control and reduced carbon emissions.'
-    }
+      id: "steel-mill",
+      title: "Steel Mill Modernization",
+      location: "Pennsylvania, United States",
+      image:
+        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
+      category: "Heavy Industry",
+      year: "2024",
+      status: "In Progress",
+      description:
+        "Complete modernization of steel production facility with AI-driven quality control and reduced carbon emissions.",
+    },
   ];
 
   const nextSlide = () => {
@@ -109,31 +126,34 @@ const RecentProjectsSection: React.FC = () => {
     <div className="relative bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto relative">
         {/* Header Section */}
         <div className="mb-16">
           <div className="flex items-center mb-6">
-            <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mr-4"></div>
-            <span className="text-blue-400 font-semibold tracking-wide uppercase text-sm">
+            <div className="w-12 h-1 bg-gradient-to-r from-[#fc5320f8] to-[#FC5220] mr-4"></div>
+            <span className="text-orange-500 font-semibold tracking-wide uppercase text-sm">
               Portfolio
             </span>
           </div>
-          
+
           <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             RECENT
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-600">
               PROJECTS
             </span>
           </h2>
-          
+
           <p className="text-slate-300 text-xl max-w-2xl leading-relaxed">
-            Delivering excellence across industries with cutting-edge engineering solutions 
-            and innovative project management.
+            Delivering excellence across industries with cutting-edge
+            engineering solutions and innovative project management.
           </p>
         </div>
 
@@ -144,13 +164,16 @@ const RecentProjectsSection: React.FC = () => {
             <div className="relative h-96 lg:h-[500px] overflow-hidden bg-slate-800 border border-slate-700">
               {/* Image Container */}
               <div className="relative h-full">
-                <div 
+                <div
                   ref={containerRef}
                   className="flex transition-transform duration-800 ease-out h-full"
                   style={{ transform: `translateX(-${currentIndex * 100}%)` }}
                 >
                   {projects.map((project, index) => (
-                    <div key={project.id} className="w-full flex-shrink-0 relative">
+                    <div
+                      key={project.id}
+                      className="w-full flex-shrink-0 relative"
+                    >
                       <img
                         src={project.image}
                         alt={project.title}
@@ -158,24 +181,24 @@ const RecentProjectsSection: React.FC = () => {
                       />
                       {/* Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
-                      
+
                       {/* Project Info Overlay */}
                       <div className="absolute bottom-0 left-0 right-0 p-8">
                         <div className="flex items-center gap-3 mb-3">
-                          <span className={`px-3 py-1 text-xs font-bold tracking-wide uppercase ${
-                            project.status === 'Completed' 
-                              ? 'bg-green-500 text-white' 
-                              : 'bg-yellow-500 text-slate-900'
-                          }`}>
+                          <span
+                            className={`px-3 py-1 text-xs font-bold tracking-wide uppercase bg-yellow-500 text-slate-900}`}
+                          >
                             {project.status}
                           </span>
-                          <span className="text-slate-300 text-sm">{project.year}</span>
+                          <span className="text-slate-300 text-sm">
+                            {project.year}
+                          </span>
                         </div>
-                        
-                        <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2">
+
+                        <h3 className="text-2xl lg:text-3xl font-bold text-[#fcc920] mb-2">
                           {project.title}
                         </h3>
-                        
+
                         <div className="flex items-center text-slate-300 mb-4">
                           <MapPin className="w-4 h-4 mr-2" />
                           <span>{project.location}</span>
@@ -195,9 +218,9 @@ const RecentProjectsSection: React.FC = () => {
                     key={index}
                     onClick={() => goToSlide(index)}
                     className={`transition-all duration-300 ${
-                      index === currentIndex 
-                        ? 'w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-400' 
-                        : 'w-6 h-1 bg-slate-600 hover:bg-slate-500'
+                      index === currentIndex
+                        ? "w-12 h-1 bg-gradient-to-r from-[#fc5320f8] to-[#FC5220]"
+                        : "w-6 h-1 bg-slate-600 hover:bg-slate-500"
                     }`}
                   />
                 ))}
@@ -207,14 +230,14 @@ const RecentProjectsSection: React.FC = () => {
                 <button
                   onClick={prevSlide}
                   disabled={isTransitioning}
-                  className="p-3 bg-slate-700 hover:bg-slate-600 text-white transition-all duration-300 disabled:opacity-50 border border-slate-600"
+                  className="p-3 bg-slate-700 hover:bg-slate-600 text-[#fc5320f8] transition-all duration-300 disabled:opacity-50 border border-slate-600"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
                   onClick={nextSlide}
                   disabled={isTransitioning}
-                  className="p-3 bg-slate-700 hover:bg-slate-600 text-white transition-all duration-300 disabled:opacity-50 border border-slate-600"
+                  className="p-3 bg-slate-700 hover:bg-slate-600 text-[#fc5320f8] transition-all duration-300 disabled:opacity-50 border border-slate-600"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
@@ -227,16 +250,16 @@ const RecentProjectsSection: React.FC = () => {
             {/* Current Project Details */}
             <div className="bg-slate-800 border border-slate-700 p-8">
               <div className="flex items-center gap-3 mb-4">
-                <Building2 className="w-5 h-5 text-blue-400" />
-                <span className="text-blue-400 font-semibold text-sm uppercase tracking-wide">
+                <Building2 className="w-5 h-5 text-[#fc5320f8]" />
+                <span className="text-[#fc5320f8] font-semibold text-sm uppercase tracking-wide">
                   {currentProject.category}
                 </span>
               </div>
-              
+
               <h4 className="text-xl font-bold text-white mb-4">
                 Project Overview
               </h4>
-              
+
               <p className="text-slate-300 leading-relaxed mb-6">
                 {currentProject.description}
               </p>
@@ -244,23 +267,31 @@ const RecentProjectsSection: React.FC = () => {
               <div className="space-y-3 mb-8">
                 <div className="flex justify-between">
                   <span className="text-slate-400">Status:</span>
-                  <span className={`font-semibold ${
-                    currentProject.status === 'Completed' ? 'text-green-400' : 'text-yellow-400'
-                  }`}>
+                  <span
+                    className={`font-semibold ${
+                      currentProject.status === "Completed"
+                        ? "text-green-400"
+                        : "text-yellow-400"
+                    }`}
+                  >
                     {currentProject.status}
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Year:</span>
-                  <span className="text-white font-semibold">{currentProject.year}</span>
+                  <span className="text-white font-semibold">
+                    {currentProject.year}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Location:</span>
-                  <span className="text-white font-semibold">{currentProject.location}</span>
+                  <span className="text-white font-semibold">
+                    {currentProject.location}
+                  </span>
                 </div>
               </div>
 
-              <button className="w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold transition-all duration-300 flex items-center justify-center group">
+              <button className="w-full px-6 py-4 bg-gradient-to-r from-[#fc5320f8] to-[#FC5220] hover:from-black hover:to-black border border-black hover:border-[#fc5320f8] text-white hover:text-[#fc5320f8] font-semibold transition-all duration-300 flex items-center justify-center group">
                 <span>VIEW FULL CASE STUDY</span>
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
@@ -268,7 +299,9 @@ const RecentProjectsSection: React.FC = () => {
 
             {/* All Projects List */}
             <div className="bg-slate-800 border border-slate-700 p-6">
-              <h4 className="text-lg font-bold text-white mb-4">All Projects</h4>
+              <h4 className="text-lg font-bold text-yellow-500 mb-4">
+                All Projects
+              </h4>
               <div className="space-y-2">
                 {projects.map((project, index) => (
                   <button
@@ -278,12 +311,14 @@ const RecentProjectsSection: React.FC = () => {
                     onMouseLeave={() => setHoveredProject(null)}
                     className={`w-full text-left p-3 transition-all duration-300 border-l-2 ${
                       index === currentIndex
-                        ? 'bg-slate-700 border-blue-400 text-white'
-                        : 'border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-600'
+                        ? "bg-slate-950 border-[#fc5320f8] text-white"
+                        : "border-transparent text-slate-300 hover:bg-slate-950 hover:border-slate-600"
                     }`}
                   >
                     <div className="font-semibold text-sm">{project.title}</div>
-                    <div className="text-xs text-slate-400 mt-1">{project.category}</div>
+                    <div className="text-xs text-slate-400 mt-1">
+                      {project.category}
+                    </div>
                   </button>
                 ))}
               </div>
@@ -293,7 +328,7 @@ const RecentProjectsSection: React.FC = () => {
 
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
-          <button className="px-8 py-4 bg-transparent border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white font-semibold transition-all duration-300 transform hover:scale-105">
+          <button className="px-8 py-4 bg-transparent border-2 border-[#fc5320f8] text-white hover:bg-black hover:text-[#fc5320f8] hover:border-white font-semibold transition-all duration-300 transform hover:scale-105">
             VIEW ALL PROJECTS
           </button>
         </div>
