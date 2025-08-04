@@ -324,14 +324,14 @@ const HorizontalServiceCards: React.FC = () => {
               <div className="flex items-center mb-6">
                 <div className="w-12 h-1 bg-gradient-to-r from-slate-600 to-slate-800 mr-4"></div>
                 <span className="text-slate-600 font-bold tracking-widest uppercase text-sm flex items-center gap-2">
-                  <Shield className="w-4 h-4" />
+                  <Wrench className="w-4 h-4" />
                   Our Services
                 </span>
               </div>
 
               <h2 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
                 ENGINEERING
-                <span className="block text-slate-600">SOLUTIONS</span>
+                <span className="block text-yellow-500">SOLUTIONS</span>
               </h2>
 
               <p className="text-slate-600 text-xl leading-relaxed max-w-2xl">
