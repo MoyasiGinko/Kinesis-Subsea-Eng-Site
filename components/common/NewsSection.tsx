@@ -83,7 +83,7 @@ export default function NewsSection() {
           {newsItems.map((item, index) => (
             <article
               key={item.id}
-              className={`group cursor-pointer transition-all duration-700  border-2 shadow-lg ${
+              className={`group cursor-pointer transition-all duration-700  border-2  ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
@@ -129,7 +129,7 @@ export default function NewsSection() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-black leading-tight group-hover:text-[#FC5220] transition-colors duration-300">
+                <h3 className="text-xl font-bold text-blue-500 leading-tight group-hover:text-[#FC5220] transition-colors duration-300">
                   {item.title}
                 </h3>
 
