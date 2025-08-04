@@ -405,13 +405,23 @@ const HorizontalServiceCards: React.FC = () => {
               const isActive =
                 hoveredCard === index ||
                 (hoveredCard === null && currentIndex === index);
+              // When hovering, update currentIndex to match hovered card
+              const handleMouseEnter = () => {
+                if (!isDragging) {
+                  setHoveredCard(index);
+                  setCurrentIndex(index);
+                }
+              };
+              const handleMouseLeave = () => {
+                setHoveredCard(null);
+              };
               return (
                 <div
                   key={service.id}
                   className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 transition-all duration-300"
                   style={{ minWidth: "350px" }}
-                  onMouseEnter={() => !isDragging && setHoveredCard(index)}
-                  onMouseLeave={() => setHoveredCard(null)}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
                 >
                   <div
                     className={`h-[520px] md:h-[600px] lg:h-[640px] flex flex-col relative overflow-hidden group transform transition-all duration-500 `}
