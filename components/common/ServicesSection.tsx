@@ -29,6 +29,10 @@ interface ServiceCard {
 }
 
 const HorizontalServiceCards: React.FC = () => {
+  // Drag state for horizontal scroll
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -147,17 +151,116 @@ const HorizontalServiceCards: React.FC = () => {
     },
   ];
 
+  // Mouse drag handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!containerRef.current) return;
+
+    setIsDragging(true);
+    setStartX(e.pageX - containerRef.current.offsetLeft);
+    setScrollLeft(containerRef.current.scrollLeft);
+
+    // Prevent text selection and change cursor
+    document.body.style.userSelect = "none";
+    if (containerRef.current) {
+      containerRef.current.style.cursor = "grabbing";
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !containerRef.current) return;
+
+    e.preventDefault();
+    const x = e.pageX - containerRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed multiplier
+    containerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    document.body.style.userSelect = "";
+    if (containerRef.current) {
+      containerRef.current.style.cursor = "grab";
+    }
+  };
+
+  // Touch drag handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!containerRef.current) return;
+
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX - containerRef.current.offsetLeft);
+    setScrollLeft(containerRef.current.scrollLeft);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !containerRef.current) return;
+
+    const x = e.touches[0].pageX - containerRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    containerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  // Add global mouse event listeners
+  useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      if (!isDragging || !containerRef.current) return;
+
+      e.preventDefault();
+      const x = e.pageX - containerRef.current.offsetLeft;
+      const walk = (x - startX) * 2;
+      containerRef.current.scrollLeft = scrollLeft - walk;
+    };
+
+    const handleGlobalMouseUp = () => {
+      setIsDragging(false);
+      document.body.style.userSelect = "";
+      if (containerRef.current) {
+        containerRef.current.style.cursor = "grab";
+      }
+    };
+
+    if (isDragging) {
+      document.addEventListener("mousemove", handleGlobalMouseMove);
+      document.addEventListener("mouseup", handleGlobalMouseUp);
+    }
+
+    return () => {
+      document.removeEventListener("mousemove", handleGlobalMouseMove);
+      document.removeEventListener("mouseup", handleGlobalMouseUp);
+    };
+  }, [isDragging, startX, scrollLeft]);
+
+  const scrollToCard = (index: number) => {
+    if (!containerRef.current) return;
+
+    const cardWidth = 350 + 32; // minWidth + gap
+    const targetScrollLeft = index * cardWidth;
+
+    containerRef.current.scrollTo({
+      left: targetScrollLeft,
+      behavior: "smooth",
+    });
+  };
+
   const nextSlide = () => {
     if (isTransitioning) return;
     setIsTransitioning(true);
-    setCurrentIndex((prev) => (prev + 1) % services.length);
+    const newIndex = (currentIndex + 1) % services.length;
+    setCurrentIndex(newIndex);
+    scrollToCard(newIndex);
     setTimeout(() => setIsTransitioning(false), 800);
   };
 
   const prevSlide = () => {
     if (isTransitioning) return;
     setIsTransitioning(true);
-    setCurrentIndex((prev) => (prev - 1 + services.length) % services.length);
+    const newIndex = (currentIndex - 1 + services.length) % services.length;
+    setCurrentIndex(newIndex);
+    scrollToCard(newIndex);
     setTimeout(() => setIsTransitioning(false), 800);
   };
 
@@ -165,27 +268,28 @@ const HorizontalServiceCards: React.FC = () => {
     if (isTransitioning || index === currentIndex) return;
     setIsTransitioning(true);
     setCurrentIndex(index);
+    scrollToCard(index);
     setTimeout(() => setIsTransitioning(false), 800);
   };
 
-  // Auto-slide functionality
+  // Auto-slide functionality (paused when dragging or hovering)
   useEffect(() => {
     const interval = setInterval(() => {
-      if (hoveredCard === null) {
+      if (hoveredCard === null && !isDragging) {
         nextSlide();
       }
     }, 5000);
     return () => clearInterval(interval);
-  }, [hoveredCard]);
+  }, [hoveredCard, isDragging, currentIndex]);
 
-  const getThemeStyles = (theme: string, isActive: boolean = false) => {
+  const getThemeStyles = (theme: string) => {
     switch (theme) {
       case "primary":
         return {
           bg: "bg-slate-900",
           text: "text-black",
           accent: "bg-blue-500",
-          button: "bg-blue-600 hover:bg-skate-950 text-white",
+          button: "bg-blue-600 hover:bg-slate-950 text-white",
           border: "border-slate-700",
         };
       case "secondary":
@@ -193,7 +297,7 @@ const HorizontalServiceCards: React.FC = () => {
           bg: "bg-slate-900",
           text: "text-black",
           accent: "bg-blue-500",
-          button: "bg-blue-600 hover:bg-skate-950 text-white",
+          button: "bg-blue-600 hover:bg-slate-950 text-white",
           border: "border-slate-700",
         };
       case "accent":
@@ -201,7 +305,7 @@ const HorizontalServiceCards: React.FC = () => {
           bg: "bg-slate-900",
           text: "text-black",
           accent: "bg-blue-500",
-          button: "bg-blue-600 hover:bg-skate-950 text-white",
+          button: "bg-blue-600 hover:bg-slate-950 text-white",
           border: "border-slate-700",
         };
       default:
@@ -209,7 +313,7 @@ const HorizontalServiceCards: React.FC = () => {
           bg: "bg-slate-900",
           text: "text-black",
           accent: "bg-blue-500",
-          button: "bg-blue-600 hover:bg-skate-950 text-white",
+          button: "bg-blue-600 hover:bg-slate-950 text-white",
           border: "border-slate-700",
         };
     }
@@ -276,27 +380,41 @@ const HorizontalServiceCards: React.FC = () => {
         </div>
 
         {/* Services Carousel */}
-        <div className="relative overflow-hidden">
+        <div className="relative">
           <div
             ref={containerRef}
-            className="flex transition-transform duration-800 ease-out gap-8"
-            style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
+            className={`flex gap-8 overflow-x-auto pb-4 transition-all duration-200 ${
+              isDragging ? "cursor-grabbing" : "cursor-grab"
+            }`}
+            style={{
+              WebkitOverflowScrolling: "touch",
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+            }}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             {services.map((service, index) => {
               const styles = getThemeStyles(service.theme);
-              const isActive = index === currentIndex;
-
+              // Card is highlighted if hovered or if it's the current index and no card is hovered
+              const isActive =
+                hoveredCard === index ||
+                (hoveredCard === null && currentIndex === index);
               return (
                 <div
                   key={service.id}
-                  className={`flex-shrink-0 w-full md:w-1/2 lg:w-1/3 transition-all duration-800 ${
-                    isActive ? "z-10" : "scale-100"
-                  }`}
-                  onMouseEnter={() => setHoveredCard(index)}
+                  className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 transition-all duration-300"
+                  style={{ minWidth: "350px" }}
+                  onMouseEnter={() => !isDragging && setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
                   <div
-                    className={`h-[520px] md:h-[600px] lg:h-[640px] flex flex-col relative overflow-hidden group cursor-pointer transform transition-all duration-500`}
+                    className={`h-[520px] md:h-[600px] lg:h-[640px] flex flex-col relative overflow-hidden group transform transition-all duration-500 `}
                   >
                     {/* Image Section */}
                     <div
@@ -310,10 +428,11 @@ const HorizontalServiceCards: React.FC = () => {
                         <img
                           src={service.image}
                           alt={service.title}
-                          className={`w-full h-full object-cover transition-transform duration-700 ${
-                            hoveredCard === index ? "scale-105" : ""
+                          className={`w-full h-full object-cover transition-transform duration-700 select-none ${
+                            isActive ? "scale-110" : ""
                           }`}
                           style={{ height: "100%" }}
+                          draggable={false}
                         />
                       </div>
                     </div>
@@ -329,20 +448,19 @@ const HorizontalServiceCards: React.FC = () => {
                     >
                       <div
                         className={`
-          p-6 space-y-6 mb-2 h-full flex flex-col justify-between
-          rounded-br-[80px] shadow-md hover:shadow-lg
-          transition-all duration-500
-          ${
-            hoveredCard === index
-              ? "bg-black bg-opacity-95 text-white"
-              : "bg-opacity-90"
-          }
-        `}
+                          p-6 space-y-6 mb-2 h-full flex flex-col justify-between
+                          rounded-br-[80px] shadow-md hover:shadow-xl
+                          transition-all duration-500
+                          ${
+                            isActive
+                              ? "bg-black bg-opacity-95 text-white"
+                              : "bg-opacity-90"
+                          }
+                        `}
                         style={{
-                          background:
-                            hoveredCard === index
-                              ? "rgba(0,0,0,0.95)"
-                              : "rgba(255,255,255,0.92)",
+                          background: isActive
+                            ? "rgba(0,0,0,0.95)"
+                            : "rgba(255,255,255,0.92)",
                           position: "absolute",
                           bottom: 0,
                           right: 0,
@@ -355,23 +473,19 @@ const HorizontalServiceCards: React.FC = () => {
                         <div>
                           <div
                             className={`w-8 h-0.5 ${
-                              hoveredCard === index
-                                ? "bg-orange-500"
-                                : styles.accent
-                            } mb-3`}
+                              isActive ? "bg-orange-500" : styles.accent
+                            } mb-3 transition-colors duration-300`}
                           ></div>
                           <h3
-                            className={`text-xl font-bold leading-tight ${
-                              hoveredCard === index ? "text-white" : styles.text
+                            className={`text-xl font-bold leading-tight transition-colors duration-300 ${
+                              isActive ? "text-white" : styles.text
                             }`}
                           >
                             {service.title}
                           </h3>
                           <h4
-                            className={`text-lg font-light opacity-80 ${
-                              hoveredCard === index
-                                ? "text-orange-400"
-                                : styles.text
+                            className={`text-lg font-light opacity-80 transition-colors duration-300 ${
+                              isActive ? "text-orange-400" : styles.text
                             }`}
                           >
                             {service.subtitle}
@@ -380,8 +494,8 @@ const HorizontalServiceCards: React.FC = () => {
 
                         {/* Description */}
                         <p
-                          className={`opacity-80 text-sm leading-relaxed ${
-                            hoveredCard === index ? "text-white" : styles.text
+                          className={`opacity-80 text-sm leading-relaxed transition-colors duration-300 ${
+                            isActive ? "text-white" : styles.text
                           }`}
                         >
                           {service.description}
@@ -398,23 +512,24 @@ const HorizontalServiceCards: React.FC = () => {
                             border-2
                             ${styles.border}
                             bg-transparent
-                            hover:bg-orange-600 hover:text-white
+                            hover:bg-orange-600 hover:text-white hover:border-orange-600
                             rounded-none
                             group/btn
                             hover:shadow-[4px_4px_0_0_rgba(30,41,59,1)]
                             focus:outline-none
                             ${
-                              hoveredCard === index
+                              isActive
                                 ? "text-orange-400 border-orange-500"
                                 : styles.text
                             }
                           `}
                           style={{ width: "fit-content" }}
+                          onClick={(e) => e.stopPropagation()}
                         >
                           <span>{service.buttonText}</span>
                           <ArrowRight
                             className={`w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 ${
-                              hoveredCard === index ? "text-orange-400" : ""
+                              isActive ? "text-orange-400" : ""
                             }`}
                           />
                         </button>
@@ -425,20 +540,32 @@ const HorizontalServiceCards: React.FC = () => {
               );
             })}
           </div>
+
+          {/* Hide scrollbar with CSS */}
+          <style jsx>{`
+            div[ref] {
+              -ms-overflow-style: none;
+              scrollbar-width: none;
+            }
+            div[ref]::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
         </div>
 
         {/* Slide Indicators */}
         <div className="flex justify-center space-x-2 mt-8">
           {services.map((_, index) => (
             <button
-              title="Go to Slide"
+              title={`Go to slide ${index + 1}`}
               key={index}
               onClick={() => goToSlide(index)}
-              className={`transition-all duration-300 ${
-                index === currentIndex
+              disabled={hoveredCard !== null}
+              className={`transition-all duration-300 focus:outline-none ${
+                hoveredCard === null && index === currentIndex
                   ? "w-8 h-1 bg-slate-900"
                   : "w-3 h-1 bg-slate-300 hover:bg-slate-500"
-              }`}
+              } ${hoveredCard !== null ? "opacity-50 cursor-not-allowed" : ""}`}
             />
           ))}
         </div>
