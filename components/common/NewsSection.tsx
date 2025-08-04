@@ -13,7 +13,8 @@ export default function NewsSection() {
       title: "Major Carbon Capture Project Contract Awarded",
       date: "March 15, 2024",
       category: "Press Release",
-      image: "https://images.pexels.com/photos/2990650/pexels-photo-2990650.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image:
+        "https://images.pexels.com/photos/2990650/pexels-photo-2990650.jpeg?auto=compress&cs=tinysrgb&w=800",
       readTime: "5 min",
     },
     {
@@ -21,7 +22,8 @@ export default function NewsSection() {
       title: "Sustainability Report 2023: Net Zero Progress",
       date: "March 10, 2024",
       category: "Sustainability",
-      image: "https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image:
+        "https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=800",
       readTime: "8 min",
     },
     {
@@ -29,9 +31,10 @@ export default function NewsSection() {
       title: "New Innovation Center Opens in Singapore",
       date: "March 5, 2024",
       category: "Company News",
-      image: "https://images.pexels.com/photos/1537008/pexels-photo-1537008.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image:
+        "https://images.pexels.com/photos/1537008/pexels-photo-1537008.jpeg?auto=compress&cs=tinysrgb&w=800",
       readTime: "4 min",
-    }
+    },
   ];
 
   useEffect(() => {
@@ -54,10 +57,7 @@ export default function NewsSection() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-24 bg-white"
-    >
+    <section ref={sectionRef} className="relative py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="mb-16">
@@ -70,7 +70,7 @@ export default function NewsSection() {
                 Stay updated with our recent developments
               </p>
             </div>
-            
+
             <button className="hidden lg:flex items-center gap-2 px-6 py-3 border border-slate-300 text-slate-700 hover:border-slate-900 hover:text-slate-900 transition-all duration-300 group">
               <span className="font-medium">View All</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -101,7 +101,7 @@ export default function NewsSection() {
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                
+
                 {/* Category Label */}
                 <div className="absolute top-4 left-4">
                   <span className="bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-medium text-slate-700 uppercase tracking-wide">
@@ -138,9 +138,9 @@ export default function NewsSection() {
 
                   {/* Progress indicator */}
                   <div className="w-12 h-0.5 bg-slate-200 overflow-hidden">
-                    <div 
+                    <div
                       className={`h-full bg-slate-900 transition-all duration-500 ${
-                        hoveredCard === index ? 'w-full' : 'w-0'
+                        hoveredCard === index ? "w-full" : "w-0"
                       }`}
                     />
                   </div>

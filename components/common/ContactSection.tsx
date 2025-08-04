@@ -27,7 +27,7 @@ export default function ContactSection() {
   return (
     <section className="relative py-20 text-gray-900 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-teal-500"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#005EB8] to-[#024690]"></div>
       </div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,16 +37,16 @@ export default function ContactSection() {
             {/* Section Header */}
             <div className="mb-16">
               <div className="inline-flex items-center gap-3 mb-6">
-                <div className="w-12 h-0.5 bg-gradient-to-r from-blue-500 to-teal-500"></div>
-                <span className="text-sm font-semibold text-gray-600 uppercase tracking-widest">CONTACT US</span>
-                <div className="w-12 h-0.5 bg-gradient-to-l from-blue-500 to-teal-500"></div>
+                <div className="w-12 h-0.5 bg-gradient-to-r from-[#005EB8] to-[#024690]"></div>
+                <span className="text-sm font-semibold text-[#005EB8] uppercase tracking-widest">CONTACT US</span>
+                <div className="w-12 h-0.5 bg-gradient-to-l from-[#005EB8] to-[#024690]"></div>
               </div>
 
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Let's Start a <span className="text-blue-600">Conversation</span>
+                Let's Start a <span className="text-[#005EB8]">Conversation</span>
               </h2>
 
-              <p className="text-xl text-gray-600 max-w-2xl">
+              <p className="text-xl text-gray-700 max-w-2xl">
                 Reach out to us for inquiries, partnerships, or to discuss how we can help transform your business with our innovative solutions.
               </p>
             </div>
@@ -55,13 +55,13 @@ export default function ContactSection() {
             <div className="space-y-12">
               {/* Email */}
               <div className="flex items-start gap-8">
-                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-[#005EB8] to-[#024690] flex items-center justify-center">
                   <Mail className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-grow">
                   <h4 className="text-2xl font-semibold text-gray-900 mb-3">Email</h4>
-                  <p className="text-gray-600 mb-4 text-lg">We'll respond within 24 hours</p>
-                  <a href="mailto:contact@kinesissubsea.com" className="inline-flex items-center text-blue-600 font-medium text-lg hover:translate-x-1 transition-transform duration-300">
+                  <p className="text-gray-700 mb-4 text-lg">We'll respond within 24 hours</p>
+                  <a href="mailto:contact@kinesissubsea.com" className="inline-flex items-center text-[#005EB8] font-medium text-lg hover:text-[#024690] hover:translate-x-1 transition-transform duration-300">
                     contact@kinesissubsea.com
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </a>
@@ -70,13 +70,13 @@ export default function ContactSection() {
 
               {/* Phone */}
               <div className="flex items-start gap-8">
-                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center">
+                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-[#FDC900] to-[#FC5220] flex items-center justify-center">
                   <Phone className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-grow">
                   <h4 className="text-2xl font-semibold text-gray-900 mb-3">Phone</h4>
-                  <p className="text-gray-600 mb-4 text-lg">Mon-Fri from 8am to 5pm</p>
-                  <a href="tel:+442012345678" className="inline-flex items-center text-blue-600 font-medium text-lg hover:translate-x-1 transition-transform duration-300">
+                  <p className="text-gray-700 mb-4 text-lg">Mon-Fri from 8am to 5pm</p>
+                  <a href="tel:+442012345678" className="inline-flex items-center text-[#005EB8] font-medium text-lg hover:text-[#024690] hover:translate-x-1 transition-transform duration-300">
                     +44 (0) 20 1234 5678
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </a>
@@ -85,13 +85,13 @@ export default function ContactSection() {
 
               {/* Address */}
               <div className="flex items-start gap-8">
-                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center">
+                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-[#FDC900] to-[#FC5220] flex items-center justify-center">
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-grow">
                   <h4 className="text-2xl font-semibold text-gray-900 mb-3">Office</h4>
-                  <p className="text-gray-600 mb-4 text-lg">Visit our headquarters</p>
-                  <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-600 font-medium text-lg hover:translate-x-1 transition-transform duration-300">
+                  <p className="text-gray-700 mb-4 text-lg">Visit our headquarters</p>
+                  <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-[#005EB8] font-medium text-lg hover:text-[#024690] hover:translate-x-1 transition-transform duration-300">
                     123 Ocean Drive, Aberdeen, UK
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </a>
@@ -103,16 +103,16 @@ export default function ContactSection() {
           {/* Right Column - Contact Form and Motto */}
           <div className="space-y-10">
             {/* Contact Form */}
-            <div className="relative bg-white border border-gray-300 p-10">
+            <div className="relative bg-white border border-gray-300 p-10 min-h-[600px]">
               {/* Decorative Elements */}
               <div className="absolute top-0 left-0 w-24 h-24">
-                <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-transparent"></div>
-                <div className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-blue-500 to-transparent"></div>
+                <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#005EB8] to-transparent"></div>
+                <div className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-[#005EB8] to-transparent"></div>
               </div>
               
               <div className="absolute bottom-0 right-0 w-24 h-24">
-                <div className="absolute bottom-0 right-0 w-full h-0.5 bg-gradient-to-l from-teal-500 to-transparent"></div>
-                <div className="absolute bottom-0 right-0 w-0.5 h-full bg-gradient-to-t from-teal-500 to-transparent"></div>
+                <div className="absolute bottom-0 right-0 w-full h-0.5 bg-gradient-to-l from-[#FDC900] to-transparent"></div>
+                <div className="absolute bottom-0 right-0 w-0.5 h-full bg-gradient-to-t from-[#FDC900] to-transparent"></div>
               </div>
 
               <h3 className="text-2xl font-bold text-gray-900 mb-8">Send us a message</h3>
@@ -129,7 +129,7 @@ export default function ContactSection() {
                       name="name"
                       value={formState.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-[#005EB8] focus:ring-1 focus:ring-[#005EB8] transition-all duration-300"
                       placeholder="John Smith"
                       required
                     />
@@ -145,7 +145,7 @@ export default function ContactSection() {
                       name="email"
                       value={formState.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-[#005EB8] focus:ring-1 focus:ring-[#005EB8] transition-all duration-300"
                       placeholder="john@example.com"
                       required
                     />
@@ -161,8 +161,8 @@ export default function ContactSection() {
                     name="message"
                     value={formState.message}
                     onChange={handleChange}
-                    rows={5}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
+                    rows={8}
+                    className="w-full h-full min-h-[150px] px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-[#005EB8] focus:ring-1 focus:ring-[#005EB8] transition-all duration-300 resize-y"
                     placeholder="How can we help you?"
                     required
                   />
@@ -170,7 +170,7 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
-                  className="group relative w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold transition-all duration-300 transform hover:-translate-y-1"
+                  className="group relative w-full px-6 py-4 bg-gradient-to-r from-[#005EB8] to-[#024690] hover:from-[#024690] hover:to-[#005EB8] text-white font-semibold transition-all duration-300 transform hover:-translate-y-1"
                 >
                   <div className="flex items-center justify-center gap-3">
                     <span>Send Message</span>
@@ -181,12 +181,12 @@ export default function ContactSection() {
             </div>
 
             {/* Motto Section */}
-            <div className="relative bg-gradient-to-br from-blue-50 to-teal-50 border border-gray-300 p-8">
-              <div className="absolute top-0 left-0 w-16 h-0.5 bg-gradient-to-r from-blue-500 to-transparent"></div>
-              <blockquote className="text-xl font-bold text-gray-900 italic">
+            <div className="relative bg-gradient-to-br from-[#E6F0FF] to-[#D9E8FF] border border-[#005EB8] p-8">
+              <div className="absolute top-0 left-0 w-16 h-0.5 bg-gradient-to-r from-[#005EB8] to-transparent"></div>
+              <blockquote className="text-xl font-bold text-[#005EB8] italic">
                 "Engineering solutions for a sustainable tomorrow"
               </blockquote>
-              <cite className="block text-gray-600 mt-4">
+              <cite className="block text-[#024690] mt-4">
                 — Our Commitment to Innovation
               </cite>
             </div>

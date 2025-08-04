@@ -228,28 +228,26 @@ export default function Navbar() {
       </div> */}
 
       {/* Main Navigation */}
-      <div className="flex items-center justify-between px-6 lg:px-12 py-4">
+      <div className="flex items-center justify-between px-3 sm:px-4 md:px-6 lg:px-12 py-2 sm:py-3 md:py-4">
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center space-x-2">
             <img
               src={isScrolled ? "/logo-dark.svg" : "/logo-white.svg"}
               alt="Kinesis Subsea Engineering Logo"
-              className={`w-auto transition-all duration-500 ${
-                isScrolled ? "h-[86px]" : "h-[90px] "
-              }`}
+              className={`w-auto transition-all duration-500 h-12 sm:h-14 md:h-16 lg:h-[86px] xl:h-[90px]`}
             />
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-2">
+        <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
           {menuItems.map((item, index) => (
             <div key={index} className="relative group">
               {item.submenu ? (
                 <>
                   <button
-                    className={`flex items-center gap-1 px-5 py-3 rounded-lg font-medium text-[20px] transition-all duration-300 ${
+                    className={`flex items-center gap-1 px-3 xl:px-5 py-2 xl:py-3 rounded-lg font-medium text-base xl:text-[20px] transition-all duration-300 ${
                       isScrolled
                         ? openMenuIndex === index
                           ? "bg-blue-50 text-blue-700"
@@ -265,7 +263,7 @@ export default function Navbar() {
                   >
                     {item.title}
                     <ChevronDown
-                      className={`w-4 h-4 transition-transform duration-300 ${
+                      className={`w-4 h-4 xl:w-5 xl:h-5 transition-transform duration-300 ${
                         openMenuIndex === index ? "rotate-180" : ""
                       }`}
                     />
@@ -285,16 +283,16 @@ export default function Navbar() {
                         >
                           <div className="flex items-center justify-between">
                             <div>
-                              <div className="text-gray-900 font-medium group-hover/item:text-blue-700 transition-colors duration-200">
+                              <div className="text-gray-900 font-medium group-hover/item:text-blue-700 transition-colors duration-200 text-base xl:text-lg">
                                 {subitem.title}
                               </div>
                               {subitem.description && (
-                                <div className="text-gray-500 text-sm mt-1">
+                                <div className="text-gray-500 text-xs xl:text-sm mt-1">
                                   {subitem.description}
                                 </div>
                               )}
                             </div>
-                            <ArrowRight className="w-4 h-4 text-gray-400 group-hover/item:text-blue-700 group-hover/item:translate-x-1 transition-all duration-200" />
+                            <ArrowRight className="w-4 h-4 xl:w-5 xl:h-5 text-gray-400 group-hover/item:text-blue-700 group-hover/item:translate-x-1 transition-all duration-200" />
                           </div>
                         </Link>
                       ))}
@@ -304,7 +302,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-1 px-5 py-3 rounded-lg font-medium text-lg transition-all duration-300 ${
+                  className={`flex items-center gap-1 px-3 xl:px-5 py-2 xl:py-3 rounded-lg font-medium text-base xl:text-lg transition-all duration-300 ${
                     isScrolled
                       ? openMenuIndex === index
                         ? "bg-blue-50 text-blue-700"
@@ -320,26 +318,26 @@ export default function Navbar() {
         </nav>
 
         {/* Get in Touch Button and Grid Icon */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
           <button
-            className={`hidden md:block font-medium py-5 px-14 transition-all duration-300 transform hover:-translate-y-0.5 ${
+            className={`hidden md:block font-medium py-3 md:py-4 px-6 md:px-10 xl:px-14 text-base xl:text-lg transition-all duration-300 transform hover:-translate-y-0.5 ${
               isScrolled
                 ? "bg-blue-600 hover:bg-blue-700 text-white"
                 : "bg-white hover:bg-gray-100 text-gray-900"
             }`}
           >
-            <span className="flex text-[20px] items-center gap-1">
+            <span className="flex items-center gap-1 text-base xl:text-[20px]">
               Contact Us
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </span>
           </button>
           <button
             title="Grid View"
-            className="p-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300"
+            className="p-2 md:p-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              className="h-5 w-5 md:h-6 md:w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -355,14 +353,14 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-lg bg-blue-50 text-gray-900 hover:bg-blue-100 transition-all duration-300"
+            className="lg:hidden p-2 md:p-3 rounded-lg bg-blue-50 text-gray-900 hover:bg-blue-100 transition-all duration-300"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {mobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5 md:w-6 md:h-6" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-5 h-5 md:w-6 md:h-6" />
             )}
           </button>
         </div>
