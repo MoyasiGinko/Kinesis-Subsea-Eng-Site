@@ -63,16 +63,16 @@ export default function NewsSection() {
         <div className="mb-16">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-4xl lg:text-5xl font-light text-slate-900 mb-4">
+              <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">
                 Latest News
               </h2>
-              <p className="text-slate-600 text-lg">
+              <p className="text-[#FC5220] text-lg font-medium">
                 Stay updated with our recent developments
               </p>
             </div>
 
-            <button className="hidden lg:flex items-center gap-2 px-6 py-3 border border-slate-300 text-slate-700 hover:border-slate-900 hover:text-slate-900 transition-all duration-300 group">
-              <span className="font-medium">View All</span>
+            <button className="hidden lg:flex items-center gap-2 px-6 py-3 border border-[#FC5220] text-[#FC5220] hover:bg-[#FC5220] hover:text-white hover:border-[#FC5220] transition-all duration-300 group">
+              <span className="font-semibold">View All</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
           </div>
@@ -95,16 +95,16 @@ export default function NewsSection() {
               onMouseLeave={() => setHoveredCard(null)}
             >
               {/* Image */}
-              <div className="relative h-64 overflow-hidden bg-slate-100 mb-6">
+              <div className="relative h-64 overflow-hidden bg-[#FC5220]/10 mb-6 ">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 "
                 />
 
                 {/* Category Label */}
                 <div className="absolute top-4 left-4">
-                  <span className="bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-medium text-slate-700 uppercase tracking-wide">
+                  <span className="bg-[#FC5220] text-white px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full shadow">
                     {item.category}
                   </span>
                 </div>
@@ -113,7 +113,7 @@ export default function NewsSection() {
               {/* Content */}
               <div className="space-y-4">
                 {/* Meta */}
-                <div className="flex items-center gap-4 text-sm text-slate-500">
+                <div className="flex items-center gap-4 text-sm text-blue-600">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
                     <span>{item.date}</span>
@@ -125,21 +125,21 @@ export default function NewsSection() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-medium text-slate-900 leading-tight group-hover:text-slate-600 transition-colors duration-300">
+                <h3 className="text-xl font-bold text-black leading-tight group-hover:text-[#FC5220] transition-colors duration-300">
                   {item.title}
                 </h3>
 
                 {/* Read More */}
                 <div className="flex items-center justify-between pt-2">
-                  <button className="flex items-center gap-2 text-slate-700 hover:text-slate-900 transition-colors duration-300 group/btn">
-                    <span className="text-sm font-medium">Read more</span>
+                  <button className="flex items-center gap-2 text-blue-600 hover:text-[#FC5220] transition-colors duration-300 group/btn">
+                    <span className="text-sm font-semibold">Read more</span>
                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
                   </button>
 
                   {/* Progress indicator */}
-                  <div className="w-12 h-0.5 bg-slate-200 overflow-hidden">
+                  <div className="w-12 h-0.5 bg-blue-600/20 overflow-hidden rounded-full">
                     <div
-                      className={`h-full bg-slate-900 transition-all duration-500 ${
+                      className={`h-full bg-[#FC5220] transition-all duration-500 ${
                         hoveredCard === index ? "w-full" : "w-0"
                       }`}
                     />
@@ -152,8 +152,8 @@ export default function NewsSection() {
 
         {/* Mobile View All Button */}
         <div className="flex justify-center mt-12 lg:hidden">
-          <button className="flex items-center gap-2 px-6 py-3 border border-slate-300 text-slate-700 hover:border-slate-900 hover:text-slate-900 transition-all duration-300 group">
-            <span className="font-medium">View All News</span>
+          <button className="flex items-center gap-2 px-6 py-3 border border-[#FC5220] text-[#FC5220] hover:bg-[#FC5220] hover:text-white hover:border-[#FC5220] transition-all duration-300 group rounded-lg">
+            <span className="font-semibold">View All News</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
           </button>
         </div>
