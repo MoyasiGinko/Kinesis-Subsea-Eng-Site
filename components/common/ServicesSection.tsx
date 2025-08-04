@@ -289,8 +289,8 @@ const HorizontalServiceCards: React.FC = () => {
               return (
                 <div
                   key={service.id}
-                  className={`flex-shrink-0 w-full md:w-1/2 lg:w-1/3 transition-all  duration-800 ${
-                    isActive ? "  z-10" : "scale-100"
+                  className={`flex-shrink-0 w-full md:w-1/2 lg:w-1/3 transition-all duration-800 ${
+                    isActive ? "z-10" : "scale-100"
                   }`}
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
@@ -298,21 +298,27 @@ const HorizontalServiceCards: React.FC = () => {
                   <div
                     className={`h-[520px] md:h-[600px] lg:h-[640px] flex flex-col relative overflow-hidden group cursor-pointer transform transition-all duration-500`}
                   >
-                    {/* Image Section (70% height) */}
+                    {/* Image Section */}
                     <div
                       className="relative flex-shrink-0"
                       style={{ height: "50%" }}
                     >
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full rounded-tl-[80px] object-cover transition-transform duration-700"
+                      <div
+                        className="overflow-hidden rounded-tl-[80px] w-full h-full"
                         style={{ height: "100%" }}
-                      />
-                      {/* <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div> */}
+                      >
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className={`w-full h-full object-cover transition-transform duration-700 ${
+                            hoveredCard === index ? "scale-105" : ""
+                          }`}
+                          style={{ height: "100%" }}
+                        />
+                      </div>
                     </div>
 
-                    {/* Content Section (aligned to far right) */}
+                    {/* Content Section */}
                     <div
                       className="absolute right-0 bottom-0"
                       style={{
@@ -322,9 +328,21 @@ const HorizontalServiceCards: React.FC = () => {
                       }}
                     >
                       <div
-                        className="p-6 space-y-6 mb-2 h-full flex flex-col justify-between bg-opacity-90 backdrop-blur-md  rounded-br-[80px] shadow-lg"
+                        className={`
+          p-6 space-y-6 mb-2 h-full flex flex-col justify-between
+          rounded-br-[80px] shadow-md hover:shadow-lg
+          transition-all duration-500
+          ${
+            hoveredCard === index
+              ? "bg-black bg-opacity-95 text-white"
+              : "bg-opacity-90"
+          }
+        `}
                         style={{
-                          background: "rgba(255,255,255,0.92)",
+                          background:
+                            hoveredCard === index
+                              ? "rgba(0,0,0,0.95)"
+                              : "rgba(255,255,255,0.92)",
                           position: "absolute",
                           bottom: 0,
                           right: 0,
@@ -336,15 +354,25 @@ const HorizontalServiceCards: React.FC = () => {
                         {/* Title */}
                         <div>
                           <div
-                            className={`w-8 h-0.5 ${styles.accent} mb-3`}
+                            className={`w-8 h-0.5 ${
+                              hoveredCard === index
+                                ? "bg-orange-500"
+                                : styles.accent
+                            } mb-3`}
                           ></div>
                           <h3
-                            className={`text-xl font-bold ${styles.text} leading-tight`}
+                            className={`text-xl font-bold leading-tight ${
+                              hoveredCard === index ? "text-white" : styles.text
+                            }`}
                           >
                             {service.title}
                           </h3>
                           <h4
-                            className={`text-lg font-light ${styles.text} opacity-80`}
+                            className={`text-lg font-light opacity-80 ${
+                              hoveredCard === index
+                                ? "text-orange-400"
+                                : styles.text
+                            }`}
                           >
                             {service.subtitle}
                           </h4>
@@ -352,7 +380,9 @@ const HorizontalServiceCards: React.FC = () => {
 
                         {/* Description */}
                         <p
-                          className={`${styles.text} opacity-80 text-sm leading-relaxed`}
+                          className={`opacity-80 text-sm leading-relaxed ${
+                            hoveredCard === index ? "text-white" : styles.text
+                          }`}
                         >
                           {service.description}
                         </p>
@@ -361,23 +391,32 @@ const HorizontalServiceCards: React.FC = () => {
                         <button
                           title={service.buttonText}
                           className={`
-                          px-5 py-2
-                          font-semibold text-sm tracking-wide
-                          flex items-center gap-2
-                          transition-all duration-300
-                          border-2
-                          ${styles.border}
-                          ${styles.text}
-                          bg-transparent
-                          rounded-none
-                          group/btn
-                          hover:shadow-[4px_4px_0_0_rgba(30,41,59,1)]
-                          focus:outline-none
+                            px-5 py-2
+                            font-semibold text-sm tracking-wide
+                            flex items-center gap-2
+                            transition-all duration-300
+                            border-2
+                            ${styles.border}
+                            bg-transparent
+                            hover:bg-orange-600 hover:text-white
+                            rounded-none
+                            group/btn
+                            hover:shadow-[4px_4px_0_0_rgba(30,41,59,1)]
+                            focus:outline-none
+                            ${
+                              hoveredCard === index
+                                ? "text-orange-400 border-orange-500"
+                                : styles.text
+                            }
                           `}
                           style={{ width: "fit-content" }}
                         >
                           <span>{service.buttonText}</span>
-                          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                          <ArrowRight
+                            className={`w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 ${
+                              hoveredCard === index ? "text-orange-400" : ""
+                            }`}
+                          />
                         </button>
                       </div>
                     </div>
