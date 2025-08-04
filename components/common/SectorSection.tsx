@@ -55,8 +55,8 @@ const SectorLayout: React.FC = () => {
 
   return (
     <div
-      className={`relative w-full min-h-screen h-auto sm:h-screen overflow-hidden transition-all duration-500 ${
-        hoveredSector ? "pb-20 sm:pb-0" : ""
+      className={`relative w-full overflow-hidden transition-all duration-700 py-20 min-h-[50vh] md:min-h-[80vh] flex justify-center items-center ${
+        hoveredSector ? "py-20" : ""
       }`}
     >
       {/* Full Background Image */}
@@ -93,7 +93,7 @@ const SectorLayout: React.FC = () => {
       ))}
 
       {/* Main Content Grid */}
-      <div className="relative z-10 h-full flex flex-col md:flex-row">
+      <div className="relative z-10 h-full flex flex-col md:flex-row justify-between gap-8 w-full">
         {sectors.map((sector, index) => (
           <div
             key={sector.id}
@@ -103,11 +103,10 @@ const SectorLayout: React.FC = () => {
             onMouseEnter={() => setHoveredSector(sector.id)}
             onMouseLeave={() => setHoveredSector(null)}
           >
-            {/* Sector Divider Line */}
+            {/* Sector Divider Line */}{" "}
             {index === 0 && (
-              <div className="absolute right-0 top-1/4 bottom-1/4 w-px bg-white/30 z-20" />
+              <div className="absolute right-0 top-[15%] bottom-[15%] w-px bg-white/30 z-20" />
             )}
-
             {/* Content Container */}
             <div className="relative z-20 max-w-md px-8 text-center">
               {/* Icon Container */}
@@ -192,15 +191,14 @@ const SectorLayout: React.FC = () => {
                 <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" />
               </button>
             </div>
-
             {/* Hover Indicator */}
-            <div
+            {/* <div
               className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-white transition-all duration-500 ${
                 hoveredSector === sector.id
                   ? "opacity-100 w-24"
                   : "opacity-30 w-12"
               }`}
-            />
+            /> */}
           </div>
         ))}
       </div>
