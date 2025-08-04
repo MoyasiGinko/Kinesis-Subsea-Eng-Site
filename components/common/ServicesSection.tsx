@@ -185,31 +185,31 @@ const HorizontalServiceCards: React.FC = () => {
           bg: "bg-slate-900",
           text: "text-black",
           accent: "bg-blue-500",
-          button: "bg-blue-600 hover:bg-blue-700 text-white",
+          button: "bg-blue-600 hover:bg-skate-950 text-white",
           border: "border-slate-700",
         };
       case "secondary":
         return {
-          bg: "bg-white",
-          text: "text-slate-900",
-          accent: "bg-slate-900",
-          button: "bg-slate-900 hover:bg-slate-700 text-white",
-          border: "border-slate-200",
+          bg: "bg-slate-900",
+          text: "text-black",
+          accent: "bg-blue-500",
+          button: "bg-blue-600 hover:bg-skate-950 text-white",
+          border: "border-slate-700",
         };
       case "accent":
         return {
-          bg: "bg-slate-800",
+          bg: "bg-slate-900",
           text: "text-black",
-          accent: "bg-emerald-500",
-          button: "bg-emerald-600 hover:bg-emerald-700 text-white",
-          border: "border-slate-600",
+          accent: "bg-blue-500",
+          button: "bg-blue-600 hover:bg-skate-950 text-white",
+          border: "border-slate-700",
         };
       default:
         return {
           bg: "bg-slate-900",
           text: "text-black",
           accent: "bg-blue-500",
-          button: "bg-blue-600 hover:bg-blue-700 text-white",
+          button: "bg-blue-600 hover:bg-skate-950 text-white",
           border: "border-slate-700",
         };
     }
