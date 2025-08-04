@@ -1,6 +1,14 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { ArrowRight, Zap, Play, Power, Cpu, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowRight,
+  Zap,
+  Play,
+  Power,
+  Cpu,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 const HeroBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -51,28 +59,28 @@ const HeroBanner = () => {
     {
       src: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop&crop=center",
       alt: "Modern Infrastructure Engineering",
-      title: "Power Infrastructure"
+      title: "Power Infrastructure",
     },
     {
       src: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop&crop=center",
       alt: "Industrial Automation Systems",
-      title: "Smart Automation"
+      title: "Smart Automation",
     },
     {
       src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop&crop=center",
       alt: "Digital Infrastructure Network",
-      title: "Digital Ecosystem"
+      title: "Digital Ecosystem",
     },
     {
       src: "https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=800&h=600&fit=crop&crop=center",
       alt: "Engineering Excellence",
-      title: "Engineering Excellence"
+      title: "Engineering Excellence",
     },
     {
       src: "https://images.unsplash.com/photo-1562408590-e32931084e23?w=800&h=600&fit=crop&crop=center",
       alt: "Advanced Technology Solutions",
-      title: "Tech Solutions"
-    }
+      title: "Tech Solutions",
+    },
   ];
 
   useEffect(() => {
@@ -80,12 +88,16 @@ const HeroBanner = () => {
 
     // Content rotation every 8 seconds
     const contentInterval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % contentVariations.length);
+      setCurrentIndex(
+        (prevIndex) => (prevIndex + 1) % contentVariations.length
+      );
     }, 8000);
 
     // Image slider auto-advance every 4 seconds
     const imageInterval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % sliderImages.length);
+      setCurrentImageIndex(
+        (prevIndex) => (prevIndex + 1) % sliderImages.length
+      );
     }, 4000);
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -116,7 +128,7 @@ const HeroBanner = () => {
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prevIndex) => 
+    setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? sliderImages.length - 1 : prevIndex - 1
     );
   };
@@ -145,21 +157,26 @@ const HeroBanner = () => {
 
       {/* Dynamic Grid Overlay */}
       <div className="absolute inset-0 opacity-10 z-5">
-        <div className="h-full w-full" style={{
-          backgroundImage: 'linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)',
-          backgroundSize: '50px 50px'
-        }} />
+        <div
+          className="h-full w-full"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)",
+            backgroundSize: "50px 50px",
+          }}
+        />
       </div>
 
       {/* Main Content Container */}
       <div className="relative z-10 max-w-[1560px] mx-auto px-6 lg:px-8 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
           {/* Left Content */}
           <div className="space-y-8">
             <div
               className={`transition-all duration-1000 transform ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
               }`}
             >
               {/* Tagline with Icon */}
@@ -180,7 +197,7 @@ const HeroBanner = () => {
               <h1
                 key={`title-${currentIndex}`}
                 className="text-6xl lg:text-8xl font-black mb-8 leading-none animate-slide-in"
-                style={{ animationDelay: '200ms' }}
+                style={{ animationDelay: "200ms" }}
               >
                 <span className="block text-white">
                   {currentContent.title.first}
@@ -197,13 +214,16 @@ const HeroBanner = () => {
               <p
                 key={`description-${currentIndex}`}
                 className="text-xl lg:text-2xl text-gray-300 mb-12 font-light leading-loose animate-slide-in"
-                style={{ animationDelay: '400ms' }}
+                style={{ animationDelay: "400ms" }}
               >
                 {currentContent.description}
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-6 mb-12 animate-slide-in" style={{ animationDelay: '600ms' }}>
+              <div
+                className="flex flex-col sm:flex-row gap-6 mb-12 animate-slide-in"
+                style={{ animationDelay: "600ms" }}
+              >
                 <button className="group relative px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 font-bold text-white uppercase tracking-wide transition-all duration-300 hover:from-blue-500 hover:to-blue-600 hover:shadow-2xl hover:shadow-blue-500/25 transform hover:-translate-y-1 overflow-hidden">
                   <span className="relative z-10 flex items-center gap-3">
                     Get Project Quote
@@ -246,7 +266,9 @@ const HeroBanner = () => {
           {/* Right Content - Image Slider */}
           <div
             className={`transition-all duration-1200 transform ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-12"
             }`}
             style={{ transitionDelay: "400ms" }}
           >
@@ -259,10 +281,10 @@ const HeroBanner = () => {
                   alt={sliderImages[currentImageIndex].alt}
                   className="w-full h-full object-cover animate-fade-in"
                 />
-                
+
                 {/* Image Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
-                
+
                 {/* Image Title */}
                 <div className="absolute bottom-6 left-6 right-6">
                   <h3 className="text-2xl font-bold text-white mb-2">
@@ -273,13 +295,15 @@ const HeroBanner = () => {
 
                 {/* Navigation Arrows */}
                 <button
+                  title="Previous Image"
                   onClick={prevImage}
                   className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 text-white hover:bg-black/70 transition-all duration-300 flex items-center justify-center"
                 >
                   <ChevronLeft className="w-6 h-6" />
                 </button>
-                
+
                 <button
+                  title="Next Image"
                   onClick={nextImage}
                   className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 text-white hover:bg-black/70 transition-all duration-300 flex items-center justify-center"
                 >
@@ -338,15 +362,25 @@ const HeroBanner = () => {
 
       {/* Decorative Elements */}
       <div className="absolute top-20 right-20 w-2 h-2 bg-blue-500 animate-pulse" />
-      <div className="absolute bottom-40 left-20 w-1 h-1 bg-cyan-400 animate-pulse" style={{ animationDelay: '1s' }} />
-      <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-blue-400 animate-pulse" style={{ animationDelay: '2s' }} />
+      <div
+        className="absolute bottom-40 left-20 w-1 h-1 bg-cyan-400 animate-pulse"
+        style={{ animationDelay: "1s" }}
+      />
+      <div
+        className="absolute top-1/3 right-1/3 w-1 h-1 bg-blue-400 animate-pulse"
+        style={{ animationDelay: "2s" }}
+      />
 
       <style jsx>{`
         @keyframes fade-in {
-          from { opacity: 0; }
-          to { opacity: 1; }
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
-        
+
         @keyframes slide-in {
           from {
             opacity: 0;
@@ -361,7 +395,7 @@ const HeroBanner = () => {
         .animate-fade-in {
           animation: fade-in 0.8s ease-out forwards;
         }
-        
+
         .animate-slide-in {
           animation: slide-in 0.8s ease-out forwards;
         }
