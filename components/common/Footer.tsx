@@ -124,7 +124,7 @@ export default function Footer() {
                   alt="Kinesis Subsea Engineering"
                   className="h-16 w-auto transition-all duration-300 group-hover:scale-105"
                 />
-                <div className="absolute -inset-1 -z-10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 blur-sm"></div>
+                <div className="absolute -inset-1 -z-10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-primary-blue/10 to-cyan-500/10 blur-sm"></div>
               </div>
             </Link>
 
@@ -143,7 +143,7 @@ export default function Footer() {
                   className="group flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 transition-all duration-300 relative overflow-hidden"
                   aria-label={social.name}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-cyan-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary-blue/10 via-cyan-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <span className="relative text-gray-600 group-hover:text-gray-900 transition-colors duration-300">
                     {social.icon}
                   </span>
@@ -161,7 +161,7 @@ export default function Footer() {
           <div className="md:col-span-2 lg:col-span-2">
             <h3 className="text-gray-900 font-medium text-lg mb-5 relative inline-block">
               Explore
-              <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+              <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-primary-blue to-primary-blue-hover"></div>
             </h3>
 
             <ul className="space-y-3">
@@ -189,7 +189,7 @@ export default function Footer() {
           <div className="md:col-span-3 lg:col-span-3">
             <h3 className="text-gray-900 font-medium text-lg mb-5 relative inline-block">
               Global Locations
-              <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+              <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-primary-blue to-primary-blue-hover"></div>
             </h3>
 
             <div className="space-y-4">
@@ -208,7 +208,7 @@ export default function Footer() {
           <div className="md:col-span-3 lg:col-span-3">
             <h3 className="text-gray-900 font-medium text-lg mb-5 relative inline-block">
               Legal
-              <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+              <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-primary-blue to-primary-blue-hover"></div>
             </h3>
 
             <div className="grid grid-cols-1 gap-3">
@@ -254,7 +254,7 @@ export default function Footer() {
         {/* Decorative Divider */}
         <div className="relative mt-16 mb-8">
           <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-400/50 to-transparent"></div>
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-px bg-gradient-to-r from-blue-500 to-blue-600"></div>
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-px bg-gradient-to-r from-primary-blue to-primary-blue-hover"></div>
         </div>
 
         {/* Bottom Bar */}
