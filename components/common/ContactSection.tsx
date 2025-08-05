@@ -201,7 +201,7 @@ export default function ContactSection() {
                     value={formState.message}
                     onChange={handleChange}
                     rows={8}
-                    className="w-full h-full min-h-[150px] px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue transition-all duration-300 resize-y"
+                    className="w-full h-full min-h-[150px] px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue transition-all duration-300 resize-none"
                     placeholder="How can we help you?"
                     required
                   />
