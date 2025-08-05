@@ -122,5 +122,3 @@ export const LoadingProvider: React.FC<LoadingProviderProps> = ({
     </LoadingContext.Provider>
   );
 };
-export { LoadingContext };
-export type { LoadingContextType };
