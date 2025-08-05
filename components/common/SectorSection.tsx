@@ -74,7 +74,7 @@ const SectorLayout: React.FC = () => {
       {sectors.map((sector, index) => (
         <div
           key={`image-${sector.id}`}
-          className={`absolute inset-0 transition-all duration-1000 ease-out ${
+          className={`absolute inset-0 transition-all duration-[9000ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${
             hoveredSector === sector.id
               ? "opacity-90 transform translate-x-0"
               : index === 0
@@ -97,9 +97,7 @@ const SectorLayout: React.FC = () => {
         {sectors.map((sector, index) => (
           <div
             key={sector.id}
-            className={`flex-1 flex flex-col justify-center items-center text-white transition-all duration-700 ease-in-out cursor-pointer group relative ${
-              hoveredSector === sector.id ? "flex-[1.2]" : "flex-1"
-            }`}
+            className={`flex-1 flex flex-col justify-center items-center text-white transition-all duration-[1400ms] ease-in-out cursor-pointer group relative flex-1`}
             onMouseEnter={() => setHoveredSector(sector.id)}
             onMouseLeave={() => setHoveredSector(null)}
           >
@@ -110,52 +108,30 @@ const SectorLayout: React.FC = () => {
             {/* Content Container */}
             <div className="relative z-20 max-w-md px-8 text-center">
               {/* Icon Container */}
-              <div
-                className={`mb-8 mx-auto transition-all duration-500 ${
-                  hoveredSector === sector.id
-                    ? "transform scale-110"
-                    : "transform scale-100"
-                }`}
-              >
+              <div className="mb-8 mx-auto transition-all duration-[900ms]">
                 <div className="inline-flex p-6 bg-white/10 backdrop-blur-md border border-white/20">
                   {sector.icon}
                 </div>
               </div>
 
               {/* Title */}
-              <h2
-                className={`font-bold mb-4 tracking-wider transition-all duration-500 ${
-                  hoveredSector === sector.id ? "text-4xl mb-6" : "text-3xl"
-                }`}
-              >
+              <h2 className="font-bold mb-4 tracking-wider transition-all duration-[900ms] text-3xl">
                 {sector.title}
               </h2>
 
               {/* Subtitle */}
-              <h3
-                className={`font-medium text-white mb-8 transition-all duration-300 ${
-                  hoveredSector === sector.id
-                    ? "text-xl opacity-100"
-                    : "text-lg opacity-90"
-                }`}
-              >
+              <h3 className="font-medium text-white mb-8 transition-all duration-[700ms] text-lg opacity-90">
                 {sector.subtitle}
               </h3>
 
               {/* Description */}
-              <p
-                className={`leading-relaxed font-medium text-white mb-10 transition-all duration-500 ${
-                  hoveredSector === sector.id
-                    ? "text-base opacity-100"
-                    : "text-sm opacity-90"
-                }`}
-              >
+              <p className="leading-relaxed font-medium text-white mb-10 transition-all duration-[900ms] text-sm opacity-90">
                 {sector.description}
               </p>
 
               {/* Key Points - Show on hover */}
               <div
-                className={`transition-all duration-700 transform origin-top ${
+                className={`transition-all duration-[8000ms] ease-[cubic-bezier(0.77,0,0.175,1)] transform origin-top ${
                   hoveredSector === sector.id
                     ? "opacity-100 scale-y-100 max-h-96 mb-10"
                     : "opacity-0 scale-y-0 max-h-0 mb-0"
@@ -165,7 +141,7 @@ const SectorLayout: React.FC = () => {
                   {sector.keyPoints.map((point, pointIndex) => (
                     <div
                       key={pointIndex}
-                      className="flex items-center space-x-4 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-3 transition-all duration-300 hover:bg-white/10 hover:border-white/20"
+                      className="flex items-center space-x-4 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-3 transition-all duration-500 hover:bg-white/10 hover:border-white/20"
                       style={{
                         transitionDelay: `${pointIndex * 80}ms`,
                       }}
@@ -180,13 +156,7 @@ const SectorLayout: React.FC = () => {
               </div>
 
               {/* CTA Button */}
-              <button
-                className={`group/btn inline-flex items-center space-x-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 hover:border-white/50 px-8 py-4 transition-all duration-500 font-medium tracking-wide ${
-                  hoveredSector === sector.id
-                    ? "opacity-100 transform translate-y-0"
-                    : "opacity-80 transform translate-y-2"
-                }`}
-              >
+              <button className="group/btn inline-flex items-center space-x-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 hover:border-white/50 px-8 py-4 transition-all duration-[900ms] font-medium tracking-wide opacity-90">
                 <span>EXPLORE SOLUTIONS</span>
                 <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" />
               </button>
