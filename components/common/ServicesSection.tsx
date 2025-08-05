@@ -28,7 +28,9 @@ interface ServiceCard {
   };
 }
 
-const HorizontalServiceCards: React.FC = () => {
+import { useContext } from "react";
+
+function HorizontalServiceCardsInner() {
   // Drag state for horizontal scroll
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -607,6 +609,15 @@ const HorizontalServiceCards: React.FC = () => {
       </div>
     </div>
   );
+}
+
+import { LoadingContext } from "@/app/context/LoadingContext";
+
+const HorizontalServiceCards: React.FC = () => {
+  const loadingContext = React.useContext(LoadingContext);
+  if (!loadingContext) return null;
+  if (loadingContext.isLoading) return null;
+  return <HorizontalServiceCardsInner />;
 };
 
 export default HorizontalServiceCards;

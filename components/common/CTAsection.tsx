@@ -29,7 +29,7 @@ const CTASection: React.FC = () => {
               </div>
             </button>
 
-            <button className="px-8 py-4 border-2 border-white/30 hover:border-blue-600 text-white hover:bg-white hover:text-blue-600 font-semibold transition-all duration-300 hover:bg-white/10 whitespace-nowrap">
+            <button className="px-8 py-4 border-2 border-white/30 hover:border-blue-600 text-white hover:bg-white hover:text-blue-600 font-semibold transition-all duration-300 whitespace-nowrap">
               <div className="flex items-center space-x-3">
                 <span>View Our Portfolio</span>
                 <ArrowRight className="w-5 h-5" />

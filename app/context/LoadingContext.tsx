@@ -1,0 +1,36 @@
+"use client";
+
+import React, { createContext, useContext, useState, useCallback } from "react";
+
+interface LoadingContextType {
+  isLoading: boolean;
+  setLoading: (loading: boolean) => void;
+}
+
+export const LoadingContext = createContext<LoadingContextType | undefined>(
+  undefined
+);
+
+export const useLoading = () => {
+  const context = useContext(LoadingContext);
+  if (!context) {
+    throw new Error("useLoading must be used within a LoadingProvider");
+  }
+  return context;
+};
+
+export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const setLoading = useCallback((loading: boolean) => {
+    setIsLoading(loading);
+  }, []);
+
+  return (
+    <LoadingContext.Provider value={{ isLoading, setLoading }}>
+      {children}
+    </LoadingContext.Provider>
+  );
+};
