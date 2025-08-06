@@ -136,10 +136,10 @@ const HeroBanner = () => {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 max-w-[1560px] mx-auto px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+      <div className="relative z-10 max-w-[1760px] mx-auto px-6 lg:px-8 w-full">
+        <div className="flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-16 items-center justify-center">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="flex-1 flex flex-col items-center lg:items-start space-y-8 max-w-[600px] w-full">
             <div
               className={`transition-all duration-1000 transform ${
                 isVisible
@@ -147,23 +147,9 @@ const HeroBanner = () => {
                   : "opacity-0 translate-y-12"
               }`}
             >
-              {/* Tagline with Icon */}
-              {/* <div
-                key={`tagline-${currentIndex}`}
-                className="flex items-center gap-3 mb-8 animate-slide-in"
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                  <IconComponent className="w-6 h-6 text-white" />
-                </div>
-                <div className="h-px bg-gradient-to-r from-blue-500 to-transparent flex-1 ml-4" />
-                <span className="text-sm font-bold text-blue-400 uppercase tracking-[0.2em]">
-                  {currentContent.tagline}
-                </span>
-              </div> */}
-
               {/* Main Title */}
               <h1
-                className="mb-6 animate-slide-in font-black leading-tight"
+                className="mb-6 animate-slide-in font-black leading-tight text-center lg:text-left"
                 style={{
                   fontSize: "clamp(2.2rem, 6vw, 5rem)",
                   lineHeight: 1.1,
@@ -173,7 +159,7 @@ const HeroBanner = () => {
                 <span className="block text-white">
                   {currentContent.title.first}
                 </span>
-                <span className="block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-600 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-primary-blue  to-primary-blue-hover bg-clip-text text-transparent">
                   {currentContent.title.highlight}
                 </span>
                 <span className="block text-gray-300 font-light">
@@ -183,7 +169,7 @@ const HeroBanner = () => {
 
               {/* Description */}
               <p
-                className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 md:mb-10 font-light leading-relaxed animate-slide-in"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 md:mb-10 font-light leading-relaxed animate-slide-in text-center lg:text-left"
                 style={{ animationDelay: "400ms" }}
               >
                 {currentContent.description}
@@ -191,15 +177,14 @@ const HeroBanner = () => {
 
               {/* Action Buttons */}
               <div
-                className="flex flex-col sm:flex-row gap-4 md:gap-6 mb-8 md:mb-12 animate-slide-in"
+                className="flex flex-col sm:flex-row gap-4 md:gap-6 mb-8 md:mb-12 animate-slide-in justify-center lg:justify-start"
                 style={{ animationDelay: "600ms" }}
               >
-                <button className="group relative px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 font-bold text-white uppercase tracking-wide transition-all duration-300 hover:from-blue-500 hover:to-blue-600 hover:shadow-2xl hover:shadow-blue-500/25 transform hover:-translate-y-1 overflow-hidden">
+                <button className="group relative px-10 py-5 bg-primary-blue hover:bg-primary-blue-hover font-bold text-white uppercase tracking-wide transition-all duration-300  hover:shadow-2xl hover:shadow-primary-blue/25 transform hover:-translate-y-1 overflow-hidden">
                   <span className="relative z-10 flex items-center gap-3">
                     Get Project Quote
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
                   </span>
-                  <div className="absolute inset-0 bg-white/10 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
                 </button>
 
                 <button className="group relative px-10 py-5 border-2 border-gray-400 font-bold text-gray-300 uppercase tracking-wide transition-all duration-300 hover:border-white hover:text-white transform hover:-translate-y-1 overflow-hidden">
@@ -207,7 +192,6 @@ const HeroBanner = () => {
                     <Play className="w-5 h-5" />
                     View Services
                   </span>
-                  <div className="absolute inset-0 bg-white/5 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
                 </button>
               </div>
             </div>
@@ -215,16 +199,16 @@ const HeroBanner = () => {
 
           {/* Right Content - Image Slider */}
           <div
-            className={`transition-all duration-1200 transform ${
+            className={`flex-1 flex justify-center w-full max-w-[900px] transition-all duration-1200 transform ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-12"
             }`}
             style={{ transitionDelay: "400ms" }}
           >
-            <div className="relative">
+            <div className="relative w-full">
               {/* Main Image Container */}
-              <div className="relative h-[600px] bg-slate-800 overflow-hidden">
+              <div className="relative h-[340px] md:h-[480px] lg:h-[640px] bg-slate-800 overflow-hidden rounded-lg">
                 <img
                   key={currentImageIndex}
                   src={sliderImages[currentImageIndex].src}
@@ -241,7 +225,7 @@ const HeroBanner = () => {
                   <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">
                     {sliderImages[currentImageIndex].title}
                   </h3>
-                  <div className="w-12 sm:w-16 h-1 bg-blue-500" />
+                  <div className="w-12 sm:w-16 h-1 bg-primary-blue" />
                 </div>
 
                 {/* Navigation Arrows */}
@@ -262,35 +246,14 @@ const HeroBanner = () => {
                 </button>
               </div>
 
-              {/* Thumbnail Strip */}
-              {/* <div className="flex gap-3 mt-6 overflow-x-auto pb-2">
-                {sliderImages.map((image, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentImageIndex(index)}
-                    className={`flex-shrink-0 w-20 h-16 overflow-hidden transition-all duration-300 ${
-                      index === currentImageIndex
-                        ? "ring-2 ring-blue-500 opacity-100"
-                        : "opacity-60 hover:opacity-80"
-                    }`}
-                  >
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
-                ))}
-              </div> */}
-
               {/* Slider Progress */}
-              <div className="flex justify-center mt-3 gap-1">
+              <div className="flex justify-center mt-5 gap-1">
                 {sliderImages.map((_, index) => (
                   <div
                     key={index}
                     className={`h-1 transition-all duration-300 rounded-full ${
                       index === currentImageIndex
-                        ? "w-8 bg-blue-500"
+                        ? "w-8 bg-primary-blue"
                         : "w-2 bg-gray-600"
                     }`}
                   />
@@ -303,23 +266,12 @@ const HeroBanner = () => {
 
       {/* Interactive Mouse Follower */}
       <div
-        className="absolute w-60 h-60 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-blue-500/5 blur-3xl pointer-events-none transition-all duration-1000"
+        className="absolute w-60 h-60 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-primary-blue/5 blur-3xl pointer-events-none transition-all duration-1000"
         style={{
           left: `${mousePosition.x}%`,
           top: `${mousePosition.y}%`,
           transform: "translate(-50%, -50%)",
         }}
-      />
-
-      {/* Decorative Elements */}
-      <div className="hidden sm:block absolute top-10 right-10 w-2 h-2 bg-blue-500 animate-pulse" />
-      <div
-        className="hidden sm:block absolute bottom-20 left-10 w-1 h-1 bg-cyan-400 animate-pulse"
-        style={{ animationDelay: "1s" }}
-      />
-      <div
-        className="hidden sm:block absolute top-1/3 right-1/3 w-1 h-1 bg-blue-400 animate-pulse"
-        style={{ animationDelay: "2s" }}
       />
 
       <style jsx>{`
