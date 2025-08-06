@@ -64,7 +64,7 @@ const SectorLayout: React.FC = () => {
       transition: {
         staggerChildren: 0.4,
         duration: 1.5,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: "easeInOut",
       },
     },
   };
@@ -76,7 +76,7 @@ const SectorLayout: React.FC = () => {
       y: 0,
       transition: {
         duration: 1.2,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: "easeInOut",
       },
     },
   };
@@ -90,7 +90,7 @@ const SectorLayout: React.FC = () => {
       transition: {
         delay: i * 0.15,
         duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: "easeInOut",
       },
     }),
   };
@@ -102,7 +102,7 @@ const SectorLayout: React.FC = () => {
         className="absolute inset-0"
         initial={{ opacity: 0, scale: 1.1 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 2, ease: [0.25, 0.46, 0.45, 0.94] }}
+        transition={{ duration: 2, ease: "easeInOut" }}
       >
         <div
           className="absolute inset-0 bg-cover bg-center bg-fixed"
@@ -113,42 +113,50 @@ const SectorLayout: React.FC = () => {
         {/* <div className="absolute inset-0 bg-black/5" /> */}
       </motion.div>
 
-      {/* Dynamic Background Images on Hover */}
-      <AnimatePresence mode="wait">
-        {hoveredSector && (
-          <motion.div
-            key={hoveredSector}
-            className="absolute inset-0"
-            initial={{
-              opacity: 0,
-              scale: 1.05,
-              filter: "blur(2px)",
-            }}
-            animate={{
-              opacity: 0.9,
-              scale: 1,
-              filter: "blur(0px)",
-            }}
-            exit={{
-              opacity: 0,
-              scale: 0.98,
-              filter: "blur(1px)",
-            }}
-            transition={{
-              duration: 1.2,
-              ease: [0.25, 0.46, 0.45, 0.94],
-            }}
-          >
-            <div
-              className="w-full h-full bg-cover bg-center"
-              style={{
-                backgroundImage: `url(${
-                  sectors.find((s) => s.id === hoveredSector)?.sectorImage
-                })`,
-              }}
-            />
-          </motion.div>
-        )}
+      {/* Dynamic Background Images on Hover with Slide Animation (no wait mode) */}
+      <AnimatePresence>
+        {hoveredSector &&
+          (() => {
+            const hoveredIndex = sectors.findIndex(
+              (s) => s.id === hoveredSector
+            );
+            const isLeft = hoveredIndex === 0;
+            return (
+              <motion.div
+                key={hoveredSector}
+                className="absolute inset-0"
+                initial={{
+                  opacity: 0,
+                  scale: 1.05,
+                  filter: "blur(2px)",
+                  x: isLeft ? "-100vw" : "100vw",
+                }}
+                animate={{
+                  opacity: 0.9,
+                  scale: 1,
+                  filter: "blur(0px)",
+                  x: 0,
+                }}
+                exit={{
+                  opacity: 0,
+                  scale: 0.98,
+                  filter: "blur(1px)",
+                  x: isLeft ? "-100vw" : "100vw",
+                }}
+                transition={{
+                  duration: 1.2,
+                  ease: "easeInOut",
+                }}
+              >
+                <div
+                  className="w-full h-full bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url(${sectors[hoveredIndex]?.sectorImage})`,
+                  }}
+                />
+              </motion.div>
+            );
+          })()}
       </AnimatePresence>
 
       {/* Grid Pattern Overlay */}
@@ -190,7 +198,7 @@ const SectorLayout: React.FC = () => {
               onHoverEnd={() => setHoveredSector(null)}
               whileHover={{
                 scale: 1.01,
-                transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] },
+                transition: { duration: 0.8, ease: "easeInOut" },
               }}
             >
               {/* Sector Divider */}
@@ -202,7 +210,7 @@ const SectorLayout: React.FC = () => {
                   transition={{
                     delay: 1.5,
                     duration: 1.2,
-                    ease: [0.25, 0.46, 0.45, 0.94],
+                    ease: "easeInOut",
                   }}
                 />
               )}
@@ -236,7 +244,7 @@ const SectorLayout: React.FC = () => {
                     }}
                     transition={{
                       duration: 0.8,
-                      ease: [0.25, 0.46, 0.45, 0.94],
+                      ease: "easeInOut",
                     }}
                   >
                     <motion.div
@@ -303,8 +311,7 @@ const SectorLayout: React.FC = () => {
                   }}
                   transition={{
                     duration: 1.2,
-                    ease: [0.25, 0.46, 0.45, 0.94],
-                    layout: true,
+                    ease: "easeInOut",
                   }}
                   style={{ transformOrigin: "top" }}
                 >
@@ -318,7 +325,7 @@ const SectorLayout: React.FC = () => {
                     transition={{
                       duration: 0.8,
                       delay: hoveredSector === sector.id ? 0.3 : 0,
-                      ease: [0.25, 0.46, 0.45, 0.94],
+                      ease: "easeInOut",
                     }}
                   >
                     {sector.keyPoints.map((point, pointIndex) => (
@@ -382,7 +389,7 @@ const SectorLayout: React.FC = () => {
                       opacity: hoveredSector === sector.id ? 0.3 : 0,
                       x: hoveredSector === sector.id ? 0 : "-100%",
                     }}
-                    transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
                   />
                   <span className="relative z-10">EXPLORE SOLUTIONS</span>
                   <motion.div
@@ -393,7 +400,7 @@ const SectorLayout: React.FC = () => {
                     }}
                     transition={{
                       duration: 0.8,
-                      ease: [0.25, 0.46, 0.45, 0.94],
+                      ease: "easeInOut",
                     }}
                   >
                     <ArrowUpRight className="w-5 h-5" />
