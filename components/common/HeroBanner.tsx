@@ -59,15 +59,15 @@ const HeroBanner = () => {
     },
   ];
 
+  // --- Auto slider pause/resume logic ---
+  const autoSlideDelay = 4000; // ms
+  const resumeDelay = 5000; // ms after user interaction
+  const autoSlideTimeout = useRef<NodeJS.Timeout | null>(null);
+  const resumeTimeout = useRef<NodeJS.Timeout | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
   useEffect(() => {
     setIsVisible(true);
-
-    // Image slider auto-advance every 4 seconds
-    const imageInterval = setInterval(() => {
-      setCurrentImageIndex(
-        (prevIndex) => (prevIndex + 1) % sliderImages.length
-      );
-    }, 4000);
 
     const handleMouseMove = (e: MouseEvent) => {
       if (heroRef.current) {
@@ -84,18 +84,54 @@ const HeroBanner = () => {
     }
 
     return () => {
-      clearInterval(imageInterval);
       if (typeof window !== "undefined") {
         window.removeEventListener("mousemove", handleMouseMove);
       }
     };
   }, []);
 
+  // Auto-advance effect, respects pause/resume
+  useEffect(() => {
+    if (autoSlideTimeout.current) clearTimeout(autoSlideTimeout.current);
+    // Only set auto-slide if not paused
+    if (!isPaused) {
+      autoSlideTimeout.current = setTimeout(() => {
+        setCurrentImageIndex(
+          (prevIndex) => (prevIndex + 1) % sliderImages.length
+        );
+      }, autoSlideDelay);
+    }
+    return () => {
+      if (autoSlideTimeout.current) clearTimeout(autoSlideTimeout.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentImageIndex, isPaused]);
+
+  // Resume auto-slide after delay when paused
+  useEffect(() => {
+    if (isPaused) {
+      if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
+      resumeTimeout.current = setTimeout(() => {
+        setIsPaused(false);
+      }, resumeDelay);
+      return () => {
+        if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
+      };
+    }
+  }, [isPaused]);
+
+  // Helper to pause auto-slide and schedule resume
+  const pauseAutoSlide = () => {
+    setIsPaused(true);
+  };
+
   const nextImage = () => {
+    pauseAutoSlide();
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % sliderImages.length);
   };
 
   const prevImage = () => {
+    pauseAutoSlide();
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? sliderImages.length - 1 : prevIndex - 1
     );
