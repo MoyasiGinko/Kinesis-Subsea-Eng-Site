@@ -250,10 +250,10 @@ export default function Navbar() {
                     className={`flex items-center gap-1 px-3 xl:px-5 py-2 xl:py-3 rounded-lg font-medium text-base xl:text-[20px] transition-all duration-300 ${
                       isScrolled
                         ? openMenuIndex === index
-                          ? "bg-blue-50 text-blue-700"
-                          : "text-gray-800 hover:bg-blue-50 hover:text-blue-700"
+                          ? "bg-blue-50 text-primary-blue-hover"
+                          : "text-gray-800 hover:bg-blue-50 hover:text-primary-blue-hover"
                         : openMenuIndex === index
-                        ? "bg-blue-50 text-blue-700"
+                        ? "bg-blue-50 text-primary-blue-hover"
                         : "text-white hover:text-gray-300"
                     }`}
                     onClick={() => toggleMenu(index)}
@@ -283,7 +283,7 @@ export default function Navbar() {
                         >
                           <div className="flex items-center justify-between">
                             <div>
-                              <div className="text-gray-900 font-medium group-hover/item:text-blue-700 transition-colors duration-200 text-base xl:text-lg">
+                              <div className="text-gray-900 font-medium group-hover/item:text-primary-blue-hover transition-colors duration-200 text-base xl:text-lg">
                                 {subitem.title}
                               </div>
                               {subitem.description && (
@@ -292,7 +292,7 @@ export default function Navbar() {
                                 </div>
                               )}
                             </div>
-                            <ArrowRight className="w-4 h-4 xl:w-5 xl:h-5 text-gray-400 group-hover/item:text-blue-700 group-hover/item:translate-x-1 transition-all duration-200" />
+                            <ArrowRight className="w-4 h-4 xl:w-5 xl:h-5 text-gray-400 group-hover/item:text-primary-blue-hover group-hover/item:translate-x-1 transition-all duration-200" />
                           </div>
                         </Link>
                       ))}
@@ -305,8 +305,8 @@ export default function Navbar() {
                   className={`flex items-center gap-1 px-3 xl:px-5 py-2 xl:py-3 rounded-lg font-medium text-base xl:text-lg transition-all duration-300 ${
                     isScrolled
                       ? openMenuIndex === index
-                        ? "bg-blue-50 text-blue-700"
-                        : "text-gray-800 hover:bg-blue-50 hover:text-blue-700"
+                        ? "bg-blue-50 text-primary-blue-hover"
+                        : "text-gray-800 hover:bg-blue-50 hover:text-primary-blue-hover"
                       : "text-white hover:text-gray-300"
                   }`}
                 >
@@ -322,7 +322,7 @@ export default function Navbar() {
           <button
             className={`hidden md:block font-medium py-3 md:py-4 px-6 md:px-10 xl:px-14 text-base xl:text-lg transition-all duration-300 transform hover:-translate-y-0.5 ${
               isScrolled
-                ? "bg-blue-600 hover:bg-blue-700 text-white"
+                ? "bg-primary-blue hover:bg-primary-blue-hover text-white"
                 : "bg-white hover:bg-gray-100 text-gray-900"
             }`}
           >

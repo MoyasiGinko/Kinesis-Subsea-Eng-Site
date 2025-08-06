@@ -185,7 +185,7 @@ const SectorLayout: React.FC = () => {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-8">
         {/* Sectors Grid - 2 Columns Centered */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-0"
+          className="grid grid-cols-1 lg:grid-cols-2 lg:gap-36"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -204,20 +204,6 @@ const SectorLayout: React.FC = () => {
                 transition: { duration: 0.8, ease: easeInOut },
               }}
             >
-              {/* Sector Divider */}
-              {index === 0 && (
-                <motion.div
-                  className="absolute right-0 top-[10%] bottom-[10%] w-px bg-gradient-to-b from-transparent via-white/30 to-transparent z-20"
-                  initial={{ scaleY: 0, opacity: 0 }}
-                  animate={{ scaleY: 1, opacity: 1 }}
-                  transition={{
-                    delay: 1.5,
-                    duration: 1.2,
-                    ease: easeInOut,
-                  }}
-                />
-              )}
-
               {/* Content Container */}
               <div className="relative z-20 p-16 h-full flex flex-col min-h-screen justify-start items-center text-center">
                 {/* Icon Container */}
