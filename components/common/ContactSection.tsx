@@ -49,9 +49,9 @@ const ContactSection: React.FC = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 py-16 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
           {/* Left Column - Contact Info */}
-          <div className="text-white">
+          <div className="text-white flex-1 lg:flex-[1.5]">
             <div className="mb-8">
               <p className="text-sm font-semibold tracking-wider uppercase mb-4 opacity-90">
                 CONTACT
@@ -69,7 +69,7 @@ const ContactSection: React.FC = () => {
             </div>
 
             {/* Contact Details Grid */}
-            <div className="grid sm:grid-cols-2 gap-8">
+            <div className="grid sm:grid-cols-2 gap-12">
               {/* Location */}
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-12 h-12   flex items-center justify-center">
@@ -169,14 +169,14 @@ const ContactSection: React.FC = () => {
 
           {/* Right Column - Contact Form */}
           <div
-            className="bg-white bg-opacity-5 backdrop-blur-sm p-8 relative"
+            className="bg-[#04539d] backdrop-blur-sm p-8 relative flex-1 lg:flex-[1]"
             style={{
               backgroundImage: "url('/images/contact-bg-03.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
-            <h3 className="text-2xl font-bold text-white mb-6">Get in Touch</h3>
+            <h3 className="text-4xl font-bold text-white mb-6">Get in Touch</h3>
             <p className="text-white opacity-90 mb-8">
               The point of using Lorem Ipsum is that it has more-or-less normal
             </p>
