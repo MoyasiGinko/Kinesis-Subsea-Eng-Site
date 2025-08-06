@@ -19,7 +19,7 @@ export default function Home() {
       <RecentProjectsSection />
       <NewsSection />
       <ContactSection />
-      <CTASection/>
+      {/* <CTASection/> */}
     </main>
   );
 }

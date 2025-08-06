@@ -2,7 +2,7 @@ import React from "react";
 
 const LoadingScreen: React.FC = () => {
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-white/90 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-white backdrop-blur-sm">
       <div className="flex flex-col items-center gap-6">
         <svg
           className="animate-spin w-16 h-16 text-[#FC5220]"

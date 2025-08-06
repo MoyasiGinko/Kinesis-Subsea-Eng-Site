@@ -133,15 +133,15 @@ const RecentProjectsSection: React.FC = () => {
         {/* Header Section */}
         <div className="mb-16">
           <div className="flex items-center mb-6">
-            <div className="w-12 h-1 bg-gradient-to-r from-[#fc5320f8] to-[#FC5220] mr-4"></div>
-            <span className="text-orange-500 font-semibold tracking-wide uppercase text-sm">
+            <div className="w-12 h-1 bg-gradient-to-r from-primary-orange to-primary-orange-hover mr-4"></div>
+            <span className="text-primary-orange font-semibold tracking-wide uppercase text-sm">
               Portfolio
             </span>
           </div>
 
           <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             RECENT
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#fc5320f8] to-[#FC5220]">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-primary-orange-hover">
               PROJECTS
             </span>
           </h2>
@@ -181,7 +181,7 @@ const RecentProjectsSection: React.FC = () => {
                       <div className="absolute bottom-0 left-0 right-0 p-8">
                         <div className="flex items-center gap-3 mb-3">
                           <span
-                            className={`px-3 py-1 text-xs font-bold tracking-wide uppercase bg-[#FC5220] text-slate-900}`}
+                            className={`px-3 py-1 text-xs font-bold tracking-wide uppercase bg-primary-orange-hover text-slate-900}`}
                           >
                             {project.status}
                           </span>
@@ -190,7 +190,7 @@ const RecentProjectsSection: React.FC = () => {
                           </span>
                         </div>
 
-                        <h3 className="text-2xl lg:text-3xl font-bold text-[#FC5220] mb-2">
+                        <h3 className="text-2xl lg:text-3xl font-bold text-primary-orange-hover mb-2">
                           {project.title}
                         </h3>
 
@@ -215,7 +215,7 @@ const RecentProjectsSection: React.FC = () => {
                     onClick={() => goToSlide(index)}
                     className={`transition-all duration-300 ${
                       index === currentIndex
-                        ? "w-12 h-1 bg-gradient-to-r from-[#fc5320f8] to-[#FC5220]"
+                        ? "w-12 h-1 bg-gradient-to-r from-primary-orange to-primary-orange-hover"
                         : "w-6 h-1 bg-slate-600 hover:bg-slate-500"
                     }`}
                   />
@@ -227,7 +227,7 @@ const RecentProjectsSection: React.FC = () => {
                   title="Previous slide"
                   onClick={prevSlide}
                   disabled={isTransitioning}
-                  className="p-3 bg-slate-700 hover:bg-slate-600 text-[#fc5320f8] transition-all duration-300 disabled:opacity-50 border border-slate-600"
+                  className="p-3 bg-slate-700 hover:bg-slate-600 text-primary-orange transition-all duration-300 disabled:opacity-50 border border-slate-600"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
@@ -235,7 +235,7 @@ const RecentProjectsSection: React.FC = () => {
                   title="Next slide"
                   onClick={nextSlide}
                   disabled={isTransitioning}
-                  className="p-3 bg-slate-700 hover:bg-slate-600 text-[#fc5320f8] transition-all duration-300 disabled:opacity-50 border border-slate-600"
+                  className="p-3 bg-slate-700 hover:bg-slate-600 text-primary-orange transition-all duration-300 disabled:opacity-50 border border-slate-600"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
@@ -248,8 +248,8 @@ const RecentProjectsSection: React.FC = () => {
             {/* Current Project Details */}
             <div className="bg-slate-800 border border-slate-700 p-8">
               <div className="flex items-center gap-3 mb-4">
-                <Building2 className="w-5 h-5 text-[#fc5320f8]" />
-                <span className="text-[#fc5320f8] font-semibold text-sm uppercase tracking-wide">
+                <Building2 className="w-5 h-5 text-primary-orange" />
+                <span className="text-primary-orange font-semibold text-sm uppercase tracking-wide">
                   {currentProject.category}
                 </span>
               </div>
@@ -268,8 +268,8 @@ const RecentProjectsSection: React.FC = () => {
                   <span
                     className={`font-semibold ${
                       currentProject.status === "Completed"
-                        ? "text-green-400"
-                        : "text-yellow-400"
+                        ? "text-primary-blue"
+                        : "text-primary-yellow"
                     }`}
                   >
                     {currentProject.status}
@@ -289,7 +289,7 @@ const RecentProjectsSection: React.FC = () => {
                 </div>
               </div>
 
-              <button className="w-full px-6 py-4 bg-gradient-to-r from-[#fc5320f8] to-[#FC5220] hover:from-black hover:to-black border border-black hover:border-[#fc5320f8] text-white hover:text-[#fc5320f8] font-semibold transition-all duration-300 flex items-center justify-center group">
+              <button className="w-full px-6 py-4 bg-gradient-to-r from-primary-orange to-primary-orange-hover hover:from-black hover:to-black border border-black hover:border-primary-orange text-white hover:text-primary-orange font-semibold transition-all duration-300 flex items-center justify-center group">
                 <span>VIEW FULL CASE STUDY</span>
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
@@ -297,7 +297,7 @@ const RecentProjectsSection: React.FC = () => {
 
             {/* All Projects List */}
             <div className="bg-slate-800 border border-slate-700 p-6">
-              <h4 className="text-lg font-bold text-[#FC5220] mb-4">
+              <h4 className="text-lg font-bold text-primary-orange-hover mb-4">
                 All Projects
               </h4>
               <div className="space-y-2">
@@ -309,7 +309,7 @@ const RecentProjectsSection: React.FC = () => {
                     onMouseLeave={() => setHoveredProject(null)}
                     className={`w-full text-left p-3 transition-all duration-300 border-l-2 ${
                       index === currentIndex
-                        ? "bg-slate-950 border-[#fc5320f8] text-white"
+                        ? "bg-slate-950 border-primary-orange text-white"
                         : "border-transparent text-slate-300 hover:bg-slate-950 hover:border-slate-600"
                     }`}
                   >
@@ -326,7 +326,7 @@ const RecentProjectsSection: React.FC = () => {
 
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
-          <button className="px-8 py-4 bg-transparent border-2 border-[#fc5320f8] text-white hover:bg-[#FC5220] font-semibold transition-all duration-300 transform hover:scale-105">
+          <button className="px-8 py-4 bg-transparent border-2 border-primary-orange text-white hover:bg-primary-orange-hover font-semibold transition-all duration-300 transform hover:scale-105">
             VIEW ALL PROJECTS
           </button>
         </div>
