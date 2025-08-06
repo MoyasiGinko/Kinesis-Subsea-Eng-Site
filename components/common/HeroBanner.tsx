@@ -143,7 +143,7 @@ const HeroBanner = () => {
   return (
     <section
       ref={heroRef}
-      className="relative text-white overflow-hidden min-h-[100vh] flex flex-col justify-center items-center pt-32 pb-10 sm:pt-32 sm:pb-16 md:pt-40 md:pb-20 lg:pt-40 lg:pb-20 "
+      className="relative text-white overflow-hidden   h-full max-h-[1200px] flex flex-col justify-center items-center pt-32 pb-10 sm:pt-32 sm:pb-16 md:pt-40 md:pb-20 lg:pt-40 lg:pb-20 "
     >
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
