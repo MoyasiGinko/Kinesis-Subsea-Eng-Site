@@ -1,237 +1,247 @@
 "use client";
-import React, { useState } from "react";
-import { Mail, Phone, ArrowRight, MapPin, Send } from "lucide-react";
 
-export default function ContactSection() {
-  const [formState, setFormState] = useState({
-    name: "",
+import { useState } from "react";
+
+interface ContactFormData {
+  fullName: string;
+  email: string;
+  inquiry: string;
+  message: string;
+}
+
+const ContactSection: React.FC = () => {
+  const [formData, setFormData] = useState<ContactFormData>({
+    fullName: "",
     email: "",
+    inquiry: "",
     message: "",
   });
 
-  const handleChange = (
+  const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormState((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log("Form submitted:", formData);
     // Handle form submission logic here
-    console.log("Form submitted:", formState);
-    // Reset form
-    setFormState({ name: "", email: "", message: "" });
   };
 
   return (
-    <section className="relative py-20 text-gray-900 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-blue to-primary-blue-hover"></div>
-      </div> */}
+    <section className="relative bg-primary-blue overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0">
+        <div className="absolute left-2 -top-2 w-1/2 h-full">
+          <div className="absolute left-0 top-8 w-64 h-64 opacity-10">
+            <div className="grid grid-cols-8 gap-1 w-full h-full">
+              {Array.from({ length: 64 }).map((_, i) => (
+                <div key={i} className="w-2 h-2 bg-white rounded-full"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left Column - Header and Contact Info */}
-          <div>
-            {/* Section Header */}
-            <div className="mb-16">
-              <div className="inline-flex items-center gap-3 mb-6">
-                <div className="w-12 h-0.5 bg-gradient-to-r from-primary-blue to-primary-blue-hover"></div>
-                <span className="text-sm font-semibold text-primary-blue uppercase tracking-widest">
-                  CONTACT US
-                </span>
-                <div className="w-12 h-0.5 bg-gradient-to-l from-primary-blue to-primary-blue-hover"></div>
-              </div>
-
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Let's Start a{" "}
-                <span className="text-primary-blue">Conversation</span>
+      <div className="relative max-w-7xl mx-auto px-6 py-16 lg:py-20">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Left Column - Contact Info */}
+          <div className="text-white">
+            <div className="mb-8">
+              <p className="text-sm font-semibold tracking-wider uppercase mb-4 opacity-90">
+                CONTACT
+              </p>
+              <h2 className="text-4xl lg:text-5xl font-bold leading-tight mb-6">
+                Have a project in mind?
+                <br />
+                Contact with us
               </h2>
-
-              <p className="text-xl text-gray-700 max-w-2xl">
-                Reach out to us for inquiries, partnerships, or to discuss how
-                we can help transform your business with our innovative
-                solutions.
+              <p className="text-lg opacity-90 leading-relaxed">
+                There are many variations of passages of Lorem Ipsum available,
+                but the majority have suffered alteration in some form by
+                injected humour.
               </p>
             </div>
 
-            {/* Contact Info */}
-            <div className="space-y-12">
-              {/* Email */}
-              <div className="flex items-start gap-8">
-                <div className="flex-shrink-0 w-16 h-16 bg-primary-blue flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-white" />
-                </div>
-                <div className="flex-grow">
-                  <h4 className="text-2xl font-semibold text-gray-900 mb-2">
-                    Email
-                  </h4>
-                  <p className="text-gray-700 mb-2 text-lg">
-                    We'll respond within 24 hours
-                  </p>
-                  <a
-                    href="mailto:contact@kinesissubsea.com"
-                    className="inline-flex items-center text-primary-blue font-medium text-lg hover:text-primary-blue-hover hover:translate-x-1 transition-transform duration-300"
+            {/* Contact Details Grid */}
+            <div className="grid sm:grid-cols-2 gap-8">
+              {/* Location */}
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12   flex items-center justify-center">
+                  <svg
+                    className="w-12 h-12"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
                   >
-                    contact@kinesissubsea.com
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </a>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">United Kingdom</h3>
+                  <p className="opacity-90">42 Abardeen Street, UK</p>
                 </div>
               </div>
 
               {/* Phone */}
-              <div className="flex items-start gap-8">
-                <div className="flex-shrink-0 w-16 h-16 bg-primary-blue flex items-center justify-center">
-                  <Phone className="w-6 h-6 text-white" />
-                </div>
-                <div className="flex-grow">
-                  <h4 className="text-2xl font-semibold text-gray-900 mb-2">
-                    Phone
-                  </h4>
-                  <p className="text-gray-700 mb-2 text-lg">
-                    Mon-Fri from 8am to 5pm
-                  </p>
-                  <a
-                    href="tel:+442012345678"
-                    className="inline-flex items-center text-primary-blue font-medium text-lg hover:text-primary-blue-hover hover:translate-x-1 transition-transform duration-300"
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
+                  <svg
+                    className="w-12 h-12"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
                   >
-                    +44 (0) 20 1234 5678
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </a>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Phone Number</h3>
+                  <p className="opacity-90">+971 551 579 261</p>
                 </div>
               </div>
 
-              {/* Address */}
-              <div className="flex items-start gap-8">
-                <div className="flex-shrink-0 w-16 h-16 bg-primary-blue flex items-center justify-center">
-                  <MapPin className="w-6 h-6 text-white" />
-                </div>
-                <div className="flex-grow">
-                  <h4 className="text-2xl font-semibold text-gray-900 mb-2">
-                    Office
-                  </h4>
-                  <p className="text-gray-700 mb-2 text-lg">
-                    Visit our headquarters
-                  </p>
-                  <a
-                    href="https://maps.google.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-primary-blue font-medium text-lg hover:text-primary-blue-hover hover:translate-x-1 transition-transform duration-300"
+              {/* Email */}
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12  flex items-center justify-center">
+                  <svg
+                    className="w-12 h-12"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
                   >
-                    123 Ocean Drive, Aberdeen, UK
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </a>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Email Address</h3>
+
+                  <p className="opacity-90">support.kinesis@gmail.com</p>
+                </div>
+              </div>
+
+              {/* Opening Hours */}
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12  flex items-center justify-center">
+                  <svg
+                    className="w-12 h-12"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12,6 12,12 16,14" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Opening Hour</h3>
+                  <p className="opacity-90">Mon - Fri: 09am - 07pm</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column - Contact Form and Motto */}
-          <div className="space-y-10">
-            {/* Contact Form */}
-            <div className="relative bg-white border border-gray-300 p-10 min-h-[600px]">
-              {/* Decorative Elements */}
-              <div className="absolute top-0 left-0 w-24 h-24">
-                <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary-blue to-transparent"></div>
-                <div className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-primary-blue to-transparent"></div>
+          {/* Right Column - Contact Form */}
+          <div
+            className="bg-white bg-opacity-5 backdrop-blur-sm p-8 relative"
+            style={{
+              backgroundImage: "url('/images/contact-bg-03.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <h3 className="text-2xl font-bold text-white mb-6">Get in Touch</h3>
+            <p className="text-white opacity-90 mb-8">
+              The point of using Lorem Ipsum is that it has more-or-less normal
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <input
+                  type="text"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleInputChange}
+                  placeholder="Full Name"
+                  className="w-full px-6 py-4 bg-white bg-opacity-10 border border-white border-opacity-20  text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 focus:border-transparent transition-all duration-300"
+                  required
+                />
               </div>
 
-              <div className="absolute bottom-0 right-0 w-24 h-24">
-                <div className="absolute bottom-0 right-0 w-full h-0.5 bg-gradient-to-l from-primary-yellow to-transparent"></div>
-                <div className="absolute bottom-0 right-0 w-0.5 h-full bg-gradient-to-t from-primary-yellow to-transparent"></div>
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Email Address"
+                  className="w-full px-6 py-4 bg-white bg-opacity-10 border border-white border-opacity-20  text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 focus:border-transparent transition-all duration-300"
+                  required
+                />
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">
-                Send us a message
-              </h3>
+              <div>
+                <input
+                  type="text"
+                  name="inquiry"
+                  value={formData.inquiry}
+                  onChange={handleInputChange}
+                  placeholder="Your Inquiry"
+                  className="w-full px-6 py-4 bg-white bg-opacity-10 border border-white border-opacity-20  text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 focus:border-transparent transition-all duration-300"
+                  required
+                />
+              </div>
 
-              <form className="space-y-6" onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formState.name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue transition-all duration-300"
-                      placeholder="John Smith"
-                      required
-                    />
-                  </div>
+              <div>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder="Write Your Message"
+                  rows={5}
+                  className="w-full px-6 py-4 bg-white bg-opacity-10 border border-white border-opacity-20  text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 focus:border-transparent transition-all duration-300 resize-none"
+                  required
+                ></textarea>
+              </div>
 
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formState.email}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue transition-all duration-300"
-                      placeholder="john@example.com"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formState.message}
-                    onChange={handleChange}
-                    rows={8}
-                    className="w-full h-full min-h-[150px] px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue transition-all duration-300 resize-none"
-                    placeholder="How can we help you?"
-                    required
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="group relative w-full px-6 py-4 bg-gradient-to-r from-primary-blue to-primary-blue-hover hover:from-primary-blue-hover hover:to-primary-blue text-white font-semibold transition-all duration-300 transform hover:-translate-y-1"
-                >
-                  <div className="flex items-center justify-center gap-3">
-                    <span>Send Message</span>
-                    <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </div>
-                </button>
-              </form>
-            </div>
-
-            {/* Motto Section */}
-            <div className="relative bg-gradient-to-br from-[#E6F0FF] to-[#D9E8FF] border border-primary-blue p-8">
-              <div className="absolute top-0 left-0 w-16 h-0.5 bg-gradient-to-r from-primary-blue to-transparent"></div>
-              <blockquote className="text-xl font-bold text-primary-blue italic">
-                "Engineering solutions for a sustainable tomorrow"
-              </blockquote>
-              <cite className="block text-primary-blue-hover mt-4">
-                — Our Commitment to Innovation
-              </cite>
-            </div>
+              <button
+                type="submit"
+                className="w-full bg-white text-primary-blue font-semibold py-4 px-8  hover:bg-opacity-90 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transform "
+              >
+                Send Message
+              </button>
+            </form>
           </div>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default ContactSection;
