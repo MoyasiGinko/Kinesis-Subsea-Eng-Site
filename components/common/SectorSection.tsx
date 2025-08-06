@@ -96,7 +96,7 @@ const SectorLayout: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-black overflow-hidden flex items-center justify-center">
+    <div className="relative w-full min-h-[600px] h-full lg:max-h-[1000px] xl:max-h-[940px] pt-0 lg:pt-20 bg-black overflow-hidden flex items-start justify-center">
       {/* Main Background Image */}
       <motion.div
         className="absolute inset-0"
@@ -208,7 +208,7 @@ const SectorLayout: React.FC = () => {
               )}
 
               {/* Content Container */}
-              <div className="relative z-20 p-16 h-full flex flex-col min-h-[600px] justify-center items-center text-center">
+              <div className="relative z-20 p-16 h-full flex flex-col min-h-screen justify-start items-center text-center">
                 {/* Icon Container */}
                 <motion.div
                   className="mb-8 flex justify-center"
