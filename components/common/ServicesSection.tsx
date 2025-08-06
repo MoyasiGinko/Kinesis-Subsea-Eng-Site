@@ -286,7 +286,7 @@ function HorizontalServiceCardsInner() {
           bg: "bg-slate-900",
           text: "text-black",
           accent: "bg-blue-500",
-          button: "bg-yellow-500 hover:bg-slate-950 text-white",
+          button: "bg-primary-yellow hover:bg-slate-950 text-white",
           border: "border-slate-700",
         };
       case "secondary":
@@ -294,7 +294,7 @@ function HorizontalServiceCardsInner() {
           bg: "bg-slate-900",
           text: "text-black",
           accent: "bg-blue-500",
-          button: "bg-yellow-500 hover:bg-slate-950 text-white",
+          button: "bg-primary-yellow hover:bg-slate-950 text-white",
           border: "border-slate-700",
         };
       case "accent":
@@ -302,7 +302,7 @@ function HorizontalServiceCardsInner() {
           bg: "bg-slate-900",
           text: "text-black",
           accent: "bg-blue-500",
-          button: "bg-yellow-500  hover:bg-slate-950 text-white",
+          button: "bg-primary-yellow  hover:bg-slate-950 text-white",
           border: "border-slate-700",
         };
       default:
@@ -310,7 +310,7 @@ function HorizontalServiceCardsInner() {
           bg: "bg-slate-900",
           text: "text-black",
           accent: "bg-blue-500",
-          button: "bg-yellow-500  hover:bg-slate-950 text-white",
+          button: "bg-primary-yellow  hover:bg-slate-950 text-white",
           border: "border-slate-700",
         };
     }
@@ -333,7 +333,7 @@ function HorizontalServiceCardsInner() {
 
               <h2 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
                 ENGINEERING
-                <span className="block text-yellow-500">SOLUTIONS</span>
+                <span className="block text-primary-yellow">SOLUTIONS</span>
               </h2>
 
               <p className="text-slate-600 text-xl leading-relaxed max-w-2xl">
@@ -486,14 +486,14 @@ function HorizontalServiceCardsInner() {
                               left: "-68px",
                               width: "68px",
                               height: "6px",
-                              background: isActive ? "#facc15" : "#335dd1", // yellow-500 or slate-500
+                              background: isActive ? "#fdc900" : "#005eb8", // primary-yellow or slate-500
                               zIndex: 10,
                             }}
                           />
                           <div>
                             <div
                               className={`w-8 h-0.5 ${
-                                isActive ? "bg-yellow-500" : styles.accent
+                                isActive ? "bg-primary-yellow" : styles.accent
                               } mb-3 transition-colors duration-300`}
                             ></div>
                             <h3
@@ -505,7 +505,7 @@ function HorizontalServiceCardsInner() {
                             </h3>
                             <h4
                               className={`text-lg font-light opacity-80 transition-colors duration-300 ${
-                                isActive ? "text-yellow-500" : styles.text
+                                isActive ? "text-primary-yellow" : styles.text
                               }`}
                             >
                               {service.subtitle}
@@ -513,7 +513,7 @@ function HorizontalServiceCardsInner() {
                           </div>
                           <div
                             className={`ml-4 text-black flex-shrink-0 ${
-                              isActive ? "text-yellow-500" : "text-black"
+                              isActive ? "text-primary-yellow" : "text-black"
                             }`}
                           >
                             {service.icon}
@@ -542,14 +542,14 @@ function HorizontalServiceCardsInner() {
                       border-2
                       ${styles.border}
                       bg-transparent
-                      hover:bg-yellow-500 hover:text-black hover:border-yellow-500
+                      hover:bg-primary-yellow hover:text-black hover:border-primary-yellow
                       rounded-none
                       group/btn
                       hover:shadow-[4px_4px_0_0_rgba(30,41,59,1)]
                       focus:outline-none
                       ${
                         isActive
-                          ? "text-black border-yellow-500 bg-yellow-500"
+                          ? "text-black border-primary-yellow bg-primary-yellow"
                           : styles.text
                       }
                       `}
