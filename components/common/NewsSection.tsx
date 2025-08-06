@@ -60,7 +60,7 @@ export default function NewsSection() {
         <div className="mb-16">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-blue-600 mb-4">
+              <h2 className="text-4xl lg:text-5xl font-bold text-primary-blue mb-4">
                 Latest News
               </h2>
               <p className="text-black text-lg font-medium">
@@ -68,7 +68,7 @@ export default function NewsSection() {
               </p>
             </div>
 
-            <button className="hidden lg:flex items-center gap-2 px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white  transition-all duration-300 group">
+            <button className="hidden lg:flex items-center gap-2 px-6 py-3 border border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white  transition-all duration-300 group">
               <span className="font-semibold">View All</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
@@ -86,8 +86,8 @@ export default function NewsSection() {
                   : "opacity-0 translate-y-8"
               } ${
                 hoveredCard === index
-                  ? "border-blue-600/10 bg-white"
-                  : "border-blue-600/10 bg-white"
+                  ? "border-primary-blue/10 bg-white"
+                  : "border-primary-blue/10 bg-white"
               } `}
               style={{
                 transitionDelay: `${index * 200}ms`,
@@ -96,7 +96,7 @@ export default function NewsSection() {
               onMouseLeave={() => setHoveredCard(null)}
             >
               {/* Image */}
-              <div className="relative h-64 overflow-hidden bg-[#FC5220]/10 mb-6 ">
+              <div className="relative h-64 overflow-hidden bg-primary-orange/10 mb-6 ">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -105,7 +105,7 @@ export default function NewsSection() {
 
                 {/* Category Label */}
                 <div className="absolute top-4 left-4">
-                  <span className="bg-[#FC5220] text-white px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full shadow">
+                  <span className="bg-primary-orange text-white px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full shadow">
                     {item.category}
                   </span>
                 </div>
@@ -114,7 +114,7 @@ export default function NewsSection() {
               {/* Content */}
               <div className="space-y-4 px-4 pb-8">
                 {/* Meta */}
-                <div className="flex items-center gap-4 text-sm text-blue-600">
+                <div className="flex items-center gap-4 text-sm text-primary-blue">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
                     <span>{item.date}</span>
@@ -126,21 +126,21 @@ export default function NewsSection() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-blue-500 leading-tight group-hover:text-blue-600 transition-colors duration-300">
+                <h3 className="text-xl font-bold text-primary-blue leading-tight group-hover:text-primary-blue-hover transition-colors duration-300">
                   {item.title}
                 </h3>
 
                 {/* Read More */}
                 <div className="flex items-center justify-between pt-2">
-                  <button className="flex items-center gap-2 text-blue-600 hover:text-[#FC5220] transition-colors duration-300 group/btn">
+                  <button className="flex items-center gap-2 text-primary-blue hover:text-primary-orange transition-colors duration-300 group/btn">
                     <span className="text-sm font-semibold">Read more</span>
                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
                   </button>
 
                   {/* Progress indicator */}
-                  <div className="w-12 h-0.5 bg-blue-600/20 overflow-hidden rounded-full">
+                  <div className="w-12 h-0.5 bg-primary-blue/20 overflow-hidden rounded-full">
                     <div
-                      className={`h-full bg-[#FC5220] transition-all duration-500 ${
+                      className={`h-full bg-primary-orange transition-all duration-500 ${
                         hoveredCard === index ? "w-full" : "w-0"
                       }`}
                     />
@@ -153,7 +153,7 @@ export default function NewsSection() {
 
         {/* Mobile View All Button */}
         <div className="flex justify-center mt-12 lg:hidden">
-          <button className="flex items-center gap-2 px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 group ">
+          <button className="flex items-center gap-2 px-6 py-3 border border-primary-blue text-primary-blue hover:bg-primary-blue-hover hover:text-white transition-all duration-300 group ">
             <span className="font-semibold">View All News</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
           </button>
