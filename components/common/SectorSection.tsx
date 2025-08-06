@@ -96,7 +96,7 @@ const SectorLayout: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full min-h-[600px] h-full lg:max-h-[1000px] xl:max-h-[940px] pt-0 lg:pt-20 bg-black overflow-hidden flex items-start justify-center">
+    <div className="relative w-full min-h-[600px] h-full lg:max-h-[1000px] xl:max-h-[960px] pt-0 lg:pt-20 bg-black overflow-hidden flex items-start justify-center">
       {/* Main Background Image */}
       <motion.div
         className="absolute inset-0"
@@ -341,10 +341,6 @@ const SectorLayout: React.FC = () => {
                         <motion.div
                           className="w-2 h-2 flex-shrink-0"
                           style={{ backgroundColor: sector.color }}
-                          animate={{
-                            scale: [1, 1.3, 1],
-                            opacity: [0.7, 1, 0.7],
-                          }}
                           transition={{
                             duration: 2,
                             delay: pointIndex * 0.2,
