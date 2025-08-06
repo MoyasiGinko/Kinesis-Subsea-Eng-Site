@@ -13,6 +13,7 @@ interface SectorData {
   keyPoints: string[];
   sectorImage: string;
   color: string;
+  hoverColor: string;
 }
 
 const SectorLayout: React.FC = () => {
@@ -35,7 +36,8 @@ const SectorLayout: React.FC = () => {
         "Carbon Footprint Reduction",
       ],
       sectorImage: "/images/sector-left.png",
-      color: "#FF6B35",
+      color: "#FC5220",
+      hoverColor: "#e04b1c",
     },
     {
       id: "renewable-energy",
@@ -53,7 +55,8 @@ const SectorLayout: React.FC = () => {
         "Sustainable Manufacturing",
       ],
       sectorImage: "/images/sector-right.png",
-      color: "#4ECDC4",
+      color: "#005EB8",
+      hoverColor: "#024690",
     },
   ];
 
@@ -280,10 +283,12 @@ const SectorLayout: React.FC = () => {
 
                 {/* Title */}
                 <motion.h2
-                  className="text-4xl font-bold text-white mb-4 tracking-wider"
+                  className="text-4xl font-bold text-black mb-4 tracking-wider"
                   animate={{
                     color:
-                      hoveredSector === sector.id ? sector.color : "#ffffff",
+                      hoveredSector === sector.id
+                        ? sector.hoverColor
+                        : sector.color,
                     scale: hoveredSector === sector.id ? 1.05 : 1,
                   }}
                   transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -295,7 +300,8 @@ const SectorLayout: React.FC = () => {
                 <motion.p
                   className="text-gray-400 mb-8 leading-relaxed text-lg"
                   animate={{
-                    color: hoveredSector === sector.id ? "#e5e7eb" : "#9ca3af",
+                    color:
+                      hoveredSector === sector.id ? sector.color : "#9ca3af",
                   }}
                   transition={{ duration: 0.6 }}
                 >
@@ -355,7 +361,10 @@ const SectorLayout: React.FC = () => {
                             ease: easeInOut,
                           }}
                         />
-                        <span className="text-sm font-medium text-white">
+                        <span
+                          className="text-sm font-medium text-white"
+                          style={{ color: sector.color }}
+                        >
                           {point}
                         </span>
                       </motion.div>
@@ -366,8 +375,12 @@ const SectorLayout: React.FC = () => {
                 {/* CTA Button */}
                 <motion.button
                   className="group/btn inline-flex items-center space-x-3 bg-white/10 backdrop-blur-md border border-white/30 px-8 py-4 font-medium tracking-wide text-white relative overflow-hidden self-center mt-4"
+                  style={{
+                    backgroundColor: `${sector.color}30`,
+                    borderColor: sector.color,
+                  }}
                   whileHover={{
-                    backgroundColor: `${sector.color}20`,
+                    backgroundColor: `${sector.color}50`,
                     borderColor: sector.color,
                     scale: 1.03,
                     transition: {
