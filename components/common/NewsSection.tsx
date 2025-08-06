@@ -15,7 +15,7 @@ export default function NewsSection() {
       date: "March 15, 2024",
       category: "Press Release",
       image:
-        "https://images.pexels.com/photos/2990650/pexels-photo-2990650.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "/services/1.webp",
       readTime: "5 min read",
       excerpt:
         "Groundbreaking partnership to develop innovative carbon capture solutions for offshore operations...",
@@ -26,7 +26,7 @@ export default function NewsSection() {
       date: "March 10, 2024",
       category: "Sustainability",
       image:
-        "https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "/services/2.avif",
       readTime: "8 min read",
       excerpt:
         "Comprehensive overview of our environmental initiatives and achievements in sustainable engineering...",
@@ -38,7 +38,7 @@ export default function NewsSection() {
       date: "March 5, 2024",
       category: "Company News",
       image:
-        "https://images.pexels.com/photos/1537008/pexels-photo-1537008.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "/services/3.jpg",
       readTime: "4 min read",
       excerpt:
         "State-of-the-art facility will drive next-generation subsea technology development and regional expansion...",
