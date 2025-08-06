@@ -3,8 +3,20 @@ import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#0c447b] text-white py-16 px-4">
-      <div className="max-w-[1400px] mx-auto">
+    <footer
+      className="bg-[#0c447b] text-white py-16 px-4 relative"
+      style={{
+        backgroundImage: "url('/images/footer-bg.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Overlay */}
+      <div
+        className="absolute inset-0 bg-[#0c447b] opacity-95 pointer-events-none"
+        aria-hidden="true"
+      ></div>
+      <div className="relative max-w-[1400px] mx-auto">
         {/* Newsletter Section */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-16 border-b border-gray-300/10">
           <div className="flex items-center">
