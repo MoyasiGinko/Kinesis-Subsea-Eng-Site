@@ -15,7 +15,7 @@ import {
 
 const menuItems = [
   {
-    title: "Who We Are",
+    title: "About",
     href: "/who-we-are",
     // submenu: [
     //   {
@@ -232,7 +232,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
             <img
               src={isScrolled ? "/logo-dark.svg" : "/logo-white.svg"}
               alt="Kinesis Subsea Engineering Logo"
-              className={`w-auto transition-all duration-500 h-12 sm:h-14 md:h-16 lg:h-[86px] xl:h-[90px]`}
+              className={`w-auto transition-all duration-500 h-12 sm:h-14 md:h-16 lg:h-[84px] xl:h-[88px]`}
             />
           </Link>
         </div>
@@ -299,7 +299,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
               ) : (
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-1 px-3 xl:px-5 py-2 xl:py-3 rounded-lg font-medium text-base xl:text-lg transition-all duration-300 ${
+                  className={`flex items-center gap-1 px-3 xl:px-5 py-2 xl:py-3 rounded-lg font-medium text-base xl:text-[20px] transition-all duration-300 ${
                     isScrolled
                       ? openMenuIndex === index
                         ? "bg-blue-50 text-primary-blue-hover"
@@ -317,7 +317,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
         {/* Get in Touch Button and Grid Icon */}
         <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
           <button
-            className={`hidden md:block font-medium py-3 md:py-4 px-6 md:px-10 xl:px-14 text-base xl:text-lg transition-all duration-300 transform hover:-translate-y-0.5 ${
+            className={`hidden md:block font-medium py-4 md:py-5 px-6 md:px-10 xl:px-14 text-base xl:text-lg transition-all duration-300 transform hover:-translate-y-0.5 ${
               isScrolled
                 ? "bg-primary-blue hover:bg-primary-blue-hover text-white"
                 : "bg-white hover:bg-gray-100 text-gray-900"

@@ -1,20 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+
 import "../globals.css";
 import { LoadingProvider } from "@/app/context/LoadingContext";
 import LayoutWithLoading from "@/app/(main)/LayoutWithLoading";
 import React from "react";
 import "locomotive-scroll/dist/locomotive-scroll.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title:
@@ -30,9 +20,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black font-sans`}
-      >
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased bg-white text-black font-sans">
         <LoadingProvider>
           <LayoutWithLoading>{children}</LayoutWithLoading>
         </LoadingProvider>
