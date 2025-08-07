@@ -532,28 +532,29 @@ function HorizontalServiceCardsInner() {
 
                         {/* Button */}
                         <button
+                          type="button"
                           title={service.buttonText}
-                          className={`
-                      px-8 py-4
-                      rounded-tr-[30px]
-                      font-semibold text-md tracking-wide
-                      flex items-center gap-2
-                      transition-all duration-300
-                      border-2
-                      ${styles.border}
-                      bg-transparent
-                      hover:bg-primary-yellow hover:text-black hover:border-primary-yellow
-                      rounded-none
-                      group/btn
-                      hover:shadow-[4px_4px_0_0_rgba(30,41,59,1)]
-                      focus:outline-none
-                      ${
-                        isActive
-                          ? "text-black border-primary-yellow bg-primary-yellow"
-                          : styles.text
-                      }
-                      `}
                           style={{ width: "fit-content" }}
+                          className={`
+                            px-8 py-4
+                            rounded-tr-[30px]
+                            font-semibold text-md tracking-wide
+                            flex items-center gap-2
+                            transition-all duration-300
+                            border-2
+                            ${styles.border}
+                            rounded-none
+                            group/btn
+                          hover:shadow-[2px_2px_0_0_rgba(30,41,59,1)]
+                            focus:outline-none
+                            ${
+                              isActive
+                                ? "bg-primary-yellow text-black border-primary-yellow"
+                                : "bg-white " +
+                                  styles.text +
+                                  " hover:bg-primary-yellow hover:text-black hover:border-primary-yellow"
+                            }
+                          `}
                           onClick={(e) => e.stopPropagation()}
                         >
                           <span>{service.buttonText}</span>
