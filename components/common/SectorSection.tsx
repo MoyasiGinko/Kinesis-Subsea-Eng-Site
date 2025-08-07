@@ -218,11 +218,11 @@ const SectorLayout: React.FC = () => {
       },
     });
 
-    // More controlled parallax movement - only moves within the section bounds
+    // More dramatic parallax movement for the background image
     tl.fromTo(
       bgRef.current,
-      { y: "-10%", scale: 1.05 },
-      { y: "10%", scale: 1, ease: "none" }
+      { y: "-25%", scale: 1.08 },
+      { y: "25%", scale: 1, ease: "none" }
     );
 
     // Refresh ScrollTrigger after setup
