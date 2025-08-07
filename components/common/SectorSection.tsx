@@ -1,8 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
 import { Flame, Leaf, ArrowUpRight } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useSmoothScrollbarOptional } from "@/app/context/SmoothScrollbarContext";
 
 interface SectorData {
   id: string;
@@ -17,6 +20,7 @@ interface SectorData {
 }
 
 const SectorLayout: React.FC = () => {
+  const scrollbarContext = useSmoothScrollbarOptional();
   const [hoveredSector, setHoveredSector] = useState<string | null>(null);
 
   const sectors: SectorData[] = [
@@ -98,23 +102,155 @@ const SectorLayout: React.FC = () => {
     }),
   };
 
+  // GSAP Parallax for background image
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (!sectionRef.current) {
+      console.debug("SectorSection: sectionRef not set");
+      return;
+    }
+    if (!bgRef.current) {
+      console.debug("SectorSection: bgRef not set");
+      return;
+    }
+
+    // Check if we have Smooth Scrollbar context
+    let usingWindowScroller = false;
+    let scrollContent: HTMLElement | Window = window;
+
+    if (
+      scrollbarContext?.scrollbarInstance &&
+      scrollbarContext?.scrollbarContainer
+    ) {
+      console.debug("SectorSection: Using Smooth Scrollbar from context");
+      // The actual scrollable element is the .scroll-content child of scrollbarContainer
+      const scrollContentElement =
+        scrollbarContext.scrollbarContainer.querySelector(
+          ".scroll-content"
+        ) as HTMLElement;
+
+      if (scrollContentElement) {
+        scrollContent = scrollContentElement;
+
+        // Set up scroller proxy for Smooth Scrollbar
+        ScrollTrigger.scrollerProxy(scrollContent, {
+          scrollTop(value) {
+            if (arguments.length) {
+              scrollbarContext.scrollbarInstance.scrollTop = value;
+            }
+            return scrollbarContext.scrollbarInstance.scrollTop;
+          },
+          getBoundingClientRect() {
+            return {
+              top: 0,
+              left: 0,
+              width: window.innerWidth,
+              height: window.innerHeight,
+            };
+          },
+          pinType:
+            scrollContent.style && scrollContent.style.transform
+              ? "transform"
+              : "fixed",
+        });
+
+        // Tell ScrollTrigger to use the scrollbar container as the scroller
+        ScrollTrigger.defaults({ scroller: scrollContent });
+
+        // Listen for Smooth Scrollbar updates
+        const onScroll = () => ScrollTrigger.update();
+        scrollbarContext.scrollbarInstance.addListener(onScroll);
+
+        // Cleanup function for scrollbar listener
+        var cleanupScrollListener = () => {
+          scrollbarContext.scrollbarInstance.removeListener(onScroll);
+        };
+      } else {
+        console.warn(
+          "SectorSection: .scroll-content element not found, using scrollbarContainer"
+        );
+        scrollContent = scrollbarContext.scrollbarContainer;
+      }
+    } else {
+      console.warn(
+        "SectorSection: Smooth Scrollbar not detected, using window as scroller"
+      );
+      usingWindowScroller = true;
+    }
+
+    console.debug("SectorSection: Initializing ScrollTrigger", {
+      section: sectionRef.current,
+      bg: bgRef.current,
+      scrollbarContext,
+      scrollContent,
+      usingWindowScroller,
+    });
+
+    // Parallax + Zoom effect - only when SectorLayout is in view
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        scroller: scrollContent,
+        start: "top bottom", // Start when section top hits bottom of viewport
+        end: "bottom top", // End when section bottom hits top of viewport
+        scrub: 1, // Smooth scrubbing
+        markers: true, // Enable for debugging
+        invalidateOnRefresh: true,
+        refreshPriority: -1,
+        onUpdate: (self) => {
+          const triggerElement = self.trigger as HTMLElement;
+          console.debug(
+            "ScrollTrigger progress",
+            self.progress,
+            "element bounds:",
+            triggerElement?.getBoundingClientRect()
+          );
+        },
+        onToggle: (self) => {
+          console.debug(
+            "ScrollTrigger toggled:",
+            self.isActive ? "ACTIVE" : "INACTIVE"
+          );
+        },
+      },
+    });
+
+    // More dramatic parallax movement for the background image
+    tl.fromTo(
+      bgRef.current,
+      { y: "-25%", scale: 1.08 },
+      { y: "25%", scale: 1, ease: "none" }
+    );
+
+    // Refresh ScrollTrigger after setup
+    ScrollTrigger.refresh();
+
+    return () => {
+      tl.scrollTrigger?.kill();
+      tl.kill();
+      if (cleanupScrollListener) {
+        cleanupScrollListener();
+      }
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, [scrollbarContext]);
+
   return (
-    <div className="relative w-full min-h-[600px] h-full lg:max-h-[1000px] xl:max-h-[960px] pt-0 lg:pt-20 bg-black overflow-hidden flex items-start justify-center">
-      {/* Main Background Image */}
-      <motion.div
-        className="absolute inset-0"
-        initial={{ opacity: 0, scale: 1.1 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 2, ease: easeInOut }}
-      >
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
-          style={{
-            backgroundImage: `url('/services/sector-bg3.jpg')`,
-          }}
-        />
-        {/* <div className="absolute inset-0 bg-black/5" /> */}
-      </motion.div>
+    <div
+      ref={sectionRef}
+      className="relative w-full min-h-[600px] h-full lg:max-h-[1000px] xl:max-h-[960px] pt-0 lg:pt-20 bg-black overflow-hidden flex items-start justify-center"
+    >
+      {/* Main Background Image with GSAP Parallax */}
+      <div
+        ref={bgRef}
+        className="absolute inset-0 w-full h-full bg-cover bg-center"
+        style={{
+          backgroundImage: `url('/services/sector-bg3.jpg')`,
+        }}
+      />
 
       {/* Dynamic Background Images on Hover with Slide Animation (no wait mode) */}
       <AnimatePresence>
