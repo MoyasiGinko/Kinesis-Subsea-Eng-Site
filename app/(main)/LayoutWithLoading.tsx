@@ -16,7 +16,7 @@ const LayoutWithLoading: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     if (typeof window !== "undefined" && scrollbarRef.current) {
       scrollbarInstance.current = Scrollbar.init(scrollbarRef.current, {
-        damping: 0.07, // lower is slower and more inertia
+        damping: 0.01, // much lower is much slower and smoother
         alwaysShowTracks: true,
       });
       const syncScroll = () => {
