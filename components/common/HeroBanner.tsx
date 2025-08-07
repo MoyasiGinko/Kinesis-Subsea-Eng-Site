@@ -198,7 +198,7 @@ const HeroBanner = () => {
                 <span className="block bg-gradient-to-r from-primary-blue  to-primary-blue-hover bg-clip-text text-transparent">
                   {currentContent.title.highlight}
                 </span>
-                <span className="block text-gray-300 font-light">
+                <span className="block text-7xl text-gray-300 font-light">
                   {currentContent.title.last}
                 </span>
               </h1>

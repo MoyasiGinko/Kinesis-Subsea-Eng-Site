@@ -19,8 +19,8 @@ const config: Config = {
         "primary-yellow-hover": "#e0b800",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)"],
-        mono: ["var(--font-geist-mono)"],
+        sans: ["Space Mono", "monospace"],
+        mono: ["Space Mono", "monospace"],
       },
       maxWidth: {
         "7xl": "80rem",
