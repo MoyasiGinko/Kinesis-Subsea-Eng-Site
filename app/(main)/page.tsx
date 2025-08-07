@@ -15,7 +15,7 @@ import PageTransitionWrapper from "@/components/common/PageTransitionWrapper";
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-950 to-slate-900">
+    <div className="min-h-screen bg-white">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}

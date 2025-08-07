@@ -197,7 +197,7 @@ const SectorLayout: React.FC = () => {
         start: "top bottom", // Start when section top hits bottom of viewport
         end: "bottom top", // End when section bottom hits top of viewport
         scrub: 1, // Smooth scrubbing
-        markers: true, // Enable for debugging
+        markers: false, // Enable for debugging
         invalidateOnRefresh: true,
         refreshPriority: -1,
         onUpdate: (self) => {
