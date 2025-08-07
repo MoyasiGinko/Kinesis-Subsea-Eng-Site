@@ -2,9 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Locomotive Scroll container */
+#smooth-scroll {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 0; /* fallback */
+  /* Slow down scroll with a custom property and override for browsers that support it */
+  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
+  /* For a slower effect, you can use scroll-snap-type and snap points, but true slow inertia is not possible with pure CSS. */
+}
+/* Optional: Slow down anchor scroll with a transition (not supported by all browsers) */
+html,
+body {
+  scroll-behavior: smooth;
+  transition: scroll-behavior 10s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 body {

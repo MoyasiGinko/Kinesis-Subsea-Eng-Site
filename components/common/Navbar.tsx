@@ -108,7 +108,8 @@ const menuItems = [
   { title: "Contact", href: "/contact-us" },
 ];
 
-export default function Navbar() {
+type NavbarProps = { scrollY?: number };
+export default function Navbar({ scrollY = 0 }: NavbarProps) {
   const router = useRouter();
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
   const [clickedMenuIndex, setClickedMenuIndex] = useState<number | null>(null);
@@ -120,10 +121,10 @@ export default function Navbar() {
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    setIsScrolled(scrollY > 20);
+  }, [scrollY]);
 
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
         setOpenMenuIndex(null);
@@ -131,12 +132,8 @@ export default function Navbar() {
         setMobileMenuOpen(false);
       }
     };
-
-    window.addEventListener("scroll", handleScroll);
     document.addEventListener("mousedown", handleClickOutside);
-
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("mousedown", handleClickOutside);
       if (closeTimeoutRef.current) {
         clearTimeout(closeTimeoutRef.current);

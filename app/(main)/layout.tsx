@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { LoadingProvider } from "@/app/context/LoadingContext";
 import LayoutWithLoading from "@/app/(main)/LayoutWithLoading";
+import React from "react";
+import "locomotive-scroll/dist/locomotive-scroll.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
