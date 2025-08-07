@@ -143,7 +143,7 @@ const HeroBanner = () => {
   return (
     <section
       ref={heroRef}
-      className="relative text-white overflow-hidden   h-full max-h-[1200px] flex flex-col justify-center items-center pt-32 pb-10 sm:pt-32 sm:pb-16 md:pt-40 md:pb-20 lg:pt-40 lg:pb-20 "
+      className="relative text-white overflow-hidden   h-full max-h-[1200px] lg:min-h-[600px] xl:min-h-[800px] 2xl:min-h-[1080px] flex flex-col justify-center items-center pt-32 pb-10 sm:pt-32 sm:pb-16 md:pt-40 md:pb-20 lg:pt-40 lg:pb-20 "
     >
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
@@ -198,7 +198,7 @@ const HeroBanner = () => {
                 <span className="block bg-gradient-to-r from-primary-blue  to-primary-blue-hover bg-clip-text text-transparent">
                   {currentContent.title.highlight}
                 </span>
-                <span className="block text-7xl text-gray-300 font-light">
+                <span className="block tracking-tighter text-gray-300 font-light">
                   {currentContent.title.last}
                 </span>
               </h1>
