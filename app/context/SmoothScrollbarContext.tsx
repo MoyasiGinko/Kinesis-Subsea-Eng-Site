@@ -26,7 +26,7 @@ interface SmoothScrollbarProviderProps {
 
 export const SmoothScrollbarProvider: React.FC<
   SmoothScrollbarProviderProps
-> = ({ children, damping = 0.01, alwaysShowTracks = true }) => {
+> = ({ children, damping = 0.05, alwaysShowTracks = false }) => {
   const scrollbarRef = useRef<HTMLDivElement>(null);
   const scrollbarInstance = useRef<any>(null);
   const [scrollY, setScrollY] = React.useState(0);
@@ -36,13 +36,29 @@ export const SmoothScrollbarProvider: React.FC<
       console.log("SmoothScrollbarProvider: Initializing Smooth Scrollbar");
 
       scrollbarInstance.current = Scrollbar.init(scrollbarRef.current, {
-        damping,
+        damping: 0.01, // Increased for ultra-smooth feel
+        thumbMinSize: 20,
+        renderByPixels: true,
         alwaysShowTracks,
+        continuousScrolling: true,
+        wheelEventTarget: null, // Use default
+        plugins: {
+          overscroll: {
+            effect: "bounce",
+            damping: 0.2,
+            maxOverscroll: 200,
+            glowColor: "#ffffff10",
+          },
+        },
       });
 
       const syncScroll = () => {
         if (scrollbarInstance.current) {
-          setScrollY(scrollbarInstance.current.scrollTop);
+          const newScrollY = scrollbarInstance.current.scrollTop;
+          // Use requestAnimationFrame for smoother updates
+          requestAnimationFrame(() => {
+            setScrollY(newScrollY);
+          });
         }
       };
 
