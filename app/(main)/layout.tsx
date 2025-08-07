@@ -26,7 +26,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased bg-white text-black font-sans">
+      <body className="antialiased bg-white text-black font-sans tracking-tighter">
         <LoadingProvider>
           <LayoutWithLoading>{children}</LayoutWithLoading>
         </LoadingProvider>
