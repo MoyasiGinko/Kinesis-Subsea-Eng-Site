@@ -14,8 +14,7 @@ export default function NewsSection() {
         "Kinesis Subsea Engineering Awarded Major Contract for Carbon Capture Project",
       date: "March 15, 2024",
       category: "Press Release",
-      image:
-        "/services/1.webp",
+      image: "/services/1.webp",
       readTime: "5 min read",
       excerpt:
         "Groundbreaking partnership to develop innovative carbon capture solutions for offshore operations...",
@@ -25,8 +24,7 @@ export default function NewsSection() {
       title: "Sustainability Report 2023: Progress Towards Net Zero",
       date: "March 10, 2024",
       category: "Sustainability",
-      image:
-        "/services/2.avif",
+      image: "/services/2.avif",
       readTime: "8 min read",
       excerpt:
         "Comprehensive overview of our environmental initiatives and achievements in sustainable engineering...",
@@ -37,8 +35,7 @@ export default function NewsSection() {
         "Kinesis Subsea Engineering Opens New Innovation Center in Singapore",
       date: "March 5, 2024",
       category: "Company News",
-      image:
-        "/services/3.jpg",
+      image: "/services/3.jpg",
       readTime: "4 min read",
       excerpt:
         "State-of-the-art facility will drive next-generation subsea technology development and regional expansion...",
@@ -145,20 +142,22 @@ export default function NewsSection() {
             }`}
           >
             <Calendar className="w-4 h-4 text-gray-500" />
-            <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+            <span className="text-sm font-bold text-gray-700 uppercase tracking-wider leading-tight">
               Latest Updates
             </span>
           </div>
 
           <h2
-            className={`text-4xl md:text-5xl lg:text-6xl font-light mb-4 transition-all duration-1000 delay-200 ${
+            className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 transition-all duration-1000 delay-200 leading-tight ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <span className="block text-gray-900">News &</span>
-            <span className="block bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-500 bg-clip-text text-transparent font-medium">
+            <span className="block text-gray-900 font-bold leading-tight">
+              News &
+            </span>
+            <span className="block bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-500 bg-clip-text text-transparent font-bold leading-tight">
               Industry Insights
             </span>
           </h2>
