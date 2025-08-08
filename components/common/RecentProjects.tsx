@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -139,17 +140,33 @@ const RecentProjectsSection: React.FC = () => {
             </span>
           </div>
 
-          <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          {/* Framer Motion Animations */}
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+          >
             RECENT
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-primary-orange-hover">
+            <motion.span
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-primary-orange-hover"
+            >
               PROJECTS
-            </span>
-          </h2>
+            </motion.span>
+          </motion.h2>
 
-          <p className="text-slate-300 text-xl max-w-2xl leading-relaxed">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="text-slate-300 text-xl max-w-2xl leading-relaxed"
+          >
             Delivering excellence across industries with cutting-edge
             engineering solutions and innovative project management.
-          </p>
+          </motion.p>
         </div>
 
         {/* Main Content */}
