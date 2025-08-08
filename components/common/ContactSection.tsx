@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 interface ContactFormData {
   fullName: string;
@@ -33,6 +34,30 @@ const ContactSection: React.FC = () => {
     // Handle form submission logic here
   };
 
+  // Animation variants outside the component
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { opacity: 1, y: 0 },
+  };
+  const fadeInLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 },
+  };
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+  const contactItemVariant = {
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    visible: { opacity: 1, y: 0, scale: 1 },
+  };
+
   return (
     <section className="relative bg-primary-blue overflow-hidden">
       {/* Background Pattern */}
@@ -53,26 +78,59 @@ const ContactSection: React.FC = () => {
           {/* Left Column - Contact Info */}
           <div className="text-white flex-1 lg:flex-[1.5]">
             <div className="mb-8">
-              <p className="text-sm font-semibold tracking-wider uppercase mb-4 opacity-90">
+              <motion.p
+                className="text-sm font-semibold tracking-wider uppercase mb-4 opacity-90"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, margin: "-100px" }}
+                variants={fadeInLeft}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+              >
                 CONTACT
-              </p>
-              <h2 className="text-4xl lg:text-5xl font-bold leading-tight mb-6">
+              </motion.p>
+
+              <motion.h2
+                className="text-4xl lg:text-5xl font-bold leading-tight mb-6"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, margin: "-100px" }}
+                variants={fadeInUp}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
                 Have a project in mind?
                 <br />
                 Contact with us
-              </h2>
-              <p className="text-lg opacity-90 leading-relaxed">
+              </motion.h2>
+
+              <motion.p
+                className="text-lg opacity-90 leading-relaxed"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, margin: "-100px" }}
+                variants={fadeInUp}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+              >
                 There are many variations of passages of Lorem Ipsum available,
                 but the majority have suffered alteration in some form by
                 injected humour.
-              </p>
+              </motion.p>
             </div>
 
             {/* Contact Details Grid */}
-            <div className="grid sm:grid-cols-2 gap-12">
+            <motion.div
+              className="grid sm:grid-cols-2 gap-12"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, margin: "-50px" }}
+              variants={staggerContainer}
+            >
               {/* Location */}
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12   flex items-center justify-center">
+              <motion.div
+                className="flex items-start gap-4"
+                variants={contactItemVariant}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
                   <svg
                     className="w-12 h-12"
                     fill="none"
@@ -94,13 +152,29 @@ const ContactSection: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">United Kingdom</h3>
-                  <p className="opacity-90">42 Abardeen Street, UK</p>
+                  <motion.h3
+                    className="text-xl font-semibold mb-2"
+                    variants={fadeInUp}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    United Kingdom
+                  </motion.h3>
+                  <motion.p
+                    className="opacity-90"
+                    variants={fadeInUp}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    42 Abardeen Street, UK
+                  </motion.p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Phone */}
-              <div className="flex items-start gap-4">
+              <motion.div
+                className="flex items-start gap-4"
+                variants={contactItemVariant}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
                 <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
                   <svg
                     className="w-12 h-12"
@@ -117,14 +191,30 @@ const ContactSection: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Phone Number</h3>
-                  <p className="opacity-90">+971 551 579 261</p>
+                  <motion.h3
+                    className="text-xl font-semibold mb-2"
+                    variants={fadeInUp}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    Phone Number
+                  </motion.h3>
+                  <motion.p
+                    className="opacity-90"
+                    variants={fadeInUp}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    +971 551 579 261
+                  </motion.p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Email */}
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12  flex items-center justify-center">
+              <motion.div
+                className="flex items-start gap-4"
+                variants={contactItemVariant}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
                   <svg
                     className="w-12 h-12"
                     fill="none"
@@ -140,15 +230,30 @@ const ContactSection: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Email Address</h3>
-
-                  <p className="opacity-90">support.kinesis@gmail.com</p>
+                  <motion.h3
+                    className="text-xl font-semibold mb-2"
+                    variants={fadeInUp}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    Email Address
+                  </motion.h3>
+                  <motion.p
+                    className="opacity-90"
+                    variants={fadeInUp}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    support.kinesis@gmail.com
+                  </motion.p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Opening Hours */}
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12  flex items-center justify-center">
+              <motion.div
+                className="flex items-start gap-4"
+                variants={contactItemVariant}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
                   <svg
                     className="w-12 h-12"
                     fill="none"
@@ -160,84 +265,126 @@ const ContactSection: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Opening Hour</h3>
-                  <p className="opacity-90">Mon - Fri: 09am - 07pm</p>
+                  <motion.h3
+                    className="text-xl font-semibold mb-2"
+                    variants={fadeInUp}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    Opening Hour
+                  </motion.h3>
+                  <motion.p
+                    className="opacity-90"
+                    variants={fadeInUp}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    Mon - Fri: 09am - 07pm
+                  </motion.p>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
 
           {/* Right Column - Contact Form */}
-          <div
+          <motion.div
             className="bg-[#04539d] backdrop-blur-sm p-8 relative flex-1 lg:flex-[1]"
             style={{
               backgroundImage: "url('/images/contact-bg-03.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, margin: "-100px" }}
+            variants={fadeInUp}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h3 className="text-4xl font-bold text-white mb-6">Get in Touch</h3>
-            <p className="text-white opacity-90 mb-8">
+            <motion.h3
+              className="text-4xl font-bold text-white mb-6"
+              variants={fadeInUp}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              Get in Touch
+            </motion.h3>
+
+            <motion.p
+              className="text-white opacity-90 mb-8"
+              variants={fadeInUp}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
               The point of using Lorem Ipsum is that it has more-or-less normal
-            </p>
+            </motion.p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
+              <motion.div
+                variants={fadeInUp}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+              >
                 <input
                   type="text"
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleInputChange}
                   placeholder="Full Name"
-                  className="w-full px-6 py-4 bg-white bg-opacity-10 border border-white border-opacity-20  text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 focus:border-transparent transition-all duration-300"
+                  className="w-full px-6 py-4 bg-white bg-opacity-10 border border-white border-opacity-20 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 focus:border-transparent transition-all duration-300"
                   required
                 />
-              </div>
+              </motion.div>
 
-              <div>
+              <motion.div
+                variants={fadeInUp}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+              >
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="Email Address"
-                  className="w-full px-6 py-4 bg-white bg-opacity-10 border border-white border-opacity-20  text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 focus:border-transparent transition-all duration-300"
+                  className="w-full px-6 py-4 bg-white bg-opacity-10 border border-white border-opacity-20 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 focus:border-transparent transition-all duration-300"
                   required
                 />
-              </div>
+              </motion.div>
 
-              <div>
+              <motion.div
+                variants={fadeInUp}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+              >
                 <input
                   type="text"
                   name="inquiry"
                   value={formData.inquiry}
                   onChange={handleInputChange}
                   placeholder="Your Inquiry"
-                  className="w-full px-6 py-4 bg-white bg-opacity-10 border border-white border-opacity-20  text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 focus:border-transparent transition-all duration-300"
+                  className="w-full px-6 py-4 bg-white bg-opacity-10 border border-white border-opacity-20 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 focus:border-transparent transition-all duration-300"
                   required
                 />
-              </div>
+              </motion.div>
 
-              <div>
+              <motion.div
+                variants={fadeInUp}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+              >
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
                   placeholder="Write Your Message"
                   rows={5}
-                  className="w-full px-6 py-4 bg-white bg-opacity-10 border border-white border-opacity-20  text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 focus:border-transparent transition-all duration-300 resize-none"
+                  className="w-full px-6 py-4 bg-white bg-opacity-10 border border-white border-opacity-20 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-30 focus:border-transparent transition-all duration-300 resize-none"
                   required
                 ></textarea>
-              </div>
+              </motion.div>
 
-              <button
+              <motion.button
                 type="submit"
-                className="w-full bg-white text-primary-blue font-semibold py-4 px-8  hover:bg-opacity-90 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transform "
+                className="w-full bg-white text-primary-blue font-semibold py-4 px-8 hover:bg-opacity-90 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transform"
+                variants={fadeInUp}
+                transition={{ duration: 0.7, ease: "easeOut" }}
               >
                 Send Message
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
