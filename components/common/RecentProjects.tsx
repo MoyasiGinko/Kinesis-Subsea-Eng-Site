@@ -140,17 +140,19 @@ const RecentProjectsSection: React.FC = () => {
             </span>
           </div>
 
-          {/* Framer Motion Animations */}
+          {/* Framer Motion Animations - Animate on every viewport entry */}
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.5 }}
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
           >
             RECENT
             <motion.span
               initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.5 }}
               transition={{ duration: 0.7, delay: 0.3 }}
               className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-primary-orange-hover"
             >
@@ -160,7 +162,8 @@ const RecentProjectsSection: React.FC = () => {
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.5 }}
             transition={{ duration: 0.7, delay: 0.5 }}
             className="text-slate-300 text-xl max-w-2xl leading-relaxed"
           >
