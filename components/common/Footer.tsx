@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
 const Footer: React.FC = () => {
@@ -23,9 +24,15 @@ const Footer: React.FC = () => {
             <img src="/logo-white.svg" alt="Logo" className="w-60 h-60" />
           </div>
 
-          <p className="text-lg text-gray-300 max-w-md">
+          <motion.p
+            className="text-lg text-gray-300 max-w-md"
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
             Subscribe for the latest news. Stay updated on the latest trends.
-          </p>
+          </motion.p>
           <div className="relative w-full max-w-lg">
             <input
               type="email"
@@ -46,122 +53,242 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* About Company */}
           <div>
-            <h3 className="text-xl font-semibold mb-6">About Company</h3>
-            <p className="text-gray-300 mb-6">
+            <motion.h3
+              className="text-xl font-semibold mb-6"
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+              About Company
+            </motion.h3>
+            <motion.p
+              className="text-gray-300 mb-6"
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+            >
               It was popularised in the 1960s with the release of Letraset
               sheets containing Lorem Ipsums.
-            </p>
+            </motion.p>
           </div>
 
           {/* Useful Links */}
           <div>
-            <h3 className="text-xl font-semibold mb-6">Useful Links</h3>
+            <motion.h3
+              className="text-xl font-semibold mb-6"
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+              Useful Links
+            </motion.h3>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-3">
-                <a
+                <motion.a
                   href="#"
                   className="block text-gray-300 hover:text-white transition-colors"
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
                 >
                   About Us
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="#"
                   className="block text-gray-300 hover:text-white transition-colors"
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.05 }}
                 >
                   Careers
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="#"
                   className="block text-gray-300 hover:text-white transition-colors"
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
                 >
                   Privacy Policy
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="#"
                   className="block text-gray-300 hover:text-white transition-colors"
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
                 >
                   Pricing
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="#"
                   className="block text-gray-300 hover:text-white transition-colors"
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
                 >
                   Contact
-                </a>
+                </motion.a>
               </div>
               <div className="space-y-3">
-                <a
+                <motion.a
                   href="#"
                   className="block text-gray-300 hover:text-white transition-colors"
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
                 >
                   Projects
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="#"
                   className="block text-gray-300 hover:text-white transition-colors"
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.05 }}
                 >
                   Blog
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="#"
                   className="block text-gray-300 hover:text-white transition-colors"
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
                 >
                   Services
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="#"
                   className="block text-gray-300 hover:text-white transition-colors"
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
                 >
                   Team
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="#"
                   className="block text-gray-300 hover:text-white transition-colors"
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
                 >
                   Terms of use
-                </a>
+                </motion.a>
               </div>
             </div>
           </div>
 
           {/* Office Address */}
           <div>
-            <h3 className="text-xl font-semibold mb-6">Office Address</h3>
-            <address className="text-gray-300 not-italic mb-8">
+            <motion.h3
+              className="text-xl font-semibold mb-6"
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+              Office Address
+            </motion.h3>
+            <motion.address
+              className="text-gray-300 not-italic mb-8"
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+            >
               42 Mamnoun Street, Saba
               <br />
               Carpet and Antiques Store, UK
-            </address>
+            </motion.address>
 
-            <h3 className="text-xl font-semibold mb-6">Email Address</h3>
-            <p className="text-gray-300 mb-2">Interested in working with us?</p>
-            <a
+            <motion.h3
+              className="text-xl font-semibold mb-6"
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+            >
+              Email Address
+            </motion.h3>
+            <motion.p
+              className="text-gray-300 mb-2"
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.25 }}
+            >
+              Interested in working with us?
+            </motion.p>
+            <motion.a
               href="mailto:kinesis@gmail.com"
               className="text-blue-400 hover:text-blue-300 transition-colors"
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
             >
               kinesis@gmail.com
-            </a>
+            </motion.a>
           </div>
 
           {/* Phone Number & Social */}
           <div>
-            <h3 className="text-xl font-semibold mb-6">Phone Number</h3>
+            <motion.h3
+              className="text-xl font-semibold mb-6"
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+              Phone Number
+            </motion.h3>
             <div className="space-y-2 mb-8">
-              <a
+              <motion.a
                 href="tel:+971551579261"
                 className="block text-gray-300 hover:text-white transition-colors"
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               >
                 +971 551 579 261
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="tel:+971555961659"
                 className="block text-gray-300 hover:text-white transition-colors"
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.05 }}
               >
                 +97 155 596 1659
-              </a>
+              </motion.a>
             </div>
 
-            <h3 className="text-xl font-semibold mb-6">Follow Us</h3>
+            <motion.h3
+              className="text-xl font-semibold mb-6"
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+            >
+              Follow Us
+            </motion.h3>
             <div className="flex gap-4">
               <a
                 href="#"
@@ -193,9 +320,15 @@ const Footer: React.FC = () => {
 
         {/* Copyright */}
         <div className="pt-8 border-t border-white/10 text-center">
-          <p className="text-gray-400">
+          <motion.p
+            className="text-gray-400"
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
             © 2025 Kinesis. Designed by TruedgeDigital
-          </p>
+          </motion.p>
         </div>
       </div>
     </footer>
