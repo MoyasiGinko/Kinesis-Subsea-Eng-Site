@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -139,17 +140,36 @@ const RecentProjectsSection: React.FC = () => {
             </span>
           </div>
 
-          <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          {/* Framer Motion Animations - Animate on every viewport entry */}
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+          >
             RECENT
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-primary-orange-hover">
+            <motion.span
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.5 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-primary-orange-hover"
+            >
               PROJECTS
-            </span>
-          </h2>
+            </motion.span>
+          </motion.h2>
 
-          <p className="text-slate-300 text-xl max-w-2xl leading-relaxed">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="text-slate-300 text-xl max-w-2xl leading-relaxed"
+          >
             Delivering excellence across industries with cutting-edge
             engineering solutions and innovative project management.
-          </p>
+          </motion.p>
         </div>
 
         {/* Main Content */}
@@ -246,23 +266,53 @@ const RecentProjectsSection: React.FC = () => {
           {/* Project Details - Right Side */}
           <div className="space-y-6">
             {/* Current Project Details */}
-            <div className="bg-slate-800 border border-slate-700 p-8">
-              <div className="flex items-center gap-3 mb-4">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.5 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="bg-slate-800 border border-slate-700 p-8"
+            >
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="flex items-center gap-3 mb-4"
+              >
                 <Building2 className="w-5 h-5 text-primary-orange" />
                 <span className="text-primary-orange font-semibold text-sm uppercase tracking-wide">
                   {currentProject.category}
                 </span>
-              </div>
+              </motion.div>
 
-              <h4 className="text-xl font-bold text-white mb-4">
+              <motion.h4
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-xl font-bold text-white mb-4"
+              >
                 Project Overview
-              </h4>
+              </motion.h4>
 
-              <p className="text-slate-300 leading-relaxed mb-6">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="text-slate-300 leading-relaxed mb-6"
+              >
                 {currentProject.description}
-              </p>
+              </motion.p>
 
-              <div className="space-y-3 mb-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="space-y-3 mb-8"
+              >
                 <div className="flex justify-between">
                   <span className="text-slate-400">Status:</span>
                   <span
@@ -287,26 +337,48 @@ const RecentProjectsSection: React.FC = () => {
                     {currentProject.location}
                   </span>
                 </div>
-              </div>
+              </motion.div>
 
-              <button className="w-full px-6 py-4 bg-gradient-to-r from-primary-orange to-primary-orange-hover hover:from-black hover:to-black border border-black hover:border-primary-orange text-white hover:text-primary-orange font-semibold transition-all duration-300 flex items-center justify-center group">
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="w-full px-6 py-4 bg-gradient-to-r from-primary-orange to-primary-orange-hover hover:from-black hover:to-black border border-black hover:border-primary-orange text-white hover:text-primary-orange font-semibold transition-all duration-300 flex items-center justify-center group"
+              >
                 <span>VIEW FULL CASE STUDY</span>
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
             {/* All Projects List */}
-            <div className="bg-slate-800 border border-slate-700 p-6">
-              <h4 className="text-lg font-bold text-primary-orange-hover mb-4">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.5 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="bg-slate-800 border border-slate-700 p-6"
+            >
+              <motion.h4
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-lg font-bold text-primary-orange-hover mb-4"
+              >
                 All Projects
-              </h4>
+              </motion.h4>
               <div className="space-y-2">
                 {projects.map((project, index) => (
-                  <button
+                  <motion.button
                     key={project.id}
                     onClick={() => goToSlide(index)}
                     onMouseEnter={() => setHoveredProject(project.id)}
                     onMouseLeave={() => setHoveredProject(null)}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 0.5, delay: 0.1 + index * 0.07 }}
                     className={`w-full text-left p-3 transition-all duration-300 border-l-2 ${
                       index === currentIndex
                         ? "bg-slate-950 border-primary-orange text-white"
@@ -317,10 +389,10 @@ const RecentProjectsSection: React.FC = () => {
                     <div className="text-xs text-slate-400 mt-1">
                       {project.category}
                     </div>
-                  </button>
+                  </motion.button>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
 

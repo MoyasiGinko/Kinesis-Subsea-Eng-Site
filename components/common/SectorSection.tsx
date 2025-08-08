@@ -105,37 +105,38 @@ const SectorLayout: React.FC = () => {
   // GSAP Parallax for background image
   const sectionRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
+  // Simple debounce function (if lodash is not available)
+  function debounce<T extends (...args: any[]) => void>(func: T, wait: number) {
+    let timeout: ReturnType<typeof setTimeout>;
+    function debounced(this: any, ...args: Parameters<T>) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    }
+    debounced.cancel = () => clearTimeout(timeout);
+    return debounced;
+  }
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    if (!sectionRef.current) {
-      console.debug("SectorSection: sectionRef not set");
-      return;
-    }
-    if (!bgRef.current) {
-      console.debug("SectorSection: bgRef not set");
+    if (!sectionRef.current || !bgRef.current) {
+      // Only run if both refs are set
       return;
     }
 
     // Check if we have Smooth Scrollbar context
     let usingWindowScroller = false;
-    let scrollContent: HTMLElement | Window = window;
+    let scrollContent: Window | Element = window;
+    let cleanupScrollListener: (() => void) | undefined;
 
     if (
       scrollbarContext?.scrollbarInstance &&
       scrollbarContext?.scrollbarContainer
     ) {
-      console.debug("SectorSection: Using Smooth Scrollbar from context");
-      // The actual scrollable element is the .scroll-content child of scrollbarContainer
       const scrollContentElement =
-        scrollbarContext.scrollbarContainer.querySelector(
-          ".scroll-content"
-        ) as HTMLElement;
-
+        scrollbarContext.scrollbarContainer.querySelector(".scroll-content");
       if (scrollContentElement) {
         scrollContent = scrollContentElement;
-
-        // Set up scroller proxy for Smooth Scrollbar
         ScrollTrigger.scrollerProxy(scrollContent, {
           scrollTop(value) {
             if (arguments.length) {
@@ -152,81 +153,58 @@ const SectorLayout: React.FC = () => {
             };
           },
           pinType:
-            scrollContent.style && scrollContent.style.transform
+            (scrollContent as HTMLElement).style &&
+            (scrollContent as HTMLElement).style.transform
               ? "transform"
               : "fixed",
         });
-
-        // Tell ScrollTrigger to use the scrollbar container as the scroller
         ScrollTrigger.defaults({ scroller: scrollContent });
-
-        // Listen for Smooth Scrollbar updates
         const onScroll = () => ScrollTrigger.update();
         scrollbarContext.scrollbarInstance.addListener(onScroll);
-
-        // Cleanup function for scrollbar listener
-        var cleanupScrollListener = () => {
+        cleanupScrollListener = () => {
           scrollbarContext.scrollbarInstance.removeListener(onScroll);
         };
       } else {
-        console.warn(
-          "SectorSection: .scroll-content element not found, using scrollbarContainer"
-        );
         scrollContent = scrollbarContext.scrollbarContainer;
       }
     } else {
-      console.warn(
-        "SectorSection: Smooth Scrollbar not detected, using window as scroller"
-      );
       usingWindowScroller = true;
     }
-
-    console.debug("SectorSection: Initializing ScrollTrigger", {
-      section: sectionRef.current,
-      bg: bgRef.current,
-      scrollbarContext,
-      scrollContent,
-      usingWindowScroller,
-    });
 
     // Parallax + Zoom effect - only when SectorLayout is in view
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
         scroller: scrollContent,
-        start: "top bottom", // Start when section top hits bottom of viewport
-        end: "bottom top", // End when section bottom hits top of viewport
-        scrub: 1, // Smooth scrubbing
-        markers: false, // Enable for debugging
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+        markers: false,
         invalidateOnRefresh: true,
         refreshPriority: -1,
         onUpdate: (self) => {
-          const triggerElement = self.trigger as HTMLElement;
-          console.debug(
-            "ScrollTrigger progress",
-            self.progress,
-            "element bounds:",
-            triggerElement?.getBoundingClientRect()
-          );
+          // ...existing code...
         },
         onToggle: (self) => {
-          console.debug(
-            "ScrollTrigger toggled:",
-            self.isActive ? "ACTIVE" : "INACTIVE"
-          );
+          // ...existing code...
         },
       },
     });
-
-    // More dramatic parallax movement for the background image
     tl.fromTo(
       bgRef.current,
       { y: "-25%", scale: 1.08 },
       { y: "25%", scale: 1, ease: "none" }
     );
 
-    // Refresh ScrollTrigger after setup
-    ScrollTrigger.refresh();
+    // Debounced refresh to avoid too many calls
+    const debouncedRefresh = debounce(() => {
+      try {
+        ScrollTrigger.refresh();
+      } catch (e) {
+        console.warn("ScrollTrigger refresh failed:", e);
+      }
+    }, 300);
+    debouncedRefresh();
 
     return () => {
       tl.scrollTrigger?.kill();
@@ -235,6 +213,7 @@ const SectorLayout: React.FC = () => {
         cleanupScrollListener();
       }
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      debouncedRefresh.cancel();
     };
   }, [scrollbarContext]);
 

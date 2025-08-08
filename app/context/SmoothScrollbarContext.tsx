@@ -36,7 +36,7 @@ export const SmoothScrollbarProvider: React.FC<
       console.log("SmoothScrollbarProvider: Initializing Smooth Scrollbar");
 
       scrollbarInstance.current = Scrollbar.init(scrollbarRef.current, {
-        damping: 0.04, // Increased for ultra-smooth feel
+        damping: 0.05, // Increased for ultra-smooth feel
         thumbMinSize: 20,
         renderByPixels: true,
         alwaysShowTracks,
@@ -58,6 +58,18 @@ export const SmoothScrollbarProvider: React.FC<
           // Use requestAnimationFrame for smoother updates
           requestAnimationFrame(() => {
             setScrollY(newScrollY);
+
+            // Dispatch custom scroll event for components that need it
+            const customEvent = new CustomEvent("smooth-scroll", {
+              detail: { scrollY: newScrollY },
+            });
+            window.dispatchEvent(customEvent);
+
+            // Also update CSS variable for potential CSS-based solutions
+            document.documentElement.style.setProperty(
+              "--scroll-y",
+              `${newScrollY}px`
+            );
           });
         }
       };

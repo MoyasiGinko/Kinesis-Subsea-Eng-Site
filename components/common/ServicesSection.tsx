@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -327,19 +328,49 @@ function HorizontalServiceCardsInner() {
                 <div className="w-12 h-1 bg-gradient-to-r from-slate-600 to-slate-800 mr-4"></div>
                 <span className="text-slate-600 font-bold tracking-widest uppercase text-sm flex items-center gap-2">
                   <Wrench className="w-4 h-4" />
-                  Our Services
+                  {/* Animate "Our Services" */}
+                  <motion.span
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 0.7, delay: 0.1, type: "spring" }}
+                  >
+                    Our Services
+                  </motion.span>
                 </span>
               </div>
 
-              <h2 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+              {/* Animate heading */}
+              <motion.h2
+                className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
+              >
                 ENGINEERING
-                <span className="block text-primary-yellow">SOLUTIONS</span>
-              </h2>
+                <motion.span
+                  className="block text-primary-yellow"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.5 }}
+                  transition={{ duration: 0.8, delay: 0.4, type: "spring" }}
+                >
+                  SOLUTIONS
+                </motion.span>
+              </motion.h2>
 
-              <p className="text-slate-600 text-xl leading-relaxed max-w-2xl">
+              {/* Animate description */}
+              <motion.p
+                className="text-slate-600 text-xl leading-relaxed max-w-2xl"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 0.7, delay: 0.6, type: "spring" }}
+              >
                 Comprehensive engineering services delivering innovation,
                 precision, and reliability across diverse industrial sectors.
-              </p>
+              </motion.p>
             </div>
 
             {/* Navigation Controls */}
@@ -455,15 +486,15 @@ function HorizontalServiceCardsInner() {
                     >
                       <div
                         className={`
-                      p-6 space-y-6 mb-2 h-full flex flex-col justify-between
-                      rounded-br-[80px] shadow-md hover:shadow-xl
-                      transition-all duration-500
-                      ${
-                        isActive
-                          ? "bg-black bg-opacity-95 text-white"
-                          : "bg-opacity-90"
-                      }
-                      `}
+                          p-6 space-y-6 mb-2 h-full flex flex-col justify-between
+                          rounded-br-[80px] shadow-md
+                          transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]
+                          ${
+                            isActive
+                              ? "bg-black bg-opacity-95 text-white"
+                              : "bg-opacity-90"
+                          }
+                        `}
                         style={{
                           background: isActive
                             ? "rgba(0,0,0,0.95)"
@@ -474,6 +505,8 @@ function HorizontalServiceCardsInner() {
                           left: "auto",
                           height: "100%",
                           width: "100%",
+                          transition:
+                            "background 0.7s cubic-bezier(0.4,0,0.2,1), color 0.7s cubic-bezier(0.4,0,0.2,1)",
                         }}
                       >
                         {/* Title */}
@@ -482,84 +515,113 @@ function HorizontalServiceCardsInner() {
                           <div
                             style={{
                               position: "absolute",
-                              top: "110px", // moved further below
+                              top: "110px",
                               left: "-68px",
                               width: "68px",
                               height: "6px",
-                              background: isActive ? "#fdc900" : "#005eb8", // primary-yellow or slate-500
+                              background: isActive ? "#fdc900" : "#005eb8",
                               zIndex: 10,
+                              transition:
+                                "background 0.7s cubic-bezier(0.4,0,0.2,1)",
                             }}
                           />
                           <div>
                             <div
                               className={`w-8 h-0.5 ${
                                 isActive ? "bg-primary-yellow" : styles.accent
-                              } mb-3 transition-colors duration-300`}
+                              } mb-3 transition-colors duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]`}
                             ></div>
-                            <h3
-                              className={`text-xl font-bold leading-tight transition-colors duration-300 ${
+                            <motion.h3
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: false, amount: 0.5 }}
+                              transition={{
+                                duration: 0.7,
+                                delay: 0.2,
+                                type: "spring",
+                              }}
+                              className={`text-xl font-bold leading-tight transition-colors duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                                 isActive ? "text-white" : styles.text
                               }`}
                             >
                               {service.title}
-                            </h3>
-                            <h4
-                              className={`text-lg font-light opacity-80 transition-colors duration-300 ${
+                            </motion.h3>
+                            <motion.h4
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: false, amount: 0.5 }}
+                              transition={{
+                                duration: 0.7,
+                                delay: 0.3,
+                                type: "spring",
+                              }}
+                              className={`text-lg font-light opacity-80 transition-colors duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                                 isActive ? "text-primary-yellow" : styles.text
                               }`}
                             >
                               {service.subtitle}
-                            </h4>
+                            </motion.h4>
                           </div>
                           <div
                             className={`ml-4 text-black flex-shrink-0 ${
                               isActive ? "text-primary-yellow" : "text-black"
-                            }`}
+                            } transition-colors duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]`}
                           >
                             {service.icon}
                           </div>
-                          {/* Removed right side decorative line */}
                         </div>
 
                         {/* Description */}
-                        <p
-                          className={`opacity-80 text-sm leading-relaxed transition-colors duration-300 ${
+                        <motion.p
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: false, amount: 0.5 }}
+                          transition={{
+                            duration: 0.7,
+                            delay: 0.4,
+                            type: "spring",
+                          }}
+                          className={`opacity-80 text-sm leading-relaxed transition-colors duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                             isActive ? "text-white" : styles.text
                           }`}
                         >
                           {service.description}
-                        </p>
+                        </motion.p>
 
                         {/* Button */}
                         <button
                           type="button"
                           title={service.buttonText}
-                          style={{ width: "fit-content" }}
+                          style={{
+                            width: "fit-content",
+                            transition:
+                              "background 0.7s cubic-bezier(0.4,0,0.2,1), color 0.7s cubic-bezier(0.4,0,0.2,1), border-color 0.7s cubic-bezier(0.4,0,0.2,1), box-shadow 0.7s cubic-bezier(0.4,0,0.2,1)",
+                          }}
                           className={`
-                            px-8 py-4
-                            rounded-tr-[30px]
-                            font-semibold text-md tracking-wide
-                            flex items-center gap-2
-                            transition-all duration-300
-                            border-2
-                            ${styles.border}
-                            rounded-none
-                            group/btn
+                          px-8 py-4
+                          rounded-tr-[30px]
+                          font-semibold text-md tracking-wide
+                          flex items-center gap-2
+                          transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]
+                          border-2
+                          ${styles.border}
+                          rounded-none
+                          group/btn
                           hover:shadow-[2px_2px_0_0_rgba(30,41,59,1)]
-                            focus:outline-none
-                            ${
-                              isActive
-                                ? "bg-primary-yellow text-black border-primary-yellow"
-                                : "bg-white " +
-                                  styles.text +
-                                  " hover:bg-primary-yellow hover:text-black hover:border-primary-yellow"
-                            }
+                          focus:outline-none
+                          ${
+                            isActive
+                              ? "bg-primary-yellow text-black border-primary-yellow"
+                              : "bg-white " +
+                                styles.text +
+                                " hover:bg-primary-yellow hover:text-black hover:border-primary-yellow"
+                          }
                           `}
                           onClick={(e) => e.stopPropagation()}
                         >
                           <span>{service.buttonText}</span>
                           <ArrowRight
-                            className={`w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 ${
+                            className={`w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                               isActive ? "text-black" : ""
                             }`}
                           />
