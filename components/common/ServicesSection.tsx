@@ -486,15 +486,15 @@ function HorizontalServiceCardsInner() {
                     >
                       <div
                         className={`
-                      p-6 space-y-6 mb-2 h-full flex flex-col justify-between
-                      rounded-br-[80px] shadow-md hover:shadow-xl
-                      transition-all duration-500
-                      ${
-                        isActive
-                          ? "bg-black bg-opacity-95 text-white"
-                          : "bg-opacity-90"
-                      }
-                      `}
+                          p-6 space-y-6 mb-2 h-full flex flex-col justify-between
+                          rounded-br-[80px] shadow-md
+                          transition-all duration-500
+                          ${
+                            isActive
+                              ? "bg-black bg-opacity-95 text-white"
+                              : "bg-opacity-90"
+                          }
+                        `}
                         style={{
                           background: isActive
                             ? "rgba(0,0,0,0.95)"
@@ -513,11 +513,11 @@ function HorizontalServiceCardsInner() {
                           <div
                             style={{
                               position: "absolute",
-                              top: "110px", // moved further below
+                              top: "110px",
                               left: "-68px",
                               width: "68px",
                               height: "6px",
-                              background: isActive ? "#fdc900" : "#005eb8", // primary-yellow or slate-500
+                              background: isActive ? "#fdc900" : "#005eb8",
                               zIndex: 10,
                             }}
                           />
@@ -527,20 +527,36 @@ function HorizontalServiceCardsInner() {
                                 isActive ? "bg-primary-yellow" : styles.accent
                               } mb-3 transition-colors duration-300`}
                             ></div>
-                            <h3
+                            <motion.h3
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: false, amount: 0.5 }}
+                              transition={{
+                                duration: 0.6,
+                                delay: 0.2,
+                                type: "spring",
+                              }}
                               className={`text-xl font-bold leading-tight transition-colors duration-300 ${
                                 isActive ? "text-white" : styles.text
                               }`}
                             >
                               {service.title}
-                            </h3>
-                            <h4
+                            </motion.h3>
+                            <motion.h4
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: false, amount: 0.5 }}
+                              transition={{
+                                duration: 0.6,
+                                delay: 0.3,
+                                type: "spring",
+                              }}
                               className={`text-lg font-light opacity-80 transition-colors duration-300 ${
                                 isActive ? "text-primary-yellow" : styles.text
                               }`}
                             >
                               {service.subtitle}
-                            </h4>
+                            </motion.h4>
                           </div>
                           <div
                             className={`ml-4 text-black flex-shrink-0 ${
@@ -549,17 +565,24 @@ function HorizontalServiceCardsInner() {
                           >
                             {service.icon}
                           </div>
-                          {/* Removed right side decorative line */}
                         </div>
 
                         {/* Description */}
-                        <p
+                        <motion.p
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: false, amount: 0.5 }}
+                          transition={{
+                            duration: 0.6,
+                            delay: 0.4,
+                            type: "spring",
+                          }}
                           className={`opacity-80 text-sm leading-relaxed transition-colors duration-300 ${
                             isActive ? "text-white" : styles.text
                           }`}
                         >
                           {service.description}
-                        </p>
+                        </motion.p>
 
                         {/* Button */}
                         <button
@@ -576,7 +599,7 @@ function HorizontalServiceCardsInner() {
                             ${styles.border}
                             rounded-none
                             group/btn
-                          hover:shadow-[2px_2px_0_0_rgba(30,41,59,1)]
+                            hover:shadow-[2px_2px_0_0_rgba(30,41,59,1)]
                             focus:outline-none
                             ${
                               isActive
