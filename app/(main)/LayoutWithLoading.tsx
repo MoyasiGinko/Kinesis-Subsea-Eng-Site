@@ -48,7 +48,49 @@ const LayoutWithLoading: React.FC<{ children: React.ReactNode }> = ({
 
 const NavbarWithScrollContext: React.FC = () => {
   const scrollbarContext = useSmoothScrollbarOptional();
-  const scrollY = scrollbarContext?.scrollY || 0;
+  const [scrollY, setScrollY] = React.useState(0);
+
+  // Track scroll from smooth scrollbar context
+  React.useEffect(() => {
+    if (scrollbarContext?.scrollY !== undefined) {
+      setScrollY(scrollbarContext.scrollY);
+    }
+  }, [scrollbarContext?.scrollY]);
+
+  // Also listen to window scroll events as fallback
+  React.useEffect(() => {
+    const handleWindowScroll = () => {
+      const windowScrollY =
+        window.scrollY || document.documentElement.scrollTop || 0;
+      setScrollY(windowScrollY);
+    };
+
+    // Set initial value
+    handleWindowScroll();
+
+    // Listen for scroll events
+    window.addEventListener("scroll", handleWindowScroll, { passive: true });
+
+    // Listen for custom smooth-scroll events
+    const handleCustomScroll = (e: CustomEvent) => {
+      if (e.detail && typeof e.detail.scrollY === "number") {
+        setScrollY(e.detail.scrollY);
+      }
+    };
+
+    window.addEventListener(
+      "smooth-scroll",
+      handleCustomScroll as EventListener
+    );
+
+    return () => {
+      window.removeEventListener("scroll", handleWindowScroll);
+      window.removeEventListener(
+        "smooth-scroll",
+        handleCustomScroll as EventListener
+      );
+    };
+  }, []);
 
   return <Navbar scrollY={scrollY} />;
 };

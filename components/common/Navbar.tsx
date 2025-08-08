@@ -121,8 +121,45 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    console.log("Navbar: scrollY changed to", scrollY);
     setIsScrolled(scrollY > 20);
   }, [scrollY]);
+
+  // Backup scroll detection method
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY =
+        window.scrollY || document.documentElement.scrollTop || 0;
+      console.log("Navbar: Direct scroll detected", currentScrollY);
+      setIsScrolled(currentScrollY > 20);
+    };
+
+    // Initial check
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Listen for custom smooth-scroll events
+    const handleCustomScroll = (e: CustomEvent) => {
+      if (e.detail && typeof e.detail.scrollY === "number") {
+        console.log("Navbar: Custom scroll event detected", e.detail.scrollY);
+        setIsScrolled(e.detail.scrollY > 20);
+      }
+    };
+
+    window.addEventListener(
+      "smooth-scroll",
+      handleCustomScroll as EventListener
+    );
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener(
+        "smooth-scroll",
+        handleCustomScroll as EventListener
+      );
+    };
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -193,6 +230,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
           ? "bg-white/95 backdrop-blur-xl shadow-lg shadow-gray-300/20"
           : "bg-transparent backdrop-blur-none"
       }`}
+      data-scrolled={isScrolled}
     >
       {/* Top Info Bar */}
       {/* <div
