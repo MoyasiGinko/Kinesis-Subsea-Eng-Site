@@ -488,7 +488,7 @@ function HorizontalServiceCardsInner() {
                         className={`
                           p-6 space-y-6 mb-2 h-full flex flex-col justify-between
                           rounded-br-[80px] shadow-md
-                          transition-all duration-500
+                          transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]
                           ${
                             isActive
                               ? "bg-black bg-opacity-95 text-white"
@@ -505,6 +505,8 @@ function HorizontalServiceCardsInner() {
                           left: "auto",
                           height: "100%",
                           width: "100%",
+                          transition:
+                            "background 0.7s cubic-bezier(0.4,0,0.2,1), color 0.7s cubic-bezier(0.4,0,0.2,1)",
                         }}
                       >
                         {/* Title */}
@@ -519,24 +521,26 @@ function HorizontalServiceCardsInner() {
                               height: "6px",
                               background: isActive ? "#fdc900" : "#005eb8",
                               zIndex: 10,
+                              transition:
+                                "background 0.7s cubic-bezier(0.4,0,0.2,1)",
                             }}
                           />
                           <div>
                             <div
                               className={`w-8 h-0.5 ${
                                 isActive ? "bg-primary-yellow" : styles.accent
-                              } mb-3 transition-colors duration-300`}
+                              } mb-3 transition-colors duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]`}
                             ></div>
                             <motion.h3
                               initial={{ opacity: 0, y: 20 }}
                               whileInView={{ opacity: 1, y: 0 }}
                               viewport={{ once: false, amount: 0.5 }}
                               transition={{
-                                duration: 0.6,
+                                duration: 0.7,
                                 delay: 0.2,
                                 type: "spring",
                               }}
-                              className={`text-xl font-bold leading-tight transition-colors duration-300 ${
+                              className={`text-xl font-bold leading-tight transition-colors duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                                 isActive ? "text-white" : styles.text
                               }`}
                             >
@@ -547,11 +551,11 @@ function HorizontalServiceCardsInner() {
                               whileInView={{ opacity: 1, y: 0 }}
                               viewport={{ once: false, amount: 0.5 }}
                               transition={{
-                                duration: 0.6,
+                                duration: 0.7,
                                 delay: 0.3,
                                 type: "spring",
                               }}
-                              className={`text-lg font-light opacity-80 transition-colors duration-300 ${
+                              className={`text-lg font-light opacity-80 transition-colors duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                                 isActive ? "text-primary-yellow" : styles.text
                               }`}
                             >
@@ -561,7 +565,7 @@ function HorizontalServiceCardsInner() {
                           <div
                             className={`ml-4 text-black flex-shrink-0 ${
                               isActive ? "text-primary-yellow" : "text-black"
-                            }`}
+                            } transition-colors duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]`}
                           >
                             {service.icon}
                           </div>
@@ -573,11 +577,11 @@ function HorizontalServiceCardsInner() {
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: false, amount: 0.5 }}
                           transition={{
-                            duration: 0.6,
+                            duration: 0.7,
                             delay: 0.4,
                             type: "spring",
                           }}
-                          className={`opacity-80 text-sm leading-relaxed transition-colors duration-300 ${
+                          className={`opacity-80 text-sm leading-relaxed transition-colors duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                             isActive ? "text-white" : styles.text
                           }`}
                         >
@@ -588,32 +592,36 @@ function HorizontalServiceCardsInner() {
                         <button
                           type="button"
                           title={service.buttonText}
-                          style={{ width: "fit-content" }}
+                          style={{
+                            width: "fit-content",
+                            transition:
+                              "background 0.7s cubic-bezier(0.4,0,0.2,1), color 0.7s cubic-bezier(0.4,0,0.2,1), border-color 0.7s cubic-bezier(0.4,0,0.2,1), box-shadow 0.7s cubic-bezier(0.4,0,0.2,1)",
+                          }}
                           className={`
-                            px-8 py-4
-                            rounded-tr-[30px]
-                            font-semibold text-md tracking-wide
-                            flex items-center gap-2
-                            transition-all duration-300
-                            border-2
-                            ${styles.border}
-                            rounded-none
-                            group/btn
-                            hover:shadow-[2px_2px_0_0_rgba(30,41,59,1)]
-                            focus:outline-none
-                            ${
-                              isActive
-                                ? "bg-primary-yellow text-black border-primary-yellow"
-                                : "bg-white " +
-                                  styles.text +
-                                  " hover:bg-primary-yellow hover:text-black hover:border-primary-yellow"
-                            }
+                          px-8 py-4
+                          rounded-tr-[30px]
+                          font-semibold text-md tracking-wide
+                          flex items-center gap-2
+                          transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]
+                          border-2
+                          ${styles.border}
+                          rounded-none
+                          group/btn
+                          hover:shadow-[2px_2px_0_0_rgba(30,41,59,1)]
+                          focus:outline-none
+                          ${
+                            isActive
+                              ? "bg-primary-yellow text-black border-primary-yellow"
+                              : "bg-white " +
+                                styles.text +
+                                " hover:bg-primary-yellow hover:text-black hover:border-primary-yellow"
+                          }
                           `}
                           onClick={(e) => e.stopPropagation()}
                         >
                           <span>{service.buttonText}</span>
                           <ArrowRight
-                            className={`w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 ${
+                            className={`w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                               isActive ? "text-black" : ""
                             }`}
                           />
