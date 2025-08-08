@@ -36,7 +36,7 @@ export const SmoothScrollbarProvider: React.FC<
       console.log("SmoothScrollbarProvider: Initializing Smooth Scrollbar");
 
       scrollbarInstance.current = Scrollbar.init(scrollbarRef.current, {
-        damping: 0.04, // Increased for ultra-smooth feel
+        damping: 0.05, // Increased for ultra-smooth feel
         thumbMinSize: 20,
         renderByPixels: true,
         alwaysShowTracks,
