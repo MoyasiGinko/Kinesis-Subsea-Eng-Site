@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -327,19 +328,45 @@ function HorizontalServiceCardsInner() {
                 <div className="w-12 h-1 bg-gradient-to-r from-slate-600 to-slate-800 mr-4"></div>
                 <span className="text-slate-600 font-bold tracking-widest uppercase text-sm flex items-center gap-2">
                   <Wrench className="w-4 h-4" />
-                  Our Services
+                  {/* Animate "Our Services" */}
+                  <motion.span
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7, delay: 0.1, type: "spring" }}
+                  >
+                    Our Services
+                  </motion.span>
                 </span>
               </div>
 
-              <h2 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+              {/* Animate heading */}
+              <motion.h2
+                className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
+              >
                 ENGINEERING
-                <span className="block text-primary-yellow">SOLUTIONS</span>
-              </h2>
+                <motion.span
+                  className="block text-primary-yellow"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4, type: "spring" }}
+                >
+                  SOLUTIONS
+                </motion.span>
+              </motion.h2>
 
-              <p className="text-slate-600 text-xl leading-relaxed max-w-2xl">
+              {/* Animate description */}
+              <motion.p
+                className="text-slate-600 text-xl leading-relaxed max-w-2xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.6, type: "spring" }}
+              >
                 Comprehensive engineering services delivering innovation,
                 precision, and reliability across diverse industrial sectors.
-              </p>
+              </motion.p>
             </div>
 
             {/* Navigation Controls */}
