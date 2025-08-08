@@ -119,20 +119,15 @@ export default function NewsSection() {
         {/* Section Header */}
         <motion.div
           className="flex flex-col items-center text-center mb-16"
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.2 }}
-          variants={{
-            visible: { transition: { staggerChildren: 0.12 } },
-            hidden: {},
-          }}
         >
           <motion.div
             className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 backdrop-blur-sm border border-gray-200 rounded-full mb-6 transition-all duration-1000"
-            variants={{
-              hidden: { opacity: 0, y: 32 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-            }}
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
           >
             <Calendar className="w-4 h-4 text-gray-500" />
             <span className="text-sm font-bold text-gray-700 uppercase tracking-wider leading-tight">
@@ -142,10 +137,9 @@ export default function NewsSection() {
 
           <motion.h2
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 transition-all duration-1000 delay-200 leading-tight"
-            variants={{
-              hidden: { opacity: 0, y: 32 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-            }}
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
           >
             <span className="block text-gray-900 font-bold leading-tight">
               News &
@@ -157,10 +151,9 @@ export default function NewsSection() {
 
           <motion.p
             className="text-gray-500 text-lg max-w-2xl mx-auto transition-all duration-1000 delay-400"
-            variants={{
-              hidden: { opacity: 0, y: 32 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-            }}
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
           >
             Stay updated with the latest developments, industry insights, and
             company news
