@@ -331,7 +331,8 @@ function HorizontalServiceCardsInner() {
                   {/* Animate "Our Services" */}
                   <motion.span
                     initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
                     transition={{ duration: 0.7, delay: 0.1, type: "spring" }}
                   >
                     Our Services
@@ -343,14 +344,16 @@ function HorizontalServiceCardsInner() {
               <motion.h2
                 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight"
                 initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.5 }}
                 transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
               >
                 ENGINEERING
                 <motion.span
                   className="block text-primary-yellow"
                   initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.5 }}
                   transition={{ duration: 0.8, delay: 0.4, type: "spring" }}
                 >
                   SOLUTIONS
@@ -361,7 +364,8 @@ function HorizontalServiceCardsInner() {
               <motion.p
                 className="text-slate-600 text-xl leading-relaxed max-w-2xl"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.5 }}
                 transition={{ duration: 0.7, delay: 0.6, type: "spring" }}
               >
                 Comprehensive engineering services delivering innovation,
