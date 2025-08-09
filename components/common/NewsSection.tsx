@@ -1,9 +1,10 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Calendar, Tag, ArrowRight, Clock, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function NewsSection() {
+  const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -43,7 +44,20 @@ export default function NewsSection() {
     },
   ];
 
-  React.useEffect(() => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
       if (sectionRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
@@ -53,8 +67,11 @@ export default function NewsSection() {
         });
       }
     };
+
     window.addEventListener("mousemove", handleMouseMove);
+
     return () => {
+      observer.disconnect();
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
@@ -117,17 +134,12 @@ export default function NewsSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         {/* Section Header */}
-        <motion.div
-          className="flex flex-col items-center text-center mb-16"
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
-        >
+        <div className="text-center mb-16">
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 backdrop-blur-sm border border-gray-200 rounded-full mb-6 transition-all duration-1000"
             initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1 }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 backdrop-blur-sm border border-gray-200 rounded-full mb-6"
           >
             <Calendar className="w-4 h-4 text-gray-500" />
             <span className="text-sm font-bold text-gray-700 uppercase tracking-wider leading-tight">
@@ -136,10 +148,10 @@ export default function NewsSection() {
           </motion.div>
 
           <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 transition-all duration-1000 delay-200 leading-tight"
             initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
           >
             <span className="block text-gray-900 font-bold leading-tight">
               News &
@@ -150,26 +162,29 @@ export default function NewsSection() {
           </motion.h2>
 
           <motion.p
-            className="text-gray-500 text-lg max-w-2xl mx-auto transition-all duration-1000 delay-400"
             initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="text-gray-500 text-lg max-w-2xl mx-auto"
           >
             Stay updated with the latest developments, industry insights, and
             company news
           </motion.p>
-        </motion.div>
+        </div>
 
         {/* News Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {newsItems.map((item, index) => (
-            <motion.div
+            <div
               key={index}
-              className="group relative flex flex-col h-full"
-              initial={{ opacity: 0, y: 48 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 1, delay: index * 0.2 + 0.6 }}
+              className={`group relative flex flex-col h-full transition-all duration-1000 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
+              }`}
+              style={{
+                transitionDelay: `${index * 200 + 600}ms`,
+              }}
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
             >
@@ -186,19 +201,13 @@ export default function NewsSection() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   {/* Category Badge */}
-                  <motion.div
-                    className={`absolute top-4 left-4`}
-                    initial={{ opacity: 0, y: 32 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.2 }}
-                    transition={{ duration: 1, delay: index * 0.2 + 0.7 }}
-                  >
+                  <div className="absolute top-4 left-4">
                     <div
                       className={`px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${item.categoryColor} shadow-lg`}
                     >
                       {item.category}
                     </div>
-                  </motion.div>
+                  </div>
 
                   {/* Read Time Badge */}
                   <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -212,13 +221,7 @@ export default function NewsSection() {
                 {/* Content Section */}
                 <div className="flex flex-col flex-1 p-6">
                   {/* Meta Information */}
-                  <motion.div
-                    className="flex items-center gap-4 mb-4"
-                    initial={{ opacity: 0, y: 32 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.2 }}
-                    transition={{ duration: 1, delay: index * 0.2 + 0.8 }}
-                  >
+                  <div className="flex items-center gap-4 mb-4">
                     <div className="flex items-center gap-1 text-gray-500 text-sm">
                       <Calendar className="w-4 h-4" />
                       {item.date}
@@ -229,41 +232,23 @@ export default function NewsSection() {
                         {Math.floor(Math.random() * 500) + 100} views
                       </span>
                     </div>
-                  </motion.div>
+                  </div>
 
                   {/* Title */}
-                  <motion.h3
-                    className="text-xl font-bold mb-3 text-gray-900 group-hover:text-blue-500 transition-colors duration-300 leading-tight"
-                    initial={{ opacity: 0, y: 32 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.2 }}
-                    transition={{ duration: 1, delay: index * 0.2 + 0.9 }}
-                  >
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-blue-500 transition-colors duration-300 leading-tight">
                     {item.title}
-                  </motion.h3>
+                  </h3>
 
                   {/* Excerpt */}
-                  <motion.p
-                    className="text-gray-500 text-sm mb-4 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    initial={{ opacity: 0, y: 32 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.2 }}
-                    transition={{ duration: 1, delay: index * 0.2 + 1.0 }}
-                  >
+                  <p className="text-gray-500 text-sm mb-4 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     {item.excerpt}
-                  </motion.p>
+                  </p>
 
                   {/* Spacer to push button to bottom */}
                   <div className="flex-1" />
 
                   {/* Read More Button */}
-                  <motion.div
-                    className="flex items-center justify-between mt-2"
-                    initial={{ opacity: 0, y: 32 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.2 }}
-                    transition={{ duration: 1, delay: index * 0.2 + 1.1 }}
-                  >
+                  <div className="flex items-center justify-between mt-2">
                     <button className="group/btn flex items-center gap-2 text-blue-500 font-semibold hover:text-blue-400 transition-colors duration-300">
                       <span>Read More</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
@@ -279,7 +264,7 @@ export default function NewsSection() {
                         }`}
                       />
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
 
                 {/* Hover Glow Effect */}
@@ -287,17 +272,15 @@ export default function NewsSection() {
                   className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-r ${item.categoryColor} blur-xl`}
                 />
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <motion.div
-          className="text-center mt-16 transition-all duration-1000 delay-1200"
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ duration: 1, delay: 1.4 }}
+        <div
+          className={`text-center mt-16 transition-all duration-1000 delay-1200 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
         >
           <button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full text-white font-semibold text-lg transition-all duration-500 hover:from-blue-400 hover:to-emerald-400 hover:shadow-xl hover:shadow-blue-300/25 hover:scale-105 overflow-hidden">
             <span className="relative z-10">View All News</span>
@@ -306,7 +289,7 @@ export default function NewsSection() {
             {/* Button Glow Effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </button>
-        </motion.div>
+        </div>
       </div>
 
       {/* Mouse Follower */}
