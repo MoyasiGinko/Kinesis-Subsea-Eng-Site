@@ -24,15 +24,9 @@ const Footer: React.FC = () => {
             <img src="/logo-white.svg" alt="Logo" className="w-60 h-60" />
           </div>
 
-          <motion.p
-            className="text-lg text-gray-300 max-w-md"
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
+          <p className="text-lg text-gray-300 max-w-md">
             Subscribe for the latest news. Stay updated on the latest trends.
-          </motion.p>
+          </p>
           <div className="relative w-full max-w-lg">
             <input
               type="email"

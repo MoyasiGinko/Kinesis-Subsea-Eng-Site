@@ -99,8 +99,6 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
       {children}
     </LenisContext.Provider>
   );
-
-  return <>{children}</>;
 };
 
 export default LenisProvider;
