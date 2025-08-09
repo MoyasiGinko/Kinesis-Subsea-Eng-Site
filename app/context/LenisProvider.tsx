@@ -43,8 +43,9 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         orientation: "vertical",
         gestureOrientation: "vertical",
-        wheelMultiplier: 1,
+        wheelMultiplier: 1.2,
         touchMultiplier: 2,
+        infinite: false, // Allow scrolling to the end of the page
       });
     }
 
@@ -83,7 +84,14 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
+
+    // Start the animation loop
     requestAnimationFrame(raf);
+
+    // Dispatch regular scroll events for components that rely on them
+    lenis.on("scroll", () => {
+      window.dispatchEvent(new Event("scroll"));
+    });
 
     return () => {
       // Clean up
@@ -99,8 +107,6 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
       {children}
     </LenisContext.Provider>
   );
-
-  return <>{children}</>;
 };
 
 export default LenisProvider;

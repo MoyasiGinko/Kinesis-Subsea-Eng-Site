@@ -54,7 +54,8 @@ function HorizontalServiceCardsInner() {
         "Performance Analysis",
         "Quality Assurance",
       ],
-      image: "/services/1.webp",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/1_jvnjiz.webp",
       icon: <Wrench className="w-6 h-6" />,
       buttonText: "LEARN MORE",
       theme: "primary",
@@ -75,7 +76,8 @@ function HorizontalServiceCardsInner() {
         "Manufacturing Setup",
         "Quality Control",
       ],
-      image: "/services/2.avif",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/2_vfvnuz.webp",
       icon: <Package className="w-6 h-6" />,
       buttonText: "LEARN MORE",
       theme: "secondary",
@@ -96,7 +98,8 @@ function HorizontalServiceCardsInner() {
         "Material Science",
         "Testing & Validation",
       ],
-      image: "/services/3.jpg",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/3_yp4wiw.webp",
       icon: <Search className="w-6 h-6" />,
       buttonText: "LEARN MORE",
       theme: "accent",
@@ -117,7 +120,8 @@ function HorizontalServiceCardsInner() {
         "Risk Assessment",
         "Project Management",
       ],
-      image: "/services/4.jpg",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/4_a40enk.webp",
       icon: <Building2 className="w-6 h-6" />,
       buttonText: "LEARN MORE",
       theme: "primary",
@@ -138,7 +142,8 @@ function HorizontalServiceCardsInner() {
         "IoT Integration",
         "Predictive Maintenance",
       ],
-      image: "/services/5.jpg",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/5_yhjlu6.webp",
       icon: <Cog className="w-6 h-6" />,
       buttonText: "LEARN MORE",
       theme: "secondary",
@@ -329,93 +334,56 @@ function HorizontalServiceCardsInner() {
                 <span className="text-slate-600 font-bold tracking-widest uppercase text-sm flex items-center gap-2">
                   <Wrench className="w-4 h-4" />
                   {/* Animate "Our Services" */}
-                  <motion.span
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: false, amount: 0.5 }}
-                    transition={{ duration: 0.7, delay: 0.1, type: "spring" }}
-                  >
-                    {"Our Services".split("").map((char, i) => (
-                      <motion.span
-                        key={i}
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.5 }}
-                        transition={{
-                          duration: 0.4,
-                          delay: 0.1 + i * 0.04,
-                          type: "tween",
-                        }}
-                        style={{ display: "inline-block" }}
-                      >
-                        {char === " " ? "\u00A0" : char}
-                      </motion.span>
-                    ))}
-                  </motion.span>
+                  <span className="font-bold text-primary-yellow">
+                    Our Services
+                  </span>
                 </span>
               </div>
 
               {/* Animate heading */}
               <motion.h2
-                className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight"
               >
+                {/* Animate each letter of ENGINEERING */}
                 {"ENGINEERING".split("").map((char, i) => (
                   <motion.span
-                    key={i}
+                    key={`eng-${i}`}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.5 }}
-                    transition={{
-                      duration: 0.4,
-                      delay: 0.2 + i * 0.04,
-                      type: "tween",
-                    }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.4, delay: 0.15 + i * 0.07 }}
                     style={{ display: "inline-block" }}
                   >
-                    {char === " " ? "\u00A0" : char}
+                    {char}
                   </motion.span>
                 ))}
-                <motion.span
-                  className="block text-primary-yellow"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.5 }}
-                  transition={{ duration: 0.8, delay: 0.4, type: "spring" }}
-                >
+                <br />
+                {/* Animate each letter of SOLUTIONS */}
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-yellow to-yellow-400">
                   {"SOLUTIONS".split("").map((char, i) => (
                     <motion.span
-                      key={i}
+                      key={`sol-${i}`}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: false, amount: 0.5 }}
-                      transition={{
-                        duration: 0.4,
-                        delay: 0.4 + i * 0.04,
-                        type: "tween",
-                      }}
+                      viewport={{ once: true, amount: 0.5 }}
+                      transition={{ duration: 0.4, delay: 0.6 + i * 0.07 }}
                       style={{ display: "inline-block" }}
                     >
-                      {char === " " ? "\u00A0" : char}
+                      {char}
                     </motion.span>
                   ))}
-                </motion.span>
+                </span>
               </motion.h2>
 
               {/* Animate description */}
-              <motion.p
-                className="text-slate-600 text-xl leading-relaxed max-w-2xl"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 0.7, delay: 0.6, type: "spring" }}
-              >
+              <p className="text-slate-600 text-xl leading-relaxed max-w-2xl">
                 Comprehensive engineering services delivering innovation,
                 precision, and reliability across diverse industrial sectors.
-              </motion.p>
+              </p>
             </div>
 
             {/* Navigation Controls */}

@@ -32,7 +32,8 @@ const RecentProjectsSection: React.FC = () => {
       id: "chemical-refinery",
       title: "Chemical Refinery Complex",
       location: "Michigan, United States",
-      image: "/services/1.webp",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/1_jvnjiz.webp",
       category: "Industrial Engineering",
       year: "2024",
       status: "Completed",
@@ -43,7 +44,8 @@ const RecentProjectsSection: React.FC = () => {
       id: "manufacturing-plant",
       title: "Automotive Manufacturing Plant",
       location: "Texas, United States",
-      image: "/services/2.avif",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/2_vfvnuz.webp",
       category: "Manufacturing",
       year: "2024",
       status: "In Progress",
@@ -54,7 +56,8 @@ const RecentProjectsSection: React.FC = () => {
       id: "power-station",
       title: "Renewable Energy Station",
       location: "California, United States",
-      image: "/services/3.jpg",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/3_yp4wiw.webp",
       category: "Energy Infrastructure",
       year: "2023",
       status: "Completed",
@@ -65,7 +68,8 @@ const RecentProjectsSection: React.FC = () => {
       id: "offshore-platform",
       title: "Offshore Drilling Platform",
       location: "Gulf of Mexico",
-      image: "/services/4.jpg",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/4_a40enk.webp",
       category: "Oil & Gas",
       year: "2023",
       status: "Completed",
@@ -76,7 +80,8 @@ const RecentProjectsSection: React.FC = () => {
       id: "steel-mill",
       title: "Steel Mill Modernization",
       location: "Pennsylvania, United States",
-      image: "/services/5.jpg",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/5_yhjlu6.webp",
       category: "Heavy Industry",
       year: "2024",
       status: "In Progress",
@@ -144,7 +149,7 @@ const RecentProjectsSection: React.FC = () => {
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
           >
@@ -154,7 +159,7 @@ const RecentProjectsSection: React.FC = () => {
                 key={`recent-${i}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.5 }}
+                viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.4, delay: 0.15 + i * 0.07 }}
                 style={{ display: "inline-block" }}
               >
@@ -169,7 +174,7 @@ const RecentProjectsSection: React.FC = () => {
                   key={`projects-${i}`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.5 }}
+                  viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.4, delay: 0.6 + i * 0.07 }}
                   style={{ display: "inline-block" }}
                 >
@@ -179,16 +184,10 @@ const RecentProjectsSection: React.FC = () => {
             </span>
           </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.5 }}
-            transition={{ duration: 0.7, delay: 1.2 }}
-            className="text-slate-300 text-xl max-w-2xl leading-relaxed"
-          >
+          <p className="text-slate-300 text-xl max-w-2xl leading-relaxed">
             Delivering excellence across industries with cutting-edge
             engineering solutions and innovative project management.
-          </motion.p>
+          </p>
         </div>
 
         {/* Main Content */}

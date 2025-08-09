@@ -10,7 +10,7 @@ const ScrollableContent: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   return (
     <>
-      <div>{children}</div>
+      {children}
       <Footer />
     </>
   );
@@ -31,7 +31,7 @@ const LayoutWithLoading: React.FC<{ children: React.ReactNode }> = ({
     <>
       {isLoading && <LoadingScreen />}
       <NavbarWithScrollContext />
-      <main style={{ position: "relative", height: "100vh" }}>
+      <main style={{ position: "relative", minHeight: "100vh" }}>
         <ScrollableContent>{children}</ScrollableContent>
       </main>
     </>

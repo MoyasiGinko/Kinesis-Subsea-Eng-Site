@@ -12,7 +12,8 @@ export default function NewsSection() {
         "Kinesis Subsea Engineering Awarded Major Contract for Carbon Capture Project",
       date: "March 15, 2024",
       category: "Press Release",
-      image: "/services/1.webp",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/1_jvnjiz.webp",
       readTime: "5 min read",
       excerpt:
         "Groundbreaking partnership to develop innovative carbon capture solutions for offshore operations...",
@@ -22,7 +23,8 @@ export default function NewsSection() {
       title: "Sustainability Report 2023: Progress Towards Net Zero",
       date: "March 10, 2024",
       category: "Sustainability",
-      image: "/services/2.avif",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/2_vfvnuz.webp",
       readTime: "8 min read",
       excerpt:
         "Comprehensive overview of our environmental initiatives and achievements in sustainable engineering...",
@@ -33,7 +35,8 @@ export default function NewsSection() {
         "Kinesis Subsea Engineering Opens New Innovation Center in Singapore",
       date: "March 5, 2024",
       category: "Company News",
-      image: "/services/3.jpg",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/3_yp4wiw.webp",
       readTime: "4 min read",
       excerpt:
         "State-of-the-art facility will drive next-generation subsea technology development and regional expansion...",
@@ -49,13 +52,17 @@ export default function NewsSection() {
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 1 }}
             className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 backdrop-blur-sm border border-gray-200 rounded-full mb-6"
+            style={{ lineHeight: 1.2 }}
           >
             <Calendar className="w-4 h-4 text-gray-500" />
-            <span className="text-sm font-bold text-gray-700 uppercase tracking-wider leading-tight">
-              Latest Updates
+            <span
+              className="text-sm font-bold text-gray-700 uppercase tracking-wider leading-tight"
+              style={{ lineHeight: 1.2 }}
+            >
+              LATEST UPDATES
             </span>
           </motion.div>
 
@@ -63,14 +70,18 @@ export default function NewsSection() {
           <motion.h2
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.5 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
             variants={{
               visible: { transition: { staggerChildren: 0.04 } },
             }}
+            style={{ lineHeight: 1.1 }}
           >
-            <span className="block text-gray-900 font-bold leading-tight">
-              {Array.from("News &").map((char, i) => (
+            <span
+              className="block text-gray-900 font-bold"
+              style={{ lineHeight: 1.1 }}
+            >
+              {Array.from("NEWS &").map((char, i) => (
                 <motion.span
                   key={i}
                   variants={{
@@ -84,8 +95,11 @@ export default function NewsSection() {
                 </motion.span>
               ))}
             </span>
-            <span className="block bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-500 bg-clip-text text-transparent font-bold leading-tight">
-              {Array.from("Industry Insights").map((char, i) => (
+            <span
+              className="block bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-500 bg-clip-text text-transparent font-bold"
+              style={{ lineHeight: 1.1 }}
+            >
+              {Array.from("INDUSTRY INSIGHTS").map((char, i) => (
                 <motion.span
                   key={i}
                   variants={{
@@ -101,16 +115,10 @@ export default function NewsSection() {
             </span>
           </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.5 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="text-gray-500 text-lg max-w-2xl mx-auto"
-          >
+          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
             Stay updated with the latest developments, industry insights, and
             company news
-          </motion.p>
+          </p>
         </div>
 
         {/* News Grid */}
@@ -214,21 +222,15 @@ export default function NewsSection() {
         </div>
 
         {/* Bottom CTA */}
-        <motion.div
-          className="text-center mt-16 transition-all duration-1000 delay-1200"
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.5 }}
-          transition={{ duration: 1, delay: 0.1 }}
-        >
+        <div className="text-center mt-16 transition-all duration-1000 delay-1200">
           <button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full text-white font-semibold text-lg transition-all duration-500 hover:from-blue-400 hover:to-emerald-400 hover:shadow-xl hover:shadow-blue-300/25 hover:scale-105 overflow-hidden">
-            <span className="relative z-10">View All News</span>
+            <span className="relative z-10">VIEW MORE</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
 
             {/* Button Glow Effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

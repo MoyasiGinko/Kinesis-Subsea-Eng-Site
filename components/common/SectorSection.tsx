@@ -38,8 +38,8 @@ const SectorLayout: React.FC = () => {
         "Carbon Footprint Reduction",
       ],
       sectorImage: "/images/sector-left.png",
-      color: "#FC5220",
-      hoverColor: "#e04b1c",
+      color: "#D93025",
+      hoverColor: "#BF2A1D",
     },
     {
       id: "renewable-energy",
@@ -57,8 +57,8 @@ const SectorLayout: React.FC = () => {
         "Sustainable Manufacturing",
       ],
       sectorImage: "/images/sector-right.png",
-      color: "#005EB8",
-      hoverColor: "#024690",
+      color: "#1A73b8",
+      hoverColor: "#0F5BB5",
     },
   ];
 
@@ -177,7 +177,7 @@ const SectorLayout: React.FC = () => {
         ref={bgRef}
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{
-          backgroundImage: `url('/services/sector-bg3.jpg')`,
+          backgroundImage: `url('https://res.cloudinary.com/dvvcwzp4n/image/upload/f_webp/q_80/sector-bg3_uw14sf.jpg')`,
         }}
       />
 
@@ -212,7 +212,7 @@ const SectorLayout: React.FC = () => {
                   x: isLeft ? "-100vw" : "100vw",
                 }}
                 transition={{
-                  duration: 1.2,
+                  duration: 0.8,
                   ease: easeInOut,
                 }}
               >
@@ -265,7 +265,7 @@ const SectorLayout: React.FC = () => {
               onHoverStart={() => setHoveredSector(sector.id)}
               onHoverEnd={() => setHoveredSector(null)}
               whileHover={{
-                scale: 1.01,
+                // scale: 1.01,
                 transition: { duration: 0.8, ease: easeInOut },
               }}
             >
@@ -307,8 +307,8 @@ const SectorLayout: React.FC = () => {
                         background: `linear-gradient(135deg, ${sector.color}40, transparent)`,
                       }}
                       animate={{
-                        scale: hoveredSector === sector.id ? 1.8 : 1,
-                        rotate: hoveredSector === sector.id ? 90 : 0,
+                        // scale: hoveredSector === sector.id ? 1.8 : 1,
+                        // rotate: hoveredSector === sector.id ? 90 : 0,
                         opacity: hoveredSector === sector.id ? 0.4 : 0.2,
                       }}
                       transition={{
@@ -319,12 +319,12 @@ const SectorLayout: React.FC = () => {
                     <motion.div
                       className="relative z-10"
                       style={{ color: sector.color }}
-                      animate={{
-                        color:
-                          hoveredSector === sector.id
-                            ? "#ffffff"
-                            : sector.color,
-                      }}
+                      // animate={{
+                      //   color:
+                      //     hoveredSector === sector.id
+                      //       ? "#ffffff"
+                      //       : sector.color,
+                      // }}
                       transition={{ duration: 0.6 }}
                     >
                       {sector.icon}
@@ -340,7 +340,7 @@ const SectorLayout: React.FC = () => {
                       hoveredSector === sector.id
                         ? sector.hoverColor
                         : sector.color,
-                    scale: hoveredSector === sector.id ? 1.05 : 1,
+                    // scale: hoveredSector === sector.id ? 1.05 : 1,
                   }}
                   transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
@@ -367,7 +367,7 @@ const SectorLayout: React.FC = () => {
                     marginBottom: hoveredSector === sector.id ? 32 : 0,
                   }}
                   transition={{
-                    duration: 1.2,
+                    duration: 0.8,
                     ease: easeInOut,
                   }}
                   style={{ transformOrigin: "top" }}
@@ -380,7 +380,7 @@ const SectorLayout: React.FC = () => {
                       y: hoveredSector === sector.id ? 0 : -20,
                     }}
                     transition={{
-                      duration: 0.8,
+                      duration: 0.4,
                       delay: hoveredSector === sector.id ? 0.3 : 0,
                       ease: easeInOut,
                     }}
@@ -427,13 +427,12 @@ const SectorLayout: React.FC = () => {
                 <motion.button
                   className="group/btn inline-flex items-center space-x-3 bg-white/10 backdrop-blur-md border border-white/30 px-8 py-4 font-medium tracking-wide text-white relative overflow-hidden self-center mt-4"
                   style={{
-                    backgroundColor: `${sector.color}30`,
+                    backgroundColor: `${sector.color}`,
                     borderColor: sector.color,
                   }}
                   whileHover={{
-                    backgroundColor: `${sector.color}50`,
+                    backgroundColor: `${sector.color}`,
                     borderColor: sector.color,
-                    scale: 1.03,
                     transition: {
                       duration: 0.8,
                       ease: [0.25, 0.46, 0.45, 0.94],
