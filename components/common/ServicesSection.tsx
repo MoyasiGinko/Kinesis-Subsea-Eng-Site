@@ -335,7 +335,22 @@ function HorizontalServiceCardsInner() {
                     viewport={{ once: false, amount: 0.5 }}
                     transition={{ duration: 0.7, delay: 0.1, type: "spring" }}
                   >
-                    Our Services
+                    {"Our Services".split("").map((char, i) => (
+                      <motion.span
+                        key={i}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{
+                          duration: 0.4,
+                          delay: 0.1 + i * 0.04,
+                          type: "tween",
+                        }}
+                        style={{ display: "inline-block" }}
+                      >
+                        {char === " " ? "\u00A0" : char}
+                      </motion.span>
+                    ))}
                   </motion.span>
                 </span>
               </div>
@@ -348,7 +363,22 @@ function HorizontalServiceCardsInner() {
                 viewport={{ once: false, amount: 0.5 }}
                 transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
               >
-                ENGINEERING
+                {"ENGINEERING".split("").map((char, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{
+                      duration: 0.4,
+                      delay: 0.2 + i * 0.04,
+                      type: "tween",
+                    }}
+                    style={{ display: "inline-block" }}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
                 <motion.span
                   className="block text-primary-yellow"
                   initial={{ opacity: 0, y: 30 }}
@@ -356,7 +386,22 @@ function HorizontalServiceCardsInner() {
                   viewport={{ once: false, amount: 0.5 }}
                   transition={{ duration: 0.8, delay: 0.4, type: "spring" }}
                 >
-                  SOLUTIONS
+                  {"SOLUTIONS".split("").map((char, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false, amount: 0.5 }}
+                      transition={{
+                        duration: 0.4,
+                        delay: 0.4 + i * 0.04,
+                        type: "tween",
+                      }}
+                      style={{ display: "inline-block" }}
+                    >
+                      {char === " " ? "\u00A0" : char}
+                    </motion.span>
+                  ))}
                 </motion.span>
               </motion.h2>
 
