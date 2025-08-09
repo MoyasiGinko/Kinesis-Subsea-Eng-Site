@@ -205,7 +205,7 @@ const HeroBanner = () => {
 
               {/* Description */}
               <p
-                className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 md:mb-10 font-light leading-relaxed animate-slide-in text-center lg:text-left"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 mb-8 md:mb-10 font-light leading-relaxed animate-slide-in text-center lg:text-left"
                 style={{ animationDelay: "400ms" }}
               >
                 {currentContent.description}
@@ -223,7 +223,7 @@ const HeroBanner = () => {
                   </span>
                 </button>
 
-                <button className="group relative px-10 py-5 border-2 border-gray-400 font-bold text-gray-300 uppercase tracking-wide transition-all duration-300 hover:border-white hover:text-white transform hover:-translate-y-1 overflow-hidden">
+                <button className="group relative px-10 py-5 border-2 border-white font-bold text-white/95 uppercase tracking-wide transition-all duration-300 hover:border-white hover:text-white transform hover:-translate-y-1 overflow-hidden">
                   <span className="relative z-10 flex items-center gap-3">
                     <Play className="w-5 h-5" />
                     View Services
