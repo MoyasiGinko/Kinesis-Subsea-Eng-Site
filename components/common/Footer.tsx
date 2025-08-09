@@ -195,7 +195,7 @@ const Footer: React.FC = () => {
         {/* Copyright */}
         <div className="pt-8 border-t border-white/10 text-center">
           <p className="text-gray-400">
-            © 2025 Kinesis. Designed by TruedgeDigital
+            ©️ 2025 Kinesis. Designed by TruedgeDigital.
           </p>
         </div>
       </div>
