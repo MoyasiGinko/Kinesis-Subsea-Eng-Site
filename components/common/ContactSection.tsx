@@ -90,16 +90,41 @@ const ContactSection: React.FC = () => {
               </motion.p>
 
               <motion.h2
-                className="text-4xl lg:text-5xl font-bold leading-tight mb-6"
+                className="text-4xl lg:text-5xl font-bold leading-tight mb-6 flex flex-wrap"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, margin: "-100px" }}
-                variants={fadeInUp}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                variants={{
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.03,
+                      delayChildren: 0.1,
+                    },
+                  },
+                  hidden: {},
+                }}
               >
-                Have a project in mind?
-                <br />
-                Contact with us
+                {"Have a project in mind?\nContact with us"
+                  .split("")
+                  .map((char, i) =>
+                    char === "\n" ? (
+                      <br key={i} />
+                    ) : (
+                      <motion.span
+                        key={i}
+                        variants={{
+                          hidden: { opacity: 0, y: 20 },
+                          visible: { opacity: 1, y: 0 },
+                        }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        style={{
+                          display: char === " " ? "inline-block" : "inline",
+                        }}
+                      >
+                        {char}
+                      </motion.span>
+                    )
+                  )}
               </motion.h2>
 
               <motion.p
