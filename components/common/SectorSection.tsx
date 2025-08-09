@@ -177,7 +177,7 @@ const SectorLayout: React.FC = () => {
         ref={bgRef}
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{
-          backgroundImage: `url('/services/sector-bg3.jpg')`,
+          backgroundImage: `url('https://res.cloudinary.com/dvvcwzp4n/image/upload/f_webp/q_80/sector-bg3_uw14sf.jpg')`,
         }}
       />
 
