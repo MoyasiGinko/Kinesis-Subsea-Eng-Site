@@ -5,7 +5,7 @@ import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 const Footer: React.FC = () => {
   return (
     <footer
-      className="bg-[#0c447b] text-white py-16 px-4 relative"
+      className="bg-[#0c447b] text-white py-16 px-4 relative z-10"
       style={{
         backgroundImage: "url('/images/footer-bg.jpg')",
         backgroundSize: "cover",
