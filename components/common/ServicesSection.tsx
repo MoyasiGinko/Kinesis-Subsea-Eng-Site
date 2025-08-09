@@ -338,51 +338,51 @@ function HorizontalServiceCardsInner() {
               {/* Animate heading */}
               <motion.h2
                 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
+                variants={{
+                  hidden: {},
+                  visible: {},
+                }}
               >
+                {/* First line */}
                 {"ENGINEERING".split("").map((char, i) => (
                   <motion.span
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
+                    key={`eng-${i}`}
+                    initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, amount: 0.5 }}
                     transition={{
-                      duration: 0.4,
-                      delay: 0.2 + i * 0.04,
-                      type: "tween",
+                      duration: 0.05, // shorter = snappier
+                      delay: i * 0.05, // small stagger for typing feel
+                      ease: "easeOut",
                     }}
                     style={{ display: "inline-block" }}
                   >
                     {char === " " ? "\u00A0" : char}
                   </motion.span>
                 ))}
-                <motion.span
-                  className="block text-primary-yellow"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.5 }}
-                  transition={{ duration: 0.8, delay: 0.4, type: "spring" }}
-                >
-                  {"SOLUTIONS".split("").map((char, i) => (
-                    <motion.span
-                      key={i}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: false, amount: 0.5 }}
-                      transition={{
-                        duration: 0.4,
-                        delay: 0.4 + i * 0.04,
-                        type: "tween",
-                      }}
-                      style={{ display: "inline-block" }}
-                    >
-                      {char === " " ? "\u00A0" : char}
-                    </motion.span>
-                  ))}
-                </motion.span>
+
+                <br />
+
+                {/* Second line */}
+                {"SOLUTIONS".split("").map((char, i) => (
+                  <motion.span
+                    key={`sol-${i}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{
+                      duration: 0.05,
+                      delay: 0.05 * ("ENGINEERING".length + i), // starts after first word finishes
+                      ease: "easeOut",
+                    }}
+                    style={{ display: "inline-block", color: "#FFD700" }} // text-primary-yellow
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
               </motion.h2>
 
               {/* Animate description */}

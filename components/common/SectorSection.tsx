@@ -212,7 +212,7 @@ const SectorLayout: React.FC = () => {
                   x: isLeft ? "-100vw" : "100vw",
                 }}
                 transition={{
-                  duration: 1.2,
+                  duration: 0.8,
                   ease: easeInOut,
                 }}
               >
@@ -367,7 +367,7 @@ const SectorLayout: React.FC = () => {
                     marginBottom: hoveredSector === sector.id ? 32 : 0,
                   }}
                   transition={{
-                    duration: 1.2,
+                    duration: 0.8,
                     ease: easeInOut,
                   }}
                   style={{ transformOrigin: "top" }}
@@ -380,7 +380,7 @@ const SectorLayout: React.FC = () => {
                       y: hoveredSector === sector.id ? 0 : -20,
                     }}
                     transition={{
-                      duration: 0.8,
+                      duration: 0.4,
                       delay: hoveredSector === sector.id ? 0.3 : 0,
                       ease: easeInOut,
                     }}
