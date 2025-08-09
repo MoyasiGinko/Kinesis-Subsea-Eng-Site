@@ -1,13 +1,10 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Calendar, Tag, ArrowRight, Clock, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function NewsSection() {
-  const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const sectionRef = useRef<HTMLElement | null>(null);
 
   const newsItems = [
     {
@@ -44,100 +41,15 @@ export default function NewsSection() {
     },
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: ((e.clientX - rect.left) / rect.width) * 100,
-          y: ((e.clientY - rect.top) / rect.height) * 100,
-        });
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-24 overflow-hidden bg-white"
-    >
-      {/* Background Effects */}
-      <div className="absolute inset-0">
-        {/* Animated Grid */}
-        <div className="absolute inset-0 opacity-[0.04]">
-          <div
-            className="absolute inset-0 transition-all duration-1000"
-            style={{
-              backgroundImage: `linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)`,
-              backgroundSize: "40px 40px",
-              transform: `translateX(${mousePosition.x * 0.02}px) translateY(${
-                mousePosition.y * 0.02
-              }px)`,
-            }}
-          />
-        </div>
-
-        {/* Floating Orbs */}
-        <div className="absolute inset-0">
-          {[...Array(8)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-blue-400/20 rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 4}s`,
-                animationDuration: `${3 + Math.random() * 2}s`,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Dynamic Gradient Backgrounds */}
-        <div
-          className="absolute top-1/3 left-1/4 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl transition-all duration-1000"
-          style={{
-            transform: `translateX(${mousePosition.x * 0.1}px) translateY(${
-              mousePosition.y * 0.05
-            }px)`,
-          }}
-        />
-        <div
-          className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-emerald-400/20 rounded-full blur-3xl transition-all duration-1000"
-          style={{
-            transform: `translateX(${mousePosition.x * -0.05}px) translateY(${
-              mousePosition.y * 0.1
-            }px)`,
-          }}
-        />
-      </div>
-
+    <section className="relative py-24 overflow-hidden bg-white">
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 32 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.5 }}
             transition={{ duration: 1 }}
             className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 backdrop-blur-sm border border-gray-200 rounded-full mb-6"
           >
@@ -149,19 +61,23 @@ export default function NewsSection() {
 
           {/* Animated headline */}
           <motion.h2
-            initial={false}
-            animate={isVisible ? "visible" : "hidden"}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.5 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
+            variants={{
+              visible: { transition: { staggerChildren: 0.04 } },
+            }}
           >
             <span className="block text-gray-900 font-bold leading-tight">
               {Array.from("News &").map((char, i) => (
                 <motion.span
                   key={i}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={
-                    isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }
-                  }
-                  transition={{ duration: 0.4, delay: 0.05 * i + 0.2 }}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                  transition={{ duration: 0.3 }}
                   style={{ display: "inline-block" }}
                 >
                   {char === " " ? "\u00A0" : char}
@@ -172,11 +88,11 @@ export default function NewsSection() {
               {Array.from("Industry Insights").map((char, i) => (
                 <motion.span
                   key={i}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={
-                    isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }
-                  }
-                  transition={{ duration: 0.4, delay: 0.05 * i + 0.7 }}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                  transition={{ duration: 0.3, delay: i * 0.04 }}
                   style={{ display: "inline-block" }}
                 >
                   {char === " " ? "\u00A0" : char}
@@ -187,8 +103,9 @@ export default function NewsSection() {
 
           <motion.p
             initial={{ opacity: 0, y: 32 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1, delay: 1.5 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 1, delay: 0.5 }}
             className="text-gray-500 text-lg max-w-2xl mx-auto"
           >
             Stay updated with the latest developments, industry insights, and
@@ -201,11 +118,7 @@ export default function NewsSection() {
           {newsItems.map((item, index) => (
             <div
               key={index}
-              className={`group relative flex flex-col h-full transition-all duration-1000 ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-12"
-              }`}
+              className={`group relative flex flex-col h-full transition-all duration-1000 `}
               style={{
                 transitionDelay: `${index * 200 + 600}ms`,
               }}
@@ -301,10 +214,12 @@ export default function NewsSection() {
         </div>
 
         {/* Bottom CTA */}
-        <div
-          className={`text-center mt-16 transition-all duration-1000 delay-1200 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+        <motion.div
+          className="text-center mt-16 transition-all duration-1000 delay-1200"
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.5 }}
+          transition={{ duration: 1, delay: 0.5 }}
         >
           <button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full text-white font-semibold text-lg transition-all duration-500 hover:from-blue-400 hover:to-emerald-400 hover:shadow-xl hover:shadow-blue-300/25 hover:scale-105 overflow-hidden">
             <span className="relative z-10">View All News</span>
@@ -313,18 +228,8 @@ export default function NewsSection() {
             {/* Button Glow Effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </button>
-        </div>
+        </motion.div>
       </div>
-
-      {/* Mouse Follower */}
-      <div
-        className="absolute w-32 h-32 bg-blue-400/10 rounded-full blur-2xl pointer-events-none transition-all duration-700"
-        style={{
-          left: `${mousePosition.x}%`,
-          top: `${mousePosition.y}%`,
-          transform: "translate(-50%, -50%)",
-        }}
-      />
     </section>
   );
 }
