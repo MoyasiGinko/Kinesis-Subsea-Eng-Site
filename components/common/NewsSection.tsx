@@ -12,7 +12,8 @@ export default function NewsSection() {
         "Kinesis Subsea Engineering Awarded Major Contract for Carbon Capture Project",
       date: "March 15, 2024",
       category: "Press Release",
-      image: "/services/1.webp",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/1_jvnjiz.webp",
       readTime: "5 min read",
       excerpt:
         "Groundbreaking partnership to develop innovative carbon capture solutions for offshore operations...",
@@ -22,7 +23,8 @@ export default function NewsSection() {
       title: "Sustainability Report 2023: Progress Towards Net Zero",
       date: "March 10, 2024",
       category: "Sustainability",
-      image: "/services/2.avif",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/2_vfvnuz.webp",
       readTime: "8 min read",
       excerpt:
         "Comprehensive overview of our environmental initiatives and achievements in sustainable engineering...",
@@ -33,7 +35,8 @@ export default function NewsSection() {
         "Kinesis Subsea Engineering Opens New Innovation Center in Singapore",
       date: "March 5, 2024",
       category: "Company News",
-      image: "/services/3.jpg",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/3_yp4wiw.webp",
       readTime: "4 min read",
       excerpt:
         "State-of-the-art facility will drive next-generation subsea technology development and regional expansion...",

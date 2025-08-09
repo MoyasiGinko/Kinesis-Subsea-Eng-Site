@@ -54,7 +54,8 @@ function HorizontalServiceCardsInner() {
         "Performance Analysis",
         "Quality Assurance",
       ],
-      image: "/services/1.webp",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/1_jvnjiz.webp",
       icon: <Wrench className="w-6 h-6" />,
       buttonText: "LEARN MORE",
       theme: "primary",
@@ -75,7 +76,8 @@ function HorizontalServiceCardsInner() {
         "Manufacturing Setup",
         "Quality Control",
       ],
-      image: "/services/2.avif",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/2_vfvnuz.webp",
       icon: <Package className="w-6 h-6" />,
       buttonText: "LEARN MORE",
       theme: "secondary",
@@ -96,7 +98,8 @@ function HorizontalServiceCardsInner() {
         "Material Science",
         "Testing & Validation",
       ],
-      image: "/services/3.jpg",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/3_yp4wiw.webp",
       icon: <Search className="w-6 h-6" />,
       buttonText: "LEARN MORE",
       theme: "accent",
@@ -117,7 +120,8 @@ function HorizontalServiceCardsInner() {
         "Risk Assessment",
         "Project Management",
       ],
-      image: "/services/4.jpg",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/4_a40enk.webp",
       icon: <Building2 className="w-6 h-6" />,
       buttonText: "LEARN MORE",
       theme: "primary",
@@ -138,7 +142,8 @@ function HorizontalServiceCardsInner() {
         "IoT Integration",
         "Predictive Maintenance",
       ],
-      image: "/services/5.jpg",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/5_yhjlu6.webp",
       icon: <Cog className="w-6 h-6" />,
       buttonText: "LEARN MORE",
       theme: "secondary",

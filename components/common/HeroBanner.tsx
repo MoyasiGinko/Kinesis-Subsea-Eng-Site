@@ -33,27 +33,27 @@ const HeroBanner = () => {
   // Image slider data
   const sliderImages = [
     {
-      src: "/services/1.webp",
+      src: "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/1_jvnjiz.webp",
       alt: "Modern Infrastructure Engineering",
       title: "Power Infrastructure",
     },
     {
-      src: "/services/2.avif",
+      src: "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/2_vfvnuz.webp",
       alt: "Industrial Automation Systems",
       title: "Smart Automation",
     },
     {
-      src: "/services/3.jpg",
+      src: "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/3_yp4wiw.webp",
       alt: "Digital Infrastructure Network",
       title: "Digital Ecosystem",
     },
     {
-      src: "/services/4.jpg",
+      src: "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/4_a40enk.webp",
       alt: "Engineering Excellence",
       title: "Engineering Excellence",
     },
     {
-      src: "/services/5.jpg",
+      src: "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/5_yhjlu6.webp",
       alt: "Advanced Technology Solutions",
       title: "Tech Solutions",
     },
