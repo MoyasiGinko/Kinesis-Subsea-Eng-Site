@@ -329,29 +329,9 @@ function HorizontalServiceCardsInner() {
                 <span className="text-slate-600 font-bold tracking-widest uppercase text-sm flex items-center gap-2">
                   <Wrench className="w-4 h-4" />
                   {/* Animate "Our Services" */}
-                  <motion.span
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: false, amount: 0.5 }}
-                    transition={{ duration: 0.7, delay: 0.1, type: "spring" }}
-                  >
-                    {"Our Services".split("").map((char, i) => (
-                      <motion.span
-                        key={i}
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.5 }}
-                        transition={{
-                          duration: 0.4,
-                          delay: 0.1 + i * 0.04,
-                          type: "tween",
-                        }}
-                        style={{ display: "inline-block" }}
-                      >
-                        {char === " " ? "\u00A0" : char}
-                      </motion.span>
-                    ))}
-                  </motion.span>
+                  <span className="font-bold text-primary-yellow">
+                    Our Services
+                  </span>
                 </span>
               </div>
 
