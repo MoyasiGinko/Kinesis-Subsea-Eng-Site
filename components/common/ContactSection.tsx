@@ -90,7 +90,7 @@ const ContactSection: React.FC = () => {
               </motion.p>
 
               <motion.h2
-                className="text-4xl lg:text-5xl font-bold leading-tight mb-6 flex flex-wrap"
+                className="text-4xl lg:text-5xl font-bold leading-tight tracking-tighter mb-4 flex flex-col"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, margin: "-100px" }}
@@ -103,28 +103,27 @@ const ContactSection: React.FC = () => {
                   },
                   hidden: {},
                 }}
+                style={{ wordBreak: "break-word", whiteSpace: "pre-line" }}
               >
-                {"Have a project in mind?\nContact with us"
-                  .split("")
-                  .map((char, i) =>
-                    char === "\n" ? (
-                      <br key={i} />
-                    ) : (
-                      <motion.span
-                        key={i}
-                        variants={{
-                          hidden: { opacity: 0, y: 20 },
-                          visible: { opacity: 1, y: 0 },
-                        }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                        style={{
-                          display: char === " " ? "inline-block" : "inline",
-                        }}
-                      >
-                        {char}
-                      </motion.span>
-                    )
-                  )}
+                {["Have a project in mind?", "Contact with us"].map(
+                  (line, idx) => (
+                    <span key={idx} className="block mb-4">
+                      {line.split("").map((char, i) => (
+                        <motion.span
+                          key={i}
+                          variants={{
+                            hidden: { opacity: 0, y: 20 },
+                            visible: { opacity: 1, y: 0 },
+                          }}
+                          transition={{ duration: 0.3, ease: "easeOut" }}
+                          style={{ display: "inline-block" }}
+                        >
+                          {char === " " ? "\u00A0" : char}
+                        </motion.span>
+                      ))}
+                    </span>
+                  )
+                )}
               </motion.h2>
 
               <motion.p
