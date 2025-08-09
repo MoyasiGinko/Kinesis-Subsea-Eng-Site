@@ -5,7 +5,6 @@ import { motion, AnimatePresence, easeInOut } from "framer-motion";
 import { Flame, Leaf, ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useSmoothScrollbarOptional } from "@/app/context/SmoothScrollbarContext";
 
 interface SectorData {
   id: string;
@@ -20,7 +19,6 @@ interface SectorData {
 }
 
 const SectorLayout: React.FC = () => {
-  const scrollbarContext = useSmoothScrollbarOptional();
   const [hoveredSector, setHoveredSector] = useState<string | null>(null);
 
   const sectors: SectorData[] = [
@@ -124,52 +122,7 @@ const SectorLayout: React.FC = () => {
       return;
     }
 
-    // Check if we have Smooth Scrollbar context
-    let usingWindowScroller = false;
     let scrollContent: Window | Element = window;
-    let cleanupScrollListener: (() => void) | undefined;
-
-    if (
-      scrollbarContext?.scrollbarInstance &&
-      scrollbarContext?.scrollbarContainer
-    ) {
-      const scrollContentElement =
-        scrollbarContext.scrollbarContainer.querySelector(".scroll-content");
-      if (scrollContentElement) {
-        scrollContent = scrollContentElement;
-        ScrollTrigger.scrollerProxy(scrollContent, {
-          scrollTop(value) {
-            if (arguments.length) {
-              scrollbarContext.scrollbarInstance.scrollTop = value;
-            }
-            return scrollbarContext.scrollbarInstance.scrollTop;
-          },
-          getBoundingClientRect() {
-            return {
-              top: 0,
-              left: 0,
-              width: window.innerWidth,
-              height: window.innerHeight,
-            };
-          },
-          pinType:
-            (scrollContent as HTMLElement).style &&
-            (scrollContent as HTMLElement).style.transform
-              ? "transform"
-              : "fixed",
-        });
-        ScrollTrigger.defaults({ scroller: scrollContent });
-        const onScroll = () => ScrollTrigger.update();
-        scrollbarContext.scrollbarInstance.addListener(onScroll);
-        cleanupScrollListener = () => {
-          scrollbarContext.scrollbarInstance.removeListener(onScroll);
-        };
-      } else {
-        scrollContent = scrollbarContext.scrollbarContainer;
-      }
-    } else {
-      usingWindowScroller = true;
-    }
 
     // Parallax + Zoom effect - only when SectorLayout is in view
     const tl = gsap.timeline({
@@ -209,13 +162,10 @@ const SectorLayout: React.FC = () => {
     return () => {
       tl.scrollTrigger?.kill();
       tl.kill();
-      if (cleanupScrollListener) {
-        cleanupScrollListener();
-      }
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       debouncedRefresh.cancel();
     };
-  }, [scrollbarContext]);
+  }, []);
 
   return (
     <div

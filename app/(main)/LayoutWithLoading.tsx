@@ -1,10 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
 import { useLoading } from "@/app/context/LoadingContext";
-import {
-  SmoothScrollbarProvider,
-  useSmoothScrollbarOptional,
-} from "@/app/context/SmoothScrollbarContext";
 import LoadingScreen from "@/components/common/LoadingScreen";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
@@ -12,8 +8,6 @@ import Footer from "@/components/common/Footer";
 const ScrollableContent: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const scrollbarContext = useSmoothScrollbarOptional();
-
   return (
     <>
       <div>{children}</div>
@@ -38,57 +32,49 @@ const LayoutWithLoading: React.FC<{ children: React.ReactNode }> = ({
       {isLoading && <LoadingScreen />}
       <NavbarWithScrollContext />
       <main style={{ position: "relative", height: "100vh" }}>
-        <SmoothScrollbarProvider damping={0.01} alwaysShowTracks={true}>
-          <ScrollableContent>{children}</ScrollableContent>
-        </SmoothScrollbarProvider>
+        <ScrollableContent>{children}</ScrollableContent>
       </main>
     </>
   );
 };
 
 const NavbarWithScrollContext: React.FC = () => {
-  const scrollbarContext = useSmoothScrollbarOptional();
   const [scrollY, setScrollY] = React.useState(0);
 
-  // Track scroll from smooth scrollbar context
   React.useEffect(() => {
-    if (scrollbarContext?.scrollY !== undefined) {
-      setScrollY(scrollbarContext.scrollY);
-    }
-  }, [scrollbarContext?.scrollY]);
-
-  // Also listen to window scroll events as fallback
-  React.useEffect(() => {
-    const handleWindowScroll = () => {
-      const windowScrollY =
-        window.scrollY || document.documentElement.scrollTop || 0;
-      setScrollY(windowScrollY);
-    };
-
-    // Set initial value
-    handleWindowScroll();
-
-    // Listen for scroll events
-    window.addEventListener("scroll", handleWindowScroll, { passive: true });
-
-    // Listen for custom smooth-scroll events
-    const handleCustomScroll = (e: CustomEvent) => {
-      if (e.detail && typeof e.detail.scrollY === "number") {
-        setScrollY(e.detail.scrollY);
+    // Listen for CSS variable updates from Lenis
+    const checkScrollY = () => {
+      const cssScrollY = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue(
+          "--scroll-y"
+        ) || "0",
+        10
+      );
+      if (!isNaN(cssScrollY)) {
+        setScrollY(cssScrollY);
+      } else {
+        // Fallback to window scroll
+        setScrollY(window.scrollY || document.documentElement.scrollTop || 0);
       }
     };
 
-    window.addEventListener(
-      "smooth-scroll",
-      handleCustomScroll as EventListener
-    );
+    // Set initial value
+    checkScrollY();
+
+    // Use both standard scroll events and a requestAnimationFrame loop
+    // to ensure we catch updates from both Lenis and native scroll
+    window.addEventListener("scroll", checkScrollY, { passive: true });
+
+    let rafId: number;
+    const raf = () => {
+      checkScrollY();
+      rafId = requestAnimationFrame(raf);
+    };
+    rafId = requestAnimationFrame(raf);
 
     return () => {
-      window.removeEventListener("scroll", handleWindowScroll);
-      window.removeEventListener(
-        "smooth-scroll",
-        handleCustomScroll as EventListener
-      );
+      window.removeEventListener("scroll", checkScrollY);
+      cancelAnimationFrame(rafId);
     };
   }, []);
 

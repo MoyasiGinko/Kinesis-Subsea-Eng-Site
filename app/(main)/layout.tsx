@@ -4,7 +4,7 @@ import "../globals.css";
 import { LoadingProvider } from "@/app/context/LoadingContext";
 import LayoutWithLoading from "@/app/(main)/LayoutWithLoading";
 import React from "react";
-import "locomotive-scroll/dist/locomotive-scroll.css";
+import LenisProvider from "@/app/context/LenisProvider";
 
 export const metadata: Metadata = {
   title:
@@ -27,9 +27,11 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased bg-white text-black font-sans tracking-tighter">
-        <LoadingProvider>
-          <LayoutWithLoading>{children}</LayoutWithLoading>
-        </LoadingProvider>
+        <LenisProvider>
+          <LoadingProvider>
+            <LayoutWithLoading>{children}</LayoutWithLoading>
+          </LoadingProvider>
+        </LenisProvider>
       </body>
     </html>
   );
