@@ -576,36 +576,20 @@ function HorizontalServiceCardsInner() {
                                 isActive ? "bg-primary-yellow" : styles.accent
                               } mb-3 transition-colors duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]`}
                             ></div>
-                            <motion.h3
-                              initial={{ opacity: 0, y: 20 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              viewport={{ once: false, amount: 0.5 }}
-                              transition={{
-                                duration: 0.7,
-                                delay: 0.2,
-                                type: "spring",
-                              }}
+                            <h3
                               className={`text-xl font-bold leading-tight transition-colors duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                                 isActive ? "text-white" : styles.text
                               }`}
                             >
                               {service.title}
-                            </motion.h3>
-                            <motion.h4
-                              initial={{ opacity: 0, y: 20 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              viewport={{ once: false, amount: 0.5 }}
-                              transition={{
-                                duration: 0.7,
-                                delay: 0.3,
-                                type: "spring",
-                              }}
+                            </h3>
+                            <h4
                               className={`text-lg font-light opacity-80 transition-colors duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                                 isActive ? "text-primary-yellow" : styles.text
                               }`}
                             >
                               {service.subtitle}
-                            </motion.h4>
+                            </h4>
                           </div>
                           <div
                             className={`ml-4 text-black flex-shrink-0 ${
@@ -617,21 +601,13 @@ function HorizontalServiceCardsInner() {
                         </div>
 
                         {/* Description */}
-                        <motion.p
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: false, amount: 0.5 }}
-                          transition={{
-                            duration: 0.7,
-                            delay: 0.4,
-                            type: "spring",
-                          }}
+                        <p
                           className={`opacity-80 text-sm leading-relaxed transition-colors duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                             isActive ? "text-white" : styles.text
                           }`}
                         >
                           {service.description}
-                        </motion.p>
+                        </p>
 
                         {/* Button */}
                         <button
