@@ -27,11 +27,11 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased bg-white text-black font-sans tracking-tighter">
-        <LenisProvider>
-          <LoadingProvider>
-            <LayoutWithLoading>{children}</LayoutWithLoading>
-          </LoadingProvider>
-        </LenisProvider>
+        {/* <LenisProvider> */}
+        <LoadingProvider>
+          <LayoutWithLoading>{children}</LayoutWithLoading>
+        </LoadingProvider>
+        {/* </LenisProvider> */}
       </body>
     </html>
   );
