@@ -32,21 +32,13 @@ export default function Page() {
         <SectorLayout />
       </motion.div>
 
-      <PageTransitionWrapper>
-        <ServicesSection />
-      </PageTransitionWrapper>
+      <ServicesSection />
 
-      <PageTransitionWrapper>
-        <RecentProjectsSection />
-      </PageTransitionWrapper>
+      <RecentProjectsSection />
 
-      <PageTransitionWrapper>
-        <NewsSection />
-      </PageTransitionWrapper>
+      <NewsSection />
 
-      <PageTransitionWrapper>
-        <ContactSection />
-      </PageTransitionWrapper>
+      <ContactSection />
     </div>
   );
 }

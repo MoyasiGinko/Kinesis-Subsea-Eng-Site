@@ -342,65 +342,48 @@ function HorizontalServiceCardsInner() {
 
               {/* Animate heading */}
               <motion.h2
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
                 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.5 }}
-                variants={{
-                  hidden: {},
-                  visible: {},
-                }}
               >
-                {/* First line */}
+                {/* Animate each letter of ENGINEERING */}
                 {"ENGINEERING".split("").map((char, i) => (
                   <motion.span
                     key={`eng-${i}`}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.5 }}
-                    transition={{
-                      duration: 0.05, // shorter = snappier
-                      delay: i * 0.05, // small stagger for typing feel
-                      ease: "easeOut",
-                    }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.4, delay: 0.15 + i * 0.07 }}
                     style={{ display: "inline-block" }}
                   >
-                    {char === " " ? "\u00A0" : char}
+                    {char}
                   </motion.span>
                 ))}
-
                 <br />
-
-                {/* Second line */}
-                {"SOLUTIONS".split("").map((char, i) => (
-                  <motion.span
-                    key={`sol-${i}`}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.5 }}
-                    transition={{
-                      duration: 0.05,
-                      delay: 0.05 * ("ENGINEERING".length + i), // starts after first word finishes
-                      ease: "easeOut",
-                    }}
-                    style={{ display: "inline-block", color: "#FFD700" }} // text-primary-yellow
-                  >
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
-                ))}
+                {/* Animate each letter of SOLUTIONS */}
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-yellow to-yellow-400">
+                  {"SOLUTIONS".split("").map((char, i) => (
+                    <motion.span
+                      key={`sol-${i}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.5 }}
+                      transition={{ duration: 0.4, delay: 0.6 + i * 0.07 }}
+                      style={{ display: "inline-block" }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
               </motion.h2>
 
               {/* Animate description */}
-              <motion.p
-                className="text-slate-600 text-xl leading-relaxed max-w-2xl"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 0.7, delay: 0.6, type: "spring" }}
-              >
+              <p className="text-slate-600 text-xl leading-relaxed max-w-2xl">
                 Comprehensive engineering services delivering innovation,
                 precision, and reliability across diverse industrial sectors.
-              </motion.p>
+              </p>
             </div>
 
             {/* Navigation Controls */}

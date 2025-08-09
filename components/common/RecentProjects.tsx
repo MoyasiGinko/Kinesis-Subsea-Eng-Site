@@ -149,7 +149,7 @@ const RecentProjectsSection: React.FC = () => {
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
           >
@@ -159,7 +159,7 @@ const RecentProjectsSection: React.FC = () => {
                 key={`recent-${i}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.5 }}
+                viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.4, delay: 0.15 + i * 0.07 }}
                 style={{ display: "inline-block" }}
               >
@@ -174,7 +174,7 @@ const RecentProjectsSection: React.FC = () => {
                   key={`projects-${i}`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.5 }}
+                  viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.4, delay: 0.6 + i * 0.07 }}
                   style={{ display: "inline-block" }}
                 >
@@ -184,16 +184,10 @@ const RecentProjectsSection: React.FC = () => {
             </span>
           </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.5 }}
-            transition={{ duration: 0.7, delay: 1.2 }}
-            className="text-slate-300 text-xl max-w-2xl leading-relaxed"
-          >
+          <p className="text-slate-300 text-xl max-w-2xl leading-relaxed">
             Delivering excellence across industries with cutting-edge
             engineering solutions and innovative project management.
-          </motion.p>
+          </p>
         </div>
 
         {/* Main Content */}

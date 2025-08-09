@@ -78,22 +78,15 @@ const ContactSection: React.FC = () => {
           {/* Left Column - Contact Info */}
           <div className="text-white flex-1 lg:flex-[1.5]">
             <div className="mb-8">
-              <motion.p
-                className="text-sm font-semibold tracking-wider uppercase mb-4 opacity-90"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, margin: "-100px" }}
-                variants={fadeInLeft}
-                transition={{ duration: 0.7, ease: "easeOut" }}
-              >
+              <p className="text-sm font-semibold tracking-wider uppercase mb-4 opacity-90">
                 CONTACT
-              </motion.p>
+              </p>
 
               <motion.h2
                 className="text-4xl lg:text-5xl font-bold leading-tight tracking-tighter mb-4 flex flex-col"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: false, margin: "-100px" }}
+                viewport={{ once: true, margin: "-100px" }}
                 variants={{
                   visible: {
                     transition: {
@@ -126,34 +119,17 @@ const ContactSection: React.FC = () => {
                 )}
               </motion.h2>
 
-              <motion.p
-                className="text-lg opacity-90 leading-relaxed"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, margin: "-100px" }}
-                variants={fadeInUp}
-                transition={{ duration: 0.7, ease: "easeOut" }}
-              >
+              <p className="text-lg opacity-90 leading-relaxed">
                 There are many variations of passages of Lorem Ipsum available,
                 but the majority have suffered alteration in some form by
                 injected humour.
-              </motion.p>
+              </p>
             </div>
 
             {/* Contact Details Grid */}
-            <motion.div
-              className="grid sm:grid-cols-2 gap-12"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, margin: "-50px" }}
-              variants={staggerContainer}
-            >
+            <div className="grid sm:grid-cols-2 gap-12">
               {/* Location */}
-              <motion.div
-                className="flex items-start gap-4"
-                variants={contactItemVariant}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              >
+              <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
                   <svg
                     className="w-12 h-12"
@@ -176,29 +152,13 @@ const ContactSection: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <motion.h3
-                    className="text-xl font-semibold mb-2"
-                    variants={fadeInUp}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                  >
-                    United Kingdom
-                  </motion.h3>
-                  <motion.p
-                    className="opacity-90"
-                    variants={fadeInUp}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                  >
-                    42 Abardeen Street, UK
-                  </motion.p>
+                  <h3 className="text-xl font-semibold mb-2">United Kingdom</h3>
+                  <p className="opacity-90">42 Abardeen Street, UK</p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Phone */}
-              <motion.div
-                className="flex items-start gap-4"
-                variants={contactItemVariant}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              >
+              <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
                   <svg
                     className="w-12 h-12"
@@ -215,29 +175,13 @@ const ContactSection: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <motion.h3
-                    className="text-xl font-semibold mb-2"
-                    variants={fadeInUp}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                  >
-                    Phone Number
-                  </motion.h3>
-                  <motion.p
-                    className="opacity-90"
-                    variants={fadeInUp}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                  >
-                    +971 551 579 261
-                  </motion.p>
+                  <h3 className="text-xl font-semibold mb-2">Phone Number</h3>
+                  <p className="opacity-90">+971 551 579 261</p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Email */}
-              <motion.div
-                className="flex items-start gap-4"
-                variants={contactItemVariant}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              >
+              <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
                   <svg
                     className="w-12 h-12"
@@ -254,29 +198,13 @@ const ContactSection: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <motion.h3
-                    className="text-xl font-semibold mb-2"
-                    variants={fadeInUp}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                  >
-                    Email Address
-                  </motion.h3>
-                  <motion.p
-                    className="opacity-90"
-                    variants={fadeInUp}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                  >
-                    support.kinesis@gmail.com
-                  </motion.p>
+                  <h3 className="text-xl font-semibold mb-2">Email Address</h3>
+                  <p className="opacity-90">support.kinesis@gmail.com</p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Opening Hours */}
-              <motion.div
-                className="flex items-start gap-4"
-                variants={contactItemVariant}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              >
+              <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
                   <svg
                     className="w-12 h-12"
@@ -289,23 +217,11 @@ const ContactSection: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <motion.h3
-                    className="text-xl font-semibold mb-2"
-                    variants={fadeInUp}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                  >
-                    Opening Hour
-                  </motion.h3>
-                  <motion.p
-                    className="opacity-90"
-                    variants={fadeInUp}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                  >
-                    Mon - Fri: 09am - 07pm
-                  </motion.p>
+                  <h3 className="text-xl font-semibold mb-2">Opening Hour</h3>
+                  <p className="opacity-90">Mon - Fri: 09am - 07pm</p>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
 
           {/* Right Column - Contact Form */}
@@ -318,7 +234,7 @@ const ContactSection: React.FC = () => {
             }}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, margin: "-100px" }}
+            viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
