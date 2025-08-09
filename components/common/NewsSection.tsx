@@ -147,24 +147,48 @@ export default function NewsSection() {
             </span>
           </motion.div>
 
+          {/* Animated headline */}
           <motion.h2
-            initial={{ opacity: 0, y: 32 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1, delay: 0.2 }}
+            initial={false}
+            animate={isVisible ? "visible" : "hidden"}
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
           >
             <span className="block text-gray-900 font-bold leading-tight">
-              News &
+              {Array.from("News &").map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={
+                    isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }
+                  }
+                  transition={{ duration: 0.4, delay: 0.05 * i + 0.2 }}
+                  style={{ display: "inline-block" }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
             </span>
             <span className="block bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-500 bg-clip-text text-transparent font-bold leading-tight">
-              Industry Insights
+              {Array.from("Industry Insights").map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={
+                    isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }
+                  }
+                  transition={{ duration: 0.4, delay: 0.05 * i + 0.7 }}
+                  style={{ display: "inline-block" }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
             </span>
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 32 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1, delay: 0.4 }}
+            transition={{ duration: 1, delay: 1.5 }}
             className="text-gray-500 text-lg max-w-2xl mx-auto"
           >
             Stay updated with the latest developments, industry insights, and
