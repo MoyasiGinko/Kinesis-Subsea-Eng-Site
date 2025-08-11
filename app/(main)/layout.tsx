@@ -5,8 +5,8 @@ import "../globals.css";
 import { LoadingProvider } from "@/app/utils/context/LoadingContext";
 import LayoutWithLoading from "@/app/utils/LayoutWithLoading";
 import React from "react";
-import LenisProvider from "@/app/utils/context/LenisProvider";
 import { spaceMono } from "../utils/fonts";
+import LenisProvider from "@/app/utils/context/LenisProvider";
 
 export const metadata: Metadata = {
   title:
