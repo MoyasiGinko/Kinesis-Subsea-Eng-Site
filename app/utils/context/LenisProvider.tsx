@@ -76,28 +76,19 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
       pinType: "transform",
     });
 
-    // Update ScrollTrigger on Lenis scroll
-    lenis.on("scroll", ScrollTrigger.update);
-
     // Set up the animation frame loop at native refresh rate for smoothness
     let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
+      ScrollTrigger.update(); // Update ScrollTrigger after Lenis raf
       rafId = requestAnimationFrame(raf);
     }
     rafId = requestAnimationFrame(raf);
-
-    // Optionally throttle scroll events only if performance is poor
-    // (Remove throttling for buttery smooth experience)
-    lenis.on("scroll", () => {
-      window.dispatchEvent(new Event("scroll"));
-    });
 
     return () => {
       // Clean up properly
       cancelAnimationFrame(rafId);
       lenis.destroy();
-      // Remove proxy without passing null (TypeScript fix)
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       ScrollTrigger.refresh();
     };
