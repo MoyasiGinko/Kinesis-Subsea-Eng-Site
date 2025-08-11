@@ -663,7 +663,7 @@ function HorizontalServiceCardsInner() {
   );
 }
 
-import { LoadingContext } from "@/app/context/LoadingContext";
+import { LoadingContext } from "@/app/utils/context/LoadingContext";
 
 const HorizontalServiceCards: React.FC = () => {
   const loadingContext = React.useContext(LoadingContext);

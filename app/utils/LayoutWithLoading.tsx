@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
-import { useLoading } from "@/app/context/LoadingContext";
-import LoadingScreen from "@/components/common/LoadingScreen";
+import { useLoading } from "@/app/utils/context/LoadingContext";
+import LoadingScreen from "@/app/utils/LoadingScreen";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 
@@ -22,8 +22,8 @@ const LayoutWithLoading: React.FC<{ children: React.ReactNode }> = ({
   const { isLoading, setLoading } = useLoading();
 
   useEffect(() => {
-    // Simulate loading for 1.2s, replace with real logic as needed
-    const timer = setTimeout(() => setLoading(false), 1200);
+    // Use a shorter loading time for better perceived performance
+    const timer = setTimeout(() => setLoading(false), 800);
     return () => clearTimeout(timer);
   }, [setLoading]);
 

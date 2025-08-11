@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 
+// Import CSS normally but we'll also inline critical styles
 import "../globals.css";
-import { LoadingProvider } from "@/app/context/LoadingContext";
-import LayoutWithLoading from "@/app/(main)/LayoutWithLoading";
+import { LoadingProvider } from "@/app/utils/context/LoadingContext";
+import LayoutWithLoading from "@/app/utils/LayoutWithLoading";
 import React from "react";
-import LenisProvider from "@/app/context/LenisProvider";
+import LenisProvider from "@/app/utils/context/LenisProvider";
+import { spaceMono } from "../utils/fonts";
 
 export const metadata: Metadata = {
   title:
@@ -19,14 +21,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="antialiased bg-white text-black font-sans tracking-tighter">
+    <html lang="en" className={spaceMono.variable}>
+      <body
+        className={`antialiased bg-white text-black tracking-tighter ${spaceMono.className}`}
+      >
         <LenisProvider>
           <LoadingProvider>
             <LayoutWithLoading>{children}</LayoutWithLoading>

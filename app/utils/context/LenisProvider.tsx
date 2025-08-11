@@ -37,15 +37,15 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
 
   useEffect(() => {
     if (!lenisRef.current) {
-      // Create Lenis instance with performance-optimized settings
+      // Use a smooth cubic easing for buttery scroll
       lenisRef.current = new Lenis({
-        duration: 1.0, // Slightly faster for better performance perception
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        duration: 1.2, // Slightly longer for more natural feel
+        easing: (t: number) => 1 - Math.pow(1 - t, 3), // easeOutCubic
         orientation: "vertical",
         gestureOrientation: "vertical",
-        wheelMultiplier: 1.0, // Reduced for better performance
-        touchMultiplier: 1.5, // Reduced for better performance
-        infinite: false, // Allow scrolling to the end of the page
+        wheelMultiplier: 1.0, // Default for natural feel
+        touchMultiplier: 1.0,
+        infinite: false,
       });
     }
 
@@ -79,25 +79,18 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
     // Update ScrollTrigger on Lenis scroll
     lenis.on("scroll", ScrollTrigger.update);
 
-    // Set up the animation frame loop - more optimized implementation
+    // Set up the animation frame loop at native refresh rate for smoothness
     let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
       rafId = requestAnimationFrame(raf);
     }
-
-    // Start the animation loop (store ID for cleanup)
     rafId = requestAnimationFrame(raf);
 
-    // Use a throttled scroll event dispatch to reduce event firing frequency
-    let lastScrollTime = 0;
+    // Optionally throttle scroll events only if performance is poor
+    // (Remove throttling for buttery smooth experience)
     lenis.on("scroll", () => {
-      const now = performance.now();
-      if (now - lastScrollTime > 100) {
-        // Throttle to max 10 events per second
-        lastScrollTime = now;
-        window.dispatchEvent(new Event("scroll"));
-      }
+      window.dispatchEvent(new Event("scroll"));
     });
 
     return () => {
