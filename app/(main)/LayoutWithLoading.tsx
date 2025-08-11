@@ -42,39 +42,31 @@ const NavbarWithScrollContext: React.FC = () => {
   const [scrollY, setScrollY] = React.useState(0);
 
   React.useEffect(() => {
-    // Listen for CSS variable updates from Lenis
-    const checkScrollY = () => {
-      const cssScrollY = parseInt(
-        getComputedStyle(document.documentElement).getPropertyValue(
-          "--scroll-y"
-        ) || "0",
-        10
-      );
-      if (!isNaN(cssScrollY)) {
-        setScrollY(cssScrollY);
-      } else {
-        // Fallback to window scroll
-        setScrollY(window.scrollY || document.documentElement.scrollTop || 0);
+    let ticking = false;
+    let lastKnownScrollY = 0;
+
+    // More efficient scroll handling with throttling
+    const handleScroll = () => {
+      lastKnownScrollY =
+        window.scrollY || document.documentElement.scrollTop || 0;
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(lastKnownScrollY);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
     // Set initial value
-    checkScrollY();
+    handleScroll();
 
-    // Use both standard scroll events and a requestAnimationFrame loop
-    // to ensure we catch updates from both Lenis and native scroll
-    window.addEventListener("scroll", checkScrollY, { passive: true });
-
-    let rafId: number;
-    const raf = () => {
-      checkScrollY();
-      rafId = requestAnimationFrame(raf);
-    };
-    rafId = requestAnimationFrame(raf);
+    // Only use the most efficient event listener
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener("scroll", checkScrollY);
-      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
