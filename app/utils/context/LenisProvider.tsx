@@ -39,13 +39,13 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
     if (!lenisRef.current) {
       // Use a smooth cubic easing for buttery scroll
       lenisRef.current = new Lenis({
-        duration: 0.95, // Lower for more responsive, still smooth
-        // easeInOutQuad for ultra-smooth, natural feel
-        easing: (t: number) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t),
+        duration: 1.4, // Higher for slower, more luxurious smoothness
+        // easeOutCubic for natural deceleration
+        easing: (t: number) => 1 - Math.pow(1 - t, 3),
         orientation: "vertical",
         gestureOrientation: "vertical",
-        wheelMultiplier: 1.25, // Slightly higher for softer feel
-        touchMultiplier: 1.25,
+        wheelMultiplier: 1.05, // Lower for more controlled scroll
+        touchMultiplier: 1.05,
         infinite: false,
       });
     }
@@ -79,16 +79,28 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
 
     // Set up the animation frame loop at native refresh rate for smoothness
     let rafId: number;
+    let isActive = true;
     function raf(time: number) {
+      if (!isActive) return;
       lenis.raf(time);
       ScrollTrigger.update(); // Update ScrollTrigger after Lenis raf
       rafId = requestAnimationFrame(raf);
     }
     rafId = requestAnimationFrame(raf);
 
+    // Pause animation loop when tab is not visible
+    const handleVisibility = () => {
+      isActive = !document.hidden;
+      if (isActive) {
+        rafId = requestAnimationFrame(raf);
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+
     return () => {
       // Clean up properly
       cancelAnimationFrame(rafId);
+      document.removeEventListener("visibilitychange", handleVisibility);
       lenis.destroy();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       ScrollTrigger.refresh();
