@@ -5,7 +5,6 @@ import "../globals.css";
 import { LoadingProvider } from "@/app/utils/context/LoadingContext";
 import LayoutWithLoading from "@/app/utils/LayoutWithLoading";
 import React from "react";
-import LenisProvider from "@/app/utils/context/LenisProvider";
 import { spaceMono } from "../utils/fonts";
 
 export const metadata: Metadata = {
@@ -25,11 +24,9 @@ export default function RootLayout({
       <body
         className={`antialiased bg-white text-black tracking-tighter ${spaceMono.className}`}
       >
-        <LenisProvider>
-          <LoadingProvider>
-            <LayoutWithLoading>{children}</LayoutWithLoading>
-          </LoadingProvider>
-        </LenisProvider>
+        <LoadingProvider>
+          <LayoutWithLoading>{children}</LayoutWithLoading>
+        </LoadingProvider>
       </body>
     </html>
   );
