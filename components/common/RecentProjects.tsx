@@ -9,6 +9,7 @@ import {
   Calendar,
   ArrowRight,
 } from "lucide-react";
+import Image from "next/image";
 
 interface Project {
   id: string;
@@ -33,7 +34,7 @@ const RecentProjectsSection: React.FC = () => {
       title: "Chemical Refinery Complex",
       location: "Michigan, United States",
       image:
-        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/1_jvnjiz.webp",
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/w_900,h_500,c_fill,q_auto,f_auto/v1754738820/1_jvnjiz.webp",
       category: "Industrial Engineering",
       year: "2024",
       status: "Completed",
@@ -45,7 +46,7 @@ const RecentProjectsSection: React.FC = () => {
       title: "Automotive Manufacturing Plant",
       location: "Texas, United States",
       image:
-        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/2_vfvnuz.webp",
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/w_900,h_500,c_fill,q_auto,f_auto/v1754738819/2_vfvnuz.webp",
       category: "Manufacturing",
       year: "2024",
       status: "In Progress",
@@ -57,7 +58,7 @@ const RecentProjectsSection: React.FC = () => {
       title: "Renewable Energy Station",
       location: "California, United States",
       image:
-        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/3_yp4wiw.webp",
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/w_900,h_500,c_fill,q_auto,f_auto/v1754738819/3_yp4wiw.webp",
       category: "Energy Infrastructure",
       year: "2023",
       status: "Completed",
@@ -69,7 +70,7 @@ const RecentProjectsSection: React.FC = () => {
       title: "Offshore Drilling Platform",
       location: "Gulf of Mexico",
       image:
-        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/4_a40enk.webp",
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/w_900,h_500,c_fill,q_auto,f_auto/v1754738819/4_a40enk.webp",
       category: "Oil & Gas",
       year: "2023",
       status: "Completed",
@@ -81,7 +82,7 @@ const RecentProjectsSection: React.FC = () => {
       title: "Steel Mill Modernization",
       location: "Pennsylvania, United States",
       image:
-        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/5_yhjlu6.webp",
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/w_900,h_500,c_fill,q_auto,f_auto/v1754738820/5_yhjlu6.webp",
       category: "Heavy Industry",
       year: "2024",
       status: "In Progress",
@@ -207,10 +208,18 @@ const RecentProjectsSection: React.FC = () => {
                       key={project.id}
                       className="w-full flex-shrink-0 relative"
                     >
-                      <img
-                        src={project.image}
+                      <Image
+                        src={project.image.replace(
+                          "/upload/",
+                          "/upload/w_900,h_500,c_fill,q_auto,f_auto/"
+                        )}
                         alt={project.title}
                         className="w-full h-full object-cover"
+                        width={900}
+                        height={500}
+                        sizes="(max-width: 1024px) 100vw, 900px"
+                        priority={index === currentIndex}
+                        draggable={false}
                       />
                       {/* Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
