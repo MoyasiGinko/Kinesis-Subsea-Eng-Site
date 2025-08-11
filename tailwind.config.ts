@@ -19,8 +19,15 @@ const config: Config = {
         "primary-yellow-hover": "#e0b800",
       },
       fontFamily: {
-        sans: ["Space Mono", "monospace"],
-        mono: ["Space Mono", "monospace"],
+        sans: ["'Space Mono'", "monospace"],
+        mono: ["'Space Mono'", "monospace"],
+      },
+      // Add fontWeight for variable font
+      fontWeight: {
+        normal: "400",
+        bold: "700",
+        // Add variable font weights if needed
+        semi: "600",
       },
       maxWidth: {
         "7xl": "80rem",
