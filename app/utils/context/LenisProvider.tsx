@@ -37,15 +37,15 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
 
   useEffect(() => {
     if (!lenisRef.current) {
-      // Create Lenis instance with settings optimized for low-powered devices
+      // Use a smooth cubic easing for buttery scroll
       lenisRef.current = new Lenis({
-        duration: 0.8, // Even faster for smoother experience on older devices
-        easing: (t: number) => t, // Linear easing is more performant than exponential
+        duration: 1.2, // Slightly longer for more natural feel
+        easing: (t: number) => 1 - Math.pow(1 - t, 3), // easeOutCubic
         orientation: "vertical",
         gestureOrientation: "vertical",
-        wheelMultiplier: 0.8, // Lower multiplier for better performance
-        touchMultiplier: 1.0, // Lower multiplier for better performance
-        infinite: false, // Allow scrolling to the end of the page
+        wheelMultiplier: 1.0, // Default for natural feel
+        touchMultiplier: 1.0,
+        infinite: false,
       });
     }
 
@@ -79,35 +79,18 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
     // Update ScrollTrigger on Lenis scroll
     lenis.on("scroll", ScrollTrigger.update);
 
-    // Set up the animation frame loop with performance optimization
+    // Set up the animation frame loop at native refresh rate for smoothness
     let rafId: number;
-    let lastTime = 0;
-    const frameRate = 1000 / 50; // Cap at ~50fps for older devices
-
     function raf(time: number) {
-      // Throttle to specified frame rate
-      if (time - lastTime >= frameRate) {
-        lastTime = time;
-        lenis.raf(time);
-      }
+      lenis.raf(time);
       rafId = requestAnimationFrame(raf);
     }
-
-    // Start the animation loop (store ID for cleanup)
     rafId = requestAnimationFrame(raf);
 
-    // Use a more aggressive throttling for scroll events on older devices
-    let lastScrollTime = 0;
+    // Optionally throttle scroll events only if performance is poor
+    // (Remove throttling for buttery smooth experience)
     lenis.on("scroll", () => {
-      const now = performance.now();
-      if (now - lastScrollTime > 200) {
-        // Reduced to 5 events per second for better performance
-        lastScrollTime = now;
-        // Use requestAnimationFrame to ensure we're in sync with the browser's rendering
-        requestAnimationFrame(() => {
-          window.dispatchEvent(new Event("scroll"));
-        });
-      }
+      window.dispatchEvent(new Event("scroll"));
     });
 
     return () => {
