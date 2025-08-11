@@ -39,12 +39,13 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
     if (!lenisRef.current) {
       // Use a smooth cubic easing for buttery scroll
       lenisRef.current = new Lenis({
-        duration: 1.2, // Slightly longer for more natural feel
-        easing: (t: number) => 1 - Math.pow(1 - t, 3), // easeOutCubic
+        duration: 1.4, // Higher for slower, more luxurious smoothness
+        // easeOutCubic for natural deceleration
+        easing: (t: number) => 1 - Math.pow(1 - t, 3),
         orientation: "vertical",
         gestureOrientation: "vertical",
-        wheelMultiplier: 1.0, // Default for natural feel
-        touchMultiplier: 1.0,
+        wheelMultiplier: 1.05, // Lower for more controlled scroll
+        touchMultiplier: 1.05,
         infinite: false,
       });
     }
@@ -73,31 +74,34 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
           height: window.innerHeight,
         };
       },
-      pinType: "transform",
+      pinType: "fixed", // More reliable for Next.js layouts
     });
-
-    // Update ScrollTrigger on Lenis scroll
-    lenis.on("scroll", ScrollTrigger.update);
 
     // Set up the animation frame loop at native refresh rate for smoothness
     let rafId: number;
+    let isActive = true;
     function raf(time: number) {
+      if (!isActive) return;
       lenis.raf(time);
+      ScrollTrigger.update(); // Update ScrollTrigger after Lenis raf
       rafId = requestAnimationFrame(raf);
     }
     rafId = requestAnimationFrame(raf);
 
-    // Optionally throttle scroll events only if performance is poor
-    // (Remove throttling for buttery smooth experience)
-    lenis.on("scroll", () => {
-      window.dispatchEvent(new Event("scroll"));
-    });
+    // Pause animation loop when tab is not visible
+    const handleVisibility = () => {
+      isActive = !document.hidden;
+      if (isActive) {
+        rafId = requestAnimationFrame(raf);
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
       // Clean up properly
       cancelAnimationFrame(rafId);
+      document.removeEventListener("visibilitychange", handleVisibility);
       lenis.destroy();
-      // Remove proxy without passing null (TypeScript fix)
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       ScrollTrigger.refresh();
     };

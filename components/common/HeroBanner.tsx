@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import {
   ArrowRight,
   Zap,
@@ -245,11 +246,18 @@ const HeroBanner = () => {
             <div className="relative w-full">
               {/* Main Image Container */}
               <div className="relative h-[340px] md:h-[480px] lg:h-[640px] bg-slate-800 overflow-hidden rounded-lg">
-                <img
+                <Image
                   key={currentImageIndex}
-                  src={sliderImages[currentImageIndex].src}
+                  src={sliderImages[currentImageIndex].src.replace(
+                    "/upload/",
+                    "/upload/w_900,h_640,c_fill,q_auto,f_auto/"
+                  )}
                   alt={sliderImages[currentImageIndex].alt}
                   className="w-full h-full object-cover animate-fade-in"
+                  width={900}
+                  height={640}
+                  sizes="(max-width: 1024px) 100vw, 900px"
+                  priority
                   draggable={false}
                 />
 

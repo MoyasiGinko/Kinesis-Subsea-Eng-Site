@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
+import Image from "next/image";
 import { Calendar, Tag, ArrowRight, Clock, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -137,14 +138,19 @@ export default function NewsSection() {
               <div className="relative flex flex-col h-full bg-white backdrop-blur-sm rounded-3xl overflow-hidden border border-gray-200 hover:border-gray-300 transition-all duration-500 hover:shadow-2xl hover:shadow-gray-300/40 hover:scale-[1.02] cursor-pointer">
                 {/* Image Section */}
                 <div className="relative h-56 overflow-hidden flex-shrink-0">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-all duration-700 group-hover:scale-110"
-                    style={{ backgroundImage: `url('${item.image}')` }}
+                  <Image
+                    src={item.image.replace(
+                      "/upload/",
+                      "/upload/w_600,h_224,c_fill,q_auto,f_auto/"
+                    )}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-all duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, 600px"
+                    priority={index === 0}
                   />
-
                   {/* Image Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
                     <div
@@ -153,7 +159,6 @@ export default function NewsSection() {
                       {item.category}
                     </div>
                   </div>
-
                   {/* Read Time Badge */}
                   <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <div className="flex items-center gap-1 px-2 py-1 bg-gray-900/70 backdrop-blur-sm rounded-full text-xs font-medium text-gray-200">
