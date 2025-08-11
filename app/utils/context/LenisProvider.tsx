@@ -39,12 +39,13 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
     if (!lenisRef.current) {
       // Use a smooth cubic easing for buttery scroll
       lenisRef.current = new Lenis({
-        duration: 1.2, // Slightly longer for more natural feel
-        easing: (t: number) => 1 - Math.pow(1 - t, 3), // easeOutCubic
+        duration: 0.95, // Lower for more responsive, still smooth
+        // easeInOutQuad for ultra-smooth, natural feel
+        easing: (t: number) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t),
         orientation: "vertical",
         gestureOrientation: "vertical",
-        wheelMultiplier: 1.0, // Default for natural feel
-        touchMultiplier: 1.0,
+        wheelMultiplier: 1.25, // Slightly higher for softer feel
+        touchMultiplier: 1.25,
         infinite: false,
       });
     }
@@ -73,7 +74,7 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
           height: window.innerHeight,
         };
       },
-      pinType: "transform",
+      pinType: "fixed", // More reliable for Next.js layouts
     });
 
     // Set up the animation frame loop at native refresh rate for smoothness
