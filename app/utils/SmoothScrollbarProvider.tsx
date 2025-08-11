@@ -1,13 +1,12 @@
 "use client";
 
-
 import React, {
   useEffect,
   useRef,
   useState,
   createContext,
   useContext,
-  type ReactNode
+  type ReactNode,
 } from "react";
 import Scrollbar from "smooth-scrollbar";
 import type ScrollbarOptions from "smooth-scrollbar";
@@ -16,7 +15,9 @@ import type ScrollbarOptions from "smooth-scrollbar";
 type SmoothScrollbarContextType = {
   scrollbar: Scrollbar | null;
 };
-const SmoothScrollbarContext = createContext<SmoothScrollbarContextType>({ scrollbar: null });
+const SmoothScrollbarContext = createContext<SmoothScrollbarContextType>({
+  scrollbar: null,
+});
 export const useSmoothScrollbar = () => useContext(SmoothScrollbarContext);
 
 interface SmoothScrollbarProviderProps {
@@ -77,7 +78,9 @@ const SmoothScrollbarProvider: React.FC<SmoothScrollbarProviderProps> = ({
   }
 
   return (
-    <SmoothScrollbarContext.Provider value={{ scrollbar: scrollbarInstance.current }}>
+    <SmoothScrollbarContext.Provider
+      value={{ scrollbar: scrollbarInstance.current }}
+    >
       <div
         ref={scrollRef}
         id="smooth-scroll"

@@ -6,6 +6,7 @@ import ContactSection from "@/components/common/ContactSection";
 import SectorLayout from "@/components/common/SectorSection";
 import ServicesSection from "@/components/common/ServicesSection";
 import RecentProjectsSection from "@/components/common/RecentProjects";
+import Footer from "@/components/common/Footer";
 
 export default function Page() {
   return (
@@ -21,6 +22,8 @@ export default function Page() {
       <NewsSection />
 
       <ContactSection />
+
+      <Footer />
     </div>
   );
 }

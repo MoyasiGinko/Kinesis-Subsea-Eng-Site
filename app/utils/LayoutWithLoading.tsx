@@ -3,17 +3,11 @@ import React, { useEffect } from "react";
 import { useLoading } from "@/app/utils/context/LoadingContext";
 import LoadingScreen from "@/app/utils/LoadingScreen";
 import Navbar from "@/components/common/Navbar";
-import Footer from "@/components/common/Footer";
 
 const ScrollableContent: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  return (
-    <>
-      {children}
-      <Footer />
-    </>
-  );
+  return <>{children}</>;
 };
 
 const LayoutWithLoading: React.FC<{ children: React.ReactNode }> = ({

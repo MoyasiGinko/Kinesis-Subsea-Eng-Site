@@ -28,11 +28,11 @@ const LayoutWithLoading: React.FC<{ children: React.ReactNode }> = ({
     <>
       {isLoading && <LoadingScreen />}
       <Navbar scrollY={scrollY} />
-      <SmoothScrollbarProvider onScroll={setScrollY}>
-        <main style={{ position: "relative", minHeight: "100vh" }}>
-          <ScrollableContent>{children}</ScrollableContent>
-        </main>
-      </SmoothScrollbarProvider>
+      {/* <SmoothScrollbarProvider onScroll={setScrollY}> */}
+      <main style={{ position: "relative", minHeight: "100vh" }}>
+        {children}
+      </main>
+      {/* </SmoothScrollbarProvider> */}
     </>
   );
 };
