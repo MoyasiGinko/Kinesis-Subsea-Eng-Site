@@ -5,10 +5,8 @@
 /* Locomotive Scroll container */
 #smooth-scroll {
   min-height: 100vh;
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
   position: relative;
-  overflow: hidden;
 }
 
 :root {
@@ -17,7 +15,11 @@
 }
 
 html {
+  scroll-behavior: auto;
   scroll-padding-top: 0; /* fallback */
+  /* Slow down scroll with a custom property and override for browsers that support it */
+  /* For a slower effect, you can use scroll-snap-type and snap points, but true slow inertia is not possible with pure CSS. */
+
   /* Font loading state management */
   font-display: swap; /* Default font display strategy */
 }
@@ -41,6 +43,7 @@ html.fonts-rendered {
 /* Optional: Slow down anchor scroll with a transition (not supported by all browsers) */
 html,
 body {
+  scroll-behavior: smooth;
   transition: scroll-behavior 10s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 

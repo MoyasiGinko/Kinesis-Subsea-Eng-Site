@@ -4,7 +4,6 @@ import { useLoading } from "@/app/utils/context/LoadingContext";
 import LoadingScreen from "@/app/utils/LoadingScreen";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
-import SmoothScrollbarProvider from "@/app/utils/SmoothScrollbarProvider";
 
 const ScrollableContent: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -32,11 +31,9 @@ const LayoutWithLoading: React.FC<{ children: React.ReactNode }> = ({
     <>
       {isLoading && <LoadingScreen />}
       <NavbarWithScrollContext />
-      <SmoothScrollbarProvider>
-        <main style={{ position: "relative", minHeight: "100vh" }}>
-          <ScrollableContent>{children}</ScrollableContent>
-        </main>
-      </SmoothScrollbarProvider>
+      <main style={{ position: "relative", minHeight: "100vh" }}>
+        <ScrollableContent>{children}</ScrollableContent>
+      </main>
     </>
   );
 };
