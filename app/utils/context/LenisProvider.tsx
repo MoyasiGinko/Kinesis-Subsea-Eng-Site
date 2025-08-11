@@ -39,13 +39,13 @@ const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
     if (!lenisRef.current) {
       // Use a smooth cubic easing for buttery scroll
       lenisRef.current = new Lenis({
-        duration: 1.4, // Higher for slower, more luxurious smoothness
-        // easeOutCubic for natural deceleration
-        easing: (t: number) => 1 - Math.pow(1 - t, 3),
+        duration: 1.8, // Ultra-slow, luxurious smoothness
+        // easeOutQuart for even gentler deceleration
+        easing: (t: number) => 1 - Math.pow(1 - t, 4),
         orientation: "vertical",
         gestureOrientation: "vertical",
-        wheelMultiplier: 1.05, // Lower for more controlled scroll
-        touchMultiplier: 1.05,
+        wheelMultiplier: 1.0, // Maximum control
+        touchMultiplier: 1.0,
         infinite: false,
       });
     }

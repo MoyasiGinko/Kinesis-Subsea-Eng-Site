@@ -170,7 +170,7 @@ const SectorLayout: React.FC = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative w-full min-h-[600px] h-full lg:max-h-[1000px] xl:max-h-[960px] pt-0 lg:pt-20 bg-black overflow-hidden flex items-start justify-center"
+      className="relative w-full min-h-[600px] h-full lg:max-h-[1000px] xl:max-h-[960px] pt-0 lg:pt-20 bg-white overflow-hidden flex items-start justify-center"
     >
       {/* Main Background Image with GSAP Parallax */}
       <div
