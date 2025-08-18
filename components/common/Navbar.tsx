@@ -63,14 +63,34 @@ const menuItems = [
         description: "Technical engineering solutions",
         subitems: [
           {
-            title: "Submenu Item 1",
+            title: "Global Riser Analysis",
             href: "/sectors/oil-and-gas/submenu-1",
             description: "Description for submenu item 1",
           },
           {
-            title: "Submenu Item 2",
+            title: "Mooring Analysis",
             href: "/sectors/oil-and-gas/submenu-2",
             description: "Description for submenu item 2",
+          },
+          {
+            title: "VIV & Fatigue Assessment",
+            href: "/sectors/oil-and-gas/submenu-3",
+            description: "Description for submenu item 3",
+          },
+          {
+            title: "Advance Finite Element Analysis (FEA)",
+            href: "/sectors/oil-and-gas/submenu-4",
+            description: "Description for submenu item 4",
+          },
+          {
+            title: "Pipeline & Installation",
+            href: "/sectors/oil-and-gas/submenu-5",
+            description: "Description for submenu item 5",
+          },
+          {
+            title: "Floating Offshore Wind",
+            href: "/sectors/oil-and-gas/submenu-6",
+            description: "Description for submenu item 6",
           },
         ],
       },
