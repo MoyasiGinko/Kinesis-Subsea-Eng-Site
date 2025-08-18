@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import SectorHeader from "./sector-header";
 
 export default function RenewablesPage(): React.ReactElement {
   // Scroll-reveal: toggles data attribute for Tailwind’s arbitrary-variant classes
@@ -31,36 +32,18 @@ export default function RenewablesPage(): React.ReactElement {
     <>
       <div id="top" className="bg-slate-50 text-slate-900 antialiased">
         {/* Mast */}
-        <header className=" text-white bg-gradient-to-r from-brand-ink via-brand-ocean to-brand-ink bg-[length:200%_200%] animate-gradientShift motion-reduce:animate-none">
-          <div className="h-72 sm:h-96 lg:h-[420px] flex flex-col justify-center items-start mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-10 sm:py-12 md:py-14">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
-              Oil &amp; Gas
-            </h1>
-            <p className="mt-3 text-base sm:text-lg md:text-xl text-slate-100/90">
-              High-impact subsea and topsides engineering—built for certainty.
-            </p>
-
-            <nav className="mt-7 sm:mt-8 flex flex-wrap gap-2 sm:gap-3">
-              {[
-                ["#subsea", "Subsea"],
-                ["#riser", "Riser systems"],
-                ["#wellhead", "Wellhead / conductor / casing"],
-                ["#pipeline", "Pipeline"],
-                ["#mooring", "Mooring"],
-                ["#topside", "Topside"],
-              ].map(([href, label]) => (
-                <a
-                  key={href}
-                  href={href}
-                  className="bg-white/10 hover:bg-white/15 px-4 py-2 sm:px-5 text-xs sm:text-sm font-semibold uppercase tracking-wide text-white focus:outline-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-brand-ocean focus-visible:outline-offset-2"
-                >
-                  {label}
-                </a>
-              ))}
-            </nav>
-          </div>
-          <div className="h-0.5 sm:h-1 w-full bg-gradient-to-r from-brand-cyan via-blue-400 to-brand-cyan" />
-        </header>
+        <SectorHeader
+          title="Renewables"
+          subtitle="Maximizing efficiency and safety in renewable energy operations"
+          navItems={[
+            { href: "#subsea", label: "Subsea" },
+            { href: "#riser", label: "Riser systems" },
+            { href: "#wellhead", label: "Wellhead / conductor / casing" },
+            { href: "#pipeline", label: "Pipeline" },
+            { href: "#mooring", label: "Mooring" },
+            { href: "#topside", label: "Topside" },
+          ]}
+        />
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-12 sm:py-14 md:py-16">
           {/* Intro */}
