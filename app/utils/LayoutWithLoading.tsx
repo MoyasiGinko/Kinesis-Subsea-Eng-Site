@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useLoading } from "@/app/utils/context/LoadingContext";
 import LoadingScreen from "@/app/utils/LoadingScreen";
 import Navbar from "@/components/common/Navbar";
+import Footer from "@/components/common/Footer";
 
 const ScrollableContent: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -26,8 +27,9 @@ const LayoutWithLoading: React.FC<{ children: React.ReactNode }> = ({
       {isLoading && <LoadingScreen />}
       <NavbarWithScrollContext />
       <main style={{ position: "relative", minHeight: "100vh" }}>
-        <ScrollableContent>{children}</ScrollableContent>
+        {children}
       </main>
+      <Footer />
     </>
   );
 };
