@@ -23,16 +23,9 @@ interface SectorHeaderProps {
  * />
  */
 export default function SectorHeader({
-  title = "Oil & Gas",
-  subtitle = "High-impact subsea and topsides engineering—built for certainty.",
-  navItems = [
-    { href: "#subsea", label: "Subsea" },
-    { href: "#riser", label: "Riser systems" },
-    { href: "#wellhead", label: "Wellhead / conductor / casing" },
-    { href: "#pipeline", label: "Pipeline" },
-    { href: "#mooring", label: "Mooring" },
-    { href: "#topside", label: "Topside" },
-  ],
+  title = "",
+  subtitle = "",
+  navItems = [],
   heightClass = "h-auto min-h-[420px] sm:h-96 lg:h-[420px]",
   headerClasses = "text-white bg-gradient-to-r from-brand-ink via-brand-ocean to-brand-ink bg-[length:200%_200%] animate-gradientShift motion-reduce:animate-none",
   borderGradientClass = "h-0.5 sm:h-1 w-full bg-gradient-to-r from-brand-cyan via-blue-400 to-brand-cyan",
