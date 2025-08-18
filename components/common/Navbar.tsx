@@ -52,7 +52,49 @@ const menuItems = [
       },
     ],
   },
-  { title: "Services", href: "/careers" },
+  {
+    title: "Services",
+    href: "/careers",
+    submenu: [
+      {
+        title: "Engineering Design, Analysis & Simulation",
+        href: "/sectors/oil-and-gas",
+        description: "Technical engineering solutions",
+        subcategory: [
+          {
+            title: "Submenu Item 1",
+            href: "/sectors/oil-and-gas/submenu-1",
+            description: "Description for submenu item 1",
+          },
+          {
+            title: "Submenu Item 2",
+            href: "/sectors/oil-and-gas/submenu-2",
+            description: "Description for submenu item 2",
+          },
+        ],
+      },
+      {
+        title: "Specialist Advisor",
+        href: "/sectors/renewables",
+        description: "Innovative product portfolio",
+      },
+      {
+        title: "Project Engineering",
+        href: "/sectors/renewables",
+        description: "Expertise in managing complex projects",
+      },
+      {
+        title: "Asset Integrity Management",
+        href: "/sectors/renewables",
+        description: "Expertise in managing complex projects",
+      },
+      {
+        title: "Operation Support",
+        href: "/sectors/renewables",
+        description: "Safe and efficient decommissioning solutions",
+      },
+    ],
+  },
   {
     title: "Projects",
     href: "/what-we-deliver",
