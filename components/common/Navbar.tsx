@@ -360,36 +360,54 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                         <div key={subindex} className="relative">
                           {subitem.subitems ? (
                             <>
-                              <div
-                                className="group/item px-5 py-3.5 hover:bg-blue-50 transition-colors duration-200 cursor-pointer"
-                                onMouseEnter={() =>
-                                  handleSubMenuMouseEnter(subindex)
-                                }
-                                onMouseLeave={() =>
-                                  handleSubMenuMouseLeave(subindex)
-                                }
-                                onClick={() => toggleSubMenu(subindex)}
-                              >
-                                <div className="flex items-center justify-between">
-                                  <div className="w-full">
-                                    <div className="text-gray-900 font-medium group-hover/item:text-primary-blue-hover transition-colors duration-200 text-base xl:text-lg">
-                                      {subitem.title}
-                                    </div>
-                                    {subitem.description && (
-                                      <div className="text-gray-500 text-xs xl:text-sm mt-1">
-                                        {subitem.description}
+                              {/** Highlight parent when its subitems are visible (hover or clicked) */}
+                              {(() => {
+                                const isSubActive =
+                                  openSubMenuIndex === subindex ||
+                                  clickedSubMenuIndex === subindex;
+                                return (
+                                  <div
+                                    className={`group/item px-5 py-3.5 transition-colors duration-200 cursor-pointer ${
+                                      isSubActive
+                                        ? "bg-blue-50 text-primary-blue-hover"
+                                        : "hover:bg-blue-50"
+                                    }`}
+                                    onMouseEnter={() =>
+                                      handleSubMenuMouseEnter(subindex)
+                                    }
+                                    onMouseLeave={() =>
+                                      handleSubMenuMouseLeave(subindex)
+                                    }
+                                    onClick={() => toggleSubMenu(subindex)}
+                                  >
+                                    <div className="flex items-center justify-between">
+                                      <div className="w-full">
+                                        <div
+                                          className={`${
+                                            isSubActive
+                                              ? "text-primary-blue-hover"
+                                              : "text-gray-900"
+                                          } font-medium transition-colors duration-200 text-base xl:text-lg`}
+                                        >
+                                          {subitem.title}
+                                        </div>
+                                        {subitem.description && (
+                                          <div className="text-gray-500 text-xs xl:text-sm mt-1">
+                                            {subitem.description}
+                                          </div>
+                                        )}
                                       </div>
-                                    )}
+                                      <div className="flex items-center justify-center w-10 h-10 xl:w-12 xl:h-12 rounded-md">
+                                        <ArrowRight className="w-5 h-5 xl:w-6 xl:h-6 text-gray-400 group-hover/nested:text-primary-blue-hover group-hover/nested:translate-x-1 transition-all duration-200" />
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div className="flex items-center justify-center w-10 h-10 xl:w-12 xl:h-12 rounded-md">
-                                    <ArrowRight className="w-5 h-5 xl:w-6 xl:h-6 text-gray-400 group-hover/nested:text-primary-blue-hover group-hover/nested:translate-x-1 transition-all duration-200" />
-                                  </div>
-                                </div>
-                              </div>
+                                );
+                              })()}
                               {/* Nested Dropdown for Subitems */}
                               {openSubMenuIndex === subindex && (
                                 <div
-                                  className="absolute left-full top-0 ml-2 w-72 bg-white border border-gray-200 rounded-xl shadow-xl py-3 z-60"
+                                  className="absolute left-full -top-3 ml-2 w-72 bg-white border border-gray-200 rounded-xl shadow-xl py-3 z-60"
                                   onMouseEnter={() =>
                                     handleSubMenuMouseEnter(subindex)
                                   }
