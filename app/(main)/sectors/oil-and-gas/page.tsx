@@ -4,7 +4,7 @@ import SectorBanner from "@/components/sectors/sector-banner";
 export default function Page(): React.ReactElement {
   return (
     <>
-      <SectorBanner
+      {/* <SectorBanner
         title="Oil & Gas"
         subtitle="Innovative solutions for the oil and gas industry"
         links={[
@@ -13,7 +13,7 @@ export default function Page(): React.ReactElement {
           { href: "/sectors/#case-studies", label: "Case Studies" },
         ]}
         bgImage="https://eco-cdn.iqpc.com/eco/images/channel_content/images/biggest_oil_and_gas_companies.jpg"
-      />
+      /> */}
       <OilAndGasPage />
     </>
   );

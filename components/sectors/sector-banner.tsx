@@ -73,9 +73,12 @@ export default function SectorBanner({
       <div
         ref={bgRef}
         aria-hidden
-        className="absolute bg-white inset-0 will-change-transform bg-center bg-cover"
+        className="absolute bg-white inset-0 will-change-transform bg-center"
         style={{
           backgroundImage: bgImage ? `url(${bgImage})` : undefined,
+          backgroundSize: "100% 100%", // stretch to fit container
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
           transform: translate,
         }}
       >
@@ -116,16 +119,16 @@ export default function SectorBanner({
                 className="inline-flex items-center gap-2 bg-white text-black px-4 py-3 rounded-md font-semibold shadow-lg hover:shadow-xl transition"
                 aria-label="Explore solutions"
               >
-                Explore
+                Services
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
 
-              <Link
+              {/* <Link
                 href="#contact"
                 className="text-white/90 underline underline-offset-4 text-sm"
               >
                 Contact us
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

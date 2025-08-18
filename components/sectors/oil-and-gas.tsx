@@ -31,8 +31,8 @@ export default function OilAndGasPage(): React.ReactElement {
     <>
       <div id="top" className="bg-slate-50 text-slate-900 antialiased">
         {/* Mast */}
-        <header className="text-white bg-gradient-to-r from-brand-ink via-brand-ocean to-brand-ink bg-[length:200%_200%] animate-gradientShift motion-reduce:animate-none">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-10 sm:py-12 md:py-14">
+        <header className=" text-white bg-gradient-to-r from-brand-ink via-brand-ocean to-brand-ink bg-[length:200%_200%] animate-gradientShift motion-reduce:animate-none">
+          <div className="h-72 sm:h-96 lg:h-[420px] flex flex-col justify-center items-start mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-10 sm:py-12 md:py-14">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
               Oil &amp; Gas
             </h1>
