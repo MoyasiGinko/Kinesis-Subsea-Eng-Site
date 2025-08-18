@@ -33,7 +33,7 @@ export default function SectorHeader({
     { href: "#mooring", label: "Mooring" },
     { href: "#topside", label: "Topside" },
   ],
-  heightClass = "h-72 sm:h-96 lg:h-[420px]",
+  heightClass = "h-auto min-h-[420px] sm:h-96 lg:h-[420px]",
   headerClasses = "text-white bg-gradient-to-r from-brand-ink via-brand-ocean to-brand-ink bg-[length:200%_200%] animate-gradientShift motion-reduce:animate-none",
   borderGradientClass = "h-0.5 sm:h-1 w-full bg-gradient-to-r from-brand-cyan via-blue-400 to-brand-cyan",
   className = "",
