@@ -125,41 +125,8 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
     setIsScrolled(scrollY > 20);
   }, [scrollY]);
 
-  // Backup scroll detection method
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY =
-        window.scrollY || document.documentElement.scrollTop || 0;
-      console.log("Navbar: Direct scroll detected", currentScrollY);
-      setIsScrolled(currentScrollY > 20);
-    };
-
-    // Initial check
-    handleScroll();
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    // Listen for custom smooth-scroll events
-    const handleCustomScroll = (e: CustomEvent) => {
-      if (e.detail && typeof e.detail.scrollY === "number") {
-        console.log("Navbar: Custom scroll event detected", e.detail.scrollY);
-        setIsScrolled(e.detail.scrollY > 20);
-      }
-    };
-
-    window.addEventListener(
-      "smooth-scroll",
-      handleCustomScroll as EventListener
-    );
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener(
-        "smooth-scroll",
-        handleCustomScroll as EventListener
-      );
-    };
-  }, []);
+  // Rely on `scrollY` prop (provided by SmoothScrollbarProvider) instead of
+  // duplicate window listeners to avoid conflicting updates.
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
