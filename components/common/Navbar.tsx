@@ -6,6 +6,7 @@ import {
   Menu,
   X,
   ChevronDown,
+  ChevronRight,
   ArrowRight,
   Globe,
   Phone,
@@ -52,7 +53,69 @@ const menuItems = [
       },
     ],
   },
-  { title: "Services", href: "/careers" },
+  {
+    title: "Services",
+    href: "/careers",
+    submenu: [
+      {
+        title: "Engineering Design, Analysis & Simulation",
+        href: "/sectors/oil-and-gas",
+        description: "Technical engineering solutions",
+        subitems: [
+          {
+            title: "Global Riser Analysis",
+            href: "/sectors/oil-and-gas/submenu-1",
+            description: "Description for submenu item 1",
+          },
+          {
+            title: "Mooring Analysis",
+            href: "/sectors/oil-and-gas/submenu-2",
+            description: "Description for submenu item 2",
+          },
+          {
+            title: "VIV & Fatigue Assessment",
+            href: "/sectors/oil-and-gas/submenu-3",
+            description: "Description for submenu item 3",
+          },
+          {
+            title: "Advance Finite Element Analysis (FEA)",
+            href: "/sectors/oil-and-gas/submenu-4",
+            description: "Description for submenu item 4",
+          },
+          {
+            title: "Pipeline & Installation",
+            href: "/sectors/oil-and-gas/submenu-5",
+            description: "Description for submenu item 5",
+          },
+          {
+            title: "Floating Offshore Wind",
+            href: "/sectors/oil-and-gas/submenu-6",
+            description: "Description for submenu item 6",
+          },
+        ],
+      },
+      {
+        title: "Specialist Advisor",
+        href: "/sectors/renewables",
+        description: "Innovative product portfolio",
+      },
+      {
+        title: "Project Engineering",
+        href: "/sectors/renewables",
+        description: "Expertise in managing complex projects",
+      },
+      {
+        title: "Asset Integrity Management",
+        href: "/sectors/renewables",
+        description: "Expertise in managing complex projects",
+      },
+      {
+        title: "Operation Support",
+        href: "/sectors/renewables",
+        description: "Safe and efficient decommissioning solutions",
+      },
+    ],
+  },
   {
     title: "Projects",
     href: "/what-we-deliver",
@@ -112,27 +175,31 @@ type NavbarProps = { scrollY?: number };
 export default function Navbar({ scrollY = 0 }: NavbarProps) {
   const router = useRouter();
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
+  const [openSubMenuIndex, setOpenSubMenuIndex] = useState<number | null>(null);
   const [clickedMenuIndex, setClickedMenuIndex] = useState<number | null>(null);
+  const [clickedSubMenuIndex, setClickedSubMenuIndex] = useState<number | null>(
+    null
+  );
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const subCloseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     console.log("Navbar: scrollY changed to", scrollY);
     setIsScrolled(scrollY > 20);
   }, [scrollY]);
 
-  // Rely on `scrollY` prop (provided by SmoothScrollbarProvider) instead of
-  // duplicate window listeners to avoid conflicting updates.
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
         setOpenMenuIndex(null);
+        setOpenSubMenuIndex(null);
         setClickedMenuIndex(null);
+        setClickedSubMenuIndex(null);
         setMobileMenuOpen(false);
       }
     };
@@ -141,6 +208,9 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
       document.removeEventListener("mousedown", handleClickOutside);
       if (closeTimeoutRef.current) {
         clearTimeout(closeTimeoutRef.current);
+      }
+      if (subCloseTimeoutRef.current) {
+        clearTimeout(subCloseTimeoutRef.current);
       }
     };
   }, []);
@@ -155,6 +225,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
     // Only set open if not already clicked
     if (clickedMenuIndex !== index) {
       setOpenMenuIndex(index);
+      setOpenSubMenuIndex(null); // Close any open submenu when switching main menus
     }
   };
 
@@ -164,7 +235,31 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
       // Set a timeout to close the menu after a delay
       closeTimeoutRef.current = setTimeout(() => {
         setOpenMenuIndex(null);
+        setOpenSubMenuIndex(null);
       }, 500); // 500ms delay before closing
+    }
+  };
+
+  const handleSubMenuMouseEnter = (subIndex: number) => {
+    // Clear any existing submenu timeout
+    if (subCloseTimeoutRef.current) {
+      clearTimeout(subCloseTimeoutRef.current);
+      subCloseTimeoutRef.current = null;
+    }
+
+    // Only set open if not already clicked
+    if (clickedSubMenuIndex !== subIndex) {
+      setOpenSubMenuIndex(subIndex);
+    }
+  };
+
+  const handleSubMenuMouseLeave = (subIndex: number) => {
+    // Only handle closing if the submenu wasn't clicked
+    if (clickedSubMenuIndex !== subIndex) {
+      // Set a timeout to close the submenu after a delay
+      subCloseTimeoutRef.current = setTimeout(() => {
+        setOpenSubMenuIndex(null);
+      }, 300); // Shorter delay for submenu
     }
   };
 
@@ -172,9 +267,23 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
     if (openMenuIndex === index && clickedMenuIndex === index) {
       setOpenMenuIndex(null);
       setClickedMenuIndex(null);
+      setOpenSubMenuIndex(null);
+      setClickedSubMenuIndex(null);
     } else {
       setOpenMenuIndex(index);
       setClickedMenuIndex(index);
+      setOpenSubMenuIndex(null);
+      setClickedSubMenuIndex(null);
+    }
+  };
+
+  const toggleSubMenu = (subIndex: number) => {
+    if (openSubMenuIndex === subIndex && clickedSubMenuIndex === subIndex) {
+      setOpenSubMenuIndex(null);
+      setClickedSubMenuIndex(null);
+    } else {
+      setOpenSubMenuIndex(subIndex);
+      setClickedSubMenuIndex(subIndex);
     }
   };
 
@@ -199,36 +308,6 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
       }`}
       data-scrolled={isScrolled}
     >
-      {/* Top Info Bar */}
-      {/* <div
-        className={`border-b border-slate-700/50 transition-all duration-300 ${
-          isScrolled ? "h-0 overflow-hidden opacity-0" : "h-auto opacity-100"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-2 text-xs">
-          <div className="flex items-center space-x-6 text-slate-300">
-            <div className="flex items-center gap-2">
-              <Phone className="w-3 h-3" />
-              <span>+1 (555) 123-4567</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Mail className="w-3 h-3" />
-              <span>info@kinesis.com</span>
-            </div>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center gap-2 text-slate-300">
-              <MapPin className="w-3 h-3" />
-              <span>Global Operations</span>
-            </div>
-            <div className="flex items-center gap-2 text-slate-300">
-              <Globe className="w-3 h-3" />
-              <span>EN</span>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
       {/* Main Navigation */}
       <div className="flex items-center justify-between px-3 sm:px-4 md:px-6 lg:px-12 py-2 sm:py-3 md:py-4">
         {/* Logo */}
@@ -270,7 +349,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                       }`}
                     />
                   </button>
-                  {/* Dropdown Menu */}
+                  {/* Main Dropdown Menu */}
                   {openMenuIndex === index && (
                     <div
                       className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 rounded-xl shadow-xl py-3 z-50"
@@ -278,25 +357,115 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                       onMouseLeave={() => handleMouseLeave(index)}
                     >
                       {item.submenu.map((subitem, subindex) => (
-                        <Link
-                          key={subindex}
-                          href={subitem.href}
-                          className="group/item px-5 py-3.5 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
-                        >
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <div className="text-gray-900 font-medium group-hover/item:text-primary-blue-hover transition-colors duration-200 text-base xl:text-lg">
-                                {subitem.title}
-                              </div>
-                              {subitem.description && (
-                                <div className="text-gray-500 text-xs xl:text-sm mt-1">
-                                  {subitem.description}
+                        <div key={subindex} className="relative">
+                          {subitem.subitems ? (
+                            <>
+                              {/** Highlight parent when its subitems are visible (hover or clicked) */}
+                              {(() => {
+                                const isSubActive =
+                                  openSubMenuIndex === subindex ||
+                                  clickedSubMenuIndex === subindex;
+                                return (
+                                  <div
+                                    className={`group/item px-5 py-3.5 transition-colors duration-200 cursor-pointer ${
+                                      isSubActive
+                                        ? "bg-blue-50 text-primary-blue-hover"
+                                        : "hover:bg-blue-50"
+                                    }`}
+                                    onMouseEnter={() =>
+                                      handleSubMenuMouseEnter(subindex)
+                                    }
+                                    onMouseLeave={() =>
+                                      handleSubMenuMouseLeave(subindex)
+                                    }
+                                    onClick={() => toggleSubMenu(subindex)}
+                                  >
+                                    <div className="flex items-center justify-between">
+                                      <div className="w-full">
+                                        <div
+                                          className={`${
+                                            isSubActive
+                                              ? "text-primary-blue-hover"
+                                              : "text-gray-900"
+                                          } font-medium transition-colors duration-200 text-base xl:text-lg`}
+                                        >
+                                          {subitem.title}
+                                        </div>
+                                        {subitem.description && (
+                                          <div className="text-gray-500 text-xs xl:text-sm mt-1">
+                                            {subitem.description}
+                                          </div>
+                                        )}
+                                      </div>
+                                      <div className="flex items-center justify-center w-10 h-10 xl:w-12 xl:h-12 rounded-md">
+                                        <ArrowRight className="w-5 h-5 xl:w-6 xl:h-6 text-gray-400 group-hover/nested:text-primary-blue-hover group-hover/nested:translate-x-1 transition-all duration-200" />
+                                      </div>
+                                    </div>
+                                  </div>
+                                );
+                              })()}
+                              {/* Nested Dropdown for Subitems */}
+                              {openSubMenuIndex === subindex && (
+                                <div
+                                  className="absolute left-full -top-3 ml-2 w-72 bg-white border border-gray-200 rounded-xl shadow-xl py-3 z-60"
+                                  onMouseEnter={() =>
+                                    handleSubMenuMouseEnter(subindex)
+                                  }
+                                  onMouseLeave={() =>
+                                    handleSubMenuMouseLeave(subindex)
+                                  }
+                                >
+                                  {subitem.subitems.map(
+                                    (nestedItem, nestedIndex) => (
+                                      <Link
+                                        key={nestedIndex}
+                                        href={nestedItem.href}
+                                        className="group/nested px-5 py-3.5 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
+                                      >
+                                        <div className="flex items-center justify-between">
+                                          <div className="w-full">
+                                            <div className="text-gray-900 font-medium group-hover/nested:text-primary-blue-hover transition-colors duration-200 text-base">
+                                              {nestedItem.title}
+                                            </div>
+                                            {nestedItem.description && (
+                                              <div className="text-gray-500 text-xs mt-1">
+                                                {nestedItem.description}
+                                              </div>
+                                            )}
+                                          </div>
+                                          <div className="flex items-center justify-center w-10 h-10 xl:w-12 xl:h-12 rounded-md">
+                                            <ArrowRight className="w-5 h-5 xl:w-6 xl:h-6 text-gray-400 group-hover/nested:text-primary-blue-hover group-hover/nested:translate-x-1 transition-all duration-200" />
+                                          </div>
+                                        </div>
+                                      </Link>
+                                    )
+                                  )}
                                 </div>
                               )}
-                            </div>
-                            <ArrowRight className="w-4 h-4 xl:w-5 xl:h-5 text-gray-400 group-hover/item:text-primary-blue-hover group-hover/item:translate-x-1 transition-all duration-200" />
-                          </div>
-                        </Link>
+                            </>
+                          ) : (
+                            <Link
+                              href={subitem.href}
+                              className="group/item px-5 py-3.5 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
+                            >
+                              <div className="flex items-center justify-between">
+                                <div className="w-full">
+                                  <div className="text-gray-900 font-medium group-hover/item:text-primary-blue-hover transition-colors duration-200 text-base xl:text-lg">
+                                    {subitem.title}
+                                  </div>
+                                  {subitem.description && (
+                                    <div className="text-gray-500 text-xs xl:text-sm mt-1">
+                                      {subitem.description}
+                                    </div>
+                                  )}
+                                </div>
+                                <div className="flex items-center justify-center w-10 h-10 xl:w-12 xl:h-12 rounded-md">
+                                  <ArrowRight className="w-5 h-5 xl:w-6 xl:h-6 text-gray-400 group-hover/nested:text-primary-blue-hover group-hover/nested:translate-x-1 transition-all duration-200" />
+                                </div>
+                              </div>
+                            </Link>
+                          )}
+                        </div>
                       ))}
                     </div>
                   )}
@@ -400,18 +569,74 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                   >
                     <div className="bg-gray-50">
                       {item.submenu.map((subitem, subindex) => (
-                        <Link
-                          key={subindex}
-                          href={subitem.href}
-                          className="px-6 py-3.5 text-gray-700 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
-                        >
-                          <div className="font-medium">{subitem.title}</div>
-                          {subitem.description && (
-                            <div className="text-gray-500 text-sm mt-1">
-                              {subitem.description}
-                            </div>
+                        <div key={subindex}>
+                          {subitem.subitems ? (
+                            <>
+                              <button
+                                className="w-full flex items-center justify-between px-6 py-3.5 text-gray-700 hover:bg-blue-50 transition-colors duration-200"
+                                onClick={() => toggleSubMenu(subindex)}
+                              >
+                                <div>
+                                  <div className="font-medium text-left">
+                                    {subitem.title}
+                                  </div>
+                                  {subitem.description && (
+                                    <div className="text-gray-500 text-sm mt-1 text-left">
+                                      {subitem.description}
+                                    </div>
+                                  )}
+                                </div>
+                                <ChevronDown
+                                  className={`w-3 h-3 transition-transform duration-300 ${
+                                    openSubMenuIndex === subindex
+                                      ? "rotate-180"
+                                      : ""
+                                  }`}
+                                />
+                              </button>
+                              <div
+                                className={`transition-all duration-300 overflow-hidden ${
+                                  openSubMenuIndex === subindex
+                                    ? "max-h-screen opacity-100"
+                                    : "max-h-0 opacity-0"
+                                }`}
+                              >
+                                <div className="bg-gray-100">
+                                  {subitem.subitems.map(
+                                    (nestedItem, nestedIndex) => (
+                                      <Link
+                                        key={nestedIndex}
+                                        href={nestedItem.href}
+                                        className="px-8 py-3 text-gray-600 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
+                                      >
+                                        <div className="font-medium">
+                                          {nestedItem.title}
+                                        </div>
+                                        {nestedItem.description && (
+                                          <div className="text-gray-500 text-sm mt-1">
+                                            {nestedItem.description}
+                                          </div>
+                                        )}
+                                      </Link>
+                                    )
+                                  )}
+                                </div>
+                              </div>
+                            </>
+                          ) : (
+                            <Link
+                              href={subitem.href}
+                              className="px-6 py-3.5 text-gray-700 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
+                            >
+                              <div className="font-medium">{subitem.title}</div>
+                              {subitem.description && (
+                                <div className="text-gray-500 text-sm mt-1">
+                                  {subitem.description}
+                                </div>
+                              )}
+                            </Link>
                           )}
-                        </Link>
+                        </div>
                       ))}
                     </div>
                   </div>
