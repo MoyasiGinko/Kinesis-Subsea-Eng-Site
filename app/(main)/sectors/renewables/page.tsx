@@ -1,5 +1,5 @@
-import OilAndGasPage from "@/components/sectors/oil-and-gas";
+import RenewablesPage from "@/components/sectors/renewables";
 
 export default function Page(): React.ReactElement {
-  return <OilAndGasPage />;
+  return <RenewablesPage />;
 }

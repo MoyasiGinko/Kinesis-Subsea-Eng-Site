@@ -38,16 +38,16 @@ const menuItems = [
 
   {
     title: "Sectors",
-    href: "/our-services",
+    href: "/sectors",
     submenu: [
       {
         title: "Oil & Gas",
-        href: "/our-services/engineering-analysis",
+        href: "/sectors/oil-and-gas",
         description: "Technical engineering solutions",
       },
       {
         title: "Renewables",
-        href: "/our-services/products",
+        href: "/sectors/renewables",
         description: "Innovative product portfolio",
       },
     ],
