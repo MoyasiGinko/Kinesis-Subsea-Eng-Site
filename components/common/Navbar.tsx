@@ -351,7 +351,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                                 onClick={() => toggleSubMenu(subindex)}
                               >
                                 <div className="flex items-center justify-between">
-                                  <div>
+                                  <div className="w-full">
                                     <div className="text-gray-900 font-medium group-hover/item:text-primary-blue-hover transition-colors duration-200 text-base xl:text-lg">
                                       {subitem.title}
                                     </div>
@@ -361,7 +361,9 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                                       </div>
                                     )}
                                   </div>
-                                  <ArrowRight className="w-4 h-4 xl:w-5 xl:h-5 text-gray-400 group-hover/item:text-primary-blue-hover transition-all duration-200" />
+                                  <div className="flex items-center justify-center w-10 h-10 xl:w-12 xl:h-12 rounded-md">
+                                    <ArrowRight className="w-5 h-5 xl:w-6 xl:h-6 text-gray-400 group-hover/nested:text-primary-blue-hover group-hover/nested:translate-x-1 transition-all duration-200" />
+                                  </div>
                                 </div>
                               </div>
                               {/* Nested Dropdown for Subitems */}
@@ -383,7 +385,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                                         className="group/nested px-5 py-3.5 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
                                       >
                                         <div className="flex items-center justify-between">
-                                          <div>
+                                          <div className="w-full">
                                             <div className="text-gray-900 font-medium group-hover/nested:text-primary-blue-hover transition-colors duration-200 text-base">
                                               {nestedItem.title}
                                             </div>
@@ -393,7 +395,9 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                                               </div>
                                             )}
                                           </div>
-                                          <ArrowRight className="w-4 h-4 xl:w-5 xl:h-5 text-gray-400 group-hover/nested:text-primary-blue-hover group-hover/nested:translate-x-1 transition-all duration-200" />
+                                          <div className="flex items-center justify-center w-10 h-10 xl:w-12 xl:h-12 rounded-md">
+                                            <ArrowRight className="w-5 h-5 xl:w-6 xl:h-6 text-gray-400 group-hover/nested:text-primary-blue-hover group-hover/nested:translate-x-1 transition-all duration-200" />
+                                          </div>
                                         </div>
                                       </Link>
                                     )
@@ -407,7 +411,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                               className="group/item px-5 py-3.5 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
                             >
                               <div className="flex items-center justify-between">
-                                <div>
+                                <div className="w-full">
                                   <div className="text-gray-900 font-medium group-hover/item:text-primary-blue-hover transition-colors duration-200 text-base xl:text-lg">
                                     {subitem.title}
                                   </div>
@@ -417,7 +421,9 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                                     </div>
                                   )}
                                 </div>
-                                <ArrowRight className="w-4 h-4 xl:w-5 xl:h-5 text-gray-400 group-hover/item:text-primary-blue-hover group-hover/item:translate-x-1 transition-all duration-200" />
+                                <div className="flex items-center justify-center w-10 h-10 xl:w-12 xl:h-12 rounded-md">
+                                  <ArrowRight className="w-5 h-5 xl:w-6 xl:h-6 text-gray-400 group-hover/nested:text-primary-blue-hover group-hover/nested:translate-x-1 transition-all duration-200" />
+                                </div>
                               </div>
                             </Link>
                           )}
