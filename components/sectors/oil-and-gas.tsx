@@ -671,16 +671,19 @@ const OilAndGasPage: React.FC = () => {
                     {service.description}
                   </p>
 
-                  <div className="space-y-2">
+                  <ul className="space-y-2 m-0 p-0 mt-2">
                     {service.capabilities.map((capability, capIndex) => (
-                      <div key={capIndex} className="flex items-start">
-                        <div className="w-2 h-px bg-blue-600 mt-3 mr-3 flex-shrink-0" />
-                        <span className="text-gray-700 text-sm font-medium">
+                      <li key={capIndex} className="flex items-start">
+                        <span
+                          className="flex-none w-2 h-2 bg-blue-600 mr-3  mt-1"
+                          aria-hidden="true"
+                        />
+                        <span className="text-gray-700 text-xs leading-tight">
                           {capability}
                         </span>
-                      </div>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
 
                 <div className="h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
