@@ -647,32 +647,34 @@ const OilAndGasPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-gray-50 border-2 border-gray-200 hover:border-blue-600 transition-all duration-300 group"
+                className="bg-gray-50 border-2 border-gray-200 hover:border-blue-600 transition-all duration-300 group h-full flex flex-col overflow-hidden"
               >
-                <div className="p-8">
+                <div className="p-8 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-6">
-                    <div className="text-blue-600 group-hover:text-blue-700 transition-colors">
-                      {service.icon}
+                    <div className="flex items-center gap-4">
+                      <div className="text-blue-600 group-hover:text-blue-700 transition-colors">
+                        {service.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900">
+                        {service.title}
+                      </h3>
                     </div>
-                    <div className="w-8 h-px bg-gray-300 group-hover:bg-blue-400 transition-colors"></div>
+
+                    <div className="w-8 h-px bg-gray-300 group-hover:bg-blue-400 transition-colors" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-gray-700 mb-6 leading-relaxed text-sm">
+                  <p className="text-gray-700 mb-6 leading-relaxed text-sm flex-1">
                     {service.description}
                   </p>
 
                   <div className="space-y-2">
                     {service.capabilities.map((capability, capIndex) => (
                       <div key={capIndex} className="flex items-start">
-                        <div className="w-2 h-px bg-blue-600 mt-3 mr-3 flex-shrink-0"></div>
+                        <div className="w-2 h-px bg-blue-600 mt-3 mr-3 flex-shrink-0" />
                         <span className="text-gray-700 text-sm font-medium">
                           {capability}
                         </span>
@@ -681,7 +683,7 @@ const OilAndGasPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <div className="h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </div>
             ))}
           </div>
