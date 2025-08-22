@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Anchor, Zap, Wrench, Navigation, Ship, Building2 } from "lucide-react";
 
@@ -80,9 +81,245 @@ const OilAndGasPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* this section will serve as the welcome section */}
+      <section className="bg-white py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            {/* Left - visually appealing, symmetric, colored title + summary */}
+            <div className="md:col-span-7">
+              <div className="relative">
+                {/* subtle vertical divider for symmetric visual on wide screens */}
+
+                <div className="bg-white p-8 md:pr-12 rounded-none">
+                  <h2 className="text-3xl md:text-4xl font-extrabold mb-4 leading-tight">
+                    <span className="block text-blue-600 text-4xl md:text-5xl">
+                      OVERVIEW
+                    </span>
+                  </h2>
+
+                  <p className="text-gray-600 max-w-2xl mb-8 text-lg">
+                    Integrated subsea, riser, pipeline, mooring and topside
+                    engineering — blended FEED, detailed design and offshore
+                    execution to maximise uptime, reduce whole-life costs and
+                    de-risk complex developments.
+                  </p>
+
+                  {/* symmetric features layout */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-none w-12 h-12 rounded-none bg-blue-50 text-blue-600 flex items-center justify-center font-semibold shadow-sm">
+                        FE
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-800">
+                          FEED & Concept
+                        </h4>
+                        <p className="text-sm text-gray-500">
+                          Rapid concept iteration with quantifiable risk & cost
+                          metrics.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="flex-none w-12 h-12 rounded-none bg-emerald-50 text-emerald-600 flex items-center justify-center font-semibold shadow-sm">
+                        IN
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-800">
+                          Installation Planning
+                        </h4>
+                        <p className="text-sm text-gray-500">
+                          Installation engineering, clash mitigation & vessel
+                          optimisation.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="flex-none w-12 h-12 rounded-none bg-sky-50 text-sky-600 flex items-center justify-center font-semibold shadow-sm">
+                        MA
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-800">
+                          Marine Analysis
+                        </h4>
+                        <p className="text-sm text-gray-500">
+                          Global dynamic analysis, VIV and fatigue screening.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="flex-none w-12 h-12 rounded-none bg-gray-100 text-gray-700 flex items-center justify-center font-semibold shadow-sm">
+                        OP
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-800">
+                          Operations Readiness
+                        </h4>
+                        <p className="text-sm text-gray-500">
+                          Procedures, commissioning and lifecycle integrity
+                          planning.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right - solid-color CTA panel appearing to float */}
+            <div className="md:col-span-5 relative flex justify-end">
+              {/* decorative floating accent behind CTA */}
+              <div className="absolute -right-6 -top-6 w-56 h-56 bg-gradient-to-tr from-blue-100 to-white rounded-none opacity-60 transform rotate-6 blur-xl pointer-events-none"></div>
+
+              <div
+                className="relative z-20 w-full max-w-md transform -translate-y-6 shadow-2xl rounded-none"
+                aria-hidden="false"
+              >
+                <div className="bg-blue-600 rounded-none p-6 border border-blue-700">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="text-white text-lg font-semibold">
+                        Talk to our team
+                      </h3>
+                      <p className="text-blue-100 text-sm mt-1">
+                        Discuss your project requirements and get a tailored
+                        subsea engineering approach.
+                      </p>
+                    </div>
+
+                    <div className="hidden sm:flex items-center">
+                      <svg
+                        className="w-12 h-12 text-white/20"
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <rect
+                          x="4"
+                          y="6"
+                          width="40"
+                          height="28"
+                          rx="3"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          opacity="0.12"
+                        />
+                        <circle
+                          cx="14"
+                          cy="20"
+                          r="2.5"
+                          fill="currentColor"
+                          opacity="0.08"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <form onSubmit={(e) => e.preventDefault()} className="mt-4">
+                    <div className="space-y-3">
+                      <div>
+                        <label htmlFor="name" className="sr-only">
+                          Name
+                        </label>
+                        <input
+                          id="name"
+                          name="name"
+                          required
+                          className="w-full rounded-none px-3 py-2 text-sm bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+                          type="text"
+                          placeholder="Your name"
+                        />
+                      </div>
+
+                      <div>
+                        <label htmlFor="email" className="sr-only">
+                          Email
+                        </label>
+                        <input
+                          id="email"
+                          name="email"
+                          required
+                          className="w-full rounded-none px-3 py-2 text-sm bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+                          type="email"
+                          placeholder="you@example.com"
+                        />
+                      </div>
+
+                      <div className="flex items-center justify-between gap-3">
+                        <button
+                          type="submit"
+                          className="inline-flex items-center gap-3 px-4 py-2 bg-white text-blue-700 text-sm font-medium rounded-none shadow-sm hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+                        >
+                          Contact our experts
+                          <svg
+                            className="w-4 h-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                          >
+                            <path
+                              d="M5 12h14"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M12 5l7 7-7 7"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </button>
+
+                        <div className="flex items-center gap-3">
+                          <svg
+                            className="w-10 h-10 text-white/20"
+                            viewBox="0 0 48 48"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                          >
+                            <path
+                              d="M24 6v12"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              opacity="0.12"
+                            />
+                            <circle
+                              cx="24"
+                              cy="20"
+                              r="4"
+                              fill="currentColor"
+                              opacity="0.08"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                {/* subtle shadowed outline to enhance floating look */}
+                <div className="absolute -inset-1 rounded-none pointer-events-none blur-[6px] opacity-10 bg-gradient-to-tr from-blue-700 to-transparent"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Project Overview - Extraordinary Design */}
       <div className="relative overflow-hidden bg-white">
-        <div className="max-w-7xl mx-auto px-6 py-20">
+        <div className="max-w-[1480px] mx-auto px-6 py-20">
           <div className="relative">
             {/* Background geometric patterns */}
             <div className="absolute inset-0 opacity-10">
@@ -93,10 +330,34 @@ const OilAndGasPage: React.FC = () => {
 
             {/* Diagonal text arrangement */}
             <div className="relative z-10 grid grid-cols-12 gap-6 items-center min-h-[600px]">
-              <div className="col-span-1">
-                <div className="writing-mode-vertical text-gray-600 font-bold text-sm tracking-widest transform -rotate-90">
-                  SECTOR OVERVIEW
-                </div>
+              {/* Left column with watermark */}
+              <div className="col-span-1 relative flex items-center justify-center">
+                {/* Watermark SVG (drop + subtle flame) */}
+                <svg
+                  className="absolute -left-6 w-40 h-40 opacity-10 pointer-events-none"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  {/* oil drop */}
+                  <path
+                    d="M32 2C32 2 18 16 18 28a14 14 0 0028 0C46 16 32 2 32 2z"
+                    fill="#0f172a"
+                  />
+                  {/* inner glossy highlight */}
+                  <path
+                    d="M36 8c-1.5-1.5-6 1-8 3s-3 6-1 8 6 1.5 8 0 3.5-6 1-11z"
+                    fill="#fff"
+                    opacity="0.06"
+                  />
+                  {/* subtle flame shape overlaid */}
+                  <path
+                    d="M32 10c-2 3-1 6 0 9 1-2 3-4 3-6 0-2-1-4-3-3z"
+                    fill="#0ea5e9"
+                    opacity="0.08"
+                  />
+                </svg>
               </div>
 
               <div className="col-span-5">
