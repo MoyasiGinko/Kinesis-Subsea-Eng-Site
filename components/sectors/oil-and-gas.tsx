@@ -511,52 +511,61 @@ const OilAndGasPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right side - Visual element */}
+            {/* Right side - Visual element with aligned connectors */}
             <div className="col-span-5">
               <div className="relative mt-16">
+                {/* Vertical spine that horizontal connectors will meet */}
+                {/* <div className="absolute left-[-64px] top-0 bottom-0 w-px bg-gray-400" /> */}
+
                 {/* Stacked visualization blocks */}
                 <div className="space-y-4">
-                  <div className="bg-blue-600 h-20 w-full relative">
+                  <div className="relative bg-blue-600 h-20 w-full">
                     <div className="absolute right-0 top-0 w-16 h-full bg-blue-800"></div>
                     <div className="absolute left-8 top-6 text-white font-bold">
                       SUBSEA
                     </div>
+
+                    {/* horizontal connector aligned to vertical spine */}
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                    {/* small node at spine for visual connection */}
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
                   </div>
 
-                  <div className="bg-gray-800 h-24 w-4/5 ml-auto relative">
+                  <div className="relative bg-gray-800 h-24 w-4/5 ml-auto">
                     <div className="absolute left-0 top-0 w-16 h-full bg-gray-900"></div>
                     <div className="absolute right-8 top-8 text-white font-bold">
                       RISER SYSTEMS
                     </div>
+
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
                   </div>
 
-                  <div className="bg-blue-400 h-16 w-3/4 relative">
+                  <div className="relative bg-blue-400 h-16 w-3/4">
                     <div className="absolute right-0 top-0 w-12 h-full bg-blue-600"></div>
                     <div className="absolute left-8 top-4 text-white font-bold text-sm">
                       PIPELINE
                     </div>
+
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
                   </div>
 
-                  <div className="bg-gray-700 h-28 w-5/6 ml-auto relative">
+                  <div className="relative bg-gray-700 h-28 w-5/6 ml-auto">
                     <div className="absolute left-0 top-0 w-20 h-full bg-gray-900"></div>
                     <div className="absolute right-8 top-10 text-white font-bold">
                       MOORING & TOPSIDE
                     </div>
+
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
                   </div>
                 </div>
-
-                {/* Connecting lines */}
-                <div className="absolute -left-8 top-0 bottom-0 w-px bg-gray-400"></div>
-                <div className="absolute -left-12 top-8 w-4 h-px bg-gray-400"></div>
-                <div className="absolute -left-12 top-28 w-4 h-px bg-gray-400"></div>
-                <div className="absolute -left-12 top-44 w-4 h-px bg-gray-400"></div>
-                <div className="absolute -left-12 top-64 w-4 h-px bg-gray-400"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
       {/* Services Cards */}
       <div className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6">
