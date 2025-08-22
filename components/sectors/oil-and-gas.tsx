@@ -580,7 +580,7 @@ const OilAndGasPage: React.FC = () => {
                   </p>
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-semibold rounded-none shadow-lg border-2 border-blue-800 hover:brightness-95 transform hover:-translate-y-1 transition-all"
+                    className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-primary-blue to-primary-blue-hover text-white text-sm font-semibold rounded-none shadow-lg border-2 border-primary-blue hover:brightness-95 transform hover:-translate-y-1 transition-all"
                   >
                     Contact our experts
                     <svg
