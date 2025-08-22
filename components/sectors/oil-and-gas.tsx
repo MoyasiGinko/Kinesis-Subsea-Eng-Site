@@ -511,97 +511,182 @@ const OilAndGasPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right side - Visual element */}
+            {/* Right side - Visual element with aligned connectors */}
             <div className="col-span-5">
               <div className="relative mt-16">
+                {/* Vertical spine that horizontal connectors will meet */}
+                {/* <div className="absolute left-[-64px] top-0 bottom-0 w-px bg-gray-400" /> */}
+
                 {/* Stacked visualization blocks */}
-                <div className="space-y-4">
-                  <div className="bg-blue-600 h-20 w-full relative">
+                <div className="space-y-12">
+                  <div className="relative bg-blue-600 h-20 w-full">
                     <div className="absolute right-0 top-0 w-16 h-full bg-blue-800"></div>
                     <div className="absolute left-8 top-6 text-white font-bold">
                       SUBSEA
                     </div>
+
+                    {/* horizontal connector aligned to vertical spine */}
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                    {/* small node at spine for visual connection */}
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
                   </div>
 
-                  <div className="bg-gray-800 h-24 w-4/5 ml-auto relative">
+                  <div className="relative bg-gray-800 h-24 w-4/5 ml-auto">
                     <div className="absolute left-0 top-0 w-16 h-full bg-gray-900"></div>
                     <div className="absolute right-8 top-8 text-white font-bold">
                       RISER SYSTEMS
                     </div>
+
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
                   </div>
 
-                  <div className="bg-blue-400 h-16 w-3/4 relative">
+                  <div className="relative bg-blue-400 h-16 w-3/4">
                     <div className="absolute right-0 top-0 w-12 h-full bg-blue-600"></div>
-                    <div className="absolute left-8 top-4 text-white font-bold text-sm">
+                    <div className="absolute left-8 top-4 text-white font-bold ">
                       PIPELINE
                     </div>
+
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
                   </div>
 
-                  <div className="bg-gray-700 h-28 w-5/6 ml-auto relative">
+                  <div className="relative bg-gray-700 h-28 w-5/6 ml-auto">
                     <div className="absolute left-0 top-0 w-20 h-full bg-gray-900"></div>
                     <div className="absolute right-8 top-10 text-white font-bold">
                       MOORING & TOPSIDE
                     </div>
+
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
                   </div>
                 </div>
-
-                {/* Connecting lines */}
-                <div className="absolute -left-8 top-0 bottom-0 w-px bg-gray-400"></div>
-                <div className="absolute -left-12 top-8 w-4 h-px bg-gray-400"></div>
-                <div className="absolute -left-12 top-28 w-4 h-px bg-gray-400"></div>
-                <div className="absolute -left-12 top-44 w-4 h-px bg-gray-400"></div>
-                <div className="absolute -left-12 top-64 w-4 h-px bg-gray-400"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
       {/* Services Cards */}
       <div className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Our Services
-            </h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
+          <div className="grid grid-cols-1 md:grid-cols-3 items-center mb-12 gap-6">
+            {/* Left - CTA text and button (wider now) */}
+            <div className="md:col-span-2 flex flex-col items-start">
+              <div className="relative w-full max-w-lg">
+                <div className="bg-white p-6 rounded-none shadow-sm">
+                  <p className="text-gray-700 mb-4 text-lg font-medium">
+                    Let’s craft a bespoke subsea plan — practical, fast and
+                    cost-aware.
+                  </p>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-primary-blue to-primary-blue-hover text-white text-sm font-semibold rounded-none shadow-lg border-2 border-primary-blue hover:brightness-95 transform hover:-translate-y-1 transition-all"
+                  >
+                    Contact our experts
+                    <svg
+                      className="w-4 h-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M5 12h14"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M12 5l7 7-7 7"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right - Title styled like "Our Sectors" (accent bar + offset) */}
+            <div className="md:col-span-1 flex justify-end">
+              <div className="relative w-full max-w-xs">
+                {/* <div className="absolute -right-8 top-0 w-2 h-24 bg-blue-600" /> */}
+                <div className="text-right pr-6">
+                  <h2 className="text-4xl font-bold text-gray-900 mb-2">
+                    What We Offer
+                  </h2>
+                  <p className="text-sm text-gray-500 mb-3">
+                    Subtle, tailored services designed to meet your project's
+                    objectives.
+                  </p>
+                  <div className="inline-block w-16 h-1  rounded-full opacity-60 ml-auto" />
+                </div>
+
+                {/* subtle decorative dot cluster for texture */}
+                <svg
+                  className="absolute -right-2 bottom-0 w-20 h-20 opacity-10 pointer-events-none"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <circle cx="3" cy="3" r="0.9" fill="#000" />
+                  <circle cx="9" cy="3" r="0.9" fill="#000" />
+                  <circle cx="15" cy="3" r="0.9" fill="#000" />
+                  <circle cx="3" cy="9" r="0.9" fill="#000" />
+                  <circle cx="9" cy="9" r="0.9" fill="#000" />
+                  <circle cx="15" cy="9" r="0.9" fill="#000" />
+                  <circle cx="3" cy="15" r="0.9" fill="#000" />
+                  <circle cx="9" cy="15" r="0.9" fill="#000" />
+                  <circle cx="15" cy="15" r="0.9" fill="#000" />
+                </svg>
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-gray-50 border-2 border-gray-200 hover:border-blue-600 transition-all duration-300 group"
+                className="bg-gray-50 border-2 border-gray-200 hover:border-blue-600 transition-all duration-300 group h-full flex flex-col overflow-hidden"
               >
-                <div className="p-8">
+                <div className="p-8 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-6">
-                    <div className="text-blue-600 group-hover:text-blue-700 transition-colors">
-                      {service.icon}
+                    <div className="flex items-center gap-4">
+                      <div className="text-blue-600 group-hover:text-blue-700 transition-colors">
+                        {service.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900">
+                        {service.title}
+                      </h3>
                     </div>
-                    <div className="w-8 h-px bg-gray-300 group-hover:bg-blue-400 transition-colors"></div>
+
+                    <div className="w-8 h-px bg-gray-300 group-hover:bg-blue-400 transition-colors" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-gray-700 mb-6 leading-relaxed text-sm">
+                  <p className="text-gray-700 mb-6 leading-relaxed text-sm flex-1">
                     {service.description}
                   </p>
 
-                  <div className="space-y-2">
+                  <ul className="space-y-2 m-0 p-0 mt-2">
                     {service.capabilities.map((capability, capIndex) => (
-                      <div key={capIndex} className="flex items-start">
-                        <div className="w-2 h-px bg-blue-600 mt-3 mr-3 flex-shrink-0"></div>
-                        <span className="text-gray-700 text-sm font-medium">
+                      <li key={capIndex} className="flex items-start">
+                        <span
+                          className="flex-none w-2 h-2 bg-blue-600 mr-3  mt-1"
+                          aria-hidden="true"
+                        />
+                        <span className="text-gray-700 text-xs leading-tight">
                           {capability}
                         </span>
-                      </div>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
 
-                <div className="h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <div className="h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </div>
             ))}
           </div>
