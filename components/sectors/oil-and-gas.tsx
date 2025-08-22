@@ -572,15 +572,15 @@ const OilAndGasPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 items-center mb-12 gap-6">
             {/* Left - CTA text and button (wider now) */}
             <div className="md:col-span-2 flex flex-col items-start">
-              <div className="relative w-full">
+              <div className="relative w-full max-w-lg">
                 <div className="bg-white p-6 rounded-none shadow-sm">
-                  <p className="text-gray-700 mb-4 text-lg">
-                    Need a tailored solution? Reach out and we'll scope a plan
-                    that fits your project timeline and budget.
+                  <p className="text-gray-700 mb-4 text-lg font-medium">
+                    Let’s craft a bespoke subsea plan — practical, fast and
+                    cost-aware.
                   </p>
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-3 px-5 py-3 bg-blue-600 text-white text-sm font-medium rounded-none shadow-sm hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600"
+                    className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-semibold rounded-none shadow-lg border-2 border-blue-800 hover:brightness-95 transform hover:-translate-y-1 transition-all"
                   >
                     Contact our experts
                     <svg
@@ -626,7 +626,7 @@ const OilAndGasPage: React.FC = () => {
                 </div>
 
                 {/* subtle decorative dot cluster for texture */}
-                <svg
+                {/* <svg
                   className="absolute -right-2 bottom-0 w-20 h-20 opacity-10 pointer-events-none"
                   viewBox="0 0 20 20"
                   fill="none"
@@ -642,7 +642,7 @@ const OilAndGasPage: React.FC = () => {
                   <circle cx="3" cy="15" r="0.9" fill="#000" />
                   <circle cx="9" cy="15" r="0.9" fill="#000" />
                   <circle cx="15" cy="15" r="0.9" fill="#000" />
-                </svg>
+                </svg> */}
               </div>
             </div>
           </div>
