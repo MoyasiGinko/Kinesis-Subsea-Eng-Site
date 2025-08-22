@@ -1,3 +1,4 @@
+import CTASection from "@/components/sectors/cta-section";
 import RenewablesPage from "@/components/sectors/renewables";
 import SectorBanner from "@/components/sectors/sector-banner";
 
@@ -15,6 +16,7 @@ export default function Page(): React.ReactElement {
         bgImage="/images/sector-banner-renewables.jpg"
       />
       <RenewablesPage />
+      <CTASection />
     </>
   );
 }
