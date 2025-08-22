@@ -103,11 +103,6 @@ const CTASection: React.FC = () => {
                 <div className="absolute bottom-20 right-0 w-56 h-28 bg-gray-100 transform -skew-y-6"></div>
                 <div className="absolute bottom-0 right-12 w-44 h-24 bg-gray-200 transform -skew-y-6"></div>
               </div>
-
-              {/* Connecting elements */}
-              <div className="absolute left-0 top-1/2 w-16 h-px bg-blue-200 transform -translate-y-1/2"></div>
-              <div className="absolute left-0 top-1/3 w-12 h-px bg-gray-300 opacity-80"></div>
-              <div className="absolute left-0 bottom-1/3 w-20 h-px bg-blue-100"></div>
             </div>
           </div>
         </div>
