@@ -613,7 +613,7 @@ const OilAndGasPage: React.FC = () => {
             {/* Right - Title styled like "Our Sectors" (accent bar + offset) */}
             <div className="md:col-span-1 flex justify-end">
               <div className="relative w-full max-w-xs">
-                <div className="absolute -right-8 top-0 w-2 h-24 bg-blue-600" />
+                {/* <div className="absolute -right-8 top-0 w-2 h-24 bg-blue-600" /> */}
                 <div className="text-right pr-6">
                   <h2 className="text-4xl font-bold text-gray-900 mb-2">
                     What We Offer
@@ -626,7 +626,7 @@ const OilAndGasPage: React.FC = () => {
                 </div>
 
                 {/* subtle decorative dot cluster for texture */}
-                {/* <svg
+                <svg
                   className="absolute -right-2 bottom-0 w-20 h-20 opacity-10 pointer-events-none"
                   viewBox="0 0 20 20"
                   fill="none"
@@ -642,7 +642,7 @@ const OilAndGasPage: React.FC = () => {
                   <circle cx="3" cy="15" r="0.9" fill="#000" />
                   <circle cx="9" cy="15" r="0.9" fill="#000" />
                   <circle cx="15" cy="15" r="0.9" fill="#000" />
-                </svg> */}
+                </svg>
               </div>
             </div>
           </div>
