@@ -317,56 +317,80 @@ const OilAndGasPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Project Overview - Extraordinary Design */}
+      {/* About sector Extraordinary Design */}
       <div className="relative overflow-hidden bg-white">
         <div className="max-w-[1480px] mx-auto px-6 py-20">
           <div className="relative">
-            {/* Background geometric patterns */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-0 left-0 w-96 h-96 border-l-8 border-t-8 border-blue-600"></div>
-              <div className="absolute top-20 right-0 w-64 h-64 border-r-4 border-b-4 border-gray-800"></div>
-              <div className="absolute bottom-0 left-1/3 w-80 h-80 border-l-6 border-blue-400"></div>
+            {/* Trapezium-shaped image container (replace URL with your image) */}
+            <div
+              aria-hidden="true"
+              className="absolute left-0 top-0 h-full w-[800px] pointer-events-none"
+            >
+              <div
+                className="h-full w-full bg-cover bg-center bg-no-repeat"
+                style={{
+                  clipPath: "polygon(0 0, 85% 4%, 75% 100%, 0% 100%)",
+                  backgroundImage: "url('/images/sector-banner-oil-gas.jpg')",
+                }}
+              />
             </div>
+
+            {/* subtle left-side trapezium gradient overlay for depth */}
+            <svg
+              className="absolute left-0 top-0 h-full w-[880px] pointer-events-none"
+              viewBox="0 0 200 800"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient id="trapezGrad" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.12" />
+                  <stop offset="100%" stopColor="#0369a1" stopOpacity="0.06" />
+                </linearGradient>
+              </defs>
+              <polygon
+                points="0,0 160,40 140,760 0,800"
+                fill="url(#trapezGrad)"
+              />
+            </svg>
 
             {/* Diagonal text arrangement */}
             <div className="relative z-10 grid grid-cols-12 gap-6 items-center min-h-[600px]">
               {/* Left column with watermark */}
               <div className="col-span-1 relative flex items-center justify-center">
-                {/* Watermark SVG (drop + subtle flame) */}
+                {/* Watermark SVG (full white) */}
                 <svg
-                  className="absolute -left-6 w-40 h-40 opacity-10 pointer-events-none"
+                  className="absolute -left-6 -top-16  w-40 h-40 opacity-100 pointer-events-none"
                   viewBox="0 0 64 64"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                 >
-                  {/* oil drop */}
+                  {/* oil drop - full white */}
                   <path
                     d="M32 2C32 2 18 16 18 28a14 14 0 0028 0C46 16 32 2 32 2z"
-                    fill="#0f172a"
+                    fill="#ffffff"
                   />
-                  {/* inner glossy highlight */}
+                  {/* inner glossy highlight - full white */}
                   <path
                     d="M36 8c-1.5-1.5-6 1-8 3s-3 6-1 8 6 1.5 8 0 3.5-6 1-11z"
-                    fill="#fff"
-                    opacity="0.06"
+                    fill="#ffffff"
                   />
-                  {/* subtle flame shape overlaid */}
+                  {/* subtle flame shape overlaid - full white */}
                   <path
                     d="M32 10c-2 3-1 6 0 9 1-2 3-4 3-6 0-2-1-4-3-3z"
-                    fill="#0ea5e9"
-                    opacity="0.08"
+                    fill="#ffffff"
                   />
                 </svg>
               </div>
 
               <div className="col-span-5">
                 <div className="space-y-6">
-                  <h1 className="text-6xl font-black text-gray-900 leading-none">
+                  <h1 className="text-6xl font-black text-white leading-none">
                     OIL & GAS
-                    <span className="block text-blue-600">SECTOR</span>
+                    <span className="block text-white">SECTOR</span>
                   </h1>
-                  <div className="w-24 h-1 bg-blue-600"></div>
+                  <div className="w-24 h-1 bg-white"></div>
                 </div>
               </div>
 
