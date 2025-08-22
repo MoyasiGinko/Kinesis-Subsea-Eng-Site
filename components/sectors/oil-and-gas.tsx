@@ -31,7 +31,7 @@ export default function OilAndGasPage(): React.ReactElement {
   return (
     <>
       <div id="top" className="bg-slate-50 text-slate-900 antialiased">
-        <SectorHeader
+        {/* <SectorHeader
           title="Oil and Gas"
           subtitle="Maximizing efficiency and safety in oil and gas operations"
           navItems={[
@@ -42,7 +42,7 @@ export default function OilAndGasPage(): React.ReactElement {
             { href: "#mooring", label: "Mooring" },
             { href: "#topside", label: "Topside" },
           ]}
-        />
+        /> */}
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-12 sm:py-14 md:py-16">
           {/* Intro */}
