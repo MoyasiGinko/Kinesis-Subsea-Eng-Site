@@ -518,7 +518,7 @@ const OilAndGasPage: React.FC = () => {
                 {/* <div className="absolute left-[-64px] top-0 bottom-0 w-px bg-gray-400" /> */}
 
                 {/* Stacked visualization blocks */}
-                <div className="space-y-4">
+                <div className="space-y-12">
                   <div className="relative bg-blue-600 h-20 w-full">
                     <div className="absolute right-0 top-0 w-16 h-full bg-blue-800"></div>
                     <div className="absolute left-8 top-6 text-white font-bold">
@@ -543,7 +543,7 @@ const OilAndGasPage: React.FC = () => {
 
                   <div className="relative bg-blue-400 h-16 w-3/4">
                     <div className="absolute right-0 top-0 w-12 h-full bg-blue-600"></div>
-                    <div className="absolute left-8 top-4 text-white font-bold text-sm">
+                    <div className="absolute left-8 top-4 text-white font-bold ">
                       PIPELINE
                     </div>
 
