@@ -99,7 +99,7 @@ const CTASection: React.FC = () => {
               <div className="relative w-full h-80">
                 <div className="absolute top-0 right-0 w-48 h-24 bg-blue-100 transform -skew-y-6"></div>
                 <div className="absolute top-16 right-8 w-40 h-20 bg-blue-200 transform -skew-y-6"></div>
-                <div className="absolute top-32 right-16 w-32 h-16 bg-white shadow-sm transform -skew-y-6"></div>
+                {/* <div className="absolute top-28 right-12 w-32 h-16 bg-blue-100 shadow-sm transform -skew-y-6"></div> */}
                 <div className="absolute bottom-20 right-0 w-56 h-28 bg-gray-100 transform -skew-y-6"></div>
                 <div className="absolute bottom-0 right-12 w-44 h-24 bg-gray-200 transform -skew-y-6"></div>
               </div>
