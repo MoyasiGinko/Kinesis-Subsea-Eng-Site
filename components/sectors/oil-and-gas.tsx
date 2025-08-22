@@ -569,11 +569,82 @@ const OilAndGasPage: React.FC = () => {
       {/* Services Cards */}
       <div className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Our Services
-            </h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
+          <div className="grid grid-cols-1 md:grid-cols-3 items-center mb-12 gap-6">
+            {/* Left - CTA text and button (wider now) */}
+            <div className="md:col-span-2 flex flex-col items-start">
+              <div className="relative w-full">
+                <div className="bg-white p-6 rounded-none shadow-sm">
+                  <p className="text-gray-700 mb-4 text-lg">
+                    Need a tailored solution? Reach out and we'll scope a plan
+                    that fits your project timeline and budget.
+                  </p>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-3 px-5 py-3 bg-blue-600 text-white text-sm font-medium rounded-none shadow-sm hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600"
+                  >
+                    Contact our experts
+                    <svg
+                      className="w-4 h-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M5 12h14"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M12 5l7 7-7 7"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right - Title styled like "Our Sectors" (accent bar + offset) */}
+            <div className="md:col-span-1 flex justify-end">
+              <div className="relative w-full max-w-xs">
+                <div className="absolute -right-8 top-0 w-2 h-24 bg-blue-600" />
+                <div className="text-right pr-6">
+                  <h2 className="text-4xl font-bold text-gray-900 mb-2">
+                    What We Offer
+                  </h2>
+                  <p className="text-sm text-gray-500 mb-3">
+                    Subtle, tailored services designed to meet your project's
+                    objectives.
+                  </p>
+                  <div className="inline-block w-16 h-1  rounded-full opacity-60 ml-auto" />
+                </div>
+
+                {/* subtle decorative dot cluster for texture */}
+                <svg
+                  className="absolute -right-2 bottom-0 w-20 h-20 opacity-10 pointer-events-none"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <circle cx="3" cy="3" r="0.9" fill="#000" />
+                  <circle cx="9" cy="3" r="0.9" fill="#000" />
+                  <circle cx="15" cy="3" r="0.9" fill="#000" />
+                  <circle cx="3" cy="9" r="0.9" fill="#000" />
+                  <circle cx="9" cy="9" r="0.9" fill="#000" />
+                  <circle cx="15" cy="9" r="0.9" fill="#000" />
+                  <circle cx="3" cy="15" r="0.9" fill="#000" />
+                  <circle cx="9" cy="15" r="0.9" fill="#000" />
+                  <circle cx="15" cy="15" r="0.9" fill="#000" />
+                </svg>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
