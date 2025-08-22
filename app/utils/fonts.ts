@@ -1,14 +1,14 @@
-import { Space_Mono } from "next/font/google";
+import { Work_Sans } from "next/font/google";
 
-// Configure Space Mono as a variable font
-export const spaceMono = Space_Mono({
+// Configure Work Sans as a variable font for global use
+export const workSans = Work_Sans({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
-  variable: "--font-space-mono",
+  variable: "--font-work-sans",
   fallback: ["system-ui", "sans-serif"],
   preload: true,
-  adjustFontFallback: true, // Automatically adjust the font fallback
+  adjustFontFallback: true,
 });
 
 // You can add more fonts here as needed
