@@ -42,33 +42,86 @@ const CTASection: React.FC = () => {
   };
 
   return (
-    <section className="bg-gradient-to-r from-emerald-400 to-green-400 py-16 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8">
-          {/* Expert Insights Section */}
-          <div className="space-y-6">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
-              Expert industry insights and news
-            </h2>
-            <p className="text-gray-700 text-lg leading-relaxed max-w-md">
-              Sign up to get our latest insights and papers, plus 2H news,
-              events and more.
-            </p>
-            <CTAButton onClick={handleSignUp}>Sign up</CTAButton>
+    <div className="relative bg-white overflow-hidden">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
+        <div className="grid grid-cols-12 gap-8 items-center">
+          {/* Left side - Stepped content */}
+          <div className="col-span-8">
+            <div className="relative">
+              {/* Main heading with geometric accent */}
+              <div className="relative mb-8">
+                <div className="absolute -left-6 top-0 w-2 h-full bg-blue-600"></div>
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+                  Ready to optimize your
+                  <span className="block text-blue-600">
+                    offshore operations?
+                  </span>
+                </h2>
+              </div>
+
+              {/* Staggered text blocks */}
+              <div className="space-y-4 mb-8">
+                <div className="bg-blue-50 text-blue-900 p-6 max-w-2xl transform -skew-x-3">
+                  <div className="transform skew-x-3">
+                    <p className="text-lg">
+                      Deploy field-proven engineering solutions that reduce risk
+                      and compress project schedules.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-gray-100 text-gray-900 p-6 max-w-xl ml-8 transform -skew-x-3">
+                  <div className="transform skew-x-3">
+                    <p className="text-lg">
+                      Connect with our technical team to discuss your next
+                      offshore project.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 font-bold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
+                  SCHEDULE CONSULTATION
+                </button>
+                <button className="border-2 border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 font-bold transition-all duration-300">
+                  VIEW CASE STUDIES
+                </button>
+              </div>
+            </div>
           </div>
 
-          {/* Talk to Us Section */}
-          <div className="space-y-6">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
-              Talk to us about your project
-            </h2>
-            <div className="pt-8">
-              <CTAButton onClick={handleGetInTouch}>Get in touch</CTAButton>
+          {/* Right side - Angular visual element */}
+          <div className="col-span-4">
+            <div className="relative">
+              {/* Layered angular shapes */}
+              <div className="relative w-full h-80">
+                <div className="absolute top-0 right-0 w-48 h-24 bg-blue-100 transform -skew-y-6"></div>
+                <div className="absolute top-16 right-8 w-40 h-20 bg-blue-200 transform -skew-y-6"></div>
+                <div className="absolute top-32 right-16 w-32 h-16 bg-white shadow-sm transform -skew-y-6"></div>
+                <div className="absolute bottom-20 right-0 w-56 h-28 bg-gray-100 transform -skew-y-6"></div>
+                <div className="absolute bottom-0 right-12 w-44 h-24 bg-gray-200 transform -skew-y-6"></div>
+              </div>
+
+              {/* Connecting elements */}
+              <div className="absolute left-0 top-1/2 w-16 h-px bg-blue-200 transform -translate-y-1/2"></div>
+              <div className="absolute left-0 top-1/3 w-12 h-px bg-gray-300 opacity-80"></div>
+              <div className="absolute left-0 bottom-1/3 w-20 h-px bg-blue-100"></div>
             </div>
           </div>
         </div>
+
+        {/* Bottom accent line */}
+        {/* <div className="mt-16 flex items-center">
+          <div className="flex-1 h-px bg-gray-200"></div>
+          <div className="mx-4">
+            <div className="w-4 h-4 bg-blue-600 transform rotate-45"></div>
+          </div>
+          <div className="flex-1 h-px bg-gray-200"></div>
+        </div> */}
       </div>
-    </section>
+    </div>
   );
 };
 
