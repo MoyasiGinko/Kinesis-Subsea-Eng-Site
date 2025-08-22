@@ -57,25 +57,29 @@ body {
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
-  font-family: var(--font-space-mono), monospace;
+  font-family: var(--font-work-sans), system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Space Mono Variable Font Classes - using CSS variables from next/font */
-.space-mono-regular {
-  font-family: var(--font-space-mono), monospace;
+/* Work Sans Variable Font Classes - using CSS variable from next/font */
+.work-sans-regular {
+  font-family: var(--font-work-sans), system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
-.space-mono-bold {
-  font-family: var(--font-space-mono), monospace;
+.work-sans-bold {
+  font-family: var(--font-work-sans), system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
 /* Additional weights using font-weight instead of variation settings */
-.space-mono-semibold {
-  font-family: var(--font-space-mono), monospace;
+.work-sans-semibold {
+  font-family: var(--font-work-sans), system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 600;
   font-style: normal;
 }

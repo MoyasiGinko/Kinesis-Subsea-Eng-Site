@@ -32,7 +32,7 @@ export default function RenewablesPage(): React.ReactElement {
     <>
       <div id="top" className="bg-slate-50 text-slate-900 antialiased">
         {/* Mast */}
-        <SectorHeader
+        {/* <SectorHeader
           title="Renewables"
           subtitle="Maximizing efficiency and safety in renewable energy operations"
           navItems={[
@@ -43,7 +43,7 @@ export default function RenewablesPage(): React.ReactElement {
             { href: "#mooring", label: "Mooring" },
             { href: "#topside", label: "Topside" },
           ]}
-        />
+        /> */}
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-12 sm:py-14 md:py-16">
           {/* Intro */}

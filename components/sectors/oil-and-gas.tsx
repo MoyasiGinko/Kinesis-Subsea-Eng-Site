@@ -1,436 +1,590 @@
 "use client";
+import React from "react";
+import { Anchor, Zap, Wrench, Navigation, Ship, Building2 } from "lucide-react";
 
-import React, { useEffect } from "react";
-import SectorHeader from "./sector-header";
+interface Service {
+  title: string;
+  description: string;
+  capabilities: string[];
+  icon: React.ReactNode;
+}
 
-export default function OilAndGasPage(): React.ReactElement {
-  // Scroll-reveal: toggles data attribute for Tailwind’s arbitrary-variant classes
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            (entry.target as HTMLElement).dataset.inview = "true";
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-    document
-      .querySelectorAll<HTMLElement>("[data-reveal]")
-      .forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+const OilAndGasPage: React.FC = () => {
+  const services: Service[] = [
+    {
+      title: "Subsea",
+      description:
+        "Design, analysis and offshore execution for trees, manifolds, jumpers and controls. We optimise installation windows and mitigate clash, current and soil risks.",
+      capabilities: [
+        "FEED and detailed design",
+        "Installation engineering & procedures",
+        "Integrity, intervention and life-extension",
+      ],
+      icon: <Anchor className="w-8 h-8" />,
+    },
+    {
+      title: "Riser systems",
+      description:
+        "End-to-end capability from concept selection through to offshore hook-up. We deliver robust fatigue, VIV and clearance envelopes to unlock uptime.",
+      capabilities: [
+        "Flexible, SCR, TTR and hybrid risers",
+        "Global dynamic analysis & interference checks",
+        "Installation and lay-down engineering",
+      ],
+      icon: <Zap className="w-8 h-8" />,
+    },
+    {
+      title: "Wellhead, conductor and casing",
+      description:
+        "Conductor stability, fatigue and drivability assessments to safeguard the well through drilling and production phases.",
+      capabilities: [
+        "Soil–structure interaction & pile design",
+        "VIV and fatigue screening",
+        "Drilling support and contingency plans",
+      ],
+      icon: <Wrench className="w-8 h-8" />,
+    },
+    {
+      title: "Pipeline",
+      description:
+        "Full-spectrum seabed and in-line engineering from routing and stability to buckle management and piggability.",
+      capabilities: [
+        "Route engineering & on-bottom stability",
+        "Free-span, upheaval & lateral buckling",
+        "Pre-commissioning and tie-in methods",
+      ],
+      icon: <Navigation className="w-8 h-8" />,
+    },
+    {
+      title: "Mooring",
+      description:
+        "Station-keeping strategies for semi-submersibles, FPSOs and temporary spreads that drive operability and certification.",
+      capabilities: [
+        "Global performance & line sizing",
+        "Anchor selection and holding capacity",
+        "Installation aids & contingency analysis",
+      ],
+      icon: <Ship className="w-8 h-8" />,
+    },
+    {
+      title: "Topside",
+      description:
+        "Practical topsides engineering to compress schedule: layout, handling, integration and commissioning— geared for safe, repeatable execution.",
+      capabilities: [
+        "Lift & deck handling studies",
+        "Semi-sub integration & tie-ins",
+        "Operations readiness & procedures",
+      ],
+      icon: <Building2 className="w-8 h-8" />,
+    },
+  ];
 
   return (
-    <>
-      <div id="top" className="bg-slate-50 text-slate-900 antialiased">
-        <SectorHeader
-          title="Oil and Gas"
-          subtitle="Maximizing efficiency and safety in oil and gas operations"
-          navItems={[
-            { href: "#subsea", label: "Subsea" },
-            { href: "#riser", label: "Riser systems" },
-            { href: "#wellhead", label: "Wellhead / conductor / casing" },
-            { href: "#pipeline", label: "Pipeline" },
-            { href: "#mooring", label: "Mooring" },
-            { href: "#topside", label: "Topside" },
-          ]}
-        />
+    <div className="min-h-screen bg-gray-50">
+      {/* this section will serve as the welcome section */}
+      <section className="bg-white py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            {/* Left - visually appealing, symmetric, colored title + summary */}
+            <div className="md:col-span-7">
+              <div className="relative">
+                {/* subtle vertical divider for symmetric visual on wide screens */}
 
-        <main className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-12 sm:py-14 md:py-16">
-          {/* Intro */}
-          <section className="mb-8 sm:mb-10 md:mb-12">
-            <h2 className="text-brand-ink text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight">
-              Scope
-            </h2>
-            <div className="mt-2 sm:mt-3 h-[2px] sm:h-[3px] w-36 sm:w-44 bg-gradient-to-r from-blue-700 via-cyan-500 to-blue-700" />
-            <p className="mt-5 sm:mt-6 max-w-3xl text-slate-700 text-[15px] sm:text-base md:text-lg">
-              We deploy rigorous engineering, fast iteration and field-proven
-              procedures to reduce risk, compress schedule and drive uptime
-              across offshore assets.
-            </p>
-          </section>
+                <div className="bg-white p-8 md:pr-12 rounded-none">
+                  <h2 className="text-3xl md:text-4xl font-extrabold mb-4 leading-tight">
+                    <span className="block text-blue-600 text-4xl md:text-5xl">
+                      OVERVIEW
+                    </span>
+                  </h2>
 
-          {/* Cards */}
-          <div className="space-y-8 sm:space-y-10 md:space-y-12">
-            {/* Subsea */}
-            <article
-              id="subsea"
-              data-reveal
-              className="bg-white shadow-elevated transition-all duration-200 hover:-translate-y-0.5 hover:shadow-elevated-lg opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0"
-            >
-              <div className="grid md:grid-cols-2">
-                <figure
-                  aria-hidden
-                  className="relative h-44 sm:h-56 md:h-full overflow-hidden"
-                >
-                  <svg
-                    className="absolute inset-0 h-full w-full animate-slowFloat motion-reduce:animate-none"
-                    viewBox="0 0 800 600"
-                    preserveAspectRatio="xMidYMid slice"
-                  >
-                    <defs>
-                      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stopColor="#0E3A8A" />
-                        <stop offset="100%" stopColor="#06B6D4" />
-                      </linearGradient>
-                      <pattern
-                        id="p1"
-                        width="40"
-                        height="40"
-                        patternUnits="userSpaceOnUse"
-                      >
-                        <path
-                          d="M0 40 L40 0 M-10 10 L10 -10"
-                          stroke="#ffffff22"
-                          strokeWidth="2"
-                        />
-                      </pattern>
-                    </defs>
-                    <rect width="800" height="600" fill="url(#g1)" />
-                    <rect width="800" height="600" fill="url(#p1)" />
-                    <g stroke="#ffffff55" strokeWidth="6" fill="none">
-                      <path d="M40,520 C200,480 260,420 420,420 C600,420 640,520 760,520" />
-                      <circle cx="200" cy="460" r="18" fill="#ffffff55" />
-                      <circle cx="560" cy="460" r="18" fill="#ffffff55" />
-                    </g>
-                  </svg>
-                </figure>
-                <div className="p-6 sm:p-7 md:p-8 lg:p-10">
-                  <h3 className="text-brand-ink text-xl sm:text-2xl font-bold">
-                    Subsea
-                  </h3>
-                  <p className="mt-3 text-slate-700 text-[15px] sm:text-base">
-                    Design, analysis and offshore execution for trees,
-                    manifolds, jumpers and controls. We optimise installation
-                    windows and mitigate clash, current and soil risks.
+                  <p className="text-gray-600 max-w-2xl mb-8 text-lg">
+                    Integrated subsea, riser, pipeline, mooring and topside
+                    engineering — blended FEED, detailed design and offshore
+                    execution to maximise uptime, reduce whole-life costs and
+                    de-risk complex developments.
                   </p>
-                  <ul className="mt-5 sm:mt-6 space-y-2 text-slate-800 text-[15px] sm:text-base">
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-blue-600" />
-                      FEED and detailed design
-                    </li>
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-blue-600" />
-                      Installation engineering &amp; procedures
-                    </li>
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-blue-600" />
-                      Integrity, intervention and life-extension
-                    </li>
-                  </ul>
+
+                  {/* symmetric features layout */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-none w-12 h-12 rounded-none bg-blue-50 text-blue-600 flex items-center justify-center font-semibold shadow-sm">
+                        FE
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-800">
+                          FEED & Concept
+                        </h4>
+                        <p className="text-sm text-gray-500">
+                          Rapid concept iteration with quantifiable risk & cost
+                          metrics.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="flex-none w-12 h-12 rounded-none bg-emerald-50 text-emerald-600 flex items-center justify-center font-semibold shadow-sm">
+                        IN
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-800">
+                          Installation Planning
+                        </h4>
+                        <p className="text-sm text-gray-500">
+                          Installation engineering, clash mitigation & vessel
+                          optimisation.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="flex-none w-12 h-12 rounded-none bg-sky-50 text-sky-600 flex items-center justify-center font-semibold shadow-sm">
+                        MA
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-800">
+                          Marine Analysis
+                        </h4>
+                        <p className="text-sm text-gray-500">
+                          Global dynamic analysis, VIV and fatigue screening.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="flex-none w-12 h-12 rounded-none bg-gray-100 text-gray-700 flex items-center justify-center font-semibold shadow-sm">
+                        OP
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-800">
+                          Operations Readiness
+                        </h4>
+                        <p className="text-sm text-gray-500">
+                          Procedures, commissioning and lifecycle integrity
+                          planning.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </article>
+            </div>
 
-            {/* Riser systems */}
-            <article
-              id="riser"
-              data-reveal
-              className="bg-white shadow-elevated transition-all duration-200 hover:-translate-y-0.5 hover:shadow-elevated-lg opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0"
-            >
-              <div className="grid md:grid-cols-2">
-                <div className="order-2 md:order-1 p-6 sm:p-7 md:p-8 lg:p-10">
-                  <h3 className="text-brand-ink text-xl sm:text-2xl font-bold">
-                    Riser systems
-                  </h3>
-                  <p className="mt-3 text-slate-700 text-[15px] sm:text-base">
-                    End-to-end capability from concept selection through to
-                    offshore hook-up. We deliver robust fatigue, VIV and
-                    clearance envelopes to unlock uptime.
-                  </p>
-                  <ul className="mt-5 sm:mt-6 space-y-2 text-slate-800 text-[15px] sm:text-base">
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-cyan-600" />
-                      Flexible, SCR, TTR and hybrid risers
-                    </li>
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-cyan-600" />
-                      Global dynamic analysis &amp; interference checks
-                    </li>
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-cyan-600" />
-                      Installation and lay-down engineering
-                    </li>
-                  </ul>
-                </div>
-                <figure
-                  aria-hidden
-                  className="order-1 md:order-2 relative h-44 sm:h-56 md:h-full overflow-hidden"
-                >
-                  <svg
-                    className="absolute inset-0 h-full w-full animate-slowFloat motion-reduce:animate-none"
-                    viewBox="0 0 800 600"
-                    preserveAspectRatio="xMidYMid slice"
-                  >
-                    <defs>
-                      <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#06B6D4" />
-                        <stop offset="100%" stopColor="#0E3A8A" />
-                      </linearGradient>
-                    </defs>
-                    <rect width="800" height="600" fill="url(#g2)" />
-                    <g stroke="#ffffff66" strokeWidth="12" fill="none">
-                      <path d="M120,580 C140,300 180,80 260,60 C340,40 380,300 420,360 C460,420 520,460 600,480 C700,505 720,560 740,600" />
-                    </g>
-                  </svg>
-                </figure>
-              </div>
-            </article>
+            {/* Right - solid-color CTA panel appearing to float */}
+            <div className="md:col-span-5 relative flex justify-end">
+              {/* decorative floating accent behind CTA */}
+              <div className="absolute -right-6 -top-6 w-56 h-56 bg-gradient-to-tr from-blue-100 to-white rounded-none opacity-60 transform rotate-6 blur-xl pointer-events-none"></div>
 
-            {/* Wellhead */}
-            <article
-              id="wellhead"
-              data-reveal
-              className="bg-white shadow-elevated transition-all duration-200 hover:-translate-y-0.5 hover:shadow-elevated-lg opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0"
-            >
-              <div className="grid md:grid-cols-2">
-                <figure
-                  aria-hidden
-                  className="relative h-44 sm:h-56 md:h-full overflow-hidden"
-                >
-                  <svg
-                    className="absolute inset-0 h-full w-full animate-slowFloat motion-reduce:animate-none"
-                    viewBox="0 0 800 600"
-                    preserveAspectRatio="xMidYMid slice"
-                  >
-                    <defs>
-                      <linearGradient id="g3" x1="0" y1="0" x2="0.9" y2="1">
-                        <stop offset="0%" stopColor="#0E3A8A" />
-                        <stop offset="100%" stopColor="#22D3EE" />
-                      </linearGradient>
-                    </defs>
-                    <rect width="800" height="600" fill="url(#g3)" />
-                    <g stroke="#ffffff55" strokeWidth="8">
-                      <line x1="120" y1="0" x2="120" y2="600" />
-                      <line x1="200" y1="0" x2="200" y2="600" />
-                      <line x1="280" y1="0" x2="280" y2="600" />
-                    </g>
-                  </svg>
-                </figure>
-                <div className="p-6 sm:p-7 md:p-8 lg:p-10">
-                  <h3 className="text-brand-ink text-xl sm:text-2xl font-bold">
-                    Wellhead, conductor and casing
-                  </h3>
-                  <p className="mt-3 text-slate-700 text-[15px] sm:text-base">
-                    Conductor stability, fatigue and drivability assessments to
-                    safeguard the well through drilling and production phases.
-                  </p>
-                  <ul className="mt-5 sm:mt-6 space-y-2 text-slate-800 text-[15px] sm:text-base">
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-blue-600" />
-                      Soil–structure interaction &amp; pile design
-                    </li>
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-blue-600" />
-                      VIV and fatigue screening
-                    </li>
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-blue-600" />
-                      Drilling support and contingency plans
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </article>
-
-            {/* Pipeline */}
-            <article
-              id="pipeline"
-              data-reveal
-              className="bg-white shadow-elevated transition-all duration-200 hover:-translate-y-0.5 hover:shadow-elevated-lg opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0"
-            >
-              <div className="grid md:grid-cols-2">
-                <div className="order-2 md:order-1 p-6 sm:p-7 md:p-8 lg:p-10">
-                  <h3 className="text-brand-ink text-xl sm:text-2xl font-bold">
-                    Pipeline
-                  </h3>
-                  <p className="mt-3 text-slate-700 text-[15px] sm:text-base">
-                    Full-spectrum seabed and in-line engineering from routing
-                    and stability to buckle management and piggability.
-                  </p>
-                  <ul className="mt-5 sm:mt-6 space-y-2 text-slate-800 text-[15px] sm:text-base">
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-cyan-600" />
-                      Route engineering &amp; on-bottom stability
-                    </li>
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-cyan-600" />
-                      Free-span, upheaval &amp; lateral buckling
-                    </li>
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-cyan-600" />
-                      Pre-commissioning and tie-in methods
-                    </li>
-                  </ul>
-                </div>
-                <figure
-                  aria-hidden
-                  className="order-1 md:order-2 relative h-44 sm:h-56 md:h-full overflow-hidden"
-                >
-                  <svg
-                    className="absolute inset-0 h-full w-full animate-slowFloat motion-reduce:animate-none"
-                    viewBox="0 0 800 600"
-                    preserveAspectRatio="xMidYMid slice"
-                  >
-                    <defs>
-                      <linearGradient id="g4" x1="1" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#06B6D4" />
-                        <stop offset="100%" stopColor="#0E3A8A" />
-                      </linearGradient>
-                    </defs>
-                    <rect width="800" height="600" fill="url(#g4)" />
-                    <g stroke="#ffffffaa" strokeWidth="20" fill="none">
-                      <path d="M-40,300 C120,300 200,220 360,220 C520,220 600,300 760,300" />
-                    </g>
-                  </svg>
-                </figure>
-              </div>
-            </article>
-
-            {/* Mooring */}
-            <article
-              id="mooring"
-              data-reveal
-              className="bg-white shadow-elevated transition-all duration-200 hover:-translate-y-0.5 hover:shadow-elevated-lg opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0"
-            >
-              <div className="grid md:grid-cols-2">
-                <figure
-                  aria-hidden
-                  className="relative h-44 sm:h-56 md:h-full overflow-hidden"
-                >
-                  <svg
-                    className="absolute inset-0 h-full w-full animate-slowFloat motion-reduce:animate-none"
-                    viewBox="0 0 800 600"
-                    preserveAspectRatio="xMidYMid slice"
-                  >
-                    <defs>
-                      <linearGradient id="g5" x1="0" y1="0" x2="1" y2="0.8">
-                        <stop offset="0%" stopColor="#0E3A8A" />
-                        <stop offset="100%" stopColor="#22D3EE" />
-                      </linearGradient>
-                    </defs>
-                    <rect width="800" height="600" fill="url(#g5)" />
-                    <g stroke="#ffffff77" strokeWidth="8" fill="none">
-                      <line x1="180" y1="0" x2="180" y2="600" />
-                      <line x1="400" y1="0" x2="400" y2="600" />
-                      <line x1="620" y1="0" x2="620" y2="600" />
-                      <polyline points="180,120 400,260 620,120" />
-                    </g>
-                  </svg>
-                </figure>
-                <div className="p-6 sm:p-7 md:p-8 lg:p-10">
-                  <h3 className="text-brand-ink text-xl sm:text-2xl font-bold">
-                    Mooring
-                  </h3>
-                  <p className="mt-3 text-slate-700 text-[15px] sm:text-base">
-                    Station-keeping strategies for semi-submersibles, FPSOs and
-                    temporary spreads that drive operability and certification.
-                  </p>
-                  <ul className="mt-5 sm:mt-6 space-y-2 text-slate-800 text-[15px] sm:text-base">
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-blue-600" />
-                      Global performance &amp; line sizing
-                    </li>
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-blue-600" />
-                      Anchor selection and holding capacity
-                    </li>
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-blue-600" />
-                      Installation aids &amp; contingency analysis
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </article>
-
-            {/* Topside */}
-            <article
-              id="topside"
-              data-reveal
-              className="bg-white shadow-elevated transition-all duration-200 hover:-translate-y-0.5 hover:shadow-elevated-lg opacity-0 translate-y-4 data-[inview=true]:opacity-100 data-[inview=true]:translate-y-0"
-            >
-              <div className="grid md:grid-cols-2">
-                <div className="order-2 md:order-1 p-6 sm:p-7 md:p-8 lg:p-10">
-                  <h3 className="text-brand-ink text-xl sm:text-2xl font-bold">
-                    Topside (deck handling, semi-sub, production topside)
-                  </h3>
-                  <p className="mt-3 text-slate-700 text-[15px] sm:text-base">
-                    Practical topsides engineering to compress schedule: layout,
-                    handling, integration and commissioning— geared for safe,
-                    repeatable execution.
-                  </p>
-                  <ul className="mt-5 sm:mt-6 space-y-2 text-slate-800 text-[15px] sm:text-base">
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-cyan-600" />
-                      Lift &amp; deck handling studies
-                    </li>
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-cyan-600" />
-                      Semi-sub integration &amp; tie-ins
-                    </li>
-                    <li className="relative pl-6">
-                      <span className="absolute left-0 top-1.5 h-2 w-2 bg-cyan-600" />
-                      Operations readiness &amp; procedures
-                    </li>
-                  </ul>
-                </div>
-                <figure
-                  aria-hidden
-                  className="order-1 md:order-2 relative h-44 sm:h-56 md:h-full overflow-hidden"
-                >
-                  <svg
-                    className="absolute inset-0 h-full w-full animate-slowFloat motion-reduce:animate-none"
-                    viewBox="0 0 800 600"
-                    preserveAspectRatio="xMidYMid slice"
-                  >
-                    <defs>
-                      <linearGradient id="g6" x1="1" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#22D3EE" />
-                        <stop offset="100%" stopColor="#0E3A8A" />
-                      </linearGradient>
-                    </defs>
-                    <rect width="800" height="600" fill="url(#g6)" />
-                    <g fill="#ffffff66">
-                      <rect x="80" y="380" width="640" height="80" />
-                      <rect x="140" y="340" width="140" height="40" />
-                      <rect x="320" y="320" width="160" height="60" />
-                      <rect x="520" y="300" width="120" height="80" />
-                    </g>
-                  </svg>
-                </figure>
-              </div>
-            </article>
-          </div>
-
-          {/* Back to top */}
-          <div className="mt-14 sm:mt-16 md:mt-20">
-            <a
-              href="#top"
-              onClick={scrollTop}
-              className="inline-flex items-center gap-2 bg-slate-900 px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-wide text-white focus:outline-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-brand-ocean focus-visible:outline-offset-2"
-            >
-              Back to top
-              <svg
-                className="h-4 w-4"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
+              <div
+                className="relative z-20 w-full max-w-md transform -translate-y-6 shadow-2xl rounded-none"
+                aria-hidden="false"
               >
-                <path d="M10 3l5 6H5l5-6zm0 14V9" />
-              </svg>
-            </a>
+                <div className="bg-blue-600 rounded-none p-6 border border-blue-700">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="text-white text-lg font-semibold">
+                        Talk to our team
+                      </h3>
+                      <p className="text-blue-100 text-sm mt-1">
+                        Discuss your project requirements and get a tailored
+                        subsea engineering approach.
+                      </p>
+                    </div>
+
+                    <div className="hidden sm:flex items-center">
+                      <svg
+                        className="w-12 h-12 text-white/20"
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <rect
+                          x="4"
+                          y="6"
+                          width="40"
+                          height="28"
+                          rx="3"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          opacity="0.12"
+                        />
+                        <circle
+                          cx="14"
+                          cy="20"
+                          r="2.5"
+                          fill="currentColor"
+                          opacity="0.08"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <form onSubmit={(e) => e.preventDefault()} className="mt-4">
+                    <div className="space-y-3">
+                      <div>
+                        <label htmlFor="name" className="sr-only">
+                          Name
+                        </label>
+                        <input
+                          id="name"
+                          name="name"
+                          required
+                          className="w-full rounded-none px-3 py-2 text-sm bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+                          type="text"
+                          placeholder="Your name"
+                        />
+                      </div>
+
+                      <div>
+                        <label htmlFor="email" className="sr-only">
+                          Email
+                        </label>
+                        <input
+                          id="email"
+                          name="email"
+                          required
+                          className="w-full rounded-none px-3 py-2 text-sm bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+                          type="email"
+                          placeholder="you@example.com"
+                        />
+                      </div>
+
+                      <div className="flex items-center justify-between gap-3">
+                        <button
+                          type="submit"
+                          className="inline-flex items-center gap-3 px-4 py-2 bg-white text-blue-700 text-sm font-medium rounded-none shadow-sm hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+                        >
+                          Contact our experts
+                          <svg
+                            className="w-4 h-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                          >
+                            <path
+                              d="M5 12h14"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M12 5l7 7-7 7"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </button>
+
+                        <div className="flex items-center gap-3">
+                          <svg
+                            className="w-10 h-10 text-white/20"
+                            viewBox="0 0 48 48"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                          >
+                            <path
+                              d="M24 6v12"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              opacity="0.12"
+                            />
+                            <circle
+                              cx="24"
+                              cy="20"
+                              r="4"
+                              fill="currentColor"
+                              opacity="0.08"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                {/* subtle shadowed outline to enhance floating look */}
+                <div className="absolute -inset-1 rounded-none pointer-events-none blur-[6px] opacity-10 bg-gradient-to-tr from-blue-700 to-transparent"></div>
+              </div>
+            </div>
           </div>
-        </main>
+        </div>
+      </section>
+
+      {/* Project Overview - Extraordinary Design */}
+      <div className="relative overflow-hidden bg-white">
+        <div className="max-w-[1480px] mx-auto px-6 py-20">
+          <div className="relative">
+            {/* Background geometric patterns */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 left-0 w-96 h-96 border-l-8 border-t-8 border-blue-600"></div>
+              <div className="absolute top-20 right-0 w-64 h-64 border-r-4 border-b-4 border-gray-800"></div>
+              <div className="absolute bottom-0 left-1/3 w-80 h-80 border-l-6 border-blue-400"></div>
+            </div>
+
+            {/* Diagonal text arrangement */}
+            <div className="relative z-10 grid grid-cols-12 gap-6 items-center min-h-[600px]">
+              {/* Left column with watermark */}
+              <div className="col-span-1 relative flex items-center justify-center">
+                {/* Watermark SVG (drop + subtle flame) */}
+                <svg
+                  className="absolute -left-6 w-40 h-40 opacity-10 pointer-events-none"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  {/* oil drop */}
+                  <path
+                    d="M32 2C32 2 18 16 18 28a14 14 0 0028 0C46 16 32 2 32 2z"
+                    fill="#0f172a"
+                  />
+                  {/* inner glossy highlight */}
+                  <path
+                    d="M36 8c-1.5-1.5-6 1-8 3s-3 6-1 8 6 1.5 8 0 3.5-6 1-11z"
+                    fill="#fff"
+                    opacity="0.06"
+                  />
+                  {/* subtle flame shape overlaid */}
+                  <path
+                    d="M32 10c-2 3-1 6 0 9 1-2 3-4 3-6 0-2-1-4-3-3z"
+                    fill="#0ea5e9"
+                    opacity="0.08"
+                  />
+                </svg>
+              </div>
+
+              <div className="col-span-5">
+                <div className="space-y-6">
+                  <h1 className="text-6xl font-black text-gray-900 leading-none">
+                    OIL & GAS
+                    <span className="block text-blue-600">SECTOR</span>
+                  </h1>
+                  <div className="w-24 h-1 bg-blue-600"></div>
+                </div>
+              </div>
+
+              <div className="col-span-6">
+                <div className="relative">
+                  {/* Stepped content blocks */}
+                  <div className="space-y-0">
+                    <div className="bg-gray-900 text-white p-8 ml-0 transform -skew-x-6">
+                      <div className="transform skew-x-6">
+                        <p className="text-lg leading-relaxed">
+                          The offshore oil and gas industry operates in some of
+                          the world's most challenging environments, demanding
+                          precision engineering solutions that ensure safety,
+                          efficiency, and environmental stewardship.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="bg-blue-600 text-white p-8 ml-16 transform -skew-x-6">
+                      <div className="transform skew-x-6">
+                        <p className="text-lg leading-relaxed">
+                          Our comprehensive approach addresses the complex
+                          interplay between subsea systems, structural
+                          integrity, and operational excellence that defines
+                          modern offshore development.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-800 text-white p-8 ml-32 transform -skew-x-6">
+                      <div className="transform skew-x-6">
+                        <p className="text-lg leading-relaxed">
+                          Through rigorous analysis and field-proven
+                          methodologies, we deliver solutions that minimize risk
+                          while maximizing asset performance across the entire
+                          project lifecycle.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </>
+
+      {/* Our Sectors - Asymmetrical Layout */}
+      <div className="bg-gray-100 py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-12 gap-8 items-start">
+            {/* Left side - Offset content */}
+            <div className="col-span-7">
+              <div className="relative">
+                <div className="absolute -left-8 top-0 w-2 h-32 bg-blue-600"></div>
+                <h2 className="text-4xl font-bold text-gray-900 mb-8">
+                  Our Sectors
+                </h2>
+
+                <div className="space-y-8">
+                  <div className="relative pl-8">
+                    <div className="absolute left-0 top-2 w-4 h-4 bg-blue-600"></div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                        Subsea Engineering Excellence
+                      </h3>
+                      <p className="text-gray-700 text-lg leading-relaxed">
+                        Our subsea capabilities encompass the complete spectrum
+                        from conceptual design through to offshore execution. We
+                        specialize in trees, manifolds, jumpers and control
+                        systems, optimizing installation windows while
+                        systematically mitigating clash, current and soil
+                        interaction risks. Our FEED and detailed design services
+                        are complemented by comprehensive installation
+                        engineering procedures and long-term integrity
+                        management strategies.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="relative pl-8">
+                    <div className="absolute left-0 top-2 w-4 h-4 bg-gray-800"></div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                        Integrated Riser & Pipeline Solutions
+                      </h3>
+                      <p className="text-gray-700 text-lg leading-relaxed">
+                        From flexible risers to steel catenary systems, our
+                        end-to-end capabilities span concept selection through
+                        offshore hook-up. We deliver robust fatigue analysis,
+                        VIV assessments, and clearance envelopes that unlock
+                        operational uptime. Our pipeline expertise covers
+                        full-spectrum seabed engineering, routing optimization,
+                        stability analysis, and advanced buckle management
+                        strategies.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="relative pl-8">
+                    <div className="absolute left-0 top-2 w-4 h-4 bg-blue-400"></div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                        Topside & Mooring Integration
+                      </h3>
+                      <p className="text-gray-700 text-lg leading-relaxed">
+                        Our topside engineering compresses project schedules
+                        through optimized layout design, handling studies, and
+                        seamless integration protocols. Combined with our
+                        mooring expertise for FPSOs, semi-submersibles and
+                        temporary spreads, we deliver station-keeping strategies
+                        that drive operability and certification while ensuring
+                        safe, repeatable execution.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right side - Visual element */}
+            <div className="col-span-5">
+              <div className="relative mt-16">
+                {/* Stacked visualization blocks */}
+                <div className="space-y-4">
+                  <div className="bg-blue-600 h-20 w-full relative">
+                    <div className="absolute right-0 top-0 w-16 h-full bg-blue-800"></div>
+                    <div className="absolute left-8 top-6 text-white font-bold">
+                      SUBSEA
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-800 h-24 w-4/5 ml-auto relative">
+                    <div className="absolute left-0 top-0 w-16 h-full bg-gray-900"></div>
+                    <div className="absolute right-8 top-8 text-white font-bold">
+                      RISER SYSTEMS
+                    </div>
+                  </div>
+
+                  <div className="bg-blue-400 h-16 w-3/4 relative">
+                    <div className="absolute right-0 top-0 w-12 h-full bg-blue-600"></div>
+                    <div className="absolute left-8 top-4 text-white font-bold text-sm">
+                      PIPELINE
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-700 h-28 w-5/6 ml-auto relative">
+                    <div className="absolute left-0 top-0 w-20 h-full bg-gray-900"></div>
+                    <div className="absolute right-8 top-10 text-white font-bold">
+                      MOORING & TOPSIDE
+                    </div>
+                  </div>
+                </div>
+
+                {/* Connecting lines */}
+                <div className="absolute -left-8 top-0 bottom-0 w-px bg-gray-400"></div>
+                <div className="absolute -left-12 top-8 w-4 h-px bg-gray-400"></div>
+                <div className="absolute -left-12 top-28 w-4 h-px bg-gray-400"></div>
+                <div className="absolute -left-12 top-44 w-4 h-px bg-gray-400"></div>
+                <div className="absolute -left-12 top-64 w-4 h-px bg-gray-400"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Services Cards */}
+      <div className="bg-white py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Our Services
+            </h2>
+            <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="bg-gray-50 border-2 border-gray-200 hover:border-blue-600 transition-all duration-300 group"
+              >
+                <div className="p-8">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="text-blue-600 group-hover:text-blue-700 transition-colors">
+                      {service.icon}
+                    </div>
+                    <div className="w-8 h-px bg-gray-300 group-hover:bg-blue-400 transition-colors"></div>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    {service.title}
+                  </h3>
+
+                  <p className="text-gray-700 mb-6 leading-relaxed text-sm">
+                    {service.description}
+                  </p>
+
+                  <div className="space-y-2">
+                    {service.capabilities.map((capability, capIndex) => (
+                      <div key={capIndex} className="flex items-start">
+                        <div className="w-2 h-px bg-blue-600 mt-3 mr-3 flex-shrink-0"></div>
+                        <span className="text-gray-700 text-sm font-medium">
+                          {capability}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
-}
+};
+
+export default OilAndGasPage;
