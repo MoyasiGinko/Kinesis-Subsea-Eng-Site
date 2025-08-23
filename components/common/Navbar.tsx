@@ -95,14 +95,10 @@ const menuItems = [
         ],
       },
       {
-        title: "Specialist Advisor",
+        title: "Specialist Advisor & Project Engineering",
         href: "/sectors/renewables",
-        description: "Innovative product portfolio",
-      },
-      {
-        title: "Project Engineering",
-        href: "/sectors/renewables",
-        description: "Expertise in managing complex projects",
+        description:
+          "Specialist advisory services and project engineering expertise",
       },
       {
         title: "Asset Integrity Management",
@@ -420,24 +416,6 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                                           <ArrowRight className="w-5 h-5 xl:w-6 xl:h-6 text-gray-400 group-hover/nested:text-primary-blue-hover group-hover/nested:translate-x-1 transition-all duration-200" />
                                         </div>
                                       </Link>
-
-                                      {/* Toggle button for nested subitems - stops propagation so Link is clickable */}
-                                      <button
-                                        onClick={(e) => {
-                                          e.stopPropagation();
-                                          toggleSubMenu(subindex);
-                                        }}
-                                        aria-label={`Toggle ${subitem.title} subitems`}
-                                        className="ml-2 p-1"
-                                      >
-                                        <ChevronDown
-                                          className={`w-4 h-4 transition-transform duration-300 ${
-                                            openSubMenuIndex === subindex
-                                              ? "rotate-180"
-                                              : ""
-                                          }`}
-                                        />
-                                      </button>
                                     </div>
                                   </div>
                                 );
