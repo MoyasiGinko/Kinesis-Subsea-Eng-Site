@@ -83,7 +83,7 @@ const ServicesCards: React.FC<IndustrialServicesSectionProps> = ({
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {cards.map((card) => (
+          {cards.map((card, index) => (
             <div
               key={card.id}
               className="group relative bg-white overflow-hidden transition-all duration-300"
@@ -114,6 +114,19 @@ const ServicesCards: React.FC<IndustrialServicesSectionProps> = ({
                   <p className="text-sm opacity-90 mb-6 leading-relaxed">
                     {card.description}
                   </p>
+
+                  {/* Numbering above the View Details button */}
+                  <div className="mb-2">
+                    <span
+                      aria-hidden
+                      className="block text-5xl font-extrabold leading-none text-transparent"
+                      style={{
+                        WebkitTextStroke: "1px rgba(0,0,0,0.12)",
+                      }}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
 
                   {/* View Details Button */}
                   <button className="flex items-center justify-between w-full text-left transition-colors duration-200 p-2 -m-2">
