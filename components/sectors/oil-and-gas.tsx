@@ -1,6 +1,14 @@
 "use client";
 import React from "react";
-import { Anchor, Zap, Wrench, Navigation, Ship, Building2 } from "lucide-react";
+import {
+  Anchor,
+  Zap,
+  Flame,
+  Wrench,
+  Navigation,
+  Ship,
+  Building2,
+} from "lucide-react";
 
 interface Service {
   title: string;
@@ -359,29 +367,10 @@ const OilAndGasPage: React.FC = () => {
               {/* Left column with watermark */}
               <div className="col-span-1 relative flex items-center justify-center">
                 {/* Watermark SVG (full white) */}
-                <svg
-                  className="absolute -left-6 -top-16  w-40 h-40 opacity-100 pointer-events-none"
-                  viewBox="0 0 64 64"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                <Flame
+                  className="absolute left-4 -top-14 w-24 h-24 opacity-100 pointer-events-none text-white"
                   aria-hidden="true"
-                >
-                  {/* oil drop - full white */}
-                  <path
-                    d="M32 2C32 2 18 16 18 28a14 14 0 0028 0C46 16 32 2 32 2z"
-                    fill="#ffffff"
-                  />
-                  {/* inner glossy highlight - full white */}
-                  <path
-                    d="M36 8c-1.5-1.5-6 1-8 3s-3 6-1 8 6 1.5 8 0 3.5-6 1-11z"
-                    fill="#ffffff"
-                  />
-                  {/* subtle flame shape overlaid - full white */}
-                  <path
-                    d="M32 10c-2 3-1 6 0 9 1-2 3-4 3-6 0-2-1-4-3-3z"
-                    fill="#ffffff"
-                  />
-                </svg>
+                />
               </div>
 
               <div className="col-span-5">
