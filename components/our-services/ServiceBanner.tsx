@@ -12,14 +12,14 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
   subtitle = "Services",
 }) => {
   return (
-    <div className="relative w-full h-64 md:h-80 lg:h-96 overflow-hidden">
+    <div className="relative w-full h-96 md:h-[28rem] lg:h-[32rem] overflow-hidden">
       {/* Main container with parallel trapezoidal split */}
       <div className="flex h-full">
         {/* Left section - Orange with industrial silhouette */}
         <div className="relative w-1/2">
           {/* Left trapezoid orange panel */}
           <div
-            className="absolute m-1 top-0 left-0 bottom-0 bg-orange-500"
+            className="absolute m-1 top-0 left-0 bottom-0 bg-primary-orange"
             style={{
               // Expand this trapezoid beyond the left container so it reaches further toward the middle-right
               width: "104.5%",
@@ -27,10 +27,11 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
               // top shared point moved to 95%, bottom shared to 90%
               clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)",
               WebkitClipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)",
+              borderRadius: "10px",
             }}
           >
             {/* Industrial silhouette */}
-            <div className="absolute bottom-0 left-0 right-0 h-32">
+            <div className="absolute bottom-0 left-0 right-0 h-40">
               <svg
                 className="absolute bottom-0 w-full h-full text-black opacity-30"
                 viewBox="0 0 800 200"
@@ -121,6 +122,7 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
               // Keep the trapezoid shape reaching toward the center
               clipPath: "polygon(5% 0, 100% 0, 100% 100%, 0% 100%)",
               WebkitClipPath: "polygon(5% 0, 100% 0, 100% 100%, 0% 100%)",
+              borderRadius: "10px",
             }}
           />
 
@@ -130,6 +132,7 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
             style={{
               clipPath: "polygon(5% 0, 100% 0, 100% 100%, 0% 100%)",
               WebkitClipPath: "polygon(5% 0, 100% 0, 100% 100%, 0% 100%)",
+              borderRadius: "10px",
             }}
           />
         </div>
