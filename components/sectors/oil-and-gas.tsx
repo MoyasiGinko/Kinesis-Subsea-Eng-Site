@@ -1,6 +1,14 @@
 "use client";
 import React from "react";
-import { Anchor, Zap, Wrench, Navigation, Ship, Building2 } from "lucide-react";
+import {
+  Anchor,
+  Zap,
+  Flame,
+  Wrench,
+  Navigation,
+  Ship,
+  Building2,
+} from "lucide-react";
 
 interface Service {
   title: string;
@@ -92,7 +100,7 @@ const OilAndGasPage: React.FC = () => {
 
                 <div className="bg-white p-8 md:pr-12 rounded-none">
                   <h2 className="text-3xl md:text-4xl font-extrabold mb-4 leading-tight">
-                    <span className="block text-blue-600 text-4xl md:text-5xl">
+                    <span className="block text-primary-blue text-4xl md:text-5xl">
                       OVERVIEW
                     </span>
                   </h2>
@@ -107,7 +115,7 @@ const OilAndGasPage: React.FC = () => {
                   {/* symmetric features layout */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex items-start gap-4">
-                      <div className="flex-none w-12 h-12 rounded-none bg-blue-50 text-blue-600 flex items-center justify-center font-semibold shadow-sm">
+                      <div className="flex-none w-12 h-12 rounded-none bg-blue-50 text-primary-blue flex items-center justify-center font-semibold shadow-sm">
                         FE
                       </div>
                       <div>
@@ -178,7 +186,7 @@ const OilAndGasPage: React.FC = () => {
                 className="relative z-20 w-full max-w-md transform -translate-y-6 shadow-2xl rounded-none"
                 aria-hidden="false"
               >
-                <div className="bg-blue-600 rounded-none p-6 border border-blue-700">
+                <div className="bg-primary-blue rounded-none p-6 border border-primary-blue-hover">
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <h3 className="text-white text-lg font-semibold">
@@ -229,7 +237,7 @@ const OilAndGasPage: React.FC = () => {
                           id="name"
                           name="name"
                           required
-                          className="w-full rounded-none px-3 py-2 text-sm bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+                          className="w-full rounded-none px-3 py-2 text-sm bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-blue"
                           type="text"
                           placeholder="Your name"
                         />
@@ -243,7 +251,7 @@ const OilAndGasPage: React.FC = () => {
                           id="email"
                           name="email"
                           required
-                          className="w-full rounded-none px-3 py-2 text-sm bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+                          className="w-full rounded-none px-3 py-2 text-sm bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-blue"
                           type="email"
                           placeholder="you@example.com"
                         />
@@ -252,7 +260,7 @@ const OilAndGasPage: React.FC = () => {
                       <div className="flex items-center justify-between gap-3">
                         <button
                           type="submit"
-                          className="inline-flex items-center gap-3 px-4 py-2 bg-white text-blue-700 text-sm font-medium rounded-none shadow-sm hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+                          className="inline-flex items-center gap-3 px-4 py-2 bg-white text-primary-blue-hover text-sm font-medium rounded-none shadow-sm hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-blue"
                         >
                           Contact our experts
                           <svg
@@ -310,7 +318,7 @@ const OilAndGasPage: React.FC = () => {
                 </div>
 
                 {/* subtle shadowed outline to enhance floating look */}
-                <div className="absolute -inset-1 rounded-none pointer-events-none blur-[6px] opacity-10 bg-gradient-to-tr from-blue-700 to-transparent"></div>
+                <div className="absolute -inset-1 rounded-none pointer-events-none blur-[6px] opacity-10 bg-gradient-to-tr from-primary-blue-hover to-transparent"></div>
               </div>
             </div>
           </div>
@@ -359,29 +367,10 @@ const OilAndGasPage: React.FC = () => {
               {/* Left column with watermark */}
               <div className="col-span-1 relative flex items-center justify-center">
                 {/* Watermark SVG (full white) */}
-                <svg
-                  className="absolute -left-6 -top-16  w-40 h-40 opacity-100 pointer-events-none"
-                  viewBox="0 0 64 64"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                <Flame
+                  className="absolute left-4 -top-14 w-24 h-24 opacity-100 pointer-events-none text-white"
                   aria-hidden="true"
-                >
-                  {/* oil drop - full white */}
-                  <path
-                    d="M32 2C32 2 18 16 18 28a14 14 0 0028 0C46 16 32 2 32 2z"
-                    fill="#ffffff"
-                  />
-                  {/* inner glossy highlight - full white */}
-                  <path
-                    d="M36 8c-1.5-1.5-6 1-8 3s-3 6-1 8 6 1.5 8 0 3.5-6 1-11z"
-                    fill="#ffffff"
-                  />
-                  {/* subtle flame shape overlaid - full white */}
-                  <path
-                    d="M32 10c-2 3-1 6 0 9 1-2 3-4 3-6 0-2-1-4-3-3z"
-                    fill="#ffffff"
-                  />
-                </svg>
+                />
               </div>
 
               <div className="col-span-5">
@@ -409,7 +398,7 @@ const OilAndGasPage: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="bg-blue-600 text-white p-8 ml-16 transform -skew-x-6">
+                    <div className="bg-primary-blue text-white p-8 ml-16 transform -skew-x-6">
                       <div className="transform skew-x-6">
                         <p className="text-lg leading-relaxed">
                           Our comprehensive approach addresses the complex
@@ -445,14 +434,14 @@ const OilAndGasPage: React.FC = () => {
             {/* Left side - Offset content */}
             <div className="col-span-7">
               <div className="relative">
-                <div className="absolute -left-8 top-0 w-2 h-32 bg-blue-600"></div>
+                <div className="absolute -left-8 top-0 w-2 h-32 bg-primary-blue"></div>
                 <h2 className="text-4xl font-bold text-gray-900 mb-8">
                   Our Sectors
                 </h2>
 
                 <div className="space-y-8">
                   <div className="relative pl-8">
-                    <div className="absolute left-0 top-2 w-4 h-4 bg-blue-600"></div>
+                    <div className="absolute left-0 top-2 w-4 h-4 bg-primary-blue"></div>
                     <div>
                       <h3 className="text-2xl font-bold text-gray-900 mb-4">
                         Subsea Engineering Excellence
@@ -519,7 +508,7 @@ const OilAndGasPage: React.FC = () => {
 
                 {/* Stacked visualization blocks */}
                 <div className="space-y-12">
-                  <div className="relative bg-blue-600 h-20 w-full">
+                  <div className="relative bg-primary-blue h-20 w-full">
                     <div className="absolute right-0 top-0 w-16 h-full bg-blue-800"></div>
                     <div className="absolute left-8 top-6 text-white font-bold">
                       SUBSEA
@@ -542,7 +531,7 @@ const OilAndGasPage: React.FC = () => {
                   </div>
 
                   <div className="relative bg-blue-400 h-16 w-3/4">
-                    <div className="absolute right-0 top-0 w-12 h-full bg-blue-600"></div>
+                    <div className="absolute right-0 top-0 w-12 h-full bg-primary-blue"></div>
                     <div className="absolute left-8 top-4 text-white font-bold ">
                       PIPELINE
                     </div>
@@ -613,7 +602,7 @@ const OilAndGasPage: React.FC = () => {
             {/* Right - Title styled like "Our Sectors" (accent bar + offset) */}
             <div className="md:col-span-1 flex justify-end">
               <div className="relative w-full max-w-xs">
-                {/* <div className="absolute -right-8 top-0 w-2 h-24 bg-blue-600" /> */}
+                {/* <div className="absolute -right-8 top-0 w-2 h-24 bg-primary-blue" /> */}
                 <div className="text-right pr-6">
                   <h2 className="text-4xl font-bold text-gray-900 mb-2">
                     What We Offer
@@ -627,21 +616,21 @@ const OilAndGasPage: React.FC = () => {
 
                 {/* subtle decorative dot cluster for texture */}
                 <svg
-                  className="absolute -right-2 bottom-0 w-20 h-20 opacity-10 pointer-events-none"
+                  className="absolute -right-2 bottom-0 w-20 h-20 opacity-10 pointer-events-none text-primary-blue"
                   viewBox="0 0 20 20"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                 >
-                  <circle cx="3" cy="3" r="0.9" fill="#000" />
-                  <circle cx="9" cy="3" r="0.9" fill="#000" />
-                  <circle cx="15" cy="3" r="0.9" fill="#000" />
-                  <circle cx="3" cy="9" r="0.9" fill="#000" />
-                  <circle cx="9" cy="9" r="0.9" fill="#000" />
-                  <circle cx="15" cy="9" r="0.9" fill="#000" />
-                  <circle cx="3" cy="15" r="0.9" fill="#000" />
-                  <circle cx="9" cy="15" r="0.9" fill="#000" />
-                  <circle cx="15" cy="15" r="0.9" fill="#000" />
+                  {/* <circle cx="3" cy="3" r="0.9" fill="currentColor" /> */}
+                  {/* <circle cx="9" cy="3" r="0.9" fill="currentColor" /> */}
+                  <circle cx="15" cy="3" r="0.9" fill="currentColor" />
+                  {/* <circle cx="3" cy="9" r="0.9" fill="currentColor" /> */}
+                  {/* <circle cx="9" cy="9" r="0.9" fill="currentColor" /> */}
+                  <circle cx="15" cy="9" r="0.9" fill="currentColor" />
+                  <circle cx="3" cy="15" r="0.9" fill="currentColor" />
+                  <circle cx="9" cy="15" r="0.9" fill="currentColor" />
+                  <circle cx="15" cy="15" r="0.9" fill="currentColor" />
                 </svg>
               </div>
             </div>
@@ -651,12 +640,12 @@ const OilAndGasPage: React.FC = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-gray-50 border-2 border-gray-200 hover:border-blue-600 transition-all duration-300 group h-full flex flex-col overflow-hidden"
+                className="bg-gray-50 border-2 border-gray-200 hover:border-primary-blue transition-all duration-300 group h-full flex flex-col overflow-hidden"
               >
                 <div className="p-8 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-4">
-                      <div className="text-blue-600 group-hover:text-blue-700 transition-colors">
+                      <div className="text-primary-blue group-hover:text-primary-blue-hover transition-colors">
                         {service.icon}
                       </div>
                       <h3 className="text-xl font-bold text-gray-900">
@@ -675,7 +664,7 @@ const OilAndGasPage: React.FC = () => {
                     {service.capabilities.map((capability, capIndex) => (
                       <li key={capIndex} className="flex items-start">
                         <span
-                          className="flex-none w-2 h-2 bg-blue-600 mr-3  mt-1"
+                          className="flex-none w-2 h-2 bg-primary-blue mr-3  mt-1"
                           aria-hidden="true"
                         />
                         <span className="text-gray-700 text-xs leading-tight">
@@ -686,7 +675,7 @@ const OilAndGasPage: React.FC = () => {
                   </ul>
                 </div>
 
-                <div className="h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <div className="h-1 bg-primary-blue transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </div>
             ))}
           </div>

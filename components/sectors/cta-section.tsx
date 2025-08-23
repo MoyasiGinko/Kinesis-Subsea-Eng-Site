@@ -50,10 +50,10 @@ const CTASection: React.FC = () => {
             <div className="relative">
               {/* Main heading with geometric accent */}
               <div className="relative mb-8">
-                <div className="absolute -left-6 top-0 w-2 h-full bg-blue-600"></div>
+                <div className="absolute -left-6 top-0 w-2 h-full bg-primary-blue"></div>
                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
                   Ready to optimize your
-                  <span className="block text-blue-600">
+                  <span className="block text-primary-blue">
                     offshore operations?
                   </span>
                 </h2>
@@ -82,7 +82,7 @@ const CTASection: React.FC = () => {
 
               {/* Action buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 font-bold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
+                <button className="bg-primary-blue hover:bg-primary-blue-hover text-white px-8 py-4 font-bold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                   SCHEDULE CONSULTATION
                 </button>
                 <button className="border-2 border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 font-bold transition-all duration-300">
@@ -97,11 +97,11 @@ const CTASection: React.FC = () => {
             <div className="relative">
               {/* Layered angular shapes */}
               <div className="relative w-full h-80">
-                <div className="absolute top-0 right-0 w-48 h-24 bg-blue-100 transform -skew-y-6"></div>
-                <div className="absolute top-16 right-8 w-40 h-20 bg-blue-200 transform -skew-y-6"></div>
+                <div className="absolute top-0 right-0 w-60 h-24 bg-blue-100 transform -skew-y-6"></div>
+                <div className="absolute top-16 right-8 w-56 h-20 bg-blue-200 transform -skew-y-6"></div>
                 {/* <div className="absolute top-28 right-12 w-32 h-16 bg-blue-100 shadow-sm transform -skew-y-6"></div> */}
-                <div className="absolute bottom-20 right-0 w-56 h-28 bg-gray-100 transform -skew-y-6"></div>
-                <div className="absolute bottom-0 right-12 w-44 h-24 bg-gray-200 transform -skew-y-6"></div>
+                <div className="absolute bottom-20 right-0 w-72 h-28 bg-gray-100 transform -skew-y-6"></div>
+                <div className="absolute bottom-0 right-12 w-56 h-24 bg-gray-200 transform -skew-y-6"></div>
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@ const CTASection: React.FC = () => {
         {/* <div className="mt-16 flex items-center">
           <div className="flex-1 h-px bg-gray-200"></div>
           <div className="mx-4">
-            <div className="w-4 h-4 bg-blue-600 transform rotate-45"></div>
+            <div className="w-4 h-4 bg-primary-blue transform rotate-45"></div>
           </div>
           <div className="flex-1 h-px bg-gray-200"></div>
         </div> */}
