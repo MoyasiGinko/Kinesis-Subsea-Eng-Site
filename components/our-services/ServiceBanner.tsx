@@ -22,7 +22,7 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
             className="absolute top-0 left-0 bottom-0 bg-orange-500"
             style={{
               // Expand this trapezoid beyond the left container so it reaches further toward the middle-right
-              width: "100%",
+              width: "104%",
               // Trapezoid widened much further toward the middle-right:
               // top shared point moved to 95%, bottom shared to 90%
               clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)",
@@ -111,12 +111,14 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
 
         {/* Right section - Professional women image */}
         <div className="relative w-1/2">
+          {/* Right trapezoid with an image background */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
               width: "100%",
-              backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23f3f4f6"/><stop offset="100%" style="stop-color:%23e5e7eb"/></linearGradient></defs><rect width="800" height="600" fill="url(%23bg)"/><g opacity="0.3"><circle cx="200" cy="150" r="80" fill="%23d1d5db"/><circle cx="600" cy="180" r="60" fill="%23d1d5db"/><rect x="150" y="250" width="120" height="200" rx="10" fill="%23d1d5db"/><rect x="550" y="280" width="100" height="180" rx="10" fill="%23d1d5db"/><rect x="300" y="300" width="200" height="150" rx="5" fill="%23d1d5db"/><text x="400" y="200" text-anchor="middle" fill="%23374151" font-size="24" font-family="Arial">Professional Team</text><text x="400" y="240" text-anchor="middle" fill="%236b7280" font-size="16" font-family="Arial">Industry Experts</text></g></svg>')`,
-              // widen the right section further toward the center
+              // Replace the URL below with your actual image path
+              backgroundImage: "url('/images/sector-banner-renewables.jpg')",
+              // Keep the trapezoid shape reaching toward the center
               clipPath: "polygon(5% 0, 100% 0, 100% 100%, 0% 100%)",
               WebkitClipPath: "polygon(5% 0, 100% 0, 100% 100%, 0% 100%)",
             }}
@@ -126,8 +128,8 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
           <div
             className="absolute inset-0 bg-black bg-opacity-25"
             style={{
-              clipPath: "polygon(10% 0, 100% 0, 100% 100%, 5% 100%)",
-              WebkitClipPath: "polygon(10% 0, 100% 0, 100% 100%, 5% 100%)",
+              clipPath: "polygon(5% 0, 100% 0, 100% 100%, 0% 100%)",
+              WebkitClipPath: "polygon(5% 0, 100% 0, 100% 100%, 0% 100%)",
             }}
           />
         </div>
