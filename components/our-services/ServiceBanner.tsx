@@ -19,10 +19,10 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
         <div className="relative w-1/2">
           {/* Left trapezoid orange panel */}
           <div
-            className="absolute top-0 left-0 bottom-0 bg-orange-500"
+            className="absolute m-1 top-0 left-0 bottom-0 bg-orange-500"
             style={{
               // Expand this trapezoid beyond the left container so it reaches further toward the middle-right
-              width: "104%",
+              width: "104.5%",
               // Trapezoid widened much further toward the middle-right:
               // top shared point moved to 95%, bottom shared to 90%
               clipPath: "polygon(0 0, 100% 0, 95% 100%, 0 100%)",
@@ -113,7 +113,7 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
         <div className="relative w-1/2">
           {/* Right trapezoid with an image background */}
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className="absolute m-1 inset-0 bg-cover bg-center bg-no-repeat"
             style={{
               width: "100%",
               // Replace the URL below with your actual image path
@@ -126,7 +126,7 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
 
           {/* Overlay for better text contrast if needed */}
           <div
-            className="absolute inset-0 bg-black bg-opacity-25"
+            className="absolute m-1 inset-0 bg-black bg-opacity-25"
             style={{
               clipPath: "polygon(5% 0, 100% 0, 100% 100%, 0% 100%)",
               WebkitClipPath: "polygon(5% 0, 100% 0, 100% 100%, 0% 100%)",
