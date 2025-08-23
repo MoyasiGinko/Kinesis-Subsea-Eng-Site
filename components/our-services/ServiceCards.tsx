@@ -100,23 +100,27 @@ const ServicesCards: React.FC<IndustrialServicesSectionProps> = ({
               </div>
 
               {/* Content Section */}
-              <div className="p-6 relative flex-1 flex flex-col justify-between transition-colors duration-300 bg-white text-gray-900 group-hover:bg-black group-hover:text-orange-400">
+              <div className="p-6 relative flex-1 flex flex-col transition-colors duration-300 bg-white text-gray-900 group-hover:bg-black group-hover:text-primary-orange-hover">
                 {/* Background Pattern/Texture Overlay */}
                 <div className="absolute inset-0 opacity-10 pointer-events-none group-hover:opacity-5">
                   <div className="w-full h-full bg-gradient-to-br from-white/20 to-transparent"></div>
                 </div>
 
-                <div className="relative z-10">
-                  <h3 className="text-lg font-semibold mb-3 leading-tight text-gray-900 group-hover:text-orange-400">
+                {/* Main text area (takes available space so footer stays pinned to bottom) */}
+                <div className="relative z-10 flex-1">
+                  <h3 className="text-lg font-semibold mb-3 leading-tight text-gray-900 group-hover:text-primary-orange-hover min-h-[3rem]">
                     {card.title}
                   </h3>
 
-                  <p className="text-sm opacity-90 mb-6 leading-relaxed text-gray-700 group-hover:text-orange-300">
+                  <p className="text-sm opacity-90 leading-relaxed text-gray-700 group-hover:text-primary-orange min-h-[3.5rem]">
                     {card.description}
                   </p>
+                </div>
 
+                {/* Footer: numbering and View Details button pinned to the bottom */}
+                <div className="relative z-10 mt-4 mt-auto flex flex-col items-start">
                   {/* Numbering above the View Details button */}
-                  <div className="mb-2 relative">
+                  <div className="mb-2 relative w-full">
                     {/* default faint stroked number */}
                     <span
                       aria-hidden
@@ -141,10 +145,10 @@ const ServicesCards: React.FC<IndustrialServicesSectionProps> = ({
                   </div>
 
                   {/* View Details Button */}
-                  <button className="flex items-center justify-between w-full text-left transition-colors duration-200 p-2 -m-2 text-gray-900 group-hover:text-orange-300">
+                  <button className="flex items-center justify-between w-full text-left transition-colors duration-200 p-2 -m-2 text-gray-900 group-hover:text-primary-orange">
                     <span className="text-sm font-medium">View Details</span>
                     <div className="flex items-center justify-center w-6 h-6">
-                      <ArrowRight className="w-3 h-3 text-gray-900 group-hover:text-orange-300" />
+                      <ArrowRight className="w-3 h-3 text-gray-900 group-hover:text-primary-orange" />
                     </div>
                   </button>
                 </div>
