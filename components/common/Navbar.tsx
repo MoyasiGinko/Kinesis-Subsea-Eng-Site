@@ -95,14 +95,10 @@ const menuItems = [
         ],
       },
       {
-        title: "Specialist Advisor",
+        title: "Specialist Advisor & Project Engineering",
         href: "/sectors/renewables",
-        description: "Innovative product portfolio",
-      },
-      {
-        title: "Project Engineering",
-        href: "/sectors/renewables",
-        description: "Expertise in managing complex projects",
+        description:
+          "Specialist advisory services and project engineering expertise",
       },
       {
         title: "Asset Integrity Management",
@@ -327,7 +323,8 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
             <div key={index} className="relative group">
               {item.submenu ? (
                 <>
-                  <button
+                  {/* Desktop: show a clickable Link for the parent title and a separate chevron button to toggle the submenu */}
+                  <div
                     className={`flex items-center gap-1 px-3 xl:px-5 py-2 xl:py-3 rounded-lg font-medium text-base xl:text-[20px] transition-all duration-300 ${
                       isScrolled
                         ? openMenuIndex === index
@@ -337,18 +334,33 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                         ? "bg-blue-50 text-primary-blue-hover"
                         : "text-white hover:text-gray-300"
                     }`}
-                    onClick={() => toggleMenu(index)}
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={() => handleMouseLeave(index)}
-                    aria-label={`${item.title} menu`}
                   >
-                    {item.title}
-                    <ChevronDown
-                      className={`w-4 h-4 xl:w-5 xl:h-5 transition-transform duration-300 ${
-                        openMenuIndex === index ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
+                    <Link
+                      href={item.href}
+                      className="flex-1 text-inherit no-underline"
+                      onClick={() => {
+                        /* allow navigation; keep submenu open state unchanged for hover */
+                      }}
+                    >
+                      {item.title}
+                    </Link>
+                    <button
+                      aria-label={`${item.title} menu`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleMenu(index);
+                      }}
+                      className="p-1"
+                    >
+                      <ChevronDown
+                        className={`w-4 h-4 xl:w-5 xl:h-5 transition-transform duration-300 ${
+                          openMenuIndex === index ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                  </div>
                   {/* Main Dropdown Menu */}
                   {openMenuIndex === index && (
                     <div
@@ -371,35 +383,39 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                                       isSubActive
                                         ? "bg-blue-50 text-primary-blue-hover"
                                         : "hover:bg-blue-50"
-                                    }`}
+                                    } relative`}
                                     onMouseEnter={() =>
                                       handleSubMenuMouseEnter(subindex)
                                     }
                                     onMouseLeave={() =>
                                       handleSubMenuMouseLeave(subindex)
                                     }
-                                    onClick={() => toggleSubMenu(subindex)}
                                   >
                                     <div className="flex items-center justify-between">
-                                      <div className="w-full">
-                                        <div
-                                          className={`${
-                                            isSubActive
-                                              ? "text-primary-blue-hover"
-                                              : "text-gray-900"
-                                          } font-medium transition-colors duration-200 text-base xl:text-lg`}
-                                        >
-                                          {subitem.title}
-                                        </div>
-                                        {subitem.description && (
-                                          <div className="text-gray-500 text-xs xl:text-sm mt-1">
-                                            {subitem.description}
+                                      <Link
+                                        href={subitem.href}
+                                        className="w-full flex items-center no-underline text-inherit"
+                                      >
+                                        <div className="w-full">
+                                          <div
+                                            className={`${
+                                              isSubActive
+                                                ? "text-primary-blue-hover"
+                                                : "text-gray-900"
+                                            } font-medium transition-colors duration-200 text-base xl:text-lg`}
+                                          >
+                                            {subitem.title}
                                           </div>
-                                        )}
-                                      </div>
-                                      <div className="flex items-center justify-center w-10 h-10 xl:w-12 xl:h-12 rounded-md">
-                                        <ArrowRight className="w-5 h-5 xl:w-6 xl:h-6 text-gray-400 group-hover/nested:text-primary-blue-hover group-hover/nested:translate-x-1 transition-all duration-200" />
-                                      </div>
+                                          {subitem.description && (
+                                            <div className="text-gray-500 text-xs xl:text-sm mt-1">
+                                              {subitem.description}
+                                            </div>
+                                          )}
+                                        </div>
+                                        <div className="flex items-center justify-center w-10 h-10 xl:w-12 xl:h-12 rounded-md">
+                                          <ArrowRight className="w-5 h-5 xl:w-6 xl:h-6 text-gray-400 group-hover/nested:text-primary-blue-hover group-hover/nested:translate-x-1 transition-all duration-200" />
+                                        </div>
+                                      </Link>
                                     </div>
                                   </div>
                                 );

@@ -36,7 +36,7 @@ export default function SectorBanner({
   subtitle: subtitleProp,
   links: linksProp = [],
   bgImage,
-  height = "h-72 sm:h-96 lg:h-[420px]",
+  height = "h-72 sm:h-96 lg:h-[520px]",
   children,
 }: SectorBannerProps): React.ReactElement {
   const { scrollbar } = useSmoothScrollbar();
@@ -102,7 +102,7 @@ export default function SectorBanner({
         className="absolute bg-white inset-0 will-change-transform bg-center"
         style={{
           backgroundImage: bgImage ? `url(${bgImage})` : undefined,
-          backgroundSize: "100% 100%", // stretch to fit container
+          backgroundSize: "cover", // use cover to maintain aspect ratio
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           transform: translate,
