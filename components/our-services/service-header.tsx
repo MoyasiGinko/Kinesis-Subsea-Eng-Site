@@ -21,10 +21,23 @@ const ServiceHero: React.FC<HeroProps> = ({
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary-blue via-white/50 to-blue-50/30" />
 
-      {/* Diagonal Accent */}
       <div
         className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-primary-blue/5 to-slate-900/5"
         style={{ clipPath: "polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%)" }}
+      />
+
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-center bg-cover pointer-events-none"
+        style={{
+          backgroundImage:
+            "url('https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/5_yhjlu6.webp')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.18,
+          mixBlendMode: "overlay",
+        }}
       />
 
       {/* Subtle Grid Pattern */}
@@ -43,19 +56,19 @@ const ServiceHero: React.FC<HeroProps> = ({
             <div className="space-y-8">
               {/* Tagline */}
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-px bg-gradient-to-r from-primary-blue to-slate-600" />
-                <span className="text-sm font-semibold text-slate-600 uppercase tracking-widest">
+                <div className="w-12 h-px bg-gradient-to-r from-gray-50 to-slate-50" />
+                <span className="text-sm font-semibold text-gray-50 uppercase tracking-widest">
                   {tagline}
                 </span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
                 {headline}
               </h1>
 
               {/* Subheading */}
-              <p className="text-lg lg:text-xl text-slate-600 leading-relaxed max-w-xl">
+              <p className="text-lg lg:text-xl text-gray-50 leading-relaxed max-w-xl">
                 {subheading}
               </p>
 
@@ -66,7 +79,7 @@ const ServiceHero: React.FC<HeroProps> = ({
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
                 </button>
 
-                <button className="group inline-flex items-center justify-center px-8 py-4 bg-transparent hover:bg-slate-50 text-slate-700 font-semibold text-lg border-2 border-slate-300 hover:border-slate-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                <button className="group inline-flex items-center justify-center px-8 py-4 bg-transparent hover:bg-slate-50 text-white hover:text-black font-semibold text-lg border-2 border-white hover:border-slate-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
                   <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
                   {secondaryCTA}
                 </button>
@@ -74,26 +87,26 @@ const ServiceHero: React.FC<HeroProps> = ({
 
               {/* Company Logos */}
               <div className="pt-12">
-                <p className="text-sm font-medium text-slate-500 mb-6 uppercase tracking-wide">
+                <p className="text-sm font-medium text-white mb-6 uppercase tracking-wide">
                   Our Expertise
                 </p>
                 <div className="flex items-center space-x-8 opacity-60">
-                  <div className="w-28 h-8 bg-slate-300 flex items-center justify-center">
+                  <div className="w-28 h-8 bg-slate-50 flex items-center justify-center">
                     <span className="text-xs font-bold text-slate-600">
                       SUBSEA
                     </span>
                   </div>
-                  <div className="w-28 h-8 bg-slate-300 flex items-center justify-center">
+                  <div className="w-28 h-8 bg-slate-50 flex items-center justify-center">
                     <span className="text-xs font-bold text-slate-600">
                       RISER SYSTEMS
                     </span>
                   </div>
-                  <div className="w-28 h-8 bg-slate-300 flex items-center justify-center">
+                  <div className="w-28 h-8 bg-slate-50 flex items-center justify-center">
                     <span className="text-xs font-bold text-slate-600">
                       PIPELINE
                     </span>
                   </div>
-                  <div className="w-28 h-8 bg-slate-300 flex items-center justify-center">
+                  <div className="w-28 h-8 bg-slate-50 flex items-center justify-center">
                     <span className="text-xs font-bold text-slate-600">
                       MOORING
                     </span>
