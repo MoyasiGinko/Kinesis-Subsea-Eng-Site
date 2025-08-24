@@ -23,7 +23,7 @@ const ServiceHero: React.FC<HeroProps> = ({
 
       {/* Diagonal Accent */}
       <div
-        className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-blue-600/5 to-slate-900/5"
+        className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-primary-blue/5 to-slate-900/5"
         style={{ clipPath: "polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%)" }}
       />
 
@@ -43,7 +43,7 @@ const ServiceHero: React.FC<HeroProps> = ({
             <div className="space-y-8">
               {/* Tagline */}
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-px bg-gradient-to-r from-blue-600 to-slate-600" />
+                <div className="w-12 h-px bg-gradient-to-r from-primary-blue to-slate-600" />
                 <span className="text-sm font-semibold text-slate-600 uppercase tracking-widest">
                   {tagline}
                 </span>
@@ -61,7 +61,7 @@ const ServiceHero: React.FC<HeroProps> = ({
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4 pt-8">
-                <button className="group inline-flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                <button className="group inline-flex items-center justify-center px-8 py-4 bg-primary-blue hover:bg-primary-blue-hover text-white font-semibold text-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2">
                   {primaryCTA}
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
                 </button>
@@ -108,7 +108,7 @@ const ServiceHero: React.FC<HeroProps> = ({
               <div className="relative z-10">
                 <div className="bg-gradient-to-br from-slate-200 via-slate-100 to-blue-100 w-full h-[500px] lg:h-[600px] flex items-center justify-center shadow-2xl">
                   <div className="text-center space-y-4">
-                    <div className="w-16 h-16 bg-blue-600 mx-auto flex items-center justify-center">
+                    <div className="w-16 h-16 bg-primary-blue mx-auto flex items-center justify-center">
                       <div className="w-8 h-8 bg-white"></div>
                     </div>
                     <p className="text-slate-600 font-medium text-lg">
@@ -128,14 +128,14 @@ const ServiceHero: React.FC<HeroProps> = ({
 
               {/* Floating Stats Cards */}
               <div className="absolute top-12 -left-6 bg-white p-4 shadow-lg border border-slate-100 z-20">
-                <div className="text-2xl font-bold text-blue-600">24/7</div>
+                <div className="text-2xl font-bold text-primary-blue">24/7</div>
                 <div className="text-sm text-slate-600 font-medium">
                   ROV & Subsea Operations Support
                 </div>
               </div>
 
               <div className="absolute bottom-16 -right-6 bg-white p-4 shadow-lg border border-slate-100 z-20">
-                <div className="text-2xl font-bold text-green-600">
+                <div className="text-2xl font-bold text-primary-blue">
                   ISO 9001
                 </div>
                 <div className="text-sm text-slate-600 font-medium">
