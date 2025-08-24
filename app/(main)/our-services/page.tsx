@@ -4,7 +4,7 @@ import ServiceBanner from "../../../components/our-services/ServiceBanner";
 import FAQSection from "../../../components/our-services/FAQSection";
 import StatsSection from "../../../components/our-services/StatsSection";
 import ServicesCards from "@/components/our-services/ServiceCards";
-import ServiceHeader from "@/components/our-services/service-header";
+import ServiceHeader from "@/components/our-services/service-hero";
 
 export default function Page() {
   return (
