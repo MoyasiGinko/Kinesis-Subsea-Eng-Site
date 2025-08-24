@@ -50,7 +50,7 @@ const ServiceHero: React.FC<HeroProps> = ({
       />
 
       <div className="relative min-h-[700px] lg:min-h-[800px] flex items-center">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-24 lg:py-32 w-full">
+        <div className="max-w-[1480px] mx-auto px-6 sm:px-8 lg:px-12 py-24 lg:py-32 w-full">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             {/* Left Content */}
             <div className="space-y-8">
@@ -119,20 +119,64 @@ const ServiceHero: React.FC<HeroProps> = ({
             <div className="relative">
               {/* Main Image Container */}
               <div className="relative z-10">
-                <div className="bg-gradient-to-br from-slate-200 via-slate-100 to-blue-100 w-full h-[500px] lg:h-[600px] flex items-center justify-center shadow-2xl">
-                  <div className="text-center space-y-4">
-                    <div className="w-16 h-16 bg-primary-blue mx-auto flex items-center justify-center">
-                      <div className="w-8 h-8 bg-white"></div>
+                {(() => {
+                  const images: string[] = [
+                    "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/3_yp4wiw.webp",
+                    "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/4_a40enk.webp",
+                    "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/5_yhjlu6.webp",
+                    "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/2_vfvnuz.webp",
+                    "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/1_jvnjiz.webp",
+                  ];
+
+                  const [index, setIndex] = React.useState<number>(0);
+
+                  // preload images
+                  React.useEffect(() => {
+                    images.forEach((src) => {
+                      const img = new Image();
+                      img.src = src;
+                    });
+                  }, []);
+
+                  // cycle through images
+                  React.useEffect(() => {
+                    const id = setInterval(() => {
+                      setIndex((i) => (i + 1) % images.length);
+                    }, 4000);
+                    return () => clearInterval(id);
+                  }, []);
+
+                  return (
+                    <div className="w-full h-[500px] lg:h-[500px] relative overflow-hidden rounded-md shadow-2xl">
+                      {images.map((src, i) => (
+                        <div
+                          key={src}
+                          className={`absolute inset-0 bg-center bg-cover transition-opacity duration-700 ${
+                            i === index ? "opacity-100" : "opacity-0"
+                          }`}
+                          style={{ backgroundImage: `url("${src}")` }}
+                        />
+                      ))}
+
+                      {/* overlay content (caption / placeholder) */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+
+                      {/* indicators */}
+                      <div className="absolute bottom-4 right-4 z-20 flex space-x-2">
+                        {images.map((_, i) => (
+                          <button
+                            key={i}
+                            onClick={() => setIndex(i)}
+                            className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                              i === index ? "bg-white scale-125" : "bg-white/40"
+                            }`}
+                            aria-label={`Show image ${i + 1}`}
+                          />
+                        ))}
+                      </div>
                     </div>
-                    <p className="text-slate-600 font-medium text-lg">
-                      Subsea Systems & ROV Operations
-                    </p>
-                    <p className="text-slate-500 text-sm max-w-xs mx-auto">
-                      Replace with your project image, schematic, or subsea
-                      equipment photo
-                    </p>
-                  </div>
-                </div>
+                  );
+                })()}
               </div>
 
               {/* Background Decorative Elements */}
@@ -143,7 +187,7 @@ const ServiceHero: React.FC<HeroProps> = ({
               <div className="absolute top-12 -left-6 bg-white p-4 shadow-lg border border-slate-100 z-20">
                 <div className="text-2xl font-bold text-primary-blue">24/7</div>
                 <div className="text-sm text-slate-600 font-medium">
-                  ROV & Subsea Operations Support
+                  ROV Support
                 </div>
               </div>
 
@@ -152,7 +196,7 @@ const ServiceHero: React.FC<HeroProps> = ({
                   ISO 9001
                 </div>
                 <div className="text-sm text-slate-600 font-medium">
-                  Quality & Environmental Management (ISO 9001 / ISO 14001)
+                  (ISO 9001 / ISO 14001)
                 </div>
               </div>
             </div>
