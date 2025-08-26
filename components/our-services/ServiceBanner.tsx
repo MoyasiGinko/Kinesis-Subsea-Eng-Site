@@ -12,7 +12,7 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
   subtitle = "Services",
 }) => {
   return (
-    <div className="relative mt-40 w-full h-80 md:h-[24rem] lg:h-[28rem] overflow-hidden">
+    <div className="relative pt-40 w-full h-80 md:h-[24rem] lg:h-[28rem] overflow-hidden">
       {/* Main container with parallel trapezoidal split */}
       <div className="flex h-full">
         {/* Left section - Orange with industrial silhouette */}
