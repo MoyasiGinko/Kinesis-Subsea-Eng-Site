@@ -33,7 +33,8 @@ const getServiceData = (slug: string): Service => {
         "Cross-browser compatibility testing",
         "Ongoing maintenance and support",
       ],
-      image: "/images/web-development.jpg",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/2_vfvnuz.webp",
     },
     "mobile-applications": {
       id: "2",
@@ -52,7 +53,8 @@ const getServiceData = (slug: string): Service => {
         "Third-party API integrations",
         "Performance monitoring and analytics",
       ],
-      image: "/images/mobile-apps.jpg",
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/3_yp4wiw.webp",
     },
   };
 

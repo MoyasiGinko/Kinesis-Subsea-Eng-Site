@@ -12,11 +12,11 @@ const ServiceContent: React.FC<ServiceContentProps> = ({ service }) => {
     <div className="bg-white shadow-sm border border-gray-200">
       {/* Header */}
       <div className="px-8 py-6 border-b border-gray-200">
-        <div className="flex items-center gap-3 mb-2">
+        {/* <div className="flex items-center gap-3 mb-2">
           <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium uppercase tracking-wide">
             {service.category}
           </span>
-        </div>
+        </div> */}
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
           {service.title}
         </h1>
@@ -28,13 +28,25 @@ const ServiceContent: React.FC<ServiceContentProps> = ({ service }) => {
       {/* Service Image */}
       <div className="px-8 py-6 border-b border-gray-200">
         <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
-          <div className="text-center">
-            <div className="w-16 h-16 bg-gray-300 mx-auto mb-3"></div>
-            <p className="text-gray-500 font-medium">
-              Service Image Placeholder
-            </p>
-            <p className="text-sm text-gray-400">1200x600 recommended</p>
-          </div>
+          {service.image ? (
+            <div className="relative w-full h-64">
+              <Image
+                src={service.image}
+                alt={service.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 1200px"
+              />
+            </div>
+          ) : (
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gray-300 mx-auto mb-3"></div>
+              <p className="text-gray-500 font-medium">
+                Service Image Placeholder
+              </p>
+              <p className="text-sm text-gray-400">1200x600 recommended</p>
+            </div>
+          )}
         </div>
       </div>
 
