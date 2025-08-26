@@ -59,55 +59,55 @@ const menuItems = [
     submenu: [
       {
         title: "Engineering Design, Analysis & Simulation",
-        href: "/sectors/oil-and-gas",
+        href: "/our-services/subsea-engineering",
         description: "Technical engineering solutions",
         subitems: [
           {
             title: "Global Riser Analysis",
-            href: "/sectors/oil-and-gas/submenu-1",
+            href: "/our-services/oil-gas-rig",
             description: "Description for submenu item 1",
           },
           {
             title: "Mooring Analysis",
-            href: "/sectors/oil-and-gas/submenu-2",
+            href: "/our-services/oil-gas-rig",
             description: "Description for submenu item 2",
           },
           {
             title: "VIV & Fatigue Assessment",
-            href: "/sectors/oil-and-gas/submenu-3",
+            href: "/our-services/oil-gas-rig",
             description: "Description for submenu item 3",
           },
           {
             title: "Advance Finite Element Analysis (FEA)",
-            href: "/sectors/oil-and-gas/submenu-4",
+            href: "/our-services/oil-gas-rig",
             description: "Description for submenu item 4",
           },
           {
             title: "Pipeline & Installation",
-            href: "/sectors/oil-and-gas/submenu-5",
+            href: "/our-services/oil-gas-rig",
             description: "Description for submenu item 5",
           },
           {
             title: "Floating Offshore Wind",
-            href: "/sectors/oil-and-gas/submenu-6",
+            href: "/our-services/oil-gas-rig",
             description: "Description for submenu item 6",
           },
         ],
       },
       {
         title: "Specialist Advisor & Project Engineering",
-        href: "/sectors/renewables",
+        href: "/our-services/renewables-subsea",
         description:
           "Specialist advisory services and project engineering expertise",
       },
       {
         title: "Asset Integrity Management",
-        href: "/sectors/renewables",
+        href: "/our-services/renewables-subsea",
         description: "Expertise in managing complex projects",
       },
       {
         title: "Operation Support",
-        href: "/sectors/renewables",
+        href: "/our-services/renewables-subsea",
         description: "Safe and efficient decommissioning solutions",
       },
     ],
