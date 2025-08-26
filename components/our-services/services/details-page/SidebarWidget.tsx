@@ -21,7 +21,7 @@ const SidebarWidget: React.FC<SidebarWidgetProps> = ({
       case "testimonial":
         return (
           <div className="bg-blue-50 p-4">
-            <div className="text-2xl text-blue-600 mb-2">"</div>
+            <div className="text-2xl text-primary-blue mb-2">"</div>
             <p className="text-gray-700 italic mb-3 text-sm leading-relaxed">
               {content}
             </p>
@@ -41,17 +41,17 @@ const SidebarWidget: React.FC<SidebarWidgetProps> = ({
             </p>
             <div className="space-y-2 text-sm">
               <div className="flex items-center gap-2">
-                <span className="w-1 h-1 bg-blue-600"></span>
+                <span className="w-1 h-1 bg-primary-blue"></span>
                 <span className="text-gray-600">Phone: +1 (555) 123-4567</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-1 h-1 bg-blue-600"></span>
+                <span className="w-1 h-1 bg-primary-blue"></span>
                 <span className="text-gray-600">
                   Email: contact@company.com
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-1 h-1 bg-blue-600"></span>
+                <span className="w-1 h-1 bg-primary-blue"></span>
                 <span className="text-gray-600">Hours: Mon-Fri 9AM-6PM</span>
               </div>
             </div>

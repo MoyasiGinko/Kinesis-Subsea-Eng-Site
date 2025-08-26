@@ -32,8 +32,8 @@ const ServiceList: React.FC = () => {
             href={`/services/${service.slug}`}
             className={`block px-4 py-3 border-b border-gray-100 last:border-b-0 transition-colors duration-200 ${
               service.isActive
-                ? "bg-blue-50 text-blue-700 border-l-4 border-l-blue-600"
-                : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+                ? "bg-blue-50 text-blue-700 border-l-4 border-l-primary-blue"
+                : "text-gray-700 hover:bg-gray-50 hover:text-primary-blue"
             }`}
           >
             <span className="font-medium">{service.title}</span>

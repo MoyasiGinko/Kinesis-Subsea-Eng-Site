@@ -100,7 +100,7 @@ const CtaForm: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-blue-600 text-white py-3 px-4 font-medium hover:bg-blue-700 disabled:bg-blue-400 transition-colors"
+            className="w-full bg-primary-blue text-white py-3 px-4 font-medium hover:bg-blue-700 disabled:bg-blue-400 transition-colors"
           >
             {isSubmitting ? "Sending..." : "Send Request"}
           </button>

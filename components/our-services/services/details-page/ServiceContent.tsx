@@ -13,7 +13,7 @@ const ServiceContent: React.FC<ServiceContentProps> = ({ service }) => {
       {/* Header */}
       <div className="px-8 py-6 border-b border-gray-200">
         {/* <div className="flex items-center gap-3 mb-2">
-          <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium uppercase tracking-wide">
+          <span className="px-3 py-1 bg-primary-blue text-white text-sm font-medium uppercase tracking-wide">
             {service.category}
           </span>
         </div> */}
@@ -56,7 +56,7 @@ const ServiceContent: React.FC<ServiceContentProps> = ({ service }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {service.features.map((feature, index) => (
             <div key={index} className="flex items-start gap-3">
-              <div className="w-2 h-2 bg-blue-600 mt-2 flex-shrink-0"></div>
+              <div className="w-2 h-2 bg-primary-blue mt-2 flex-shrink-0"></div>
               <span className="text-gray-700 leading-relaxed">{feature}</span>
             </div>
           ))}
@@ -76,15 +76,21 @@ const ServiceContent: React.FC<ServiceContentProps> = ({ service }) => {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
           <div className="text-center">
-            <div className="text-2xl font-bold text-blue-600 mb-1">99.9%</div>
+            <div className="text-2xl font-bold text-primary-blue mb-1">
+              99.9%
+            </div>
             <div className="text-sm text-gray-600">Uptime Guarantee</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-blue-600 mb-1">24/7</div>
+            <div className="text-2xl font-bold text-primary-blue mb-1">
+              24/7
+            </div>
             <div className="text-sm text-gray-600">Support Available</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-blue-600 mb-1">500+</div>
+            <div className="text-2xl font-bold text-primary-blue mb-1">
+              500+
+            </div>
             <div className="text-sm text-gray-600">Satisfied Clients</div>
           </div>
         </div>
