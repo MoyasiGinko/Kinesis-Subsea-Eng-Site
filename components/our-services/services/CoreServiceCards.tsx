@@ -60,7 +60,7 @@ const CoreServicesCards: React.FC<IndustrialServicesSectionProps> = ({
         <div className="flex items-start justify-between mb-8">
           <div>
             <h2 className="text-4xl md:text-5xl font-extrabold text-primary-blue">
-              Our Core Services
+              Core Services
             </h2>
             <p className="mt-2 text-base md:text-lg text-primary-blue">
               Specialized solutions tailored to your needs

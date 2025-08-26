@@ -58,12 +58,13 @@ const ProjectProcess: React.FC = () => {
           <div className="lg:col-span-2">
             {/* Header */}
             <div className="mb-12">
-              <span className="text-primary-blue text-sm font-medium uppercase tracking-wide">
-                Work Process
-              </span>
-              <h2 className="text-4xl font-bold text-gray-900 mt-2">
+              <h2 className="text-5xl font-bold text-primary-blue mt-2">
                 Project implementation process
               </h2>
+              <p className="text-gray-600 text-lg leading-relaxed mt-4">
+                A clear, step-by-step approach from design through final
+                assembly to ensure quality and on-time delivery.
+              </p>
             </div>
 
             {/* Process Grid */}
@@ -74,21 +75,36 @@ const ProjectProcess: React.FC = () => {
                   className="bg-white p-8 rounded-none shadow-sm border border-gray-100"
                 >
                   {/* Step Number */}
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-primary-blue rounded-none flex items-center justify-center">
-                      <span className="text-white font-bold text-lg">
-                        {step.step}
-                      </span>
-                    </div>
-                  </div>
+                  <div className="group">
+                    <div className="flex items-center mb-6">
+                      <div className="w-12 h-12 bg-primary-blue rounded-none flex items-center justify-center">
+                        <span className="text-white font-bold text-lg">
+                          {step.step}
+                        </span>
+                      </div>
 
-                  {/* Content */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {step.description}
-                  </p>
+                      {/* Decorative design filling the remaining space */}
+                      <div className="flex-1 ml-4 flex items-center">
+                        {/* dotted line - fills when the card (group) is hovered */}
+                        <div className="flex-1 h-px w-full border-t border-dotted border-primary-blue/30 transition-colors duration-300 ease-in-out group-hover:border-primary-blue" />
+
+                        {/* small accent dots to the right */}
+                        <div className="ml-3 flex items-center space-x-2">
+                          <span className="w-2 h-2 bg-primary-blue/30 rounded-full transition-colors duration-300 ease-in-out group-hover:bg-primary-blue" />
+                          <span className="w-2 h-2 bg-primary-blue/20 rounded-full transition-colors duration-300 ease-in-out group-hover:bg-primary-blue/80" />
+                          <span className="w-2 h-2 bg-primary-blue/10 rounded-full transition-colors duration-300 ease-in-out group-hover:bg-primary-blue/60" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Move title + description inside the same group so hovering anywhere on the card triggers the fill */}
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
