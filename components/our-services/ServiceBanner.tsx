@@ -8,8 +8,8 @@ interface ServiceBannerProps {
 
 const ServiceBanner: React.FC<ServiceBannerProps> = ({
   title = "Services",
-  breadcrumb = "Industrie - Industry and Engineering WordPress Theme",
-  subtitle = "Services",
+  breadcrumb = "Services > Subsea Engineering",
+  subtitle = "Oil & Gas",
 }) => {
   return (
     <div className="relative  w-full h-80 md:h-[24rem] lg:h-[28rem] overflow-hidden">
@@ -38,7 +38,7 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
             {/* Industrial silhouette (optional) */}
 
             {/* Content overlay */}
-            <div className="relative z-10 flex flex-col justify-center h-full px-8 md:px-16 lg:px-24">
+            <div className="relative ml-40 z-10 flex flex-col justify-center h-full px-8 md:px-16 lg:px-24">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
                 {title}
               </h1>

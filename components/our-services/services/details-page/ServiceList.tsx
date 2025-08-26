@@ -10,14 +10,9 @@ interface ServiceItem {
 
 const ServiceList: React.FC = () => {
   const services: ServiceItem[] = [
-    { title: "Web Development", slug: "web-development", isActive: true },
-    { title: "Mobile Applications", slug: "mobile-applications" },
-    { title: "Cloud Solutions", slug: "cloud-solutions" },
-    { title: "Digital Marketing", slug: "digital-marketing" },
-    { title: "UI/UX Design", slug: "ui-ux-design" },
-    { title: "Data Analytics", slug: "data-analytics" },
-    { title: "Cybersecurity", slug: "cybersecurity" },
-    { title: "Consulting Services", slug: "consulting-services" },
+    { title: "Subsea Engineering", slug: "subsea-engineering", isActive: true },
+    { title: "Oil & Gas Rig Services", slug: "oil-gas-rig" },
+    { title: "Renewables", slug: "renewables-subsea" },
   ];
 
   return (
@@ -29,7 +24,7 @@ const ServiceList: React.FC = () => {
         {services.map((service, index) => (
           <Link
             key={index}
-            href={`/services/${service.slug}`}
+            href={`/our-services/${service.slug}`}
             className={`block px-4 py-3 border-b border-gray-100 last:border-b-0 transition-colors duration-200 ${
               service.isActive
                 ? "bg-blue-50 text-blue-700 border-l-4 border-l-primary-blue"

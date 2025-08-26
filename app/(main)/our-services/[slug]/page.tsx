@@ -14,44 +14,60 @@ interface ServicePageProps {
 // Sample service data - in production, this would come from an API or CMS
 const getServiceData = (slug: string): Service => {
   const services: { [key: string]: Service } = {
-    "web-development": {
+    "subsea-engineering": {
       id: "1",
-      slug: "web-development",
-      title: "Professional Web Development Services",
-      category: "Development",
+      slug: "subsea-engineering",
+      title: "Subsea Engineering Services",
+      category: "Subsea Engineering",
       description:
-        "Build powerful, scalable web applications with our expert development team. We specialize in modern technologies and deliver solutions that drive business growth and enhance user experiences.",
+        "Comprehensive subsea engineering solutions for offshore projects — from concept and detailed design to installation support, inspection and maintenance. We combine engineering excellence with practical offshore experience to deliver safe, reliable subsea systems.",
       features: [
-        "Custom web application development",
-        "Responsive design implementation",
-        "Performance optimization and SEO",
-        "Content management system integration",
-        "E-commerce platform development",
-        "API development and integration",
-        "Database design and optimization",
-        "Security implementation and testing",
-        "Cross-browser compatibility testing",
-        "Ongoing maintenance and support",
+        "Subsea systems design and analysis",
+        "ROV and trenching support",
+        "Umbilical, riser and flowline engineering",
+        "Geotechnical and pipeline route assessment",
+        "Subsea installation engineering and oversight",
+        "Inspection, repair and maintenance (IRM)",
+        "Diver and non-diver intervention planning",
+        "Subsea control systems and hydraulics",
+      ],
+      image:
+        "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/1_jvnjiz.webp",
+    },
+    "oil-gas-rig": {
+      id: "2",
+      slug: "oil-gas-rig",
+      title: "Oil & Gas Rig Services",
+      category: "Oil & Gas",
+      description:
+        "End-to-end rig services for offshore and onshore drilling operations. We provide rig consulting, safety and performance optimisation, mobilisation support and lifecycle maintenance to maximise uptime and minimise operational risk.",
+      features: [
+        "Rig design review and fitness-for-purpose assessments",
+        "Commissioning and mobilisation support",
+        "Wellsite engineering and logistics",
+        "Barrier management and HSE compliance",
+        "Preventative maintenance planning",
+        "Performance monitoring and optimisation",
+        "Emergency response and contingency planning",
       ],
       image:
         "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/2_vfvnuz.webp",
     },
-    "mobile-applications": {
-      id: "2",
-      slug: "mobile-applications",
-      title: "Mobile Application Development",
-      category: "Development",
+    "renewables-subsea": {
+      id: "3",
+      slug: "renewables-subsea",
+      title: "Renewables & Offshore Wind Services",
+      category: "Renewables",
       description:
-        "Create engaging mobile experiences with our native and cross-platform app development services. From concept to deployment, we deliver apps that users love.",
+        "Specialist services for the renewable energy sector, focusing on offshore wind and tidal projects. We support project development, foundation and array design, installation planning and long-term O&M strategies.",
       features: [
-        "Native iOS and Android development",
-        "Cross-platform solutions with React Native",
-        "UI/UX design and prototyping",
-        "App store optimization",
-        "Push notification implementation",
-        "Offline functionality support",
-        "Third-party API integrations",
-        "Performance monitoring and analytics",
+        "Offshore wind foundation and substructure engineering",
+        "Array layout and wake-loss assessments",
+        "Installation engineering and vessel selection",
+        "Electrical balance-of-plant and export cable design",
+        "Environmental and permitting support",
+        "Operations & maintenance planning",
+        "Lifetime assessment and decommissioning planning",
       ],
       image:
         "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/3_yp4wiw.webp",
@@ -63,10 +79,9 @@ const getServiceData = (slug: string): Service => {
 
 export async function generateStaticParams() {
   return [
-    { slug: "web-development" },
-    { slug: "mobile-applications" },
-    { slug: "cloud-solutions" },
-    { slug: "digital-marketing" },
+    { slug: "subsea-engineering" },
+    { slug: "oil-gas-rig" },
+    { slug: "renewables-subsea" },
   ];
 }
 
