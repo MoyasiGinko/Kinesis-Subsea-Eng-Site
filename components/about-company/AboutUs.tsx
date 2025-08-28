@@ -382,8 +382,8 @@ const AboutKinesis: React.FC = () => {
 
             <div className="col-span-4">
               <div className="relative w-full h-80">
-                <div className="absolute top-0 right-0 w-48 h-24 bg-primary-blue transform -skew-y-6"></div>
-                <div className="absolute top-16 right-8 w-40 h-20 bg-primary-blue transform -skew-y-6"></div>
+                <div className="absolute top-0 right-0 w-48 h-24 bg-blue-600 transform -skew-y-6"></div>
+                <div className="absolute top-16 right-8 w-40 h-20 bg-blue-400 transform -skew-y-6"></div>
                 <div className="absolute bottom-20 right-0 w-56 h-28 bg-gray-700 transform -skew-y-6"></div>
               </div>
             </div>
