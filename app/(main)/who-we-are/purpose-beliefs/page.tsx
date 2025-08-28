@@ -1,4 +1,4 @@
-import PurposeBeliefs from "@/components/who-we-are/purpose-beliefs";
+import PurposeBeliefs from "@/components/about-company/purpose-beliefs";
 
 export default function Page() {
   return <PurposeBeliefs />;

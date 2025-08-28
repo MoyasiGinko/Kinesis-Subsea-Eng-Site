@@ -1,4 +1,4 @@
-import OurHistory from "@/components/who-we-are/our-history";
+import OurHistory from "@/components/about-company/our-history";
 
 export default function Page() {
   return <OurHistory />;
