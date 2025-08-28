@@ -180,7 +180,9 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const pathname = usePathname();
   // start scrolled if we're on a service detail page (e.g. /our-services/[slug])
-  const startsOnServiceDetail = Boolean(pathname && pathname.startsWith("/our-services/"));
+  const startsOnServiceDetail = Boolean(
+    pathname && pathname.startsWith("/our-services/")
+  );
   const [isScrolled, setIsScrolled] = useState(startsOnServiceDetail);
   const [searchFocused, setSearchFocused] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
