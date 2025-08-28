@@ -1,4 +1,4 @@
-import MeetOurTeam from "@/components/who-we-are/meet-our-team";
+import MeetOurTeam from "@/components/about-company/meet-our-team";
 
 export default function Page() {
   return <MeetOurTeam />;
