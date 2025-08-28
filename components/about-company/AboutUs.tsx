@@ -91,15 +91,21 @@ const AboutKinesis: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Company Overview - Extraordinary Design */}
-      <div className="relative overflow-hidden bg-white">
+      <div
+        className="relative overflow-hidden bg-white bg-fit cove bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/service2.gif')" }}
+      >
+        {/* optional overlay for better contrast */}
+        <div className="absolute inset-0 bg-black/20 pointer-events-none"></div>
+
         <div className="max-w-[1480px] mx-auto px-6 py-20">
           <div className="relative">
             {/* Background geometric patterns */}
             {/* <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-0 right-0 w-96 h-96 border-r-8 border-t-8 border-blue-600"></div>
-              <div className="absolute bottom-20 left-0 w-64 h-64 border-l-4 border-b-4 border-gray-800"></div>
-              <div className="absolute top-1/2 right-1/3 w-80 h-80 border-r-6 border-blue-400"></div>
-            </div> */}
+          <div className="absolute top-0 right-0 w-96 h-96 border-r-8 border-t-8 border-blue-600"></div>
+          <div className="absolute bottom-20 left-0 w-64 h-64 border-l-4 border-b-4 border-gray-800"></div>
+          <div className="absolute top-1/2 right-1/3 w-80 h-80 border-r-6 border-blue-400"></div>
+        </div> */}
 
             {/* Main content with diagonal arrangement */}
             <div className="relative z-10 grid grid-cols-12 gap-6 items-center min-h-[600px]">
@@ -144,8 +150,8 @@ const AboutKinesis: React.FC = () => {
 
               <div className="col-span-1">
                 {/* <div className="writing-mode-vertical text-gray-600 font-bold text-sm tracking-widest transform rotate-0">
-                  ABOUT KINESIS
-                </div> */}
+          ABOUT KINESIS
+            </div> */}
               </div>
 
               <div className="col-span-5">
