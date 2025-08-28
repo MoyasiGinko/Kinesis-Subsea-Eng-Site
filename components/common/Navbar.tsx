@@ -17,7 +17,7 @@ import {
 const menuItems = [
   {
     title: "About",
-    href: "/who-we-are",
+    href: "/about",
     // submenu: [
     //   {
     //     title: "Purpose",
