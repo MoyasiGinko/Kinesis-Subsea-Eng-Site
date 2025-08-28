@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import {
   Menu,
   X,
@@ -178,16 +178,25 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
   );
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  // start scrolled if we're on a service detail page (e.g. /our-services/[slug])
+  const startsOnServiceDetail = Boolean(pathname && pathname.startsWith("/our-services/"));
+  const [isScrolled, setIsScrolled] = useState(startsOnServiceDetail);
   const [searchFocused, setSearchFocused] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const subCloseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    // If we're on a service detail page, keep scrolled styles regardless of scroll
+    if (startsOnServiceDetail) {
+      setIsScrolled(true);
+      return;
+    }
+
     console.log("Navbar: scrollY changed to", scrollY);
     setIsScrolled(scrollY > 20);
-  }, [scrollY]);
+  }, [scrollY, startsOnServiceDetail]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

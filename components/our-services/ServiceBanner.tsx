@@ -12,7 +12,7 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
   subtitle = "Oil & Gas",
 }) => {
   return (
-    <div className="relative  w-full h-80 md:h-[24rem] lg:h-[28rem] overflow-hidden">
+    <div className="relative mt-32 w-full h-80 md:h-[24rem] lg:h-[28rem] overflow-hidden">
       {/* Main container with parallel trapezoidal split */}
       <div className="flex h-full">
         {/* Left section - Orange with industrial silhouette */}
@@ -38,7 +38,7 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
             {/* Industrial silhouette (optional) */}
 
             {/* Content overlay */}
-            <div className="relative ml-40 z-10 flex flex-col justify-center h-full px-8 md:px-16 lg:px-24">
+            <div className="relative ml-36 z-10 flex flex-col justify-center h-full px-8 md:px-16 lg:px-24">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
                 {title}
               </h1>
