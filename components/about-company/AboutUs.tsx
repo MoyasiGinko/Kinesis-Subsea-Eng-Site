@@ -102,9 +102,9 @@ const AboutKinesis: React.FC = () => {
           <div className="relative">
             {/* Background geometric patterns */}
             {/* <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-96 h-96 border-r-8 border-t-8 border-blue-600"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 border-r-8 border-t-8 border-primary-blue"></div>
           <div className="absolute bottom-20 left-0 w-64 h-64 border-l-4 border-b-4 border-gray-800"></div>
-          <div className="absolute top-1/2 right-1/3 w-80 h-80 border-r-6 border-blue-400"></div>
+          <div className="absolute top-1/2 right-1/3 w-80 h-80 border-r-6 border-primary-blue"></div>
         </div> */}
 
             {/* Main content with diagonal arrangement */}
@@ -113,10 +113,10 @@ const AboutKinesis: React.FC = () => {
                 <div className="relative">
                   {/* Company name with geometric accent */}
                   <div className="relative mb-8">
-                    <div className="absolute -left-8 top-0 w-2 h-32 bg-blue-600"></div>
+                    <div className="absolute -left-8 top-0 w-2 h-32 bg-primary-blue"></div>
                     <h1 className="text-6xl font-black text-gray-900 leading-none">
                       KINESIS
-                      <span className="block text-blue-600">SUBSEA</span>
+                      <span className="block text-primary-blue">SUBSEA</span>
                       <span className="block text-gray-700 text-3xl font-normal mt-2">
                         ENGINEERING
                       </span>
@@ -135,7 +135,7 @@ const AboutKinesis: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="bg-blue-600 text-white p-6 ml-12 transform -skew-x-6">
+                    <div className="bg-primary-blue text-white p-6 ml-12 transform -skew-x-6">
                       <div className="transform skew-x-6">
                         <p className="text-lg leading-relaxed">
                           Our multidisciplinary team combines decades of
@@ -158,8 +158,8 @@ const AboutKinesis: React.FC = () => {
                 <div className="relative">
                   {/* Angular visual representation */}
                   <div className="space-y-4">
-                    <div className="bg-blue-600 h-24 w-full relative">
-                      <div className="absolute right-0 top-0 w-20 h-full bg-blue-800"></div>
+                    <div className="bg-primary-blue h-24 w-full relative">
+                      <div className="absolute right-0 top-0 w-20 h-full bg-primary-blue-hover"></div>
                       <div className="absolute left-8 top-8 text-white font-bold">
                         ESTABLISHED 2018
                       </div>
@@ -172,8 +172,8 @@ const AboutKinesis: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="bg-blue-400 h-20 w-3/4 relative">
-                      <div className="absolute right-0 top-0 w-12 h-full bg-blue-600"></div>
+                    <div className="bg-primary-blue h-20 w-3/4 relative">
+                      <div className="absolute right-0 top-0 w-12 h-full bg-primary-blue"></div>
                       <div className="absolute left-8 top-6 text-white font-bold">
                         INNOVATION FOCUSED
                       </div>
@@ -199,11 +199,11 @@ const AboutKinesis: React.FC = () => {
             {/* Mission */}
             <div className="col-span-5">
               <div className="relative">
-                <div className="absolute -left-6 top-0 w-1 h-24 bg-blue-600"></div>
+                <div className="absolute -left-6 top-0 w-1 h-24 bg-primary-blue"></div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">
                   Our Mission
                 </h2>
-                <div className="bg-white p-8 border-l-4 border-blue-600">
+                <div className="bg-white p-8 border-l-4 border-primary-blue">
                   <p className="text-lg text-gray-700 leading-relaxed">
                     To revolutionize subsea engineering through innovative
                     solutions that enhance safety, efficiency, and environmental
@@ -216,7 +216,7 @@ const AboutKinesis: React.FC = () => {
 
             {/* Spacer with visual element */}
             <div className="col-span-2 flex items-center justify-center">
-              <div className="w-16 h-16 bg-blue-600 transform rotate-45 relative">
+              <div className="w-16 h-16 bg-primary-blue transform rotate-45 relative">
                 <div className="absolute inset-2 bg-white transform -rotate-45"></div>
               </div>
             </div>
@@ -250,14 +250,14 @@ const AboutKinesis: React.FC = () => {
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Our Impact
             </h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
+            <div className="w-24 h-1 bg-primary-blue mx-auto"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="relative group">
-                <div className="bg-gray-50 border-2 border-gray-200 hover:border-blue-600 transition-all duration-300 p-8 text-center">
-                  <div className="text-blue-600 mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="bg-gray-50 border-2 border-gray-200 hover:border-primary-blue transition-all duration-300 p-8 text-center">
+                  <div className="text-primary-blue mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
                     {stat.icon}
                   </div>
                   <div className="text-4xl font-black text-gray-900 mb-2">
@@ -265,7 +265,7 @@ const AboutKinesis: React.FC = () => {
                   </div>
                   <div className="text-gray-700 font-medium">{stat.label}</div>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary-blue transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
               </div>
             ))}
           </div>
@@ -279,7 +279,7 @@ const AboutKinesis: React.FC = () => {
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Leadership Team
             </h2>
-            <div className="w-24 h-1 bg-blue-600"></div>
+            <div className="w-24 h-1 bg-primary-blue"></div>
             <p className="text-lg text-gray-700 mt-6 max-w-3xl">
               Our leadership team brings together world-class expertise in
               subsea engineering, combining academic excellence with hands-on
@@ -292,13 +292,13 @@ const AboutKinesis: React.FC = () => {
             {leadership.map((member, index) => (
               <div
                 key={index}
-                className="bg-white border-l-4 border-blue-600 p-8 relative group hover:border-gray-800 transition-colors duration-300"
+                className="bg-white border-l-4 border-primary-blue p-8 relative group hover:border-gray-800 transition-colors duration-300"
               >
                 <div className="absolute top-0 right-0 w-16 h-16 bg-gray-50 transform -skew-y-12 group-hover:bg-blue-50 transition-colors duration-300"></div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {member.name}
                 </h3>
-                <div className="text-blue-600 font-semibold mb-3">
+                <div className="text-primary-blue font-semibold mb-3">
                   {member.position}
                 </div>
                 <p className="text-gray-700">{member.expertise}</p>
@@ -315,14 +315,14 @@ const AboutKinesis: React.FC = () => {
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Our Core Values
             </h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
+            <div className="w-24 h-1 bg-primary-blue mx-auto"></div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {values.map((value, index) => (
               <div key={index} className="relative group">
-                <div className="bg-gray-50 p-8 border-2 border-gray-200 hover:border-blue-600 transition-all duration-300 h-full">
-                  <div className="text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="bg-gray-50 p-8 border-2 border-gray-200 hover:border-primary-blue transition-all duration-300 h-full">
+                  <div className="text-primary-blue mb-6 group-hover:scale-110 transition-transform duration-300">
                     {value.icon}
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
@@ -332,7 +332,7 @@ const AboutKinesis: React.FC = () => {
                     {value.description}
                   </p>
                 </div>
-                <div className="absolute top-0 right-0 w-8 h-8 bg-blue-600 transform rotate-45 scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                <div className="absolute top-0 right-0 w-8 h-8 bg-primary-blue transform rotate-45 scale-0 group-hover:scale-100 transition-transform duration-300"></div>
               </div>
             ))}
           </div>
@@ -340,24 +340,26 @@ const AboutKinesis: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="relative bg-gray-900 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-64 h-64 border-l-4 border-t-4 border-blue-600 opacity-30"></div>
-          <div className="absolute bottom-0 right-0 w-48 h-48 border-r-4 border-b-4 border-blue-400 opacity-20"></div>
-        </div>
+      <div className="relative bg-white overflow-hidden">
+        {/* <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-64 h-64 border-l-4 border-t-4 border-primary-blue opacity-30"></div>
+          <div className="absolute top-0 right-0 w-48 h-48 border-r-4 border-b-4 border-primary-blue opacity-20"></div>
+        </div> */}
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
           <div className="grid grid-cols-12 gap-8 items-center">
             <div className="col-span-8">
               <div className="relative">
-                <div className="absolute -left-6 top-0 w-2 h-full bg-blue-600"></div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
+                <div className="absolute -left-6 top-0 w-2 h-full bg-primary-blue"></div>
+                <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight mb-8">
                   Partner with
-                  <span className="block text-blue-400">Kinesis Subsea</span>
+                  <span className="block text-primary-blue">
+                    Kinesis Subsea
+                  </span>
                 </h2>
 
                 <div className="space-y-4 mb-8">
-                  <div className="bg-blue-600 text-white p-6 max-w-2xl transform -skew-x-3">
+                  <div className="bg-primary-blue text-white p-6 max-w-2xl transform -skew-x-3">
                     <div className="transform skew-x-3">
                       <p className="text-lg">
                         Experience the difference that innovative engineering
@@ -368,7 +370,7 @@ const AboutKinesis: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 font-bold transition-all duration-300 transform hover:-translate-y-1">
+                  <button className="bg-primary-blue hover:bg-primary-blue-hover text-white px-8 py-4 font-bold transition-all duration-300 transform hover:-translate-y-1">
                     START YOUR PROJECT
                   </button>
                   <button className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 font-bold transition-all duration-300">
@@ -380,8 +382,8 @@ const AboutKinesis: React.FC = () => {
 
             <div className="col-span-4">
               <div className="relative w-full h-80">
-                <div className="absolute top-0 right-0 w-48 h-24 bg-blue-600 transform -skew-y-6"></div>
-                <div className="absolute top-16 right-8 w-40 h-20 bg-blue-400 transform -skew-y-6"></div>
+                <div className="absolute top-0 right-0 w-48 h-24 bg-primary-blue transform -skew-y-6"></div>
+                <div className="absolute top-16 right-8 w-40 h-20 bg-primary-blue transform -skew-y-6"></div>
                 <div className="absolute bottom-20 right-0 w-56 h-28 bg-gray-700 transform -skew-y-6"></div>
               </div>
             </div>
