@@ -188,7 +188,7 @@ const OurProjects: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Projects Overview - Extraordinary Design */}
       <div className="relative overflow-hidden bg-white">
-        <div className="max-w-7xl mx-auto px-6 py-20">
+        <div className="max-w-[1480px] mx-auto px-6 py-20">
           <div className="relative">
             {/* Background geometric patterns */}
             <div className="absolute inset-0 opacity-10">
@@ -200,7 +200,7 @@ const OurProjects: React.FC = () => {
             {/* Header content with diagonal arrangement */}
             <div className="relative z-10 grid grid-cols-12 gap-6 items-center min-h-[500px]">
               <div className="col-span-1">
-                <div className="writing-mode-vertical text-gray-600 font-bold text-sm tracking-widest transform rotate-180">
+                <div className="writing-mode-vertical text-gray-600 font-bold text-sm tracking-widest transform -rotate-90">
                   OUR PROJECTS
                 </div>
               </div>
