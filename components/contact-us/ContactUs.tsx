@@ -422,12 +422,12 @@ const ContactUs: React.FC = () => {
         </div>
       </div>
 
-      {/* Office Locations - Asymmetrical Layout */}
-      <div className="bg-gray-100 py-24">
+      {/* Map Section - Placeholder */}
+      <div className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Global Offices
+              Find Our Office
             </h2>
             <div className="w-24 h-1 bg-primary-blue"></div>
             <p className="text-lg text-gray-700 mt-6 max-w-3xl">
@@ -436,69 +436,9 @@ const ContactUs: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {offices.map((office, index) => (
-              <div
-                key={index}
-                className={`relative group ${index === 1 ? "md:mt-12" : ""}`}
-              >
-                <div className="bg-white border-2 border-gray-200 hover:border-primary-blue transition-all duration-300 p-8 h-full">
-                  {/* Office Header */}
-                  <div className="relative mb-6">
-                    <div className="absolute -left-12 top-0 w-2 h-16 bg-primary-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <h3 className="text-2xl font-bold text-gray-900">
-                      {office.city}
-                    </h3>
-                    <div className="text-primary-blue font-medium">
-                      {office.country}
-                    </div>
-                  </div>
-
-                  {/* Office Details */}
-                  <div className="space-y-4">
-                    <div className="flex items-start">
-                      <MapPin className="w-5 h-5 text-primary-blue mr-3 mt-1 flex-shrink-0" />
-                      <div className="text-gray-700">{office.address}</div>
-                    </div>
-
-                    <div className="flex items-center">
-                      <Phone className="w-5 h-5 text-primary-blue mr-3" />
-                      <div className="text-gray-700">{office.phone}</div>
-                    </div>
-
-                    <div className="flex items-center">
-                      <Mail className="w-5 h-5 text-primary-blue mr-3" />
-                      <div className="text-gray-700">{office.email}</div>
-                    </div>
-
-                    <div className="flex items-center">
-                      <Clock className="w-5 h-5 text-primary-blue mr-3" />
-                      <div className="text-gray-700">{office.timezone}</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Decorative Element */}
-                <div className="absolute top-0 right-0 w-8 h-8 bg-primary-blue transform rotate-45 scale-0 group-hover:scale-100 transition-transform duration-300"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Map Section - Placeholder */}
-      <div className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Find Us Worldwide
-            </h2>
-            <div className="w-24 h-1 bg-primary-blue mx-auto"></div>
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             <div className="lg:col-span-2">
-              <div className="relative overflow-hidden rounded-md shadow">
+              <div className="relative overflow-hidden  shadow">
                 <iframe
                   title="Kinesis Subsea - Aberdeen office"
                   src="https://www.google.com/maps?q=57.1497,-2.0943&z=14&output=embed"
@@ -508,7 +448,7 @@ const ContactUs: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-md shadow">
+            <div className="bg-white p-6 shadow">
               <h3 className="text-xl font-bold mb-2">Aberdeen Office</h3>
               <div className="text-gray-700 mb-4">
                 45 Energy Park, Offshore Technology Centre
@@ -532,8 +472,8 @@ const ContactUs: React.FC = () => {
                 <a
                   href="https://www.google.com/maps/dir/?api=1&destination=57.1497,-2.0943"
                   target="_blank"
-                  rel="noreferrer"
-                  className="inline-block mt-4 bg-primary-blue text-white px-4 py-2 rounded hover:bg-primary-blue-hover"
+                  rel="noopener"
+                  className="inline-block mt-4 bg-primary-blue text-white px-4 py-2  hover:bg-primary-blue-hover"
                 >
                   Get directions
                 </a>
