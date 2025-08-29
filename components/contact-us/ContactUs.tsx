@@ -496,19 +496,49 @@ const ContactUs: React.FC = () => {
             <div className="w-24 h-1 bg-primary-blue mx-auto"></div>
           </div>
 
-          {/* Map Placeholder */}
-          <div className="bg-gray-300 h-96 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-200 to-gray-400"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-gray-700 text-lg font-medium">
-                Interactive Office Location Map
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            <div className="lg:col-span-2">
+              <div className="relative overflow-hidden rounded-md shadow">
+                <iframe
+                  title="Kinesis Subsea - Aberdeen office"
+                  src="https://www.google.com/maps?q=57.1497,-2.0943&z=14&output=embed"
+                  className="w-full h-96 border-0"
+                  allowFullScreen
+                />
               </div>
             </div>
 
-            {/* Office Markers */}
-            <div className="absolute top-1/3 left-1/4 w-4 h-4 bg-primary-blue transform rotate-45"></div>
-            <div className="absolute top-2/3 left-1/3 w-4 h-4 bg-primary-blue transform rotate-45"></div>
-            <div className="absolute top-1/2 right-1/3 w-4 h-4 bg-primary-blue transform rotate-45"></div>
+            <div className="bg-white p-6 rounded-md shadow">
+              <h3 className="text-xl font-bold mb-2">Aberdeen Office</h3>
+              <div className="text-gray-700 mb-4">
+                45 Energy Park, Offshore Technology Centre
+                <br />
+                Aberdeen AB23 8GX, United Kingdom
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex items-center">
+                  <MapPin className="w-5 h-5 text-primary-blue mr-3" />
+                  <span className="text-gray-700">
+                    Coordinates: 57.1497, -2.0943
+                  </span>
+                </div>
+
+                <div className="flex items-center">
+                  <Phone className="w-5 h-5 text-primary-blue mr-3" />
+                  <span className="text-gray-700">+44 (0) 1224 567890</span>
+                </div>
+
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=57.1497,-2.0943"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-block mt-4 bg-primary-blue text-white px-4 py-2 rounded hover:bg-primary-blue-hover"
+                >
+                  Get directions
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
