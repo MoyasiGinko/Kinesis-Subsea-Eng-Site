@@ -517,8 +517,9 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
 
         {/* Get in Touch Button and Grid Icon */}
         <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
-          <button
-            className={`hidden md:block font-medium py-4 md:py-5 px-6 md:px-10 xl:px-14 text-base xl:text-lg transition-all duration-300 transform hover:-translate-y-0.5 ${
+          <Link
+            href="/contact-us"
+            className={`hidden md:inline-flex items-center font-medium py-4 md:py-5 px-6 md:px-10 xl:px-14 text-base xl:text-lg transition-all duration-300 transform hover:-translate-y-0.5 ${
               isScrolled
                 ? "bg-primary-blue hover:bg-primary-blue-hover text-white"
                 : "bg-white hover:bg-gray-100 text-gray-900"
@@ -528,7 +529,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
               Contact Us
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </span>
-          </button>
+          </Link>
           <button
             title="Grid View"
             className="p-2 md:p-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300"
