@@ -373,7 +373,7 @@ const AboutKinesis: React.FC = () => {
                   <button className="bg-primary-blue hover:bg-primary-blue-hover text-white px-8 py-4 font-bold transition-all duration-300 transform hover:-translate-y-1">
                     START YOUR PROJECT
                   </button>
-                  <button className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 font-bold transition-all duration-300">
+                  <button className="border-2 border-black text-black hover:bg-white hover:text-primary-blue-hover hover:border-primary-blue-hover px-8 py-4 font-bold transition-all duration-300">
                     MEET OUR TEAM
                   </button>
                 </div>
@@ -382,7 +382,7 @@ const AboutKinesis: React.FC = () => {
 
             <div className="col-span-4">
               <div className="relative w-full h-80">
-                <div className="absolute top-0 right-0 w-48 h-24 bg-blue-600 transform -skew-y-6"></div>
+                <div className="absolute top-0 right-0 w-48 h-24 bg-primary-blue transform -skew-y-6"></div>
                 <div className="absolute top-16 right-8 w-40 h-20 bg-blue-400 transform -skew-y-6"></div>
                 <div className="absolute bottom-20 right-0 w-56 h-28 bg-gray-700 transform -skew-y-6"></div>
               </div>

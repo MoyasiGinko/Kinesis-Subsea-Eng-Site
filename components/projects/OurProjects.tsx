@@ -483,24 +483,26 @@ const OurProjects: React.FC = () => {
       )}
 
       {/* CTA Section */}
-      <div className="relative bg-gray-900 overflow-hidden">
-        <div className="absolute inset-0">
+      <div className="relative bg-white overflow-hidden">
+        {/* <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-64 h-64 border-l-4 border-t-4 border-blue-600 opacity-30"></div>
           <div className="absolute bottom-0 right-0 w-48 h-48 border-r-4 border-b-4 border-blue-400 opacity-20"></div>
-        </div>
+        </div> */}
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
           <div className="grid grid-cols-12 gap-8 items-center">
             <div className="col-span-8">
               <div className="relative">
                 <div className="absolute -left-6 top-0 w-2 h-full bg-blue-600"></div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
+                <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight mb-8">
                   Start your next
-                  <span className="block text-blue-400">offshore project</span>
+                  <span className="block text-primary-blue">
+                    offshore project
+                  </span>
                 </h2>
 
                 <div className="space-y-4 mb-8">
-                  <div className="bg-blue-600 text-white p-6 max-w-2xl transform -skew-x-3">
+                  <div className="bg-primary-blue text-white p-6 max-w-2xl transform -skew-x-3">
                     <div className="transform skew-x-3">
                       <p className="text-lg">
                         Join our portfolio of successful offshore developments
@@ -511,10 +513,10 @@ const OurProjects: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 font-bold transition-all duration-300 transform hover:-translate-y-1">
+                  <button className="bg-primary-blue hover:bg-primary-blue-hover text-white px-8 py-4 font-bold transition-all duration-300 transform hover:-translate-y-1">
                     DISCUSS YOUR PROJECT
                   </button>
-                  <button className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 font-bold transition-all duration-300">
+                  <button className="border-2 border-black text-black hover:bg-white hover:text-primary-blue-hover hover:border-primary-blue-hover px-8 py-4 font-bold transition-all duration-300">
                     REQUEST PROPOSAL
                   </button>
                 </div>
