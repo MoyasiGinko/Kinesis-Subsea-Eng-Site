@@ -169,8 +169,8 @@ const OurProjects: React.FC = () => {
 
   const statusColors = {
     completed: "bg-green-600",
-    ongoing: "bg-blue-600",
-    upcoming: "bg-orange-600",
+    ongoing: "bg-primary-blue",
+    upcoming: "bg-primary-orange",
   };
 
   const statusLabels = {
@@ -203,7 +203,7 @@ const OurProjects: React.FC = () => {
           <div className="relative">
             {/* Background geometric patterns */}
             <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-0 left-0 w-96 h-96 border-l-8 border-b-8 border-blue-600"></div>
+              <div className="absolute top-0 left-0 w-96 h-96 border-l-8 border-b-8 border-primary-blue"></div>
               <div className="absolute top-20 right-0 w-64 h-64 border-r-4 border-t-4 border-gray-800"></div>
               <div className="absolute bottom-0 right-1/3 w-80 h-80 border-r-6 border-blue-400"></div>
             </div>
@@ -222,7 +222,7 @@ const OurProjects: React.FC = () => {
                     PROJECT
                     <span className="block text-blue-300">PORTFOLIO</span>
                   </h1>
-                  <div className="w-24 h-1 bg-blue-400"></div>
+                  <div className="w-24 h-1 bg-primary-blue"></div>
                 </div>
               </div>
 
@@ -240,7 +240,7 @@ const OurProjects: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="bg-blue-600/90 text-white p-6 ml-12 transform -skew-x-6">
+                    <div className="bg-primary-blue/90 text-white p-6 ml-12 transform -skew-x-6">
                       <div className="transform skew-x-6">
                         <p className="text-lg leading-relaxed">
                           From concept to commissioning, our portfolio
@@ -262,7 +262,7 @@ const OurProjects: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-black text-blue-600 mb-2">
+              <div className="text-4xl font-black text-primary-blue mb-2">
                 $250M+
               </div>
               <div className="text-gray-700 font-medium">
@@ -274,7 +274,9 @@ const OurProjects: React.FC = () => {
               <div className="text-gray-700 font-medium">Countries</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-black text-blue-600 mb-2">50+</div>
+              <div className="text-4xl font-black text-primary-blue mb-2">
+                50+
+              </div>
               <div className="text-gray-700 font-medium">Major Projects</div>
             </div>
             <div className="text-center">
@@ -302,7 +304,7 @@ const OurProjects: React.FC = () => {
                   onClick={() => setActiveFilter(option.value)}
                   className={`px-4 py-2 font-medium transition-all duration-300 ${
                     activeFilter === option.value
-                      ? "bg-blue-600 text-white"
+                      ? "bg-primary-blue text-white"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
@@ -321,7 +323,7 @@ const OurProjects: React.FC = () => {
             {filteredProjects.map((project, index) => (
               <div
                 key={project.id}
-                className="bg-gray-50 border-2 border-gray-200 hover:border-blue-600 transition-all duration-300 group cursor-pointer"
+                className="bg-gray-50 border-2 border-gray-200 hover:border-primary-blue transition-all duration-300 group cursor-pointer"
                 onClick={() => setSelectedProject(project)}
               >
                 {/* Project Image Placeholder */}
@@ -341,19 +343,19 @@ const OurProjects: React.FC = () => {
                       {project.year}
                     </span>
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 h-2 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-2 bg-primary-blue transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
                 </div>
 
                 {/* Project Content */}
                 <div className="p-8">
                   <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-2xl font-bold text-gray-900 group-hover:text-primary-blue transition-colors">
                       {project.title}
                     </h3>
-                    <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
+                    <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-primary-blue transition-colors" />
                   </div>
 
-                  <div className="text-blue-600 font-semibold mb-4">
+                  <div className="text-primary-blue font-semibold mb-4">
                     {project.client}
                   </div>
 
@@ -385,12 +387,12 @@ const OurProjects: React.FC = () => {
                   <div className="space-y-2">
                     {project.scope.slice(0, 2).map((item, scopeIndex) => (
                       <div key={scopeIndex} className="flex items-start">
-                        <div className="w-2 h-px bg-blue-600 mt-3 mr-3 flex-shrink-0"></div>
+                        <div className="w-2 h-px bg-primary-blue mt-3 mr-3 flex-shrink-0"></div>
                         <span className="text-gray-700 text-sm">{item}</span>
                       </div>
                     ))}
                     {project.scope.length > 2 && (
-                      <div className="text-blue-600 text-sm font-medium">
+                      <div className="text-primary-blue text-sm font-medium">
                         +{project.scope.length - 2} more services
                       </div>
                     )}
@@ -418,7 +420,7 @@ const OurProjects: React.FC = () => {
                 <h2 className="text-3xl font-bold mb-2">
                   {selectedProject.title}
                 </h2>
-                <div className="text-blue-400 text-lg">
+                <div className="text-blue-300 text-lg">
                   {selectedProject.client}
                 </div>
               </div>
@@ -436,15 +438,15 @@ const OurProjects: React.FC = () => {
 
                     <div className="space-y-3">
                       <div className="flex items-center text-gray-700">
-                        <MapPin className="w-5 h-5 mr-3 text-blue-600" />
+                        <MapPin className="w-5 h-5 mr-3 text-primary-blue" />
                         <span>{selectedProject.location}</span>
                       </div>
                       <div className="flex items-center text-gray-700">
-                        <Calendar className="w-5 h-5 mr-3 text-blue-600" />
+                        <Calendar className="w-5 h-5 mr-3 text-primary-blue" />
                         <span>{selectedProject.duration}</span>
                       </div>
                       <div className="flex items-center text-gray-700">
-                        <DollarSign className="w-5 h-5 mr-3 text-blue-600" />
+                        <DollarSign className="w-5 h-5 mr-3 text-primary-blue" />
                         <span>{selectedProject.value}</span>
                       </div>
                     </div>
@@ -485,7 +487,7 @@ const OurProjects: React.FC = () => {
       {/* CTA Section */}
       <div className="relative bg-white overflow-hidden">
         {/* <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-64 h-64 border-l-4 border-t-4 border-blue-600 opacity-30"></div>
+          <div className="absolute top-0 left-0 w-64 h-64 border-l-4 border-t-4 border-primary-blue opacity-30"></div>
           <div className="absolute bottom-0 right-0 w-48 h-48 border-r-4 border-b-4 border-blue-400 opacity-20"></div>
         </div> */}
 
@@ -493,7 +495,7 @@ const OurProjects: React.FC = () => {
           <div className="grid grid-cols-12 gap-8 items-center">
             <div className="col-span-8">
               <div className="relative">
-                <div className="absolute -left-6 top-0 w-2 h-full bg-blue-600"></div>
+                <div className="absolute -left-6 top-0 w-2 h-full bg-primary-blue"></div>
                 <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight mb-8">
                   Start your next
                   <span className="block text-primary-blue">
@@ -525,7 +527,7 @@ const OurProjects: React.FC = () => {
 
             <div className="col-span-4">
               <div className="relative w-full h-80">
-                <div className="absolute top-0 right-0 w-48 h-24 bg-blue-600 transform -skew-y-6"></div>
+                <div className="absolute top-0 right-0 w-48 h-24 bg-primary-blue transform -skew-y-6"></div>
                 <div className="absolute top-16 right-8 w-40 h-20 bg-blue-400 transform -skew-y-6"></div>
                 <div className="absolute bottom-20 right-0 w-56 h-28 bg-gray-700 transform -skew-y-6"></div>
               </div>
