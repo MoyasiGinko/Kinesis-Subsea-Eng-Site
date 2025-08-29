@@ -114,7 +114,7 @@ const menuItems = [
   },
   {
     title: "Projects",
-    href: "/what-we-deliver",
+    href: "/projects",
     // submenu: [
     //   {
     //     title: "Insights",
