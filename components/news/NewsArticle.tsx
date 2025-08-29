@@ -249,7 +249,7 @@ const NewsArticle: React.FC = () => {
           <div className="relative">
             {/* Background geometric patterns */}
             <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-0 left-0 w-96 h-96 border-l-8 border-t-8 border-blue-600"></div>
+              <div className="absolute top-0 left-0 w-96 h-96 border-l-8 border-t-8 border-primary-blue"></div>
               <div className="absolute bottom-20 right-0 w-64 h-64 border-r-4 border-b-4 border-gray-800"></div>
               <div className="absolute top-1/2 right-1/3 w-80 h-80 border-r-6 border-blue-400"></div>
             </div>
@@ -279,7 +279,7 @@ const NewsArticle: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="bg-blue-600 text-white p-6 ml-12 transform -skew-x-6">
+                    <div className="bg-primary-blue text-white p-6 ml-12 transform -skew-x-6">
                       <div className="transform skew-x-6">
                         <p className="text-lg leading-relaxed">
                           From breakthrough research to major project
@@ -308,14 +308,14 @@ const NewsArticle: React.FC = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search articles, topics, or technologies..."
-                className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 focus:border-blue-600 focus:outline-none transition-colors bg-white"
+                className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 focus:border-primary-blue focus:outline-none transition-colors bg-white"
               />
             </div>
 
             {/* Filter Toggle */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center px-6 py-3 bg-white border-2 border-gray-200 hover:border-blue-600 transition-colors"
+              className="flex items-center px-6 py-3 bg-white border-2 border-gray-200 hover:border-primary-blue transition-colors"
             >
               <Filter className="w-5 h-5 mr-2" />
               <span className="font-medium">Categories</span>
@@ -336,7 +336,7 @@ const NewsArticle: React.FC = () => {
                   onClick={() => setActiveCategory(category.value)}
                   className={`px-4 py-2 font-medium transition-all duration-300 ${
                     activeCategory === category.value
-                      ? "bg-blue-600 text-white"
+                      ? "bg-primary-blue text-white"
                       : "bg-white text-gray-700 hover:bg-gray-200"
                   }`}
                 >
@@ -358,57 +358,51 @@ const NewsArticle: React.FC = () => {
                 <h2 className="text-4xl font-bold text-gray-900 mb-4">
                   Featured Articles
                 </h2>
-                <div className="w-24 h-1 bg-blue-600"></div>
+                <div className="w-24 h-1 bg-primary-blue"></div>
               </div>
 
+              {/* Make all featured cards symmetric by using a consistent card structure and fixed image height */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {featuredArticles.map((article, index) => (
+                {featuredArticles.map((article) => (
                   <div
                     key={article.id}
-                    className={`bg-gray-50 border-2 border-gray-200 hover:border-blue-600 transition-all duration-300 group cursor-pointer ${
-                      index === 0 ? "lg:row-span-2" : ""
-                    }`}
+                    className="bg-gray-50 border-2 border-gray-200 hover:border-primary-blue transition-all duration-300 group cursor-pointer h-full flex flex-col"
                     onClick={() => setSelectedArticle(article)}
                   >
-                    {/* Article Image Placeholder */}
-                    <div
-                      className={`bg-gradient-to-br from-blue-400 to-gray-600 relative overflow-hidden ${
-                        index === 0 ? "h-80" : "h-48"
-                      }`}
-                    >
+                    {/* Article Image Placeholder - fixed height for symmetry */}
+                    <div className="relative overflow-hidden h-48 bg-gradient-to-br from-blue-400 to-gray-600">
                       <div className="absolute inset-0 bg-black bg-opacity-20"></div>
                       <div className="absolute top-4 left-4">
-                        <span className="bg-blue-600 text-white px-3 py-1 text-sm font-bold uppercase">
+                        <span className="bg-primary-blue text-white px-3 py-1 text-sm font-bold uppercase">
                           {article.category}
                         </span>
                       </div>
-                      <div className="absolute bottom-0 left-0 right-0 h-2 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                      <div className="absolute bottom-0 left-0 right-0 h-2 bg-primary-blue transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
                     </div>
 
-                    {/* Article Content */}
-                    <div className="p-8">
-                      <h3
-                        className={`font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-4 ${
-                          index === 0 ? "text-2xl" : "text-xl"
-                        }`}
-                      >
+                    {/* Article Content - flex layout so content areas match height */}
+                    <div className="p-8 flex-1 flex flex-col">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-blue transition-colors mb-4">
                         {article.title}
                       </h3>
 
-                      <p className="text-gray-700 mb-6 leading-relaxed">
+                      <p className="text-gray-700 mb-6 leading-relaxed flex-1">
                         {article.excerpt}
                       </p>
 
                       {/* Article Meta */}
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-4">
-                        <div className="flex items-center">
-                          <User className="w-4 h-4 mr-2" />
-                          <span>{article.author}</span>
+                      <div className="flex items-center justify-between gap-4 text-sm text-gray-600 mb-4">
+                        <div className="flex items-center gap-4">
+                          <div className="flex items-center">
+                            <User className="w-4 h-4 mr-2" />
+                            <span>{article.author}</span>
+                          </div>
+                          <div className="flex items-center">
+                            <Calendar className="w-4 h-4 mr-2" />
+                            <span>{formatDate(article.date)}</span>
+                          </div>
                         </div>
-                        <div className="flex items-center">
-                          <Calendar className="w-4 h-4 mr-2" />
-                          <span>{formatDate(article.date)}</span>
-                        </div>
+
                         <div className="flex items-center">
                           <Clock className="w-4 h-4 mr-2" />
                           <span>{article.readTime}</span>
@@ -416,7 +410,7 @@ const NewsArticle: React.FC = () => {
                       </div>
 
                       {/* Tags */}
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 mt-auto">
                         {article.tags.slice(0, 3).map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
@@ -446,7 +440,7 @@ const NewsArticle: React.FC = () => {
                   ? "All Articles"
                   : categories.find((c) => c.value === activeCategory)?.label}
               </h2>
-              <div className="w-24 h-1 bg-blue-600"></div>
+              <div className="w-24 h-1 bg-primary-blue"></div>
               {searchQuery && (
                 <p className="text-gray-600 mt-4">
                   {filteredArticles.length} result
@@ -460,23 +454,23 @@ const NewsArticle: React.FC = () => {
             {regularArticles.map((article) => (
               <div
                 key={article.id}
-                className="bg-gray-50 border-2 border-gray-200 hover:border-blue-600 transition-all duration-300 group cursor-pointer"
+                className="bg-gray-50 border-2 border-gray-200 hover:border-primary-blue transition-all duration-300 group cursor-pointer"
                 onClick={() => setSelectedArticle(article)}
               >
                 {/* Article Image Placeholder */}
                 <div className="h-48 bg-gradient-to-br from-gray-400 to-gray-600 relative overflow-hidden">
                   <div className="absolute inset-0 bg-black bg-opacity-20"></div>
                   <div className="absolute top-4 left-4">
-                    <span className="bg-blue-600 text-white px-3 py-1 text-sm font-bold uppercase">
+                    <span className="bg-primary-blue text-white px-3 py-1 text-sm font-bold uppercase">
                       {article.category}
                     </span>
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 h-2 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-2 bg-primary-blue transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
                 </div>
 
                 {/* Article Content */}
                 <div className="p-6">
-                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-3">
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary-blue transition-colors mb-3">
                     {article.title}
                   </h3>
 
@@ -547,7 +541,7 @@ const NewsArticle: React.FC = () => {
                 </button>
 
                 <div className="mb-4">
-                  <span className="bg-blue-600 text-white px-3 py-1 text-sm font-bold uppercase">
+                  <span className="bg-primary-blue text-white px-3 py-1 text-sm font-bold uppercase">
                     {selectedArticle.category}
                   </span>
                 </div>
@@ -612,24 +606,24 @@ const NewsArticle: React.FC = () => {
       )}
 
       {/* Newsletter Signup CTA */}
-      <div className="relative bg-gray-900 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-64 h-64 border-l-4 border-t-4 border-blue-600 opacity-30"></div>
+      <div className="relative bg-white overflow-hidden">
+        {/* <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-64 h-64 border-l-4 border-t-4 border-primary-blue opacity-30"></div>
           <div className="absolute bottom-0 right-0 w-48 h-48 border-r-4 border-b-4 border-blue-400 opacity-20"></div>
-        </div>
+        </div> */}
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
           <div className="grid grid-cols-12 gap-8 items-center">
             <div className="col-span-8">
               <div className="relative">
-                <div className="absolute -left-6 top-0 w-2 h-full bg-blue-600"></div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
+                <div className="absolute -left-6 top-0 w-2 h-full bg-primary-blue"></div>
+                <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight mb-8">
                   Stay informed with
                   <span className="block text-blue-400">industry insights</span>
                 </h2>
 
                 <div className="space-y-4 mb-8">
-                  <div className="bg-blue-600 text-white p-6 max-w-2xl transform -skew-x-3">
+                  <div className="bg-primary-blue text-white p-6 max-w-2xl transform -skew-x-3">
                     <div className="transform skew-x-3">
                       <p className="text-lg">
                         Subscribe to our newsletter for the latest developments
@@ -640,10 +634,10 @@ const NewsArticle: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 font-bold transition-all duration-300 transform hover:-translate-y-1">
+                  <button className="bg-primary-blue hover:bg-primary-blue-hover text-white px-8 py-4 font-bold transition-all duration-300 transform hover:-translate-y-1">
                     SUBSCRIBE TO NEWSLETTER
                   </button>
-                  <button className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 font-bold transition-all duration-300">
+                  <button className="border-2 border-black text-black hover:bg-white hover:text-primary-blue hover:border-primary-blue-hover px-8 py-4 font-bold transition-all duration-300">
                     VIEW ALL ARTICLES
                   </button>
                 </div>
@@ -652,7 +646,7 @@ const NewsArticle: React.FC = () => {
 
             <div className="col-span-4">
               <div className="relative w-full h-80">
-                <div className="absolute top-0 right-0 w-48 h-24 bg-blue-600 transform -skew-y-6"></div>
+                <div className="absolute top-0 right-0 w-48 h-24 bg-primary-blue transform -skew-y-6"></div>
                 <div className="absolute top-16 right-8 w-40 h-20 bg-blue-400 transform -skew-y-6"></div>
                 <div className="absolute bottom-20 right-0 w-56 h-28 bg-gray-700 transform -skew-y-6"></div>
               </div>
