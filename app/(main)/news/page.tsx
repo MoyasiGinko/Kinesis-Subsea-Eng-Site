@@ -1,5 +1,5 @@
-import NewsPage from "@/components/news";
+import NewsArticle from "@/components/news/NewsArticle";
 
 export default function Page() {
-  return <NewsPage/>;
+  return <NewsArticle />;
 }
