@@ -187,8 +187,19 @@ const OurProjects: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Projects Overview - Extraordinary Design */}
-      <div className="relative overflow-hidden bg-white">
-        <div className="max-w-[1480px] mx-auto px-6 py-20">
+      <div
+        className="relative overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/sector-right.webp')",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {/* subtle overlay for readability */}
+        <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
+
+        <div className="max-w-[1480px] mx-auto px-6 py-20 relative z-10">
           <div className="relative">
             {/* Background geometric patterns */}
             <div className="absolute inset-0 opacity-10">
@@ -200,18 +211,18 @@ const OurProjects: React.FC = () => {
             {/* Header content with diagonal arrangement */}
             <div className="relative z-10 grid grid-cols-12 gap-6 items-center min-h-[500px]">
               <div className="col-span-1">
-                <div className="writing-mode-vertical text-gray-600 font-bold text-sm tracking-widest transform -rotate-90">
+                <div className="writing-mode-vertical text-gray-100 font-bold text-sm tracking-widest transform -rotate-90">
                   OUR PROJECTS
                 </div>
               </div>
 
               <div className="col-span-6">
                 <div className="space-y-6">
-                  <h1 className="text-6xl font-black text-gray-900 leading-none">
+                  <h1 className="text-6xl font-black text-white leading-none">
                     PROJECT
-                    <span className="block text-blue-600">PORTFOLIO</span>
+                    <span className="block text-blue-300">PORTFOLIO</span>
                   </h1>
-                  <div className="w-24 h-1 bg-blue-600"></div>
+                  <div className="w-24 h-1 bg-blue-400"></div>
                 </div>
               </div>
 
@@ -219,7 +230,7 @@ const OurProjects: React.FC = () => {
                 <div className="relative">
                   {/* Stepped project stats */}
                   <div className="space-y-0">
-                    <div className="bg-gray-900 text-white p-6 ml-0 transform -skew-x-6">
+                    <div className="bg-gray-900/80 text-white p-6 ml-0 transform -skew-x-6">
                       <div className="transform skew-x-6">
                         <p className="text-lg leading-relaxed">
                           Delivering world-class subsea engineering solutions
@@ -229,7 +240,7 @@ const OurProjects: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="bg-blue-600 text-white p-6 ml-12 transform -skew-x-6">
+                    <div className="bg-blue-600/90 text-white p-6 ml-12 transform -skew-x-6">
                       <div className="transform skew-x-6">
                         <p className="text-lg leading-relaxed">
                           From concept to commissioning, our portfolio
