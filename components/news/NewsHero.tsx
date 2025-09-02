@@ -413,7 +413,98 @@ const NewsHero = ({}) => {
             <div className="absolute bottom-0 left-0 w-2 h-32 bg-black"></div>
 
             {/* Floating minimal element */}
-            <div className="absolute top-12 -left-4 w-16 h-16 border-2 border-gray-300"></div>
+            <div
+              className="absolute top-12 -left-4 w-16 h-16 group"
+              style={{ position: "relative" }}
+            >
+              <style>{`
+              @keyframes vapourOut1 {
+                0%   { transform: scale(1);    opacity: 0.55; filter: blur(4px);  }
+                60%  { transform: scale(1.6);  opacity: 0.10; filter: blur(18px); }
+                100% { transform: scale(2.4);  opacity: 0;    filter: blur(28px); }
+              }
+              @keyframes vapourOut2 {
+                0%   { transform: scale(0.95); opacity: 0.45; filter: blur(6px);  }
+                50%  { transform: scale(1.4);  opacity: 0.12; filter: blur(14px); }
+                100% { transform: scale(2.2);  opacity: 0;    filter: blur(24px); }
+              }
+              @keyframes vapourOut3 {
+                0%   { transform: scale(1.05); opacity: 0.36; filter: blur(3px);  }
+                50%  { transform: scale(1.25); opacity: 0.10; filter: blur(12px); }
+                100% { transform: scale(2.0);  opacity: 0;    filter: blur(20px); }
+              }
+
+              /* keep animations running continuously; subtle slow staggering */
+              .vapour-1 { animation: vapourOut1 4.6s ease-in-out infinite; }
+              .vapour-2 { animation: vapourOut2 5.2s ease-in-out infinite; }
+              .vapour-3 { animation: vapourOut3 6s ease-in-out infinite; }
+
+              /* optional: slightly intensify on hover */
+              .group:hover .vapour-1 { transform: scale(1.08); }
+              .group:hover .vapour-2 { transform: scale(1.06); }
+              .group:hover .vapour-3 { transform: scale(1.1); }
+              `}</style>
+
+              {/* Vapour layers - placed behind the visible border, allow them to bleed out */}
+              <div
+                aria-hidden
+                className="vapour-1"
+                style={{
+                  position: "absolute",
+                  inset: "-10px",
+                  zIndex: 0,
+                  pointerEvents: "none",
+                  borderRadius: 6,
+                  background:
+                    "radial-gradient(50% 50% at 30% 30%, rgba(11,95,255,0.95), rgba(11,95,255,0.02))",
+                  mixBlendMode: "screen",
+                  willChange: "transform, opacity, filter",
+                }}
+              />
+              <div
+                aria-hidden
+                className="vapour-2"
+                style={{
+                  position: "absolute",
+                  inset: "-14px",
+                  zIndex: 0,
+                  pointerEvents: "none",
+                  borderRadius: 6,
+                  background:
+                    "radial-gradient(60% 60% at 70% 40%, rgba(0,220,200,0.65), rgba(0,120,180,0.03))",
+                  mixBlendMode: "screen",
+                  willChange: "transform, opacity, filter",
+                  opacity: 0.9,
+                }}
+              />
+              <div
+                aria-hidden
+                className="vapour-3"
+                style={{
+                  position: "absolute",
+                  inset: "-20px",
+                  zIndex: 0,
+                  pointerEvents: "none",
+                  borderRadius: 6,
+                  background:
+                    "radial-gradient(70% 70% at 50% 60%, rgba(255,160,90,0.55), rgba(255,120,40,0.02))",
+                  mixBlendMode: "screen",
+                  willChange: "transform, opacity, filter",
+                  opacity: 0.85,
+                }}
+              />
+
+              {/* Visible border square (keeps the original look) */}
+              <div
+                className="w-full h-full flex items-center justify-center"
+                style={{
+                  position: "relative",
+                  zIndex: 10,
+                  border: "2px solid rgba(209,213,219,1)", // tailwind gray-300
+                  background: "rgba(255,255,255,0.50)",
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
