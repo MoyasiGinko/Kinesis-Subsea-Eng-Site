@@ -12,14 +12,6 @@ const NewsHero = ({}) => {
         backgroundBlendMode: "overlay",
       }}
     >
-      {/* Animated floating elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-        <div className="absolute top-32 right-20 w-1 h-1 bg-blue-300 rounded-full animate-ping"></div>
-        <div className="absolute bottom-40 left-1/4 w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
-        <div className="absolute bottom-20 right-1/3 w-1 h-1 bg-blue-200 rounded-full animate-ping"></div>
-      </div>
-
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-blue-900/30"></div>
 
@@ -35,7 +27,7 @@ const NewsHero = ({}) => {
 
               <h1 className="text-7xl xl:text-8xl font-black text-white leading-none relative z-10">
                 NEWS
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-500 mt-2">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-primary-blue mt-2">
                   INSIGHTS
                 </span>
               </h1>
@@ -49,10 +41,10 @@ const NewsHero = ({}) => {
 
             {/* Call to action */}
             <div className="flex items-center gap-6">
-              <button className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25">
+              <button className="bg-primary-blue hover:bg-primary-blue-hover text-white px-8 py-4  font-semibold transition-all duration-300  hover:shadow-xl hover:shadow-primary-blue/25">
                 Explore Stories
               </button>
-              <button className="border-2 border-gray-600 hover:border-blue-400 text-gray-300 hover:text-blue-300 px-8 py-4 rounded-lg font-semibold transition-all duration-300">
+              <button className="border-2 border-gray-300 hover:border-blue-400 text-gray-300 hover:text-white px-8 py-4  font-semibold transition-all duration-300">
                 Subscribe
               </button>
             </div>
@@ -61,9 +53,9 @@ const NewsHero = ({}) => {
           {/* Right side - Feature cards */}
           <div className="space-y-6">
             {/* Featured article card */}
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105">
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-primary-blue flex items-center justify-center flex-shrink-0">
                   <svg
                     className="w-6 h-6 text-white"
                     fill="none"
@@ -91,9 +83,9 @@ const NewsHero = ({}) => {
             </div>
 
             {/* Industry insights card */}
-            <div className="bg-blue-600/20 backdrop-blur-md border border-blue-400/30 rounded-2xl p-6 hover:bg-blue-600/30 transition-all duration-300 hover:scale-105">
+            <div className="bg-primary-blue/20 backdrop-blur-md border border-blue-400/30  p-6 hover:bg-primary-blue/30 transition-all duration-300 hover:scale-105">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-gray-800  flex items-center justify-center flex-shrink-0">
                   <svg
                     className="w-6 h-6 text-blue-400"
                     fill="none"
@@ -121,9 +113,9 @@ const NewsHero = ({}) => {
             </div>
 
             {/* Research updates card */}
-            <div className="bg-gray-800/40 backdrop-blur-md border border-gray-600/50 rounded-2xl p-6 hover:bg-gray-800/60 transition-all duration-300 hover:scale-105">
+            <div className="bg-gray-800/40 backdrop-blur-md border border-gray-600/50  p-6 hover:bg-gray-800/60 transition-all duration-300 hover:scale-105">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-primary-blue  flex items-center justify-center flex-shrink-0">
                   <svg
                     className="w-6 h-6 text-white"
                     fill="none"
