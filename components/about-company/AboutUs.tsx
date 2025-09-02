@@ -92,8 +92,8 @@ const AboutKinesis: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Company Overview - Extraordinary Design */}
       <div
-        className="relative overflow-hidden bg-white bg-fit cove bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/service2.gif')" }}
+        className="relative overflow-hidden bg-white bg-fit cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/about1.jpg')" }}
       >
         {/* optional overlay for better contrast */}
         <div className="absolute inset-0 bg-black/20 pointer-events-none"></div>
