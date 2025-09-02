@@ -236,7 +236,7 @@ const NewsArticle: React.FC = () => {
       {/* News Header - Extraordinary Design */}
       <NewsHero />
       {/* Search and Filter Section */}
-      <div className="bg-gray-100 py-8 border-b border-gray-200">
+      <div className="bg-white pt-8">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             {/* Search Bar */}
@@ -291,7 +291,7 @@ const NewsArticle: React.FC = () => {
       {featuredArticles.length > 0 &&
         activeCategory === "all" &&
         searchQuery === "" && (
-          <div className="bg-white py-20">
+          <div className="bg-white pt-10 pb-20">
             <div className="max-w-7xl mx-auto px-6">
               <div className="mb-16">
                 <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -545,17 +545,17 @@ const NewsArticle: React.FC = () => {
       )}
 
       {/* Newsletter Signup CTA */}
-      <div className="relative bg-white overflow-hidden">
+      <div className="relative bg-gray-100 overflow-hidden">
         {/* <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-64 h-64 border-l-4 border-t-4 border-primary-blue opacity-30"></div>
           <div className="absolute bottom-0 right-0 w-48 h-48 border-r-4 border-b-4 border-blue-400 opacity-20"></div>
         </div> */}
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-40">
           <div className="grid grid-cols-12 gap-8 items-center">
             <div className="col-span-8">
               <div className="relative">
-                <div className="absolute -left-6 top-0 w-2 h-full bg-primary-blue"></div>
+                {/* <div className="absolute -left-6 top-0 w-2 h-full bg-primary-blue"></div> */}
                 <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight mb-8">
                   Stay informed with
                   <span className="block text-blue-400">industry insights</span>
