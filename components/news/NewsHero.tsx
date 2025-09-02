@@ -58,7 +58,99 @@ const NewsHero = ({}) => {
           <div className="lg:col-span-5 relative h-96">
             {/* Main large hexagonal feature */}
             <div className="absolute top-0 right-0 w-72 h-72 group cursor-pointer">
-              {/* Outermost white ring */}
+              {/* animation + hover rules for the vapour layers */}
+              <style>{`
+                @keyframes vapour1 {
+                  0%   { transform: scale(1) rotate(0deg);   opacity: 0.5; filter: blur(6px);  }
+                  50%  { transform: scale(1.12) rotate(2deg); opacity: 0.16; filter: blur(18px); }
+                  100% { transform: scale(1.25) rotate(-1deg); opacity: 0; filter: blur(28px); }
+                }
+                @keyframes vapour2 {
+                  0%   { transform: scale(0.98) rotate(0deg);  opacity: 0.42; filter: blur(8px);  }
+                  50%  { transform: scale(1.18) rotate(-1.2deg); opacity: 0.12; filter: blur(16px); }
+                  100% { transform: scale(1.32) rotate(1.6deg);  opacity: 0; filter: blur(26px); }
+                }
+                @keyframes vapour3 {
+                  0%   { transform: scale(1.04) rotate(0deg);  opacity: 0.36; filter: blur(4px);  }
+                  50%  { transform: scale(1.2) rotate(1deg);   opacity: 0.1;  filter: blur(12px); }
+                  100% { transform: scale(1.36) rotate(-1.4deg); opacity: 0;  filter: blur(22px); }
+                }
+
+                /* gentle scale-up of vapour on hover to emphasize "vaporating" effect */
+                .group:hover .vapour {
+                  animation-play-state: running;
+                  transform-origin: 50% 50%;
+                }
+                .group:hover .vapour1 { transform: scale(1.08); }
+                .group:hover .vapour2 { transform: scale(1.06); }
+                .group:hover .vapour3 { transform: scale(1.1); }
+              `}</style>
+
+              {/* Vapour layers (behind the clipped shape) */}
+              <div
+                aria-hidden
+                className="vapour vapour1"
+                style={{
+                  position: "absolute",
+                  top: "-10px",
+                  left: "-10px",
+                  right: "-10px",
+                  bottom: "-10px",
+                  zIndex: 0,
+                  pointerEvents: "none",
+                  clipPath:
+                    "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+                  background:
+                    "radial-gradient(60% 60% at 30% 30%, rgba(11,95,255,0.9), rgba(11,95,255,0.02))",
+                  mixBlendMode: "screen",
+                  animation: "vapour1 4.6s ease-in-out infinite",
+                  willChange: "transform, opacity, filter",
+                }}
+              />
+
+              <div
+                aria-hidden
+                className="vapour vapour2"
+                style={{
+                  position: "absolute",
+                  top: "-14px",
+                  left: "-14px",
+                  right: "-14px",
+                  bottom: "-14px",
+                  zIndex: 0,
+                  pointerEvents: "none",
+                  clipPath:
+                    "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+                  background:
+                    "radial-gradient(70% 70% at 70% 40%, rgba(0,220,200,0.55), rgba(0,120,180,0.02))",
+                  mixBlendMode: "screen",
+                  animation: "vapour2 5.4s ease-in-out infinite",
+                  willChange: "transform, opacity, filter",
+                }}
+              />
+
+              <div
+                aria-hidden
+                className="vapour vapour3"
+                style={{
+                  position: "absolute",
+                  top: "-20px",
+                  left: "-6px",
+                  right: "-6px",
+                  bottom: "-20px",
+                  zIndex: 0,
+                  pointerEvents: "none",
+                  clipPath:
+                    "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+                  background:
+                    "radial-gradient(80% 80% at 50% 60%, rgba(255,160,90,0.5), rgba(255,120,40,0.02))",
+                  mixBlendMode: "screen",
+                  animation: "vapour3 6s ease-in-out infinite",
+                  willChange: "transform, opacity, filter",
+                }}
+              />
+
+              {/* Outermost white ring (on top of the vapour layers) */}
               <div
                 className="w-full h-full"
                 style={{
@@ -66,6 +158,8 @@ const NewsHero = ({}) => {
                     "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
                   backgroundColor: "#ffffff",
                   padding: "4px",
+                  position: "relative",
+                  zIndex: 20,
                 }}
               >
                 {/* Middle accent ring (same as bg accent color) */}
@@ -74,17 +168,18 @@ const NewsHero = ({}) => {
                   style={{
                     clipPath:
                       "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-                    backgroundColor: "var(--primary-blue, #0b5fff)", // try to use your Tailwind/custom var, fallback provided
+                    backgroundColor: "var(--primary-blue, #0b5fff)",
                     padding: "4px",
                   }}
                 >
                   {/* Inner content (slightly darker so the accent ring is visible) */}
                   <div
-                    className="relative w-full h-full text-white overflow-hidden hover:bg-gray-900 transition-transform duration-300"
+                    className="relative w-full h-full text-white overflow-hidden transition-transform duration-300"
                     style={{
                       clipPath:
                         "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-                      backgroundColor: "#0845b8", // slightly darker than the accent ring so the ring shows
+                      backgroundColor: "#0845b8",
+                      zIndex: 30,
                     }}
                   >
                     <div className="p-6 h-full flex flex-col items-center justify-center gap-3 text-center">
@@ -106,8 +201,84 @@ const NewsHero = ({}) => {
             </div>
 
             {/* Overlapping pentagon */}
-            <div className="absolute top-24 left-0 w-60 h-48 group cursor-pointer">
-              {/* Outermost white ring */}
+            <div className="absolute top-24 left-0 w-60 h-48 group cursor-pointer ">
+              {/* Vaporating animated glow layers behind the clipped shape */}
+              <style>{`
+              @keyframes vapourC {
+                0%   { transform: scale(1) translateZ(0); opacity: 0.45; filter: blur(6px); }
+                50%  { transform: scale(1.12) translateZ(0); opacity: 0.14; filter: blur(18px); }
+                100% { transform: scale(1.22) translateZ(0); opacity: 0; filter: blur(26px); }
+              }
+              @keyframes vapourD {
+                0%   { transform: scale(1.02) translateZ(0); opacity: 0.38; filter: blur(8px); }
+                50%  { transform: scale(1.2) translateZ(0);  opacity: 0.12; filter: blur(16px); }
+                100% { transform: scale(1.35) translateZ(0); opacity: 0; filter: blur(28px); }
+              }
+              @keyframes vapourE {
+                0%   { transform: scale(0.98) translateZ(0); opacity: 0.28; filter: blur(4px); }
+                50%  { transform: scale(1.06) translateZ(0); opacity: 0.09; filter: blur(12px); }
+                100% { transform: scale(1.18) translateZ(0); opacity: 0; filter: blur(20px); }
+              }
+              `}</style>
+
+              {/* Layer A - warmer, closer glow */}
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  zIndex: 0,
+                  pointerEvents: "none",
+                  clipPath:
+                    "polygon(50% 0%, 100% 35%, 85% 100%, 15% 100%, 0% 35%)",
+                  background:
+                    "radial-gradient(60% 60% at 30% 30%, rgba(255,122,0,0.9), rgba(255,122,0,0.06))",
+                  transformOrigin: "50% 50%",
+                  animation: "vapourC 3.6s ease-in-out infinite",
+                  willChange: "transform, opacity, filter",
+                  mixBlendMode: "screen",
+                }}
+              />
+
+              {/* Layer B - cooler extended halo */}
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  zIndex: 0,
+                  pointerEvents: "none",
+                  clipPath:
+                    "polygon(50% 0%, 100% 35%, 85% 100%, 15% 100%, 0% 35%)",
+                  background:
+                    "radial-gradient(70% 70% at 70% 40%, rgba(255,160,90,0.6), rgba(230,120,40,0.03))",
+                  transformOrigin: "50% 50%",
+                  animation: "vapourD 4.6s ease-in-out infinite",
+                  willChange: "transform, opacity, filter",
+                  mixBlendMode: "screen",
+                }}
+              />
+
+              {/* Layer C - faint long tail */}
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  zIndex: 0,
+                  pointerEvents: "none",
+                  clipPath:
+                    "polygon(50% 0%, 100% 35%, 85% 100%, 15% 100%, 0% 35%)",
+                  background:
+                    "radial-gradient(80% 80% at 50% 60%, rgba(255,200,140,0.45), rgba(255,200,140,0.02))",
+                  transformOrigin: "50% 50%",
+                  animation: "vapourE 5.2s ease-in-out infinite",
+                  willChange: "transform, opacity, filter",
+                  mixBlendMode: "screen",
+                }}
+              />
+
+              {/* Outermost white ring (on top of the vapour layers) */}
               <div
                 className="w-full h-full"
                 style={{
@@ -115,6 +286,8 @@ const NewsHero = ({}) => {
                     "polygon(50% 0%, 100% 35%, 85% 100%, 15% 100%, 0% 35%)",
                   backgroundColor: "#ffffff",
                   padding: "4px",
+                  position: "relative",
+                  zIndex: 10,
                 }}
               >
                 {/* Middle accent ring (same as bg accent color) */}
@@ -134,6 +307,7 @@ const NewsHero = ({}) => {
                       clipPath:
                         "polygon(50% 0%, 100% 35%, 85% 100%, 15% 100%, 0% 35%)",
                       backgroundColor: "var(--primary-orange-hover, #e65a00)",
+                      zIndex: 20,
                     }}
                   >
                     <div className="p-6 h-full flex flex-col items-center justify-center text-center">
@@ -154,14 +328,58 @@ const NewsHero = ({}) => {
             </div>
 
             {/* Trapezoid accent piece */}
-            <div className="absolute bottom-0 right-1/3 w-36 h-28 group cursor-pointer">
+            <div className="absolute bottom-0 right-1/3 w-36 h-28 group cursor-pointer ">
+              {/* animated vapor glow layers (behind content) */}
+              <style>{`
+              @keyframes vapourA {
+                0% { transform: scale(0.95); opacity: 0.6; filter: blur(4px); }
+                50% { transform: scale(1.25); opacity: 0.16; filter: blur(12px); }
+                100% { transform: scale(1.6); opacity: 0; filter: blur(20px); }
+              }
+              @keyframes vapourB {
+                0% { transform: scale(1.05); opacity: 0.45; filter: blur(6px); }
+                50% { transform: scale(1.5); opacity: 0.12; filter: blur(14px); }
+                100% { transform: scale(2); opacity: 0; filter: blur(24px); }
+              }
+              `}</style>
+
+              {/* Layer 1 - warm yellow vapor */}
+              <div
+                aria-hidden
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  clipPath: "polygon(0 0, 100% 25%, 75% 100%, 0% 100%)",
+                  background:
+                    "linear-gradient(120deg, rgba(255,204,0,0.95), rgba(230,184,0,0.9))",
+                  zIndex: 0,
+                  transformOrigin: "50% 50%",
+                  animation: "vapourA 3s linear infinite",
+                }}
+              />
+
+              {/* Layer 2 - softer gold echo with offset timing */}
+              <div
+                aria-hidden
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  clipPath: "polygon(0 0, 100% 25%, 75% 100%, 0% 100%)",
+                  background:
+                    "linear-gradient(60deg, rgba(255,204,0,0.7), rgba(255,170,0,0.55))",
+                  zIndex: 0,
+                  transformOrigin: "50% 50%",
+                  animation: "vapourB 4.2s linear infinite",
+                  opacity: 0.9,
+                }}
+              />
+
               {/* Outermost white ring */}
               <div
-                className="w-full h-full"
+                className="w-full h-full relative"
                 style={{
                   clipPath: "polygon(0 0, 100% 25%, 75% 100%, 0% 100%)",
                   backgroundColor: "#ffffff",
                   padding: "4px",
+                  zIndex: 10,
                 }}
               >
                 {/* Middle accent ring (same as bg accent color) */}
@@ -181,7 +399,7 @@ const NewsHero = ({}) => {
                       backgroundColor: "#e6b800",
                     }}
                   >
-                    <div className="p-4 h-full flex items-center justify-center text-center">
+                    <div className="p-4 h-full flex items-center justify-center text-center z-20 relative">
                       <h5 className="text-lg lg:text-xl font-semibold leading-tight">
                         Research
                       </h5>
