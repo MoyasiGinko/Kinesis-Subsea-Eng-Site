@@ -245,7 +245,7 @@ const HeroBanner = () => {
           >
             <div className="relative w-full">
               {/* Main Image Container */}
-              <div className="relative h-[340px] md:h-[480px] lg:h-[640px] bg-slate-800 overflow-hidden rounded-lg">
+              <div className="relative h-[340px] md:h-[480px] lg:h-[640px] bg-slate-800 overflow-hidden ">
                 <Image
                   key={currentImageIndex}
                   src={sliderImages[currentImageIndex].src.replace(

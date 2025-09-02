@@ -55,7 +55,7 @@ export default function NewsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 1 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 backdrop-blur-sm border border-gray-200 rounded-full mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 backdrop-blur-sm border border-gray-200  mb-6"
             style={{ lineHeight: 1.2 }}
           >
             <Calendar className="w-4 h-4 text-gray-500" />
@@ -135,7 +135,7 @@ export default function NewsSection() {
               onMouseLeave={() => setHoveredCard(null)}
             >
               {/* Card Container */}
-              <div className="relative flex flex-col h-full bg-white backdrop-blur-sm rounded-3xl overflow-hidden border border-gray-200 hover:border-gray-300 transition-all duration-500 hover:shadow-2xl hover:shadow-gray-300/40 hover:scale-[1.02] cursor-pointer">
+              <div className="relative flex flex-col h-full bg-white backdrop-blur-sm  overflow-hidden border border-gray-200 hover:border-gray-300 transition-all duration-500 hover:shadow-2xl hover:shadow-gray-300/40 hover:scale-[1.02] cursor-pointer">
                 {/* Image Section */}
                 <div className="relative h-56 overflow-hidden flex-shrink-0">
                   <Image
@@ -154,14 +154,14 @@ export default function NewsSection() {
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
                     <div
-                      className={`px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${item.categoryColor} shadow-lg`}
+                      className={`px-3 py-1  text-xs font-semibold text-white bg-gradient-to-r ${item.categoryColor} shadow-lg`}
                     >
                       {item.category}
                     </div>
                   </div>
                   {/* Read Time Badge */}
                   <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="flex items-center gap-1 px-2 py-1 bg-gray-900/70 backdrop-blur-sm rounded-full text-xs font-medium text-gray-200">
+                    <div className="flex items-center gap-1 px-2 py-1 bg-gray-900/70 backdrop-blur-sm  text-xs font-medium text-gray-200">
                       <Clock className="w-3 h-3" />
                       {item.readTime}
                     </div>
@@ -219,7 +219,7 @@ export default function NewsSection() {
 
                 {/* Hover Glow Effect */}
                 <div
-                  className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-r ${item.categoryColor} blur-xl`}
+                  className={`absolute inset-0  opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-r ${item.categoryColor} blur-xl`}
                 />
               </div>
             </div>
@@ -228,12 +228,9 @@ export default function NewsSection() {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16 transition-all duration-1000 delay-1200">
-          <button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full text-white font-semibold text-lg transition-all duration-500 hover:from-blue-400 hover:to-emerald-400 hover:shadow-xl hover:shadow-blue-300/25 hover:scale-105 overflow-hidden">
+          <button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-blue to-primary-blue-hover  text-white font-semibold text-lg transition-all duration-500 hover:from-primary-blue-hover hover:to-primary-blue hover:shadow-xl hover:shadow-blue-300/25  overflow-hidden">
             <span className="relative z-10">VIEW MORE</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
-
-            {/* Button Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </button>
         </div>
       </div>
