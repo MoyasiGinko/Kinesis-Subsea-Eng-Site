@@ -236,7 +236,7 @@ const NewsArticle: React.FC = () => {
       {/* News Header - Extraordinary Design */}
       <NewsHero />
       {/* Search and Filter Section */}
-      <div className="bg-white pt-8">
+      <div className="bg-white pt-12">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             {/* Search Bar */}
