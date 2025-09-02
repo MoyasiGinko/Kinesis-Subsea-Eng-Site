@@ -3,156 +3,201 @@ import React from "react";
 const NewsHero = ({}) => {
   return (
     <div
-      className="relative overflow-hidden py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-blue-950 min-h-[600px]"
+      className="relative min-h-[80vh] flex items-center"
       style={{
         backgroundImage: "url('/images/about3.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        backgroundBlendMode: "overlay",
       }}
     >
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-blue-900/30"></div>
-
-      {/* Main content container */}
-      <div className="max-w-[1480px] mx-auto px-6 py-16 relative z-20">
-        {/* Hero content layout */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left side - Main heading */}
-          <div className="space-y-8">
-            <div className="relative">
-              {/* Background accent shape */}
-              <div className="absolute -left-6 -top-6 w-32 h-32 border-4 border-blue-400/20 rounded-tl-3xl"></div>
-
-              <h1 className="text-7xl xl:text-8xl font-black text-white leading-none relative z-10">
-                NEWS
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-primary-blue mt-2">
-                  INSIGHTS
-                </span>
-              </h1>
-            </div>
-
-            {/* Subtitle */}
-            <p className="text-xl text-gray-300 leading-relaxed max-w-lg">
-              Your gateway to the latest in subsea engineering innovation and
-              industry developments
-            </p>
-
-            {/* Call to action */}
-            <div className="flex items-center gap-6">
-              <button className="bg-primary-blue hover:bg-primary-blue-hover text-white px-8 py-4  font-semibold transition-all duration-300  hover:shadow-xl hover:shadow-primary-blue/25">
-                Explore Stories
-              </button>
-              <button className="border-2 border-gray-300 hover:border-blue-400 text-gray-300 hover:text-white px-8 py-4  font-semibold transition-all duration-300">
-                Subscribe
-              </button>
-            </div>
-          </div>
-
-          {/* Right side - Feature cards */}
-          <div className="space-y-6">
-            {/* Featured article card */}
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary-blue flex items-center justify-center flex-shrink-0">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-white font-bold text-lg mb-2">
-                    Breaking Technology
-                  </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    Revolutionary advances in deep-sea exploration equipment are
-                    transforming offshore operations worldwide.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Industry insights card */}
-            <div className="bg-primary-blue/20 backdrop-blur-md border border-blue-400/30  p-6 hover:bg-primary-blue/30 transition-all duration-300 hover:scale-105">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gray-800  flex items-center justify-center flex-shrink-0">
-                  <svg
-                    className="w-6 h-6 text-blue-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-white font-bold text-lg mb-2">
-                    Market Analysis
-                  </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    In-depth analysis of market trends and strategic insights
-                    shaping the future of subsea engineering.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Research updates card */}
-            <div className="bg-gray-800/40 backdrop-blur-md border border-gray-600/50  p-6 hover:bg-gray-800/60 transition-all duration-300 hover:scale-105">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary-blue  flex items-center justify-center flex-shrink-0">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-white font-bold text-lg mb-2">
-                    Research Updates
-                  </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    Latest research findings and breakthrough discoveries from
-                    leading marine engineering laboratories.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Subtle grid background */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div
+          className="w-full h-full"
+          style={{
+            backgroundImage: `linear-gradient(#000 1px, transparent 1px),
+                           linear-gradient(90deg, #000 1px, transparent 1px)`,
+            backgroundSize: "40px 40px",
+          }}
+        ></div>
       </div>
 
-      {/* Decorative bottom wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1200 120" className="w-full h-20 text-blue-900/20">
-          <path
-            d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z"
-            fill="currentColor"
-          />
-        </svg>
+      <div className="max-w-[1480px] mx-auto px-8 w-full">
+        <div className="grid lg:grid-cols-12 gap-16 items-center">
+          {/* Left Content - 7 columns */}
+          <div className="lg:col-span-7 space-y-12">
+            {/* Main headline */}
+            <div className="space-y-8">
+              <h1 className="text-6xl lg:text-7xl xl:text-8xl font-light leading-[0.9] tracking-tight">
+                <span className="block text-white">Latest</span>
+                <span className="block text-black font-bold">Insights</span>
+                <span className="block text-gray-50 text-4xl lg:text-5xl xl:text-6xl font-light mt-4">
+                  in Engineering
+                </span>
+              </h1>
+
+              <p className="text-xl text-gray-100 font-light leading-relaxed max-w-2xl">
+                Professional analysis and breaking developments in subsea
+                technology, offshore engineering, and marine innovation.
+              </p>
+            </div>
+
+            {/* Clean CTA */}
+            {/* <div className="flex items-center gap-6">
+              <button className="bg-black text-white px-12 py-4 text-sm font-semibold tracking-wide hover:bg-gray-900 transition-colors duration-200">
+                READ LATEST
+              </button>
+              <button className="text-black border-b-2 border-black pb-1 text-sm font-semibold tracking-wide hover:border-gray-600 hover:text-gray-600 transition-colors duration-200">
+                VIEW ARCHIVE
+              </button>
+            </div> */}
+          </div>
+
+          {/* Right Side - Architectural geometric composition */}
+          <div className="lg:col-span-5 relative h-96">
+            {/* Main large hexagonal feature */}
+            <div className="absolute top-0 right-0 w-72 h-72 group cursor-pointer">
+              {/* Outermost white ring */}
+              <div
+                className="w-full h-full"
+                style={{
+                  clipPath:
+                    "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+                  backgroundColor: "#ffffff",
+                  padding: "4px",
+                }}
+              >
+                {/* Middle accent ring (same as bg accent color) */}
+                <div
+                  className="w-full h-full"
+                  style={{
+                    clipPath:
+                      "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+                    backgroundColor: "var(--primary-blue, #0b5fff)", // try to use your Tailwind/custom var, fallback provided
+                    padding: "4px",
+                  }}
+                >
+                  {/* Inner content (slightly darker so the accent ring is visible) */}
+                  <div
+                    className="relative w-full h-full text-white overflow-hidden hover:bg-gray-900 transition-transform duration-300"
+                    style={{
+                      clipPath:
+                        "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+                      backgroundColor: "#0845b8", // slightly darker than the accent ring so the ring shows
+                    }}
+                  >
+                    <div className="p-6 h-full flex flex-col items-center justify-center gap-3 text-center">
+                      <div>
+                        <h3 className="text-xl lg:text-2xl font-bold leading-tight">
+                          Deep Sea Innovation
+                        </h3>
+                      </div>
+                      <div>
+                        <p className="text-xs lg:text-sm text-gray-200">
+                          Breakthrough autonomous systems reach unprecedented
+                          depths in marine exploration
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Overlapping pentagon */}
+            <div className="absolute top-24 left-0 w-60 h-48 group cursor-pointer">
+              {/* Outermost white ring */}
+              <div
+                className="w-full h-full"
+                style={{
+                  clipPath:
+                    "polygon(50% 0%, 100% 35%, 85% 100%, 15% 100%, 0% 35%)",
+                  backgroundColor: "#ffffff",
+                  padding: "4px",
+                }}
+              >
+                {/* Middle accent ring (same as bg accent color) */}
+                <div
+                  className="w-full h-full"
+                  style={{
+                    clipPath:
+                      "polygon(50% 0%, 100% 35%, 85% 100%, 15% 100%, 0% 35%)",
+                    backgroundColor: "var(--primary-orange, #ff7a00)",
+                    padding: "4px",
+                  }}
+                >
+                  {/* Inner content (slightly darker so the accent ring is visible) */}
+                  <div
+                    className="relative w-full h-full overflow-hidden hover:bg-gray-200 transition-colors duration-300"
+                    style={{
+                      clipPath:
+                        "polygon(50% 0%, 100% 35%, 85% 100%, 15% 100%, 0% 35%)",
+                      backgroundColor: "var(--primary-orange-hover, #e65a00)",
+                    }}
+                  >
+                    <div className="p-6 h-full flex flex-col items-center justify-center text-center">
+                      <div>
+                        <h4 className="text-base lg:text-base font-semibold text-white">
+                          Market Insights
+                        </h4>
+                      </div>
+                      <div>
+                        <p className="text-xs lg:text-sm text-gray-50">
+                          Q4 offshore investment analysis shows 340% growth
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Trapezoid accent piece */}
+            <div className="absolute bottom-0 right-1/3 w-36 h-28 group cursor-pointer">
+              {/* Outermost white ring */}
+              <div
+                className="w-full h-full"
+                style={{
+                  clipPath: "polygon(0 0, 100% 25%, 75% 100%, 0% 100%)",
+                  backgroundColor: "#ffffff",
+                  padding: "4px",
+                }}
+              >
+                {/* Middle accent ring (same as bg accent color) */}
+                <div
+                  className="w-full h-full"
+                  style={{
+                    clipPath: "polygon(0 0, 100% 25%, 75% 100%, 0% 100%)",
+                    backgroundColor: "var(--primary-yellow, #ffcc00)",
+                    padding: "4px",
+                  }}
+                >
+                  {/* Inner content (slightly darker so the accent ring is visible) */}
+                  <div
+                    className="relative w-full h-full text-black overflow-hidden hover:bg-gray-900 transition-colors duration-300"
+                    style={{
+                      clipPath: "polygon(0 0, 100% 25%, 75% 100%, 0% 100%)",
+                      backgroundColor: "#e6b800",
+                    }}
+                  >
+                    <div className="p-4 h-full flex items-center justify-center text-center">
+                      <h5 className="text-lg lg:text-xl font-semibold leading-tight">
+                        Research
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Thin vertical accent bar */}
+            <div className="absolute bottom-0 left-0 w-2 h-32 bg-black"></div>
+
+            {/* Floating minimal element */}
+            <div className="absolute top-12 -left-4 w-16 h-16 border-2 border-gray-300"></div>
+          </div>
+        </div>
       </div>
     </div>
   );
