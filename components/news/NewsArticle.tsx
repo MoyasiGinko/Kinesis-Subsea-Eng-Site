@@ -10,6 +10,7 @@ import {
   Filter,
   ChevronDown,
 } from "lucide-react";
+import NewsHero from "./NewsHero";
 
 interface Article {
   id: number;
@@ -233,71 +234,9 @@ const NewsArticle: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* News Header - Extraordinary Design */}
-      <div
-        className="relative overflow-hidden"
-        style={{
-          backgroundImage: "url('/images/sector-right.webp')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        {/* subtle translucent overlay to keep text readable on the image */}
-        <div className="absolute inset-0 bg-black opacity-30 pointer-events-none" />
-
-        <div className="max-w-[1480px] mx-auto px-6 py-20 relative z-10">
-          <div className="relative">
-            {/* Background geometric patterns */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-0 left-0 w-96 h-96 border-l-8 border-t-8 border-primary-blue"></div>
-              <div className="absolute bottom-20 right-0 w-64 h-64 border-r-4 border-b-4 border-gray-800"></div>
-              <div className="absolute top-1/2 right-1/3 w-80 h-80 border-r-6 border-blue-400"></div>
-            </div>
-
-            {/* Header content with diagonal arrangement */}
-            <div className="relative z-10 grid grid-cols-12 gap-6 items-center min-h-[500px]">
-              <div className="col-span-6">
-                <div className="space-y-6 ml-8">
-                  <h1 className="text-6xl font-black text-white leading-none">
-                    NEWS &<span className="block text-blue-300">INSIGHTS</span>
-                  </h1>
-                  <div className="w-24 h-1 bg-primary-blue"></div>
-                </div>
-              </div>
-
-              <div className="col-span-5">
-                <div className="relative">
-                  {/* Stepped content blocks */}
-                  <div className="space-y-0">
-                    <div className="bg-gray-900 text-white p-6 ml-0 transform -skew-x-6">
-                      <div className="transform skew-x-6">
-                        <p className="text-lg leading-relaxed">
-                          Stay informed with the latest developments in subsea
-                          engineering, innovative technologies, and industry
-                          insights.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="bg-primary-blue text-white p-6 ml-12 transform -skew-x-6">
-                      <div className="transform skew-x-6">
-                        <p className="text-lg leading-relaxed">
-                          From breakthrough research to major project
-                          announcements, discover what's driving the future of
-                          offshore engineering.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <NewsHero />
       {/* Search and Filter Section */}
-      <div className="bg-gray-100 py-8 border-b border-gray-200">
+      <div className="bg-white pt-12">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             {/* Search Bar */}
@@ -352,7 +291,7 @@ const NewsArticle: React.FC = () => {
       {featuredArticles.length > 0 &&
         activeCategory === "all" &&
         searchQuery === "" && (
-          <div className="bg-white py-20">
+          <div className="bg-white pt-10 pb-20">
             <div className="max-w-7xl mx-auto px-6">
               <div className="mb-16">
                 <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -606,29 +545,104 @@ const NewsArticle: React.FC = () => {
       )}
 
       {/* Newsletter Signup CTA */}
-      <div className="relative bg-white overflow-hidden">
+      <div className="relative bg-gray-100 overflow-hidden">
         {/* <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-64 h-64 border-l-4 border-t-4 border-primary-blue opacity-30"></div>
           <div className="absolute bottom-0 right-0 w-48 h-48 border-r-4 border-b-4 border-blue-400 opacity-20"></div>
         </div> */}
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-40">
           <div className="grid grid-cols-12 gap-8 items-center">
             <div className="col-span-8">
               <div className="relative">
-                <div className="absolute -left-6 top-0 w-2 h-full bg-primary-blue"></div>
-                <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight mb-8">
+                {/* <div className="absolute -left-6 top-0 w-2 h-full bg-primary-blue"></div> */}
+                <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight mb-10">
                   Stay informed with
                   <span className="block text-blue-400">industry insights</span>
                 </h2>
 
-                <div className="space-y-4 mb-8">
-                  <div className="bg-primary-blue text-white p-6 max-w-2xl transform -skew-x-3">
-                    <div className="transform skew-x-3">
-                      <p className="text-lg">
-                        Subscribe to our newsletter for the latest developments
-                        in subsea engineering and offshore technology.
-                      </p>
+                <div className="space-y-6 mb-12" style={{ perspective: 1200 }}>
+                  {/* First stack */}
+                  <div
+                    className="relative max-w-2xl mx-auto"
+                    style={{ transformStyle: "preserve-3d" }}
+                  >
+                    {/* Back depth shadow layer */}
+                    <div
+                      aria-hidden
+                      className="absolute inset-0 transform -skew-x-3 "
+                      style={{
+                        top: 18,
+                        left: 18,
+                        zIndex: 0,
+                        background:
+                          "linear-gradient(180deg, rgba(2,6,23,0.18) 0%, rgba(2,6,23,0.08) 60%)",
+                        filter: "blur(10px)",
+                        opacity: 0.9,
+                      }}
+                    />
+
+                    {/* Front trapezoid card (content) */}
+                    <div
+                      className="relative bg-primary-blue text-white p-6 max-w-2xl transform -skew-x-3 "
+                      style={{
+                        zIndex: 2,
+                        boxShadow:
+                          "0 30px 50px rgba(2,6,23,0.35), inset 0 -6px 18px rgba(0,0,0,0.12)",
+                        transformOrigin: "50% 50%",
+                        transform:
+                          "-skewX(12deg) translateZ(20px) rotateX(6deg)",
+                      }}
+                    >
+                      <div className="transform skew-x-3">
+                        <p className="text-lg">
+                          Subscribe to our newsletter for the latest
+                          developments in subsea engineering and offshore
+                          technology.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Second stack (additional) */}
+                  <div
+                    className="relative max-w-2xl mx-auto"
+                    style={{ transformStyle: "preserve-3d" }}
+                  >
+                    {/* Back depth shadow layer (slightly different offset for variety) */}
+                    <div
+                      aria-hidden
+                      className="absolute inset-0 transform skew-x-3"
+                      style={{
+                        top: 14,
+                        left: -14,
+                        zIndex: 0,
+                        background:
+                          "linear-gradient(180deg, rgba(14,165,233,0.12) 0%, rgba(2,6,23,0.04) 60%)",
+                        filter: "blur(8px)",
+                        opacity: 0.9,
+                      }}
+                    />
+
+                    {/* Front trapezoid card (content) with alternate tint */}
+                    <div
+                      className="relative bg-gradient-to-r from-primary-orange to-primary-yellow-hover text-white p-6 max-w-2xl transform skew-x-3"
+                      style={{
+                        zIndex: 2,
+                        boxShadow:
+                          "0 24px 40px rgba(2,6,23,0.28), inset 0 -6px 14px rgba(0,0,0,0.10)",
+                        transformOrigin: "50% 50%",
+                        transform:
+                          "skewX(10deg) translateZ(16px) rotateX(4deg)",
+                      }}
+                    >
+                      <div className="transform -skew-x-3">
+                        <p className="text-lg">
+                          Sign up for exclusive insights and event invites.
+                          We’ll send concise, timely updates tailored to subsea
+                          professionals.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -647,7 +661,7 @@ const NewsArticle: React.FC = () => {
             <div className="col-span-4">
               <div className="relative w-full h-80">
                 <div className="absolute top-0 right-0 w-48 h-24 bg-primary-blue transform -skew-y-6"></div>
-                <div className="absolute top-16 right-8 w-40 h-20 bg-blue-400 transform -skew-y-6"></div>
+                <div className="absolute top-16 right-10 w-40 h-20 bg-blue-400 transform -skew-y-6"></div>
                 <div className="absolute bottom-20 right-0 w-56 h-28 bg-gray-700 transform -skew-y-6"></div>
               </div>
             </div>

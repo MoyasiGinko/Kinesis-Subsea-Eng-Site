@@ -92,11 +92,11 @@ const AboutKinesis: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Company Overview - Extraordinary Design */}
       <div
-        className="relative overflow-hidden bg-white bg-fit cove bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/service2.gif')" }}
+        className="relative overflow-hidden bg-white bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/about2.jpg')" }}
       >
         {/* optional overlay for better contrast */}
-        <div className="absolute inset-0 bg-black/20 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>
 
         <div className="max-w-[1480px] mx-auto px-6 py-20">
           <div className="relative">
