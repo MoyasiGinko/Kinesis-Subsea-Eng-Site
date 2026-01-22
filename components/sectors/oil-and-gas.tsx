@@ -106,10 +106,9 @@ const OilAndGasPage: React.FC = () => {
                   </h2>
 
                   <p className="text-gray-600 max-w-2xl mb-8 text-lg">
-                    Integrated subsea, riser, pipeline, mooring and topside
-                    engineering — blended FEED, detailed design and offshore
-                    execution to maximise uptime, reduce whole-life costs and
-                    de-risk complex developments.
+                    Our expertise spans a wide range of subsea systems in the
+                    oil and gas sector, delivering innovative and reliable
+                    solutions to meet the most demanding project requirements
                   </p>
 
                   {/* symmetric features layout */}

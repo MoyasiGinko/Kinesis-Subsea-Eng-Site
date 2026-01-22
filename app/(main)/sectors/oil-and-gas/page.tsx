@@ -7,7 +7,7 @@ export default function Page(): React.ReactElement {
     <>
       <SectorBanner
         title="Oil & Gas"
-        subtitle="Our expertise spans a wide range of subsea systems in the oil and gas sector, delivering innovative and reliable solutions to meet the most demanding project requirements."
+        subtitle="Innovative solutions for the oil and gas industry"
         links={[
           { href: "/sectors/#oil-and-gas", label: "Overview" },
           { href: "/sectors/#solutions", label: "Solutions" },
