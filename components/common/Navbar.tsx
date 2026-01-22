@@ -164,7 +164,7 @@ const menuItems = [
     //   },
     // ],
   },
-  { title: "Contact", href: "/contact-us" },
+  // { title: "Contact", href: "/contact-us" },
 ];
 
 type NavbarProps = { scrollY?: number };
@@ -519,7 +519,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
         <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
           <Link
             href="/contact-us"
-            className={`hidden md:inline-flex items-center font-medium py-4 md:py-5 px-6 md:px-10 xl:px-14 text-base xl:text-lg transition-all duration-300 transform hover:-translate-y-0.5 ${
+            className={`hidden md:inline-flex rounded-lg items-center font-medium py-4 md:py-5 px-6 md:px-10 xl:px-14 text-base xl:text-lg transition-all duration-300 transform hover:-translate-y-0.5 ${
               isScrolled
                 ? "bg-primary-blue hover:bg-primary-blue-hover text-white"
                 : "bg-white hover:bg-gray-100 text-gray-900"
@@ -530,7 +530,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </span>
           </Link>
-          <button
+          {/* <button
             title="Grid View"
             className="p-2 md:p-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300"
           >
@@ -548,7 +548,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                 d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
               />
             </svg>
-          </button>
+          </button> */}
 
           {/* Mobile Menu Button */}
           <button

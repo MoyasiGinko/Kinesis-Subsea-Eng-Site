@@ -16,6 +16,7 @@ interface SectorData {
   sectorImage: string;
   color: string;
   hoverColor: string;
+  linkurl?: string;
 }
 
 const SectorLayout: React.FC = () => {
@@ -27,7 +28,7 @@ const SectorLayout: React.FC = () => {
       title: "OIL & GAS",
       subtitle: "Sustainable Power Solutions",
       description:
-        "Advanced renewable energy systems and smart grid technologies for sustainable power distribution and management across industrial sectors.",
+        "Advanced renewable energy systems, smart grid technologies for sustainable power distribution & management across industrial sectors.",
       icon: <Flame className="w-8 h-8" />,
       keyPoints: [
         "Renewable Energy Integration",
@@ -40,10 +41,11 @@ const SectorLayout: React.FC = () => {
       sectorImage: "/images/sector-left.png",
       color: "#D93025",
       hoverColor: "#BF2A1D",
+      linkurl: "/sectors/oil-gas",
     },
     {
       id: "renewable-energy",
-      title: "RENEWABLE ENERGY",
+      title: "RE-ENERGY",
       subtitle: "Clean Technology Innovation",
       description:
         "Comprehensive renewable energy solutions including solar, wind, and hydroelectric systems for sustainable industrial operations.",
@@ -59,6 +61,7 @@ const SectorLayout: React.FC = () => {
       sectorImage: "/images/sector-right.png",
       color: "#1A73b8",
       hoverColor: "#0F5BB5",
+      linkurl: "/sectors/renewable-energy",
     },
   ];
 
@@ -349,10 +352,14 @@ const SectorLayout: React.FC = () => {
 
                 {/* Description */}
                 <motion.p
-                  className="text-gray-400 mb-8 leading-relaxed text-lg"
+                  className="text-gray-400  p-2 mb-8 leading-relaxed text-lg"
                   animate={{
                     color:
                       hoveredSector === sector.id ? sector.color : "#9ca3af",
+                    backgroundColor:
+                      hoveredSector === sector.id
+                        ? `rgba(255,255,255,0.9)`
+                        : "transparent",
                   }}
                   transition={{ duration: 0.6 }}
                 >
@@ -364,7 +371,7 @@ const SectorLayout: React.FC = () => {
                   className="overflow-hidden w-full flex flex-col items-center"
                   animate={{
                     height: hoveredSector === sector.id ? "auto" : 0,
-                    marginBottom: hoveredSector === sector.id ? 32 : 0,
+                    marginBottom: hoveredSector === sector.id ? 20 : 0,
                   }}
                   transition={{
                     duration: 0.8,
@@ -394,9 +401,9 @@ const SectorLayout: React.FC = () => {
                         animate={
                           hoveredSector === sector.id ? "visible" : "hidden"
                         }
-                        className="flex items-center space-x-4 bg-white/5 backdrop-blur-sm border w-[300px] border-white/10 px-4 py-3 justify-left"
+                        className="flex items-center space-x-4 bg-white/90 backdrop-blur-sm border w-[300px] border-white/10 px-4 py-3 justify-left"
                         whileHover={{
-                          backgroundColor: "rgba(255,255,255,0.1)",
+                          backgroundColor: "rgba(255,255,255,0.95)",
                           borderColor: "rgba(255,255,255,0.2)",
                           x: 8,
                           transition: { duration: 0.4 },
@@ -413,7 +420,7 @@ const SectorLayout: React.FC = () => {
                           }}
                         />
                         <span
-                          className="text-sm font-medium text-white"
+                          className="text-base font-medium text-white"
                           style={{ color: sector.color }}
                         >
                           {point}
@@ -424,8 +431,9 @@ const SectorLayout: React.FC = () => {
                 </motion.div>
 
                 {/* CTA Button */}
-                <motion.button
-                  className="group/btn inline-flex items-center space-x-3 bg-white/10 backdrop-blur-md border border-white/30 px-8 py-4 font-medium tracking-wide text-white relative overflow-hidden self-center mt-4"
+                <motion.a
+                  className="group/btn w-full max-w-[300px] inline-flex items-center space-x-3 bg-white/10 backdrop-blur-md border border-white/30 px-8 py-4 font-medium tracking-wide text-white relative overflow-hidden self-center mt-4"
+                  href={sector.linkurl || "#"}
                   style={{
                     backgroundColor: `${sector.color}`,
                     borderColor: sector.color,
@@ -468,7 +476,7 @@ const SectorLayout: React.FC = () => {
                   >
                     <ArrowUpRight className="w-5 h-5" />
                   </motion.div>
-                </motion.button>
+                </motion.a>
               </div>
             </motion.div>
           ))}
