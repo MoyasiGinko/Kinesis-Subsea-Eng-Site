@@ -13,6 +13,7 @@ import {
   Mail,
   MapPin,
 } from "lucide-react";
+import { desc } from "framer-motion/client";
 
 const menuItems = [
   {
@@ -45,11 +46,45 @@ const menuItems = [
         title: "Oil & Gas",
         href: "/sectors/oil-and-gas",
         description: "Technical engineering solutions",
+        subitems: [
+          {
+            title: "Sub-product 1",
+            href: "#sub-product-1",
+            description: "Description for Sub-product 1",
+          },
+          {
+            title: "Sub-product 2",
+            href: "#sub-product-2",
+            description: "Description for Sub-product 2",
+          },
+          {
+            title: "Sub-product 3",
+            href: "#sub-product-3",
+            description: "Description for Sub-product 3",
+          },
+        ],
       },
       {
         title: "Renewables",
         href: "/sectors/renewables",
         description: "Innovative product portfolio",
+        subitems: [
+          {
+            title: "Sub-product A",
+            href: "#sub-product-a",
+            description: "Description for Sub-product A",
+          },
+          {
+            title: "Sub-product B",
+            href: "#sub-product-b",
+            description: "Description for Sub-product B",
+          },
+          {
+            title: "Sub-product C",
+            href: "#sub-product-c",
+            description: "Description for Sub-product C",
+          },
+        ],
       },
     ],
   },

@@ -87,6 +87,12 @@ const OilAndGasPage: React.FC = () => {
     },
   ];
 
+  const subProducts = [
+    { title: "Sub-product 1", id: "sub-product-1" },
+    { title: "Sub-product 2", id: "sub-product-2" },
+    { title: "Sub-product 3", id: "sub-product-3" },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* this section will serve as the welcome section */}
@@ -325,7 +331,7 @@ const OilAndGasPage: React.FC = () => {
       </section>
 
       {/* About sector Extraordinary Design */}
-      <div className="relative overflow-hidden bg-white">
+      <div id={subProducts[0].id} className="relative overflow-hidden bg-white">
         <div className="max-w-[1480px] mx-auto px-6 py-20">
           <div className="relative">
             {/* Trapezium-shaped image container (replace URL with your image) */}
@@ -427,7 +433,7 @@ const OilAndGasPage: React.FC = () => {
       </div>
 
       {/* Our Sectors - Asymmetrical Layout */}
-      <div className="bg-gray-100 py-24">
+      <div id={subProducts[1].id} className="bg-gray-100 py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-12 gap-8 items-start">
             {/* Left side - Offset content */}
@@ -555,7 +561,7 @@ const OilAndGasPage: React.FC = () => {
         </div>
       </div>
       {/* Services Cards */}
-      <div className="bg-white py-24">
+      <div id={subProducts[2].id} className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 items-center mb-12 gap-6">
             {/* Left - CTA text and button (wider now) */}
