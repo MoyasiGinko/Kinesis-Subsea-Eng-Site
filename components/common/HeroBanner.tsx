@@ -157,7 +157,7 @@ const HeroBanner = () => {
           playsInline
         />
         {/* Video Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 via-slate-800/20 to-slate-900/40" />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-slate-800/30 to-slate-900/50" />
       </div>
 
       {/* Dynamic Grid Overlay */}
