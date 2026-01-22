@@ -228,10 +228,13 @@ export default function NewsSection() {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16 transition-all duration-1000 delay-1200">
-          <button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-blue to-primary-blue-hover  text-white font-semibold text-lg transition-all duration-500 hover:from-primary-blue-hover hover:to-primary-blue hover:shadow-xl hover:shadow-blue-300/25  overflow-hidden">
+          <a
+            href="/news"
+            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-blue to-primary-blue-hover  text-white font-semibold text-lg transition-all duration-500 hover:from-primary-blue-hover hover:to-primary-blue hover:shadow-xl hover:shadow-blue-300/25  overflow-hidden"
+          >
             <span className="relative z-10">VIEW MORE</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
-          </button>
+          </a>
         </div>
       </div>
     </section>
