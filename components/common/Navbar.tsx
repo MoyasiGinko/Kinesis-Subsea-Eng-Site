@@ -410,7 +410,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                   {/* Main Dropdown Menu */}
                   {openMenuIndex === index && (
                     <div
-                      className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 rounded-xl shadow-xl py-3 z-50"
+                      className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 rounded-xl shadow-xl  z-50"
                       onMouseEnter={() => handleMouseEnter(index)}
                       onMouseLeave={() => handleMouseLeave(index)}
                     >
@@ -425,10 +425,10 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                                   clickedSubMenuIndex === subindex;
                                 return (
                                   <div
-                                    className={`group/item px-5 py-3.5 transition-colors duration-200 cursor-pointer ${
+                                    className={`group/item px-5 rounded-xl py-3.5 transition-colors duration-200 cursor-pointer ${
                                       isSubActive
                                         ? "bg-blue-50 text-primary-blue-hover"
-                                        : "hover:bg-blue-50"
+                                        : "hover:bg-blue-50 "
                                     } relative`}
                                     onMouseEnter={() =>
                                       handleSubMenuMouseEnter(subindex)
@@ -469,7 +469,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                               {/* Nested Dropdown for Subitems */}
                               {openSubMenuIndex === subindex && (
                                 <div
-                                  className="absolute left-full -top-3 ml-2 w-72 bg-white border border-gray-200 rounded-xl shadow-xl py-3 z-60"
+                                  className="absolute left-full -top-2 ml-2 mt-2 w-72 bg-white border border-gray-200 rounded-xl shadow-xl z-60"
                                   onMouseEnter={() =>
                                     handleSubMenuMouseEnter(subindex)
                                   }
@@ -481,8 +481,8 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                                     (nestedItem, nestedIndex) => (
                                       <Link
                                         key={nestedIndex}
-                                        href={nestedItem.href}
-                                        className="group/nested px-5 py-3.5 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
+                                        href={`${subitem.href}${nestedItem.href}`}
+                                        className="group/nested px-5 py-3.5 hover:bg-blue-50 rounded-xl transition-colors duration-200 cursor-pointer block"
                                       >
                                         <div className="flex items-center justify-between">
                                           <div className="w-full">
@@ -669,7 +669,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                                     (nestedItem, nestedIndex) => (
                                       <Link
                                         key={nestedIndex}
-                                        href={nestedItem.href}
+                                        href={`${subitem.href}${nestedItem.href}`}
                                         className="px-8 py-3 text-gray-600 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
                                       >
                                         <div className="font-medium">

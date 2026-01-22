@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   Anchor,
   Zap,
@@ -18,6 +19,55 @@ interface Service {
 }
 
 const RenewablesPage: React.FC = () => {
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // Apply smooth scrolling to the html element
+    document.documentElement.style.scrollBehavior = "smooth";
+
+    // Get the hash from URL or query params
+    const hash = window.location.hash.slice(1) || searchParams.get("section");
+
+    if (hash) {
+      let retryCount = 0;
+      const maxRetries = 5;
+
+      const scrollToElement = () => {
+        const element = document.getElementById(hash);
+        if (element) {
+          // Ensure element is visible before scrolling
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+          return true;
+        }
+        return false;
+      };
+
+      // Try immediately
+      if (scrollToElement()) {
+        return () => {
+          document.documentElement.style.scrollBehavior = "auto";
+        };
+      }
+
+      // Retry with increasing delays if element not found
+      const retryTimer = setInterval(() => {
+        if (scrollToElement() || retryCount >= maxRetries) {
+          clearInterval(retryTimer);
+        }
+        retryCount++;
+      }, 150);
+
+      return () => {
+        clearInterval(retryTimer);
+        document.documentElement.style.scrollBehavior = "auto";
+      };
+    }
+
+    return () => {
+      document.documentElement.style.scrollBehavior = "auto";
+    };
+  }, [searchParams]);
+
   const services: Service[] = [
     {
       title: "Subsea",
