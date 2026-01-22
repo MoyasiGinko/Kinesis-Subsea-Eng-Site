@@ -334,12 +334,11 @@ function HorizontalServiceCardsInner() {
                 <span className="text-slate-600 font-bold tracking-widest uppercase text-sm flex items-center gap-2">
                   <Wrench className="w-4 h-4" />
                   {/* Animate "Our Services" */}
-                  <span className="font-bold text-primary-yellow">
-                    Our Services
+                  <span className="font-bold text-base text-primary-yellow">
+                    Engineering Solutions
                   </span>
                 </span>
               </div>
-
               {/* Animate heading */}
               <motion.h2
                 initial={{ opacity: 0, y: 40 }}
@@ -349,7 +348,7 @@ function HorizontalServiceCardsInner() {
                 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight"
               >
                 {/* Animate each letter of ENGINEERING */}
-                {"ENGINEERING".split("").map((char, i) => (
+                {"OUR".split("").map((char, i) => (
                   <motion.span
                     key={`eng-${i}`}
                     initial={{ opacity: 0, y: 20 }}
@@ -364,7 +363,7 @@ function HorizontalServiceCardsInner() {
                 <br />
                 {/* Animate each letter of SOLUTIONS */}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-yellow to-yellow-400">
-                  {"SOLUTIONS".split("").map((char, i) => (
+                  {"SERVICES".split("").map((char, i) => (
                     <motion.span
                       key={`sol-${i}`}
                       initial={{ opacity: 0, y: 20 }}
@@ -654,9 +653,12 @@ function HorizontalServiceCardsInner() {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <button className="px-8 py-4 border-2 border-slate-900 text-slate-900 font-semibold hover:bg-slate-900 hover:text-white transition-all duration-300 transform hover:scale-105">
+          <a
+            href="/services"
+            className="px-8 py-4 border-2 border-slate-900 text-slate-900 font-semibold hover:bg-slate-900 hover:text-white transition-all duration-300 transform hover:scale-105"
+          >
             VIEW ALL SERVICES
-          </button>
+          </a>
         </div>
       </div>
     </div>
