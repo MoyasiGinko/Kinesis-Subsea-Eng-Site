@@ -276,17 +276,17 @@ const HeroBanner = () => {
                 <button
                   title="Previous Image"
                   onClick={prevImage}
-                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-12 sm:h-12 bg-black/50 text-white hover:bg-black/70 transition-all duration-300 flex items-center justify-center rounded-full"
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-1 bg-black/50 text-white hover:bg-black/70 transition-all duration-300 flex items-center justify-center rounded-full"
                 >
-                  <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 " />
                 </button>
 
                 <button
                   title="Next Image"
                   onClick={nextImage}
-                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-12 sm:h-12 bg-black/50 text-white hover:bg-black/70 transition-all duration-300 flex items-center justify-center rounded-full"
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-1 bg-black/50 text-white hover:bg-black/70 transition-all duration-300 flex items-center justify-center rounded-full"
                 >
-                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 " />
                 </button>
               </div>
 
