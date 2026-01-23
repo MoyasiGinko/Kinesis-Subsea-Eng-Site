@@ -1,6 +1,7 @@
 import CTASection from "@/components/sectors/cta-section";
 import OilAndGasPage from "@/components/sectors/oil-and-gas";
 import SectorBanner from "@/components/sectors/sector-banner";
+import { Suspense } from "react";
 
 export default function Page(): React.ReactElement {
   return (
@@ -15,7 +16,9 @@ export default function Page(): React.ReactElement {
         ]}
         bgImage="/images/sector-banner-oil-gas.jpg"
       />
-      <OilAndGasPage />
+      <Suspense fallback={null}>
+        <OilAndGasPage />
+      </Suspense>
       <CTASection />
     </>
   );
