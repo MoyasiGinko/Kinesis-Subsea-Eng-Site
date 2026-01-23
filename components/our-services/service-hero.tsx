@@ -86,7 +86,7 @@ const ServiceHero: React.FC<HeroProps> = ({
               </div>
 
               {/* Company Logos */}
-              <div className="pt-12">
+              {/* <div className="pt-12">
                 <p className="text-sm font-medium text-white mb-6 uppercase tracking-wide">
                   Our Expertise
                 </p>
@@ -112,7 +112,7 @@ const ServiceHero: React.FC<HeroProps> = ({
                     </span>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Right Side - Hero Image */}
