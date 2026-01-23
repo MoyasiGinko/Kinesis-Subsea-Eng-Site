@@ -557,55 +557,49 @@ const OilAndGasPage: React.FC = () => {
 
             {/* Right side - Visual element with aligned connectors */}
             <div className="col-span-5">
+              {/*
               <div className="relative mt-16">
-                {/* Vertical spine that horizontal connectors will meet */}
-                {/* <div className="absolute left-[-64px] top-0 bottom-0 w-px bg-gray-400" /> */}
+              <div className="absolute left-[-64px] top-0 bottom-0 w-px bg-gray-400" />
 
-                {/* Stacked visualization blocks */}
-                <div className="space-y-12">
-                  <div className="relative bg-primary-blue h-20 w-full">
-                    <div className="absolute right-0 top-0 w-16 h-full bg-blue-800"></div>
-                    <div className="absolute left-8 top-6 text-white font-bold">
-                      SUBSEA
-                    </div>
+              <div className="space-y-12">
+                <div className="relative bg-primary-blue h-20 w-full">
+                <div className="absolute right-0 top-0 w-16 h-full bg-blue-800"></div>
+                <div className="absolute left-8 top-6 text-white font-bold">
+                  SUBSEA
+                </div>
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
+                </div>
 
-                    {/* horizontal connector aligned to vertical spine */}
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
-                    {/* small node at spine for visual connection */}
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
-                  </div>
+                <div className="relative bg-gray-800 h-24 w-4/5 ml-auto">
+                <div className="absolute left-0 top-0 w-16 h-full bg-gray-900"></div>
+                <div className="absolute right-8 top-8 text-white font-bold">
+                  RISER SYSTEMS
+                </div>
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
+                </div>
 
-                  <div className="relative bg-gray-800 h-24 w-4/5 ml-auto">
-                    <div className="absolute left-0 top-0 w-16 h-full bg-gray-900"></div>
-                    <div className="absolute right-8 top-8 text-white font-bold">
-                      RISER SYSTEMS
-                    </div>
+                <div className="relative bg-blue-400 h-16 w-3/4">
+                <div className="absolute right-0 top-0 w-12 h-full bg-primary-blue"></div>
+                <div className="absolute left-8 top-4 text-white font-bold ">
+                  PIPELINE
+                </div>
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
+                </div>
 
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
-                  </div>
-
-                  <div className="relative bg-blue-400 h-16 w-3/4">
-                    <div className="absolute right-0 top-0 w-12 h-full bg-primary-blue"></div>
-                    <div className="absolute left-8 top-4 text-white font-bold ">
-                      PIPELINE
-                    </div>
-
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
-                  </div>
-
-                  <div className="relative bg-gray-700 h-28 w-5/6 ml-auto">
-                    <div className="absolute left-0 top-0 w-20 h-full bg-gray-900"></div>
-                    <div className="absolute right-8 top-10 text-white font-bold">
-                      MOORING & TOPSIDE
-                    </div>
-
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
-                  </div>
+                <div className="relative bg-gray-700 h-28 w-5/6 ml-auto">
+                <div className="absolute left-0 top-0 w-20 h-full bg-gray-900"></div>
+                <div className="absolute right-8 top-10 text-white font-bold">
+                  MOORING & TOPSIDE
+                </div>
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
                 </div>
               </div>
+              </div>
+              */}
             </div>
           </div>
         </div>
@@ -656,11 +650,11 @@ const OilAndGasPage: React.FC = () => {
 
             {/* Right - Title styled like "Our Sectors" (accent bar + offset) */}
             <div className="md:col-span-1 flex justify-end">
-              <div className="relative w-full max-w-xs">
+              <div className="relative w-full max-w-sm">
                 {/* <div className="absolute -right-8 top-0 w-2 h-24 bg-primary-blue" /> */}
                 <div className="text-right pr-6">
                   <h2 className="text-4xl font-bold text-gray-900 mb-2">
-                    What We Offer
+                    Areas of Expertise
                   </h2>
                   <p className="text-sm text-gray-500 mb-3">
                     Subtle, tailored services designed to meet your project's
