@@ -82,12 +82,18 @@ const CTASection: React.FC = () => {
 
               {/* Action buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-primary-blue hover:bg-primary-blue-hover text-white px-8 py-4 font-bold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
+                <a
+                  href="/contact-us"
+                  className="bg-primary-blue hover:bg-primary-blue-hover text-white px-8 py-4 font-bold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+                >
                   SCHEDULE CONSULTATION
-                </button>
-                <button className="border-2 border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 font-bold transition-all duration-300">
+                </a>
+                <a
+                  href="/projects"
+                  className="border-2 border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 font-bold transition-all duration-300"
+                >
                   VIEW CASE STUDIES
-                </button>
+                </a>
               </div>
             </div>
           </div>

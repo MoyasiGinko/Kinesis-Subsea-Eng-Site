@@ -16,6 +16,7 @@ interface Service {
   description: string;
   capabilities: string[];
   icon: React.ReactNode;
+  image: string;
 }
 
 const RenewablesPage: React.FC = () => {
@@ -79,6 +80,7 @@ const RenewablesPage: React.FC = () => {
         "Integrity, intervention and life-extension",
       ],
       icon: <Anchor className="w-8 h-8" />,
+      image: "/images/service-banner-right.avif",
     },
     {
       title: "Riser systems",
@@ -90,6 +92,7 @@ const RenewablesPage: React.FC = () => {
         "Installation and lay-down engineering",
       ],
       icon: <Zap className="w-8 h-8" />,
+      image: "/services/2.avif",
     },
     {
       title: "Wellhead, conductor and casing",
@@ -101,6 +104,7 @@ const RenewablesPage: React.FC = () => {
         "Drilling support and contingency plans",
       ],
       icon: <Wrench className="w-8 h-8" />,
+      image: "/images/service-banner-right.avif",
     },
     {
       title: "Pipeline",
@@ -112,6 +116,7 @@ const RenewablesPage: React.FC = () => {
         "Pre-commissioning and tie-in methods",
       ],
       icon: <Navigation className="w-8 h-8" />,
+      image: "/services/2.avif",
     },
     {
       title: "Mooring",
@@ -123,6 +128,7 @@ const RenewablesPage: React.FC = () => {
         "Installation aids & contingency analysis",
       ],
       icon: <Ship className="w-8 h-8" />,
+      image: "/images/service-banner-right.avif",
     },
     {
       title: "Topside",
@@ -134,6 +140,7 @@ const RenewablesPage: React.FC = () => {
         "Operations readiness & procedures",
       ],
       icon: <Building2 className="w-8 h-8" />,
+      image: "/services/2.avif",
     },
   ];
 
@@ -314,8 +321,8 @@ const RenewablesPage: React.FC = () => {
                       </div>
 
                       <div className="flex items-center justify-between gap-3">
-                        <button
-                          type="submit"
+                        <a
+                          href="/contact-us"
                           className="inline-flex items-center gap-3 px-4 py-2 bg-white text-primary-blue-hover text-sm font-medium rounded-none shadow-sm hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-blue"
                         >
                           Contact our experts
@@ -341,7 +348,7 @@ const RenewablesPage: React.FC = () => {
                               strokeLinejoin="round"
                             />
                           </svg>
-                        </button>
+                        </a>
 
                         <div className="flex items-center gap-3">
                           <svg
@@ -559,11 +566,9 @@ const RenewablesPage: React.FC = () => {
 
             {/* Right side - Visual element with aligned connectors */}
             <div className="col-span-5">
-              <div className="relative mt-16">
-                {/* Vertical spine that horizontal connectors will meet */}
-                {/* <div className="absolute left-[-64px] top-0 bottom-0 w-px bg-gray-400" /> */}
+              {/* <div className="relative mt-16">
+                <div className="absolute left-[-64px] top-0 bottom-0 w-px bg-gray-400" />
 
-                {/* Stacked visualization blocks */}
                 <div className="space-y-12">
                   <div className="relative bg-primary-blue h-20 w-full">
                     <div className="absolute right-0 top-0 w-16 h-full bg-primary-blue"></div>
@@ -571,9 +576,7 @@ const RenewablesPage: React.FC = () => {
                       SUBSEA
                     </div>
 
-                    {/* horizontal connector aligned to vertical spine */}
                     <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
-                    {/* small node at spine for visual connection */}
                     <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
                   </div>
 
@@ -607,7 +610,7 @@ const RenewablesPage: React.FC = () => {
                     <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -658,11 +661,11 @@ const RenewablesPage: React.FC = () => {
 
             {/* Right - Title styled like "Our Sectors" (accent bar + offset) */}
             <div className="md:col-span-1 flex justify-end">
-              <div className="relative w-full max-w-xs">
+              <div className="relative w-full max-w-sm">
                 {/* <div className="absolute -right-8 top-0 w-2 h-24 bg-primary-blue" /> */}
                 <div className="text-right pr-6">
                   <h2 className="text-4xl font-bold text-gray-900 mb-2">
-                    What We Offer
+                    Areas of Expertise
                   </h2>
                   <p className="text-sm text-gray-500 mb-3">
                     Subtle, tailored services designed to meet your project's
@@ -693,12 +696,20 @@ const RenewablesPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          <div className="grid grid-cols-1 gap-8 items-stretch">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-gray-50 border-2 border-gray-200 hover:border-primary-blue transition-all duration-300 group h-full flex flex-col overflow-hidden"
+                className="bg-gray-50 border-2 border-gray-200 hover:border-primary-blue transition-all duration-300 group h-full flex flex-col md:flex-row overflow-hidden"
               >
+                <div className="md:w-72 w-full h-56 md:h-auto shrink-0 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={`${service.title} illustration`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
                 <div className="p-8 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-4">
@@ -713,7 +724,7 @@ const RenewablesPage: React.FC = () => {
                     <div className="w-8 h-px bg-gray-300 group-hover:bg-blue-400 transition-colors" />
                   </div>
 
-                  <p className="text-gray-700 mb-6 leading-relaxed text-sm flex-1">
+                  <p className="text-gray-700 mb-6 leading-relaxed text-base flex-1">
                     {service.description}
                   </p>
 
@@ -724,7 +735,7 @@ const RenewablesPage: React.FC = () => {
                           className="flex-none w-2 h-2 bg-primary-blue mr-3  mt-1"
                           aria-hidden="true"
                         />
-                        <span className="text-gray-700 text-xs leading-tight">
+                        <span className="text-gray-700 text-base leading-tight">
                           {capability}
                         </span>
                       </li>

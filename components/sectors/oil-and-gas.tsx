@@ -16,6 +16,7 @@ interface Service {
   description: string;
   capabilities: string[];
   icon: React.ReactNode;
+  image: string;
 }
 
 const OilAndGasPage: React.FC = () => {
@@ -79,6 +80,7 @@ const OilAndGasPage: React.FC = () => {
         "Integrity, intervention and life-extension",
       ],
       icon: <Anchor className="w-8 h-8" />,
+      image: "/images/service-banner-right.avif",
     },
     {
       title: "Riser systems",
@@ -90,6 +92,7 @@ const OilAndGasPage: React.FC = () => {
         "Installation and lay-down engineering",
       ],
       icon: <Zap className="w-8 h-8" />,
+      image: "/services/2.avif",
     },
     {
       title: "Wellhead, conductor and casing",
@@ -101,6 +104,7 @@ const OilAndGasPage: React.FC = () => {
         "Drilling support and contingency plans",
       ],
       icon: <Wrench className="w-8 h-8" />,
+      image: "/images/service-banner-right.avif",
     },
     {
       title: "Pipeline",
@@ -112,6 +116,7 @@ const OilAndGasPage: React.FC = () => {
         "Pre-commissioning and tie-in methods",
       ],
       icon: <Navigation className="w-8 h-8" />,
+      image: "/services/2.avif",
     },
     {
       title: "Mooring",
@@ -123,6 +128,7 @@ const OilAndGasPage: React.FC = () => {
         "Installation aids & contingency analysis",
       ],
       icon: <Ship className="w-8 h-8" />,
+      image: "/images/service-banner-right.avif",
     },
     {
       title: "Topside",
@@ -134,6 +140,7 @@ const OilAndGasPage: React.FC = () => {
         "Operations readiness & procedures",
       ],
       icon: <Building2 className="w-8 h-8" />,
+      image: "/services/2.avif",
     },
   ];
 
@@ -313,8 +320,8 @@ const OilAndGasPage: React.FC = () => {
                       </div>
 
                       <div className="flex items-center justify-between gap-3">
-                        <button
-                          type="submit"
+                        <a
+                          href="/contact-us"
                           className="inline-flex items-center gap-3 px-4 py-2 bg-white text-primary-blue-hover text-sm font-medium rounded-none shadow-sm hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-blue"
                         >
                           Contact our experts
@@ -340,7 +347,7 @@ const OilAndGasPage: React.FC = () => {
                               strokeLinejoin="round"
                             />
                           </svg>
-                        </button>
+                        </a>
 
                         <div className="flex items-center gap-3">
                           <svg
@@ -685,12 +692,20 @@ const OilAndGasPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          <div className="grid grid-cols-1 gap-8 items-stretch">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-gray-50 border-2 border-gray-200 hover:border-primary-blue transition-all duration-300 group h-full flex flex-col overflow-hidden"
+                className="bg-gray-50 border-2 border-gray-200 hover:border-primary-blue transition-all duration-300 group h-full flex flex-col md:flex-row overflow-hidden"
               >
+                <div className="md:w-72 w-full h-56 md:h-auto shrink-0 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={`${service.title} illustration`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
                 <div className="p-8 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-4">
@@ -705,7 +720,7 @@ const OilAndGasPage: React.FC = () => {
                     <div className="w-8 h-px bg-gray-300 group-hover:bg-blue-400 transition-colors" />
                   </div>
 
-                  <p className="text-gray-700 mb-6 leading-relaxed text-sm flex-1">
+                  <p className="text-gray-700 mb-6 leading-relaxed text-base flex-1">
                     {service.description}
                   </p>
 
@@ -716,7 +731,7 @@ const OilAndGasPage: React.FC = () => {
                           className="flex-none w-2 h-2 bg-primary-blue mr-3  mt-1"
                           aria-hidden="true"
                         />
-                        <span className="text-gray-700 text-xs leading-tight">
+                        <span className="text-gray-700 text-base leading-tight">
                           {capability}
                         </span>
                       </li>
