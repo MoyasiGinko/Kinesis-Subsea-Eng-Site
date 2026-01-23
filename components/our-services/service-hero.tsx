@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowRight, Play } from "lucide-react";
 
 interface HeroProps {
@@ -16,6 +16,66 @@ const ServiceHero: React.FC<HeroProps> = ({
   primaryCTA = "Request a Quote",
   secondaryCTA = "Watch Overview",
 }) => {
+  const coreHighlights = [
+    {
+      title: "Engineering Design & Simulation",
+      summary:
+        "Conceptual, optioneering, FEED and detailed design with advanced simulation to de-risk delivery.",
+      bullets: [
+        "Conceptual & optioneering",
+        "FEED and detailed design",
+        "Advanced simulation and analysis",
+      ],
+      bg: "from-sky-500/10",
+      colorChip: "bg-sky-500",
+    },
+    {
+      title: "System Optimisation",
+      summary:
+        "We combine advanced simulation tools with deep domain knowledge to optimize system performance, reduce risk, and support efficient offshore operations.",
+      bullets: [
+        "Integrated system design",
+        "Performance & risk optimisation",
+        "Interface & operability assurance",
+      ],
+      bg: "from-emerald-500/10",
+      colorChip: "bg-emerald-500",
+    },
+    {
+      title: "Fatigue & Life Extension",
+      summary:
+        "Global and local fatigue analysis to plan interventions and extend asset life with confidence.",
+      bullets: [
+        "Global and local fatigue",
+        "Life extension strategies",
+        "Integrity & reliability planning",
+      ],
+      bg: "from-amber-500/10",
+      colorChip: "bg-amber-500",
+    },
+    {
+      title: "Operations Support",
+      summary:
+        "Provide technical support to offshore operation. Things does not always go according to plan on the of the operation day, maybe equipment breakdown, or extreme weather. Carried out simulation based on live weather condition or short term weather forecast.",
+      bullets: [
+        "Live/forecast-based simulations",
+        "Rapid contingency response",
+        "Technical support offshore",
+      ],
+      bg: "from-indigo-500/10",
+      colorChip: "bg-indigo-500",
+    },
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActiveIndex((i) => (i + 1) % coreHighlights.length);
+    }, 4500);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <section className="relative bg-primary-blue overflow-hidden">
       {/* Background Elements */}
@@ -68,8 +128,11 @@ const ServiceHero: React.FC<HeroProps> = ({
               </h1>
 
               {/* Subheading */}
-              <p className="text-lg lg:text-xl text-gray-50 leading-relaxed max-w-xl">
-                {subheading}
+              <p className="text-lg lg:text-xl text-gray-50 leading-relaxed max-w-2xl">
+                We are specialists in Subsea Engineering, with a core focus on
+                Design, Analysis, and Simulation. We combine advanced simulation
+                tools with deep domain knowledge to optimize system performance,
+                reduce risk, and support efficient offshore operations.
               </p>
 
               {/* CTAs */}
@@ -85,120 +148,61 @@ const ServiceHero: React.FC<HeroProps> = ({
                 </button>
               </div>
 
-              {/* Company Logos */}
-              {/* <div className="pt-12">
-                <p className="text-sm font-medium text-white mb-6 uppercase tracking-wide">
-                  Our Expertise
-                </p>
-                <div className="flex items-center space-x-8 opacity-60">
-                  <div className="w-28 h-8 bg-slate-50 flex items-center justify-center">
-                    <span className="text-xs font-bold text-slate-600">
-                      SUBSEA
+              {/* core services chips */}
+              <div className="pt-6 flex flex-wrap gap-3">
+                {coreHighlights.map((item, idx) => (
+                  <button
+                    key={item.title}
+                    onClick={() => setActiveIndex(idx)}
+                    className={`inline-flex items-center gap-2 px-3 py-2  text-sm font-medium transition-colors duration-200 ${
+                      activeIndex === idx
+                        ? "bg-white text-primary-blue"
+                        : "bg-white/20 text-white hover:bg-white/30"
+                    }`}
+                  >
+                    <span
+                      className={`h-2.5 w-2.5 rounded-full ${item.colorChip}`}
+                      aria-hidden="true"
+                    />
+                    <span className="uppercase tracking-wide">
+                      {item.title}
                     </span>
-                  </div>
-                  <div className="w-28 h-8 bg-slate-50 flex items-center justify-center">
-                    <span className="text-xs font-bold text-slate-600">
-                      RISER SYSTEMS
-                    </span>
-                  </div>
-                  <div className="w-28 h-8 bg-slate-50 flex items-center justify-center">
-                    <span className="text-xs font-bold text-slate-600">
-                      PIPELINE
-                    </span>
-                  </div>
-                  <div className="w-28 h-8 bg-slate-50 flex items-center justify-center">
-                    <span className="text-xs font-bold text-slate-600">
-                      MOORING
-                    </span>
-                  </div>
-                </div>
-              </div> */}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {/* Right Side - Hero Image */}
+            {/* Right Side - Single Active Card */}
             <div className="relative">
-              {/* Main Image Container */}
-              <div className="relative z-10">
-                {(() => {
-                  const images: string[] = [
-                    "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/3_yp4wiw.webp",
-                    "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/4_a40enk.webp",
-                    "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/5_yhjlu6.webp",
-                    "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738819/2_vfvnuz.webp",
-                    "https://res.cloudinary.com/dvvcwzp4n/image/upload/v1754738820/1_jvnjiz.webp",
-                  ];
-
-                  const [index, setIndex] = React.useState<number>(0);
-
-                  // preload images
-                  React.useEffect(() => {
-                    images.forEach((src) => {
-                      const img = new Image();
-                      img.src = src;
-                    });
-                  }, []);
-
-                  // cycle through images
-                  React.useEffect(() => {
-                    const id = setInterval(() => {
-                      setIndex((i) => (i + 1) % images.length);
-                    }, 4000);
-                    return () => clearInterval(id);
-                  }, []);
-
-                  return (
-                    <div className="w-full h-[500px] lg:h-[500px] relative overflow-hidden rounded-md shadow-2xl">
-                      {images.map((src, i) => (
-                        <div
-                          key={src}
-                          className={`absolute inset-0 bg-center bg-cover transition-opacity duration-700 ${
-                            i === index ? "opacity-100" : "opacity-0"
-                          }`}
-                          style={{ backgroundImage: `url("${src}")` }}
+              <div className="relative text-left bg-white/95 z-[10] border border-white/60 shadow-2xl rounded-md p-6 md:p-8 overflow-hidden backdrop-blur-sm min-h-[360px] flex flex-col gap-4">
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${coreHighlights[activeIndex].bg} to-transparent`}
+                  aria-hidden="true"
+                />
+                <div className="relative space-y-4">
+                  <h3 className="text-2xl font-bold text-primary-blue">
+                    {coreHighlights[activeIndex].title}
+                  </h3>
+                  <p className="text-base text-slate-700 leading-relaxed">
+                    {coreHighlights[activeIndex].summary}
+                  </p>
+                  <ul className="space-y-2 text-base text-slate-800">
+                    {coreHighlights[activeIndex].bullets.map((point) => (
+                      <li key={point} className="flex items-start gap-2">
+                        <span
+                          className="mt-2 inline-block h-2 w-2 rounded-full bg-primary-blue"
+                          aria-hidden="true"
                         />
-                      ))}
-
-                      {/* overlay content (caption / placeholder) */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
-
-                      {/* indicators */}
-                      <div className="absolute bottom-4 right-4 z-20 flex space-x-2">
-                        {images.map((_, i) => (
-                          <button
-                            key={i}
-                            onClick={() => setIndex(i)}
-                            className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                              i === index ? "bg-white scale-125" : "bg-white/40"
-                            }`}
-                            aria-label={`Show image ${i + 1}`}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  );
-                })()}
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
               {/* Background Decorative Elements */}
-              <div className="absolute -top-8 -right-8 w-32 h-32 bg-blue-100 opacity-40 z-0" />
-              <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-slate-100 opacity-60 z-0" />
-
-              {/* Floating Stats Cards */}
-              <div className="absolute top-12 -left-6 bg-white p-4 shadow-lg border border-slate-100 z-20">
-                <div className="text-2xl font-bold text-primary-blue">24/7</div>
-                <div className="text-sm text-slate-600 font-medium">
-                  ROV Support
-                </div>
-              </div>
-
-              <div className="absolute bottom-16 -right-6 bg-white p-4 shadow-lg border border-slate-100 z-20">
-                <div className="text-2xl font-bold text-primary-blue">
-                  ISO 9001
-                </div>
-                <div className="text-sm text-slate-600 font-medium">
-                  (ISO 9001 / ISO 14001)
-                </div>
-              </div>
+              <div className="absolute -top-8 -right-8 w-32 h-32 bg-blue-100 opacity-40 z-[-0]" />
+              <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-slate-100 opacity-60 z-[-0]" />
             </div>
           </div>
         </div>
