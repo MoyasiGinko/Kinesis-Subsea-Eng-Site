@@ -13,6 +13,7 @@ import {
   Mail,
   MapPin,
 } from "lucide-react";
+import { desc } from "framer-motion/client";
 
 const menuItems = [
   {
@@ -45,11 +46,45 @@ const menuItems = [
         title: "Oil & Gas",
         href: "/sectors/oil-and-gas",
         description: "Technical engineering solutions",
+        subitems: [
+          {
+            title: "Sub-product 1",
+            href: "#sub-product-1",
+            description: "Description for Sub-product 1",
+          },
+          {
+            title: "Sub-product 2",
+            href: "#sub-product-2",
+            description: "Description for Sub-product 2",
+          },
+          {
+            title: "Sub-product 3",
+            href: "#sub-product-3",
+            description: "Description for Sub-product 3",
+          },
+        ],
       },
       {
         title: "Renewables",
         href: "/sectors/renewables",
         description: "Innovative product portfolio",
+        subitems: [
+          {
+            title: "Sub-product A",
+            href: "#sub-product-a",
+            description: "Description for Sub-product A",
+          },
+          {
+            title: "Sub-product B",
+            href: "#sub-product-b",
+            description: "Description for Sub-product B",
+          },
+          {
+            title: "Sub-product C",
+            href: "#sub-product-c",
+            description: "Description for Sub-product C",
+          },
+        ],
       },
     ],
   },
@@ -164,7 +199,7 @@ const menuItems = [
     //   },
     // ],
   },
-  { title: "Contact", href: "/contact-us" },
+  // { title: "Contact", href: "/contact-us" },
 ];
 
 type NavbarProps = { scrollY?: number };
@@ -375,7 +410,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                   {/* Main Dropdown Menu */}
                   {openMenuIndex === index && (
                     <div
-                      className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 rounded-xl shadow-xl py-3 z-50"
+                      className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 rounded-xl shadow-xl  z-50"
                       onMouseEnter={() => handleMouseEnter(index)}
                       onMouseLeave={() => handleMouseLeave(index)}
                     >
@@ -390,10 +425,10 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                                   clickedSubMenuIndex === subindex;
                                 return (
                                   <div
-                                    className={`group/item px-5 py-3.5 transition-colors duration-200 cursor-pointer ${
+                                    className={`group/item px-5 rounded-xl py-3.5 transition-colors duration-200 cursor-pointer ${
                                       isSubActive
                                         ? "bg-blue-50 text-primary-blue-hover"
-                                        : "hover:bg-blue-50"
+                                        : "hover:bg-blue-50 "
                                     } relative`}
                                     onMouseEnter={() =>
                                       handleSubMenuMouseEnter(subindex)
@@ -434,7 +469,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                               {/* Nested Dropdown for Subitems */}
                               {openSubMenuIndex === subindex && (
                                 <div
-                                  className="absolute left-full -top-3 ml-2 w-72 bg-white border border-gray-200 rounded-xl shadow-xl py-3 z-60"
+                                  className="absolute left-full -top-2 ml-2 mt-2 w-72 bg-white border border-gray-200 rounded-xl shadow-xl z-60"
                                   onMouseEnter={() =>
                                     handleSubMenuMouseEnter(subindex)
                                   }
@@ -446,8 +481,8 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                                     (nestedItem, nestedIndex) => (
                                       <Link
                                         key={nestedIndex}
-                                        href={nestedItem.href}
-                                        className="group/nested px-5 py-3.5 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
+                                        href={`${subitem.href}${nestedItem.href}`}
+                                        className="group/nested px-5 py-3.5 hover:bg-blue-50 rounded-xl transition-colors duration-200 cursor-pointer block"
                                       >
                                         <div className="flex items-center justify-between">
                                           <div className="w-full">
@@ -473,7 +508,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                           ) : (
                             <Link
                               href={subitem.href}
-                              className="group/item px-5 py-3.5 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
+                              className="group/item px-5 py-3.5 hover:bg-blue-50 rounded-xl transition-colors duration-200 cursor-pointer block"
                             >
                               <div className="flex items-center justify-between">
                                 <div className="w-full">
@@ -486,9 +521,9 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                                     </div>
                                   )}
                                 </div>
-                                <div className="flex items-center justify-center w-10 h-10 xl:w-12 xl:h-12 rounded-md">
+                                {/* <div className="flex items-center justify-center w-10 h-10 xl:w-12 xl:h-12 rounded-md">
                                   <ArrowRight className="w-5 h-5 xl:w-6 xl:h-6 text-gray-400 group-hover/nested:text-primary-blue-hover group-hover/nested:translate-x-1 transition-all duration-200" />
-                                </div>
+                                </div> */}
                               </div>
                             </Link>
                           )}
@@ -519,7 +554,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
         <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
           <Link
             href="/contact-us"
-            className={`hidden md:inline-flex items-center font-medium py-4 md:py-5 px-6 md:px-10 xl:px-14 text-base xl:text-lg transition-all duration-300 transform hover:-translate-y-0.5 ${
+            className={`hidden md:inline-flex rounded-lg items-center font-medium py-4 md:py-5 px-6 md:px-10 xl:px-14 text-base xl:text-lg transition-all duration-300 transform hover:-translate-y-0.5 ${
               isScrolled
                 ? "bg-primary-blue hover:bg-primary-blue-hover text-white"
                 : "bg-white hover:bg-gray-100 text-gray-900"
@@ -530,7 +565,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </span>
           </Link>
-          <button
+          {/* <button
             title="Grid View"
             className="p-2 md:p-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300"
           >
@@ -548,7 +583,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                 d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
               />
             </svg>
-          </button>
+          </button> */}
 
           {/* Mobile Menu Button */}
           <button
@@ -634,7 +669,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                                     (nestedItem, nestedIndex) => (
                                       <Link
                                         key={nestedIndex}
-                                        href={nestedItem.href}
+                                        href={`${subitem.href}${nestedItem.href}`}
                                         className="px-8 py-3 text-gray-600 hover:bg-blue-50 transition-colors duration-200 cursor-pointer block"
                                       >
                                         <div className="font-medium">

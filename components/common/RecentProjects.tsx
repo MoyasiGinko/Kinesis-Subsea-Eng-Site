@@ -293,7 +293,7 @@ const RecentProjectsSection: React.FC = () => {
           {/* Project Details - Right Side */}
           <div className="space-y-6">
             {/* Current Project Details */}
-            <div className="bg-slate-800 border border-slate-700 p-8">
+            <div className="bg-slate-800  border border-slate-700 p-8">
               <div className="flex items-center gap-3 mb-4">
                 <Building2 className="w-5 h-5 text-primary-orange" />
                 <span className="text-primary-orange font-semibold text-sm uppercase tracking-wide">
@@ -343,7 +343,7 @@ const RecentProjectsSection: React.FC = () => {
             </div>
 
             {/* All Projects List */}
-            <div className="bg-slate-800 border border-slate-700 p-6">
+            {/* <div className="bg-slate-800 border border-slate-700 p-6">
               <h4 className="text-lg font-bold text-primary-orange-hover mb-4">
                 All Projects
               </h4>
@@ -367,15 +367,18 @@ const RecentProjectsSection: React.FC = () => {
                   </button>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
-          <button className="px-8 py-4 bg-transparent border-2 border-primary-orange text-white hover:bg-primary-orange-hover font-semibold transition-all duration-300 transform hover:scale-105">
+          <a
+            href="/projects"
+            className="px-8 py-4 bg-transparent border-2 border-primary-orange text-white hover:bg-primary-orange-hover font-semibold transition-all duration-300 transform hover:scale-105"
+          >
             VIEW ALL PROJECTS
-          </button>
+          </a>
         </div>
       </div>
     </div>

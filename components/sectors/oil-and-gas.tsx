@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   Anchor,
   Zap,
@@ -15,9 +16,59 @@ interface Service {
   description: string;
   capabilities: string[];
   icon: React.ReactNode;
+  image: string;
 }
 
 const OilAndGasPage: React.FC = () => {
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // Apply smooth scrolling to the html element
+    document.documentElement.style.scrollBehavior = "smooth";
+
+    // Get the hash from URL or query params
+    const hash = window.location.hash.slice(1) || searchParams.get("section");
+
+    if (hash) {
+      let retryCount = 0;
+      const maxRetries = 5;
+
+      const scrollToElement = () => {
+        const element = document.getElementById(hash);
+        if (element) {
+          // Ensure element is visible before scrolling
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+          return true;
+        }
+        return false;
+      };
+
+      // Try immediately
+      if (scrollToElement()) {
+        return () => {
+          document.documentElement.style.scrollBehavior = "auto";
+        };
+      }
+
+      // Retry with increasing delays if element not found
+      const retryTimer = setInterval(() => {
+        if (scrollToElement() || retryCount >= maxRetries) {
+          clearInterval(retryTimer);
+        }
+        retryCount++;
+      }, 150);
+
+      return () => {
+        clearInterval(retryTimer);
+        document.documentElement.style.scrollBehavior = "auto";
+      };
+    }
+
+    return () => {
+      document.documentElement.style.scrollBehavior = "auto";
+    };
+  }, [searchParams]);
+
   const services: Service[] = [
     {
       title: "Subsea",
@@ -29,6 +80,7 @@ const OilAndGasPage: React.FC = () => {
         "Integrity, intervention and life-extension",
       ],
       icon: <Anchor className="w-8 h-8" />,
+      image: "/images/service-banner-right.avif",
     },
     {
       title: "Riser systems",
@@ -40,6 +92,7 @@ const OilAndGasPage: React.FC = () => {
         "Installation and lay-down engineering",
       ],
       icon: <Zap className="w-8 h-8" />,
+      image: "/services/2.avif",
     },
     {
       title: "Wellhead, conductor and casing",
@@ -51,6 +104,7 @@ const OilAndGasPage: React.FC = () => {
         "Drilling support and contingency plans",
       ],
       icon: <Wrench className="w-8 h-8" />,
+      image: "/images/service-banner-right.avif",
     },
     {
       title: "Pipeline",
@@ -62,6 +116,7 @@ const OilAndGasPage: React.FC = () => {
         "Pre-commissioning and tie-in methods",
       ],
       icon: <Navigation className="w-8 h-8" />,
+      image: "/services/2.avif",
     },
     {
       title: "Mooring",
@@ -73,6 +128,7 @@ const OilAndGasPage: React.FC = () => {
         "Installation aids & contingency analysis",
       ],
       icon: <Ship className="w-8 h-8" />,
+      image: "/images/service-banner-right.avif",
     },
     {
       title: "Topside",
@@ -84,7 +140,14 @@ const OilAndGasPage: React.FC = () => {
         "Operations readiness & procedures",
       ],
       icon: <Building2 className="w-8 h-8" />,
+      image: "/services/2.avif",
     },
+  ];
+
+  const subProducts = [
+    { title: "Sub-product 1", id: "sub-product-1" },
+    { title: "Sub-product 2", id: "sub-product-2" },
+    { title: "Sub-product 3", id: "sub-product-3" },
   ];
 
   return (
@@ -106,10 +169,9 @@ const OilAndGasPage: React.FC = () => {
                   </h2>
 
                   <p className="text-gray-600 max-w-2xl mb-8 text-lg">
-                    Integrated subsea, riser, pipeline, mooring and topside
-                    engineering — blended FEED, detailed design and offshore
-                    execution to maximise uptime, reduce whole-life costs and
-                    de-risk complex developments.
+                    Our expertise spans a wide range of subsea systems in the
+                    oil and gas sector, delivering innovative and reliable
+                    solutions to meet the most demanding project requirements
                   </p>
 
                   {/* symmetric features layout */}
@@ -258,8 +320,8 @@ const OilAndGasPage: React.FC = () => {
                       </div>
 
                       <div className="flex items-center justify-between gap-3">
-                        <button
-                          type="submit"
+                        <a
+                          href="/contact-us"
                           className="inline-flex items-center gap-3 px-4 py-2 bg-white text-primary-blue-hover text-sm font-medium rounded-none shadow-sm hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-blue"
                         >
                           Contact our experts
@@ -285,7 +347,7 @@ const OilAndGasPage: React.FC = () => {
                               strokeLinejoin="round"
                             />
                           </svg>
-                        </button>
+                        </a>
 
                         <div className="flex items-center gap-3">
                           <svg
@@ -326,7 +388,7 @@ const OilAndGasPage: React.FC = () => {
       </section>
 
       {/* About sector Extraordinary Design */}
-      <div className="relative overflow-hidden bg-white">
+      <div id={subProducts[0].id} className="relative overflow-hidden bg-white">
         <div className="max-w-[1480px] mx-auto px-6 py-20">
           <div className="relative">
             {/* Trapezium-shaped image container (replace URL with your image) */}
@@ -428,7 +490,7 @@ const OilAndGasPage: React.FC = () => {
       </div>
 
       {/* Our Sectors - Asymmetrical Layout */}
-      <div className="bg-gray-100 py-24">
+      <div id={subProducts[1].id} className="bg-gray-100 py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-12 gap-8 items-start">
             {/* Left side - Offset content */}
@@ -502,61 +564,55 @@ const OilAndGasPage: React.FC = () => {
 
             {/* Right side - Visual element with aligned connectors */}
             <div className="col-span-5">
+              {/*
               <div className="relative mt-16">
-                {/* Vertical spine that horizontal connectors will meet */}
-                {/* <div className="absolute left-[-64px] top-0 bottom-0 w-px bg-gray-400" /> */}
+              <div className="absolute left-[-64px] top-0 bottom-0 w-px bg-gray-400" />
 
-                {/* Stacked visualization blocks */}
-                <div className="space-y-12">
-                  <div className="relative bg-primary-blue h-20 w-full">
-                    <div className="absolute right-0 top-0 w-16 h-full bg-blue-800"></div>
-                    <div className="absolute left-8 top-6 text-white font-bold">
-                      SUBSEA
-                    </div>
+              <div className="space-y-12">
+                <div className="relative bg-primary-blue h-20 w-full">
+                <div className="absolute right-0 top-0 w-16 h-full bg-blue-800"></div>
+                <div className="absolute left-8 top-6 text-white font-bold">
+                  SUBSEA
+                </div>
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
+                </div>
 
-                    {/* horizontal connector aligned to vertical spine */}
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
-                    {/* small node at spine for visual connection */}
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
-                  </div>
+                <div className="relative bg-gray-800 h-24 w-4/5 ml-auto">
+                <div className="absolute left-0 top-0 w-16 h-full bg-gray-900"></div>
+                <div className="absolute right-8 top-8 text-white font-bold">
+                  RISER SYSTEMS
+                </div>
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
+                </div>
 
-                  <div className="relative bg-gray-800 h-24 w-4/5 ml-auto">
-                    <div className="absolute left-0 top-0 w-16 h-full bg-gray-900"></div>
-                    <div className="absolute right-8 top-8 text-white font-bold">
-                      RISER SYSTEMS
-                    </div>
+                <div className="relative bg-blue-400 h-16 w-3/4">
+                <div className="absolute right-0 top-0 w-12 h-full bg-primary-blue"></div>
+                <div className="absolute left-8 top-4 text-white font-bold ">
+                  PIPELINE
+                </div>
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
+                </div>
 
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
-                  </div>
-
-                  <div className="relative bg-blue-400 h-16 w-3/4">
-                    <div className="absolute right-0 top-0 w-12 h-full bg-primary-blue"></div>
-                    <div className="absolute left-8 top-4 text-white font-bold ">
-                      PIPELINE
-                    </div>
-
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
-                  </div>
-
-                  <div className="relative bg-gray-700 h-28 w-5/6 ml-auto">
-                    <div className="absolute left-0 top-0 w-20 h-full bg-gray-900"></div>
-                    <div className="absolute right-8 top-10 text-white font-bold">
-                      MOORING & TOPSIDE
-                    </div>
-
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
-                    <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
-                  </div>
+                <div className="relative bg-gray-700 h-28 w-5/6 ml-auto">
+                <div className="absolute left-0 top-0 w-20 h-full bg-gray-900"></div>
+                <div className="absolute right-8 top-10 text-white font-bold">
+                  MOORING & TOPSIDE
+                </div>
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 w-20 h-px bg-gray-400" />
+                <div className="absolute left-[-64px] top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-2 h-2 bg-gray-400 rounded-full" />
                 </div>
               </div>
+              </div>
+              */}
             </div>
           </div>
         </div>
       </div>
       {/* Services Cards */}
-      <div className="bg-white py-24">
+      <div id={subProducts[2].id} className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 items-center mb-12 gap-6">
             {/* Left - CTA text and button (wider now) */}
@@ -601,11 +657,11 @@ const OilAndGasPage: React.FC = () => {
 
             {/* Right - Title styled like "Our Sectors" (accent bar + offset) */}
             <div className="md:col-span-1 flex justify-end">
-              <div className="relative w-full max-w-xs">
+              <div className="relative w-full max-w-sm">
                 {/* <div className="absolute -right-8 top-0 w-2 h-24 bg-primary-blue" /> */}
                 <div className="text-right pr-6">
                   <h2 className="text-4xl font-bold text-gray-900 mb-2">
-                    What We Offer
+                    Areas of Expertise
                   </h2>
                   <p className="text-sm text-gray-500 mb-3">
                     Subtle, tailored services designed to meet your project's
@@ -636,12 +692,20 @@ const OilAndGasPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          <div className="grid grid-cols-1 gap-8 items-stretch">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-gray-50 border-2 border-gray-200 hover:border-primary-blue transition-all duration-300 group h-full flex flex-col overflow-hidden"
+                className="bg-gray-50 border-2 border-gray-200 hover:border-primary-blue transition-all duration-300 group h-full flex flex-col md:flex-row overflow-hidden"
               >
+                <div className="md:w-72 w-full h-56 md:h-auto shrink-0 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={`${service.title} illustration`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
                 <div className="p-8 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-4">
@@ -656,7 +720,7 @@ const OilAndGasPage: React.FC = () => {
                     <div className="w-8 h-px bg-gray-300 group-hover:bg-blue-400 transition-colors" />
                   </div>
 
-                  <p className="text-gray-700 mb-6 leading-relaxed text-sm flex-1">
+                  <p className="text-gray-700 mb-6 leading-relaxed text-base flex-1">
                     {service.description}
                   </p>
 
@@ -667,7 +731,7 @@ const OilAndGasPage: React.FC = () => {
                           className="flex-none w-2 h-2 bg-primary-blue mr-3  mt-1"
                           aria-hidden="true"
                         />
-                        <span className="text-gray-700 text-xs leading-tight">
+                        <span className="text-gray-700 text-base leading-tight">
                           {capability}
                         </span>
                       </li>

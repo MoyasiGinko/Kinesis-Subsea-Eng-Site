@@ -1,6 +1,7 @@
 import CTASection from "@/components/sectors/cta-section";
 import RenewablesPage from "@/components/sectors/renewables";
 import SectorBanner from "@/components/sectors/sector-banner";
+import { Suspense } from "react";
 
 export default function Page(): React.ReactElement {
   return (
@@ -9,13 +10,15 @@ export default function Page(): React.ReactElement {
         title="Renewables"
         subtitle="Innovative solutions for the renewables industry"
         links={[
-          { href: "/sectors/#renewables", label: "Overview" },
-          { href: "/sectors/#solutions", label: "Solutions" },
-          { href: "/sectors/#case-studies", label: "Case Studies" },
+          { href: "#sub-product-a", label: "Overview" },
+          { href: "#sub-product-b", label: "Solutions" },
+          { href: "#sub-product-c", label: "Case Studies" },
         ]}
         bgImage="/images/sector-banner-renewables.jpg"
       />
-      <RenewablesPage />
+      <Suspense fallback={null}>
+        <RenewablesPage />
+      </Suspense>
       <CTASection />
     </>
   );

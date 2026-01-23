@@ -151,7 +151,7 @@ export default function SectorBanner({
                 <div className="flex items-center gap-4">
                   {payload.actions ?? (
                     <Link
-                      href="#"
+                      href="/our-services"
                       className="inline-flex items-center gap-2 bg-white text-black px-4 py-3 rounded-md font-semibold shadow-lg hover:shadow-xl transition"
                       aria-label="Explore solutions"
                     >
